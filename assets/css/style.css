@@ -109,4 +109,47 @@ footer {
         font-size: 40px;
     }
 
+    .social-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 30px;
+    }
+    
+    
+    .social-links a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    
+        background: #161b22;
+        border: 1px solid #30363d;
+    
+        padding: 12px 18px;
+        border-radius: 12px;
+    
+        color: #c9d1d9;
+    
+        transition: all 0.2s ease;
+    }
+    
+    
+    .social-links a:hover {
+        border-color: #58a6ff;
+        transform: translateY(-3px);
+        text-decoration: none;
+    }
+    
+    
+    .social-links i {
+        font-size: 28px;
+        color: #ffffff;
+    }
+    
+    
+    .social-links span {
+        font-size: 14px;
+        line-height: 1.3;
+    }
+
 }
