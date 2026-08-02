@@ -609,3 +609,278 @@ footer {
 
 
 }
+
+/* =====================
+   EXPERIENCE CARDS
+===================== */
+
+
+.experience-grid {
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    align-items:start;
+
+}
+
+
+
+.experience-card {
+
+    background:#161b22;
+
+    border:1px solid #30363d;
+
+    border-radius:10px;
+
+    padding:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    transition:.2s ease;
+
+}
+
+
+.experience-card:hover {
+
+    border-color:#58a6ff;
+
+    transform:translateY(-3px);
+
+}
+
+
+
+/* HEADER */
+
+
+.experience-header {
+
+    margin-bottom:20px;
+
+}
+
+
+
+.company-name {
+
+    color:#58a6ff;
+
+    font-size:1.35rem;
+
+    margin:0 0 8px;
+
+}
+
+
+
+.job-title {
+
+    color:#f0f6fc;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    margin:0 0 10px;
+
+}
+
+
+
+.job-meta {
+
+    color:#8b949e;
+
+    font-size:.9rem;
+
+    line-height:1.5;
+
+}
+
+
+
+
+
+/* DETAILS */
+
+
+.experience-details {
+
+    margin-top:auto;
+
+}
+
+
+
+.experience-details summary {
+
+    cursor:pointer;
+
+    color:#58a6ff;
+
+    font-weight:600;
+
+    font-size:.9rem;
+
+    transition:.2s ease;
+
+}
+
+
+.experience-details summary:hover {
+
+    color:#79c0ff;
+
+}
+
+
+
+.experience-details summary::-webkit-details-marker {
+
+    display:none;
+
+}
+
+
+
+.experience-details summary:hover {
+
+    color:#79c0ff;
+
+}
+
+
+
+.details-content {
+
+    color:#c9d1d9;
+
+    font-size:.95rem;
+
+    margin-top:15px;
+
+}
+
+
+
+.details-content ul {
+
+    padding-left:20px;
+
+}
+
+
+
+.details-content li {
+
+    margin-bottom:8px;
+
+}
+
+
+
+
+
+/* FOOTER TECHNOLOGIES */
+
+
+.experience-footer {
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    border-top:1px solid #30363d;
+
+    margin-top:25px;
+
+    padding-top:15px;
+
+}
+
+
+
+.experience-footer span {
+
+    background:#0d1117;
+
+    border:1px solid #30363d;
+
+    border-radius:6px;
+
+    padding:5px 10px;
+
+    font-size:.8rem;
+
+    color:#c9d1d9;
+
+}
+
+
+
+
+
+/* =====================
+   EXPERIENCE RESPONSIVE
+===================== */
+
+
+@media(max-width:900px){
+
+
+    .experience-grid {
+
+        grid-template-columns:repeat(2,1fr);
+        align-items:start;
+
+    }
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+    .experience-grid {
+
+        grid-template-columns:1fr;
+        align-items:start;
+
+    }
+
+
+}
+.experience-intro {
+
+    max-width:750px;
+
+    margin-bottom:35px;
+
+}
+
+
+.experience-intro h3 {
+
+    color:#58a6ff;
+
+    margin-bottom:10px;
+
+}
+
+
+.experience-intro p {
+
+    color:#c9d1d9;
+
+    font-size:1.05rem;
+
+}
