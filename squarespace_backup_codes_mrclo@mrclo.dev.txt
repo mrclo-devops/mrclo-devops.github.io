@@ -1,0 +1,17 @@
+Squarespace two-factor authentication backup codes
+Account email: mrclo@mrclo.dev
+Generated: 
+          2026-7-2
+          5:1:23
+         UTC
+
+Save and print these backup codes in case you can‘t generate or receive authentication codes. They‘re for emergency use only. Each backup code can only be used once. If you generate new backup codes, these ones will stop working.
+
+  HKBRCVLE
+  N37VZV52
+  IZZMBTSH
+  D2PIEH5U
+  UBSLGZ5X
+  IW6LAQF4
+  POBCYNXW
+  NQKJLMUU
