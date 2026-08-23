@@ -1,5 +1,41 @@
 .DS_Store
 .vscode/
+.idea/
 node_modules/
 dist/
+
+# Environment files and local configuration
 .env
+.env.*
+!.env.example
+*.local
+
+# Secrets and credentials
+*backup*code*
+*recovery*code*
+*credential*
+*credentials*
+*secret*
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.crt
+*.cer
+id_rsa*
+id_ed25519*
+
+# Cloud / tooling credentials
+.aws/
+.gnupg/
+.npmrc
+.pypirc
+.netrc
+
+# Local data / logs
+*.log
+*.sqlite
+*.sqlite3
+*.db

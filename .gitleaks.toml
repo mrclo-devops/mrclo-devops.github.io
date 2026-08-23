@@ -1,0 +1,12 @@
+title = "Portfolio secret scanning configuration"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Documentation placeholders only"
+regexTarget = "match"
+regexes = [
+  '''<API_TOKEN>''',
+  '''<your_api_token_here>'''
+]
