@@ -95,7 +95,7 @@ The goal is to explain concepts clearly and provide examples that can be applied
 - Website: **mrclo.dev**
 - LinkedIn: **linkedin.com/in/mrclo-devops**
 - GitHub: **github.com/mrclo-devops**
-- Email: **connect@mrclo.dev**
+- Email: **marcelo@mrclo.dev**
 
 ---
 
