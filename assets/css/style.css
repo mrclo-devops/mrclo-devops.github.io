@@ -976,6 +976,145 @@ footer {
 
 
 /* =====================
+   LABS & DROPS SECTION
+===================== */
+
+.labs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: stretch;
+    margin-top: 25px;
+}
+
+.lab-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+}
+
+.lab-card:hover {
+    border-color: #58a6ff;
+    transform: translateY(-3px);
+}
+
+.lab-card-header {
+    margin-bottom: 15px;
+}
+
+.lab-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #58a6ff;
+    background: rgba(88, 166, 255, 0.12);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+    border-radius: 4px;
+    padding: 3px 8px;
+    margin-bottom: 12px;
+}
+
+.lab-card h3 {
+    font-size: 1.35rem;
+    color: #f0f6fc;
+    margin: 0 0 6px;
+}
+
+.lab-sub {
+    font-size: 0.9rem;
+    color: #58a6ff;
+    font-weight: 500;
+    margin: 0 0 12px;
+}
+
+.lab-card p {
+    font-size: 0.9rem;
+    color: #c9d1d9;
+    line-height: 1.55;
+    margin: 0 0 16px;
+}
+
+.lab-footer-info {
+    border-top: 1px solid #30363d;
+    padding-top: 15px;
+    margin-top: auto;
+}
+
+.lab-platforms {
+    font-size: 0.8rem;
+    color: #8b949e;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.4;
+}
+
+.lab-platforms i {
+    color: #58a6ff;
+}
+
+.lab-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.lab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 7px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.lab-btn.primary {
+    background: #238636;
+    color: #ffffff;
+    border: 1px solid rgba(240, 246, 252, 0.1);
+}
+
+.lab-btn.primary:hover {
+    background: #2ea043;
+}
+
+.lab-btn.secondary {
+    background: #21262d;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+}
+
+.lab-btn.secondary:hover {
+    background: #30363d;
+    color: #58a6ff;
+    border-color: #58a6ff;
+}
+
+@media (max-width: 950px) {
+    .labs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .labs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =====================
    CHILEAN LEGAL & PRIVACY FOOTER
 ===================== */
 

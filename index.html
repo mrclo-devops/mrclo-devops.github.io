@@ -147,7 +147,7 @@ content="https://mrclo.dev/">
 
 <a href="#skills" data-i18n="nav.skills">Skills</a>
 
-<a href="#projects" data-i18n="nav.projects">Projects</a>
+<a href="#labs-drops" data-i18n="nav.labs_drops">Labs&Drops</a>
 
 <a href="#contact" data-i18n="nav.contact">Contact</a>
 
@@ -218,7 +218,7 @@ download>
 </a>
 
 <a class="button secondary"
-href="mailto:marcelo@mrclo.dev">
+href="mailto:hello@mrclo.dev">
 <i class="fas fa-envelope"></i>
 <span data-i18n="header.btn.contact">Contact Me</span>
 </a>
@@ -739,72 +739,99 @@ Reliability Engineering
 
 
 
-<section id="projects">
+<section id="labs-drops">
 
-<h2 data-i18n="proj.title">
-Projects
+<h2 data-i18n="labs.title">
+Labs&Drops
 </h2>
 
-<div class="project">
-
-<h3 data-i18n="proj.p1.title">
-DevOps Portfolio
-</h3>
-
-<p data-i18n="proj.p1.desc">
-Professional portfolio showcasing DevOps practices,
-automation and reliability engineering.
+<p class="experience-intro" data-i18n="labs.intro">
+Software applications, interactive voice engineering, and hands-on learning tracks built with privacy-first and client-side architecture.
 </p>
 
-<strong>
-Stack:
-</strong>
+<div class="labs-grid">
 
-<p>
-HTML | CSS | GitHub Pages
-</p>
+    <!-- Card 1: Heartbeats Memories -->
+    <article class="lab-card">
+        <div>
+            <div class="lab-card-header">
+                <span class="lab-badge" data-i18n="labs.d1.badge">App · Multiplatform</span>
+                <h3 data-i18n="labs.d1.title">Heartbeats Memories</h3>
+                <div class="lab-sub" data-i18n="labs.d1.sub">Ambient Photo Carousel & Milestone Countdown</div>
+            </div>
+            <p data-i18n="labs.d1.desc">
+                A high-resolution ambient application designed to celebrate anniversaries, milestones, and personal moments. Engineered with a Local-First, Privacy-by-Design architecture utilizing browser-native IndexedDB without external cloud tracking.
+            </p>
+        </div>
+        <div class="lab-footer-info">
+            <div class="lab-platforms">
+                <i class="fas fa-layer-group"></i>
+                <span data-i18n="labs.d1.platforms">Web (PWA) · Desktop (Win/Mac/Linux) · Mobile (iOS/Android)</span>
+            </div>
+            <div class="lab-actions">
+                <a class="lab-btn primary" href="https://github.com/mrclo-devops/heartbeats-memories" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <span data-i18n="labs.d1.btn_repo">View Repository</span>
+                </a>
+                <a class="lab-btn secondary" href="mailto:support@mrclo.dev">
+                    <i class="fas fa-headset"></i>
+                    <span data-i18n="labs.d1.support">Support: support@mrclo.dev</span>
+                </a>
+            </div>
+        </div>
+    </article>
 
-</div>
+    <!-- Card 2: Voice Shadowing Engine -->
+    <article class="lab-card">
+        <div>
+            <div class="lab-card-header">
+                <span class="lab-badge" data-i18n="labs.d2.badge">Voice & Hardware</span>
+                <h3 data-i18n="labs.d2.title">Bilingual Shadowing & Voice Engine</h3>
+                <div class="lab-sub" data-i18n="labs.d2.sub">Global Hotkey Audio Assistant for English Fluency</div>
+            </div>
+            <p data-i18n="labs.d2.desc">
+                Real-time bilingual mirror reader and multi-accent carousel (US, UK, NZ, AU, Chile, Colombia) featuring zero-latency hot translation to train active listening and pronunciation directly from your workstation.
+            </p>
+        </div>
+        <div class="lab-footer-info">
+            <div class="lab-platforms">
+                <i class="fas fa-microphone-lines"></i>
+                <span data-i18n="labs.d2.platforms">Linux Sidecar · Global Hotkeys (Alt + M / Alt + L) · Streaming Audio</span>
+            </div>
+            <div class="lab-actions">
+                <a class="lab-btn secondary" href="mailto:support@mrclo.dev">
+                    <i class="fas fa-circle-info"></i>
+                    <span>Inquire Tech</span>
+                </a>
+            </div>
+        </div>
+    </article>
 
-<div class="project">
-
-<h3 data-i18n="proj.p2.title">
-API Reliability Toolkit
-</h3>
-
-<p data-i18n="proj.p2.desc">
-Examples focused on API troubleshooting,
-monitoring and integration reliability.
-</p>
-
-<strong>
-Stack:
-</strong>
-
-<p>
-APIs | Python | Docker | Monitoring
-</p>
-
-</div>
-
-<div class="project">
-
-<h3 data-i18n="proj.p3.title">
-Infrastructure Automation
-</h3>
-
-<p data-i18n="proj.p3.desc">
-Infrastructure as Code examples using modern
-cloud engineering practices.
-</p>
-
-<strong>
-Stack:
-</strong>
-
-<p>
-AWS | Terraform | Linux
-</p>
+    <!-- Card 3: Learning Tracks & Incident Labs -->
+    <article class="lab-card">
+        <div>
+            <div class="lab-card-header">
+                <span class="lab-badge" data-i18n="labs.d3.badge">Academy & Incident Labs</span>
+                <h3 data-i18n="labs.d3.title">Technical English & Incident Response Mastery</h3>
+                <div class="lab-sub" data-i18n="labs.d3.sub">Practical Labs from C0 to C2 for Global Remote Engineers</div>
+            </div>
+            <p data-i18n="labs.d3.desc">
+                Hands-on training focused on live incident response (P0/P1), distributed systems debugging, standup communications, and high-stakes technical interviews.
+            </p>
+        </div>
+        <div class="lab-footer-info">
+            <div class="lab-platforms">
+                <i class="fas fa-graduation-cap"></i>
+                <span data-i18n="labs.d3.platforms">Hands-On Labs · Incident Response · Conversational Immersion</span>
+            </div>
+            <div class="lab-actions">
+                <a class="lab-btn secondary" href="mailto:hello@mrclo.dev">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Marcelo</span>
+                </a>
+            </div>
+        </div>
+    </article>
 
 </div>
 
@@ -822,8 +849,8 @@ Open to remote international opportunities.
 
 <p>
 <span data-i18n="contact.email_label">Email:</span>
-<a href="mailto:marcelo@mrclo.dev">
-marcelo@mrclo.dev
+<a href="mailto:hello@mrclo.dev">
+hello@mrclo.dev
 </a>
 </p>
 
@@ -841,7 +868,7 @@ marcelo@mrclo.dev
     </p>
 
     <p data-i18n="footer.version">
-    Portfolio v1.2.0 · Dynamic i18n & Legal Compliance
+    Portfolio v1.3.0 · Labs&Drops & Privacy-First Architecture
     </p>
 
 </footer>
