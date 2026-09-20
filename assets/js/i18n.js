@@ -10,7 +10,7 @@ const translations = {
     "nav.about": "Sobre mí",
     "nav.experience": "Experiencia",
     "nav.skills": "Habilidades",
-    "nav.projects": "Proyectos",
+    "nav.labs_drops": "Labs&Drops",
     "nav.contact": "Contacto",
 
     // Header
@@ -81,14 +81,29 @@ const translations = {
     "exp.pf.b4": "Optimización de estrategias de reintentos y aislamiento de fallas para pagos resilientes.",
     "exp.pf.b5": "Colaboración con equipos de Ingeniería y Operaciones durante despliegues a producción.",
 
-    // Projects
-    "proj.title": "Proyectos",
-    "proj.p1.title": "Portafolio DevOps",
-    "proj.p1.desc": "Portafolio profesional que exhibe prácticas de DevOps, automatización e ingeniería de confiabilidad.",
-    "proj.p2.title": "Kit de Confiabilidad de APIs",
-    "proj.p2.desc": "Herramientas y ejemplos prácticos para depuración de APIs, monitoreo y resiliencia de integraciones.",
-    "proj.p3.title": "Automatización de Infraestructura",
-    "proj.p3.desc": "Ejemplos de Infraestructura como Código (IaC) aplicando estándares modernos de ingeniería en la nube.",
+    // Labs&Drops
+    "labs.title": "Labs&Drops",
+    "labs.intro": "Aplicaciones de software, ingeniería de voz y programas de aprendizaje práctico desarrollados con arquitectura Local-First y foco en privacidad.",
+    "labs.d1.badge": "App · Multiplataforma",
+    "labs.d1.title": "Heartbeats Memories",
+    "labs.d1.sub": "Carrusel Ambiental de Fotos & Contador de Hitos",
+    "labs.d1.desc": "Aplicación ambiental de alta resolución diseñada para celebrar aniversarios, metas y recuerdos atesorados. Construida bajo arquitectura Local-First con almacenamiento en IndexedDB, sin telemetría ni servidores externos.",
+    "labs.d1.platforms": "Web (PWA) · Desktop (Win/Mac/Linux) · Móvil (iOS/Android)",
+    "labs.d1.support": "Soporte: support@mrclo.dev",
+    "labs.d1.btn_web": "Lanzar Web App",
+    "labs.d1.btn_repo": "Ver Repositorio",
+
+    "labs.d2.badge": "Voz & Hardware",
+    "labs.d2.title": "Dispositivo de Voz & Lectura Espejo",
+    "labs.d2.sub": "Asistente de Audio con Atajos Globales para Fluidez en Inglés",
+    "labs.d2.desc": "Tecnología de lectura espejo (Bilingual Shadowing) y carrusel de acentos nativos (US, UK, NZ, AU, Chile, Colombia) con traducción en caliente sin latencia para entrenar la audición activa.",
+    "labs.d2.platforms": "Linux Sidecar · Atajos Globales (Alt + M / Alt + L) · Audio Streaming",
+
+    "labs.d3.badge": "Academia & Incident Labs",
+    "labs.d3.title": "Inglés Técnico & Gestión de Incidentes",
+    "labs.d3.sub": "Laboratorios Prácticos de C0 a C2 para Ingenieros Globales",
+    "labs.d3.desc": "Formación práctica orientada a standups, investigación de caídas en producción (P0/P1), code reviews y entrevistas técnicas para profesionales de software y DevOps.",
+    "labs.d3.platforms": "Laboratorios Hands-On · Incident Response · Práctica Conversacional",
 
     // Contact
     "contact.title": "Contacto",
@@ -97,7 +112,7 @@ const translations = {
 
     // Footer & Chilean Legal Notice
     "footer.rights": "© 2026 Marcelo Poblete | mrclo.devops",
-    "footer.version": "Portfolio v1.2.0 · Dynamic i18n & Legal Compliance",
+    "footer.version": "Portfolio v1.3.0 · Labs&Drops & Privacy-First Architecture",
     "legal.title": "🇨🇱 Cumplimiento Legal y Privacidad (República de Chile)",
     "legal.content": `
       <div class="legal-card single">
@@ -113,7 +128,7 @@ const translations = {
     "nav.about": "About",
     "nav.experience": "Experience",
     "nav.skills": "Skills",
-    "nav.projects": "Projects",
+    "nav.labs_drops": "Labs&Drops",
     "nav.contact": "Contact",
 
     // Header
@@ -184,14 +199,29 @@ const translations = {
     "exp.pf.b4": "Refined retry strategies and fault-isolation practices to support reliable payment processing.",
     "exp.pf.b5": "Collaborated with Engineering and Operations teams during production releases.",
 
-    // Projects
-    "proj.title": "Projects",
-    "proj.p1.title": "DevOps Portfolio",
-    "proj.p1.desc": "Professional portfolio showcasing DevOps practices, automation and reliability engineering.",
-    "proj.p2.title": "API Reliability Toolkit",
-    "proj.p2.desc": "Examples focused on API troubleshooting, monitoring and integration reliability.",
-    "proj.p3.title": "Infrastructure Automation",
-    "proj.p3.desc": "Infrastructure as Code examples using modern cloud engineering practices.",
+    // Labs&Drops
+    "labs.title": "Labs&Drops",
+    "labs.intro": "Software applications, interactive voice engineering, and hands-on learning tracks built with privacy-first and client-side architecture.",
+    "labs.d1.badge": "App · Multiplatform",
+    "labs.d1.title": "Heartbeats Memories",
+    "labs.d1.sub": "Ambient Photo Carousel & Milestone Countdown",
+    "labs.d1.desc": "A high-resolution ambient application designed to celebrate anniversaries, milestones, and personal moments. Engineered with a Local-First, Privacy-by-Design architecture utilizing browser-native IndexedDB without external cloud tracking.",
+    "labs.d1.platforms": "Web (PWA) · Desktop (Win/Mac/Linux) · Mobile (iOS/Android)",
+    "labs.d1.support": "Support: support@mrclo.dev",
+    "labs.d1.btn_web": "Launch Web App",
+    "labs.d1.btn_repo": "View Repository",
+
+    "labs.d2.badge": "Voice & Hardware",
+    "labs.d2.title": "Bilingual Shadowing & Voice Engine",
+    "labs.d2.sub": "Global Hotkey Audio Assistant for English Fluency",
+    "labs.d2.desc": "Real-time bilingual mirror reader and multi-accent carousel (US, UK, NZ, AU, Chile, Colombia) featuring zero-latency hot translation to train active listening and pronunciation directly from your workstation.",
+    "labs.d2.platforms": "Linux Sidecar · Global Hotkeys (Alt + M / Alt + L) · Streaming Audio",
+
+    "labs.d3.badge": "Academy & Incident Labs",
+    "labs.d3.title": "Technical English & Incident Response Mastery",
+    "labs.d3.sub": "Practical Labs from C0 to C2 for Global Remote Engineers",
+    "labs.d3.desc": "Hands-on training focused on live incident response (P0/P1), distributed systems debugging, standup communications, and high-stakes technical interviews.",
+    "labs.d3.platforms": "Hands-On Labs · Incident Response · Conversational Immersion",
 
     // Contact
     "contact.title": "Contact",
@@ -200,7 +230,7 @@ const translations = {
 
     // Footer & Chilean Dual-Language Legal Notice
     "footer.rights": "© 2026 Marcelo Poblete | mrclo.devops",
-    "footer.version": "Portfolio v1.2.0 · Dynamic i18n & Legal Compliance",
+    "footer.version": "Portfolio v1.3.0 · Labs&Drops & Privacy-First Architecture",
     "legal.title": "🇨🇱 Chilean Legal Framework & Privacy Compliance (Dual-Language Standard)",
     "legal.content": `
       <div class="legal-card dual">
