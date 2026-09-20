@@ -140,11 +140,6 @@
               <span data-i18n="labs.d1.btn_demo">Ver Demo Interactiva (Desktop & Móvil)</span>
             </button>
 
-            <a class="drop-btn-secondary" href="https://github.com/mrclo-devops/heartbeats-memories" target="_blank">
-              <i class="fab fa-github"></i>
-              <span data-i18n="labs.d1.btn_repo">Ver Repositorio</span>
-            </a>
-
             <a class="drop-btn-secondary" href="mailto:support@mrclo.dev">
               <i class="fas fa-headset"></i>
               <span data-i18n="labs.d1.support">Soporte: support@mrclo.dev</span>
@@ -174,11 +169,6 @@
           </div>
 
           <div class="drop-actions">
-            <a class="btn-demo-trigger" style="background: linear-gradient(135deg, #0284c7, #0d9488);" href="mailto:support@mrclo.dev">
-              <i class="fas fa-circle-info"></i>
-              <span data-i18n="labs.d2.btn_inquire">Consultar Arquitectura / Colaborar</span>
-            </a>
-
             <a class="drop-btn-secondary" href="mailto:hello@mrclo.dev">
               <i class="fas fa-envelope"></i>
               <span>hello@mrclo.dev</span>
@@ -327,38 +317,64 @@
           </div>
 
           <div class="simulator-screen">
-            <div class="sim-slideshow-layer" id="sim-slideshow"></div>
+            <div class="sim-slideshow-layer"></div>
             <div class="sim-vignette-overlay"></div>
 
             <!-- Floating Glassmorphism Widget -->
-            <div class="sim-floating-card" id="sim-card">
+            <div class="sim-floating-card" id="sim-card-desktop">
+              <!-- Event Switcher Tabs -->
+              <div class="sim-events-nav">
+                <button class="sim-event-tab active" data-event-idx="0">
+                  <i class="fas fa-heart"></i>
+                  <span data-i18n="demo.tab.ev1">Aniversario</span>
+                </button>
+                <button class="sim-event-tab" data-event-idx="1">
+                  <i class="fas fa-plane"></i>
+                  <span data-i18n="demo.tab.ev2">Viaje Soñado</span>
+                </button>
+                <button class="sim-event-tab" data-event-idx="2">
+                  <i class="fas fa-flag-checkered"></i>
+                  <span data-i18n="demo.tab.ev3">Graduación</span>
+                </button>
+              </div>
+
               <div class="sim-heart-row">
                 <i class="fas fa-heart sim-heart-icon"></i>
-                <h4 class="sim-event-title" data-i18n="modal.card.title">Aniversario Especial</h4>
+                <h4 class="sim-event-title" data-i18n="demo.ev1.title">Aniversario Especial</h4>
               </div>
 
               <div class="sim-countdown-grid">
                 <div class="sim-time-box">
-                  <span class="sim-digit" id="sim-days">365</span>
+                  <span class="sim-digit sim-days">365</span>
                   <span class="sim-unit" data-i18n="modal.card.days">Días</span>
                 </div>
                 <div class="sim-time-box">
-                  <span class="sim-digit" id="sim-hours">12</span>
+                  <span class="sim-digit sim-hours">12</span>
                   <span class="sim-unit" data-i18n="modal.card.hours">Horas</span>
                 </div>
                 <div class="sim-time-box">
-                  <span class="sim-digit" id="sim-mins">30</span>
+                  <span class="sim-digit sim-mins">30</span>
                   <span class="sim-unit" data-i18n="modal.card.mins">Min</span>
                 </div>
                 <div class="sim-time-box">
-                  <span class="sim-digit" id="sim-secs">45</span>
+                  <span class="sim-digit sim-secs">45</span>
                   <span class="sim-unit" data-i18n="modal.card.secs">Seg</span>
                 </div>
               </div>
 
               <div class="sim-heartbeats-count">
                 <i class="fas fa-heartbeat" style="color: #fb7185; margin-right: 4px;"></i>
-                <span id="sim-heartbeats">36,829,440</span> <span data-i18n="modal.card.beats">latidos compartidos</span>
+                <span class="sim-heartbeats">36,829,440</span> <span data-i18n="modal.card.beats">latidos compartidos</span>
+              </div>
+
+              <!-- Photo carousel progress indicator -->
+              <div class="sim-photo-indicator">
+                <div class="photo-dots">
+                  <span class="photo-dot active" data-photo="0" title="Foto 1"></span>
+                  <span class="photo-dot" data-photo="1" title="Foto 2"></span>
+                  <span class="photo-dot" data-photo="2" title="Foto 3"></span>
+                </div>
+                <span class="photo-counter-text">Foto 1 de 3</span>
               </div>
             </div>
           </div>
@@ -369,38 +385,64 @@
           <div class="mobile-dynamic-island"></div>
 
           <div class="simulator-screen">
-            <div class="sim-slideshow-layer" style="background-image: inherit;"></div>
+            <div class="sim-slideshow-layer"></div>
             <div class="sim-vignette-overlay"></div>
 
             <!-- Mobile Centered Widget -->
-            <div class="sim-floating-card" style="padding: 16px; max-width: 270px;">
-              <div class="sim-heart-row">
-                <i class="fas fa-heart sim-heart-icon" style="font-size: 1.1rem;"></i>
-                <h4 class="sim-event-title" style="font-size: 1.05rem;" data-i18n="modal.card.title">Aniversario Especial</h4>
+            <div class="sim-floating-card" style="padding: 16px 12px; max-width: 285px;">
+              <!-- Mobile Event Switcher Tabs -->
+              <div class="sim-events-nav" style="gap: 4px; margin-bottom: 8px;">
+                <button class="sim-event-tab active" data-event-idx="0" style="padding: 3px 8px; font-size: 0.7rem;">
+                  <i class="fas fa-heart"></i>
+                  <span>Amor</span>
+                </button>
+                <button class="sim-event-tab" data-event-idx="1" style="padding: 3px 8px; font-size: 0.7rem;">
+                  <i class="fas fa-plane"></i>
+                  <span>Viaje</span>
+                </button>
+                <button class="sim-event-tab" data-event-idx="2" style="padding: 3px 8px; font-size: 0.7rem;">
+                  <i class="fas fa-flag"></i>
+                  <span>Meta</span>
+                </button>
               </div>
 
-              <div class="sim-countdown-grid" style="gap: 5px;">
+              <div class="sim-heart-row">
+                <i class="fas fa-heart sim-heart-icon" style="font-size: 1.05rem;"></i>
+                <h4 class="sim-event-title" style="font-size: 0.98rem;" data-i18n="demo.ev1.title">Aniversario Especial</h4>
+              </div>
+
+              <div class="sim-countdown-grid" style="gap: 4px; margin: 10px 0 8px;">
                 <div class="sim-time-box">
-                  <span class="sim-digit" style="font-size: 1.25rem;">365</span>
+                  <span class="sim-digit sim-days" style="font-size: 1.15rem;">365</span>
                   <span class="sim-unit" data-i18n="modal.card.days">Días</span>
                 </div>
                 <div class="sim-time-box">
-                  <span class="sim-digit" style="font-size: 1.25rem;">12</span>
+                  <span class="sim-digit sim-hours" style="font-size: 1.15rem;">12</span>
                   <span class="sim-unit" data-i18n="modal.card.hours">Horas</span>
                 </div>
                 <div class="sim-time-box">
-                  <span class="sim-digit" style="font-size: 1.25rem;">30</span>
+                  <span class="sim-digit sim-mins" style="font-size: 1.15rem;">30</span>
                   <span class="sim-unit" data-i18n="modal.card.mins">Min</span>
                 </div>
                 <div class="sim-time-box">
-                  <span class="sim-digit" style="font-size: 1.25rem;">45</span>
+                  <span class="sim-digit sim-secs" style="font-size: 1.15rem;">45</span>
                   <span class="sim-unit" data-i18n="modal.card.secs">Seg</span>
                 </div>
               </div>
 
-              <div class="sim-heartbeats-count" style="font-size: 0.72rem;">
+              <div class="sim-heartbeats-count" style="font-size: 0.7rem;">
                 <i class="fas fa-heartbeat" style="color: #fb7185;"></i>
-                <span>36,829,440</span> <span data-i18n="modal.card.beats">latidos</span>
+                <span class="sim-heartbeats">36,829,440</span> <span data-i18n="modal.card.beats">latidos</span>
+              </div>
+
+              <!-- Mobile Photo Indicator -->
+              <div class="sim-photo-indicator" style="margin-top: 8px;">
+                <div class="photo-dots">
+                  <span class="photo-dot active" data-photo="0"></span>
+                  <span class="photo-dot" data-photo="1"></span>
+                  <span class="photo-dot" data-photo="2"></span>
+                </div>
+                <span class="photo-counter-text" style="font-size: 0.68rem;">Foto 1/3</span>
               </div>
             </div>
           </div>
@@ -418,13 +460,13 @@
         </div>
 
         <div class="modal-action-buttons">
-          <a class="btn-demo-trigger" style="padding: 9px 18px; font-size: 0.88rem;" href="https://github.com/mrclo-devops/heartbeats-memories" target="_blank">
-            <i class="fab fa-github"></i>
-            <span data-i18n="modal.btn.repo">Ver Repositorio</span>
-          </a>
-          <a class="drop-btn-secondary" style="padding: 9px 18px; font-size: 0.88rem;" href="mailto:support@mrclo.dev">
+          <a class="btn-demo-trigger" style="padding: 9px 18px; font-size: 0.88rem;" href="mailto:support@mrclo.dev">
             <i class="fas fa-headset"></i>
-            <span>support@mrclo.dev</span>
+            <span data-i18n="modal.btn.support">Solicitar Demo / Soporte</span>
+          </a>
+          <a class="drop-btn-secondary" style="padding: 9px 18px; font-size: 0.88rem;" href="mailto:hello@mrclo.dev">
+            <i class="fas fa-envelope"></i>
+            <span>hello@mrclo.dev</span>
           </a>
         </div>
       </div>

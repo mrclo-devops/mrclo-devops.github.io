@@ -129,17 +129,22 @@ const translations = {
     "labs.d4.platforms": "Edge Probe · Webhooks · Micro-agente Go/Rust",
     "labs.d4.status": "Próximo Lanzamiento en Laboratorio",
 
-    // Device Simulator Modal
+    // Device Simulator Modal & Multi-Event
     "modal.btn.desktop": "Modo Computador (Wallpaper Desktop)",
     "modal.btn.mobile": "Modo Celular (Wallpaper PWA)",
     "modal.palette.label": "Color del Widget:",
-    "modal.card.title": "Aniversario Especial",
     "modal.card.days": "Días",
     "modal.card.hours": "Horas",
     "modal.card.mins": "Min",
     "modal.card.secs": "Seg",
     "modal.card.beats": "latidos compartidos",
-    "modal.btn.repo": "Ver Repositorio",
+    "modal.btn.support": "Solicitar Demo / Soporte",
+    "demo.tab.ev1": "Aniversario",
+    "demo.tab.ev2": "Viaje Soñado",
+    "demo.tab.ev3": "Graduación",
+    "demo.ev1.title": "Aniversario Especial",
+    "demo.ev2.title": "Viaje Soñado a la Patagonia",
+    "demo.ev3.title": "Graduación & Hito de Vida",
 
     // Portal Teaser on Landing Page
     "labs.teaser.badge": "Ecosistema de Software & R&D",
@@ -289,17 +294,22 @@ const translations = {
     "labs.d4.platforms": "Edge Probe · Webhooks · Go/Rust Micro-agent",
     "labs.d4.status": "Upcoming Lab Release",
 
-    // Device Simulator Modal
+    // Device Simulator Modal & Multi-Event
     "modal.btn.desktop": "Desktop Mode (Wallpaper Desktop)",
     "modal.btn.mobile": "Mobile Mode (Wallpaper PWA)",
     "modal.palette.label": "Widget Color:",
-    "modal.card.title": "Special Anniversary",
     "modal.card.days": "Days",
     "modal.card.hours": "Hours",
     "modal.card.mins": "Mins",
     "modal.card.secs": "Secs",
     "modal.card.beats": "shared heartbeats",
-    "modal.btn.repo": "View Repository",
+    "modal.btn.support": "Request Demo / Support",
+    "demo.tab.ev1": "Anniversary",
+    "demo.tab.ev2": "Dream Trip",
+    "demo.tab.ev3": "Graduation",
+    "demo.ev1.title": "Special Anniversary",
+    "demo.ev2.title": "Dream Trip to Patagonia",
+    "demo.ev3.title": "Graduation & Life Milestone",
 
     // Portal Teaser on Landing Page
     "labs.teaser.badge": "Software & R&D Ecosystem",
