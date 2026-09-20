@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Labs&Drops — Marcelo Poblete | Apps, Voice & Technical Labs</title>
+
+  <meta name="description"
+    content="Descubre el ecosistema Labs&Drops de Marcelo Poblete: aplicaciones Local-First, motor de voz bilingüe y laboratorios prácticos de respuesta a incidentes en producción.">
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="Labs&Drops — Marcelo Poblete | Software & Technical Ecosystem">
+  <meta property="og:description" content="Local-First applications, voice engineering sidecars, and hands-on incident response tracks.">
+  <meta property="og:url" content="https://mrclo.dev/labs-drops/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mrclo.dev/assets/img/profile.jpg">
+
+  <link rel="canonical" href="https://mrclo.dev/labs-drops/">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/labs.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="labs-universe">
+
+  <!-- Background Ambient Mesh Glow -->
+  <div class="ambient-glow-mesh" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <div style="max-width: 1100px; margin: 0 auto; padding: 20px 25px;">
+
+    <!-- Navigation Header -->
+    <header class="labs-navbar">
+      <a href="/" class="labs-brand-link">
+        <i class="fas fa-arrow-left"></i>
+        <span>mrclo.dev</span>
+        <span class="labs-status-pill">
+          <span class="badge-live-pulse"></span>
+          <span data-i18n="labs.nav.live">R&D ECOSYSTEM</span>
+        </span>
+      </a>
+
+      <!-- Language Switcher -->
+      <div class="lang-switcher" style="position: relative; top: auto; right: auto;">
+        <button id="lang-switcher-btn" class="lang-btn" aria-label="Cambiar idioma / Switch language">
+          <span id="current-lang-flag">🇨🇱</span>
+          <span id="current-lang-code">ES</span>
+          <i class="fas fa-chevron-down" style="font-size: 0.72rem; margin-left: 2px;"></i>
+        </button>
+        <div id="lang-dropdown" class="lang-dropdown">
+          <button class="lang-option" data-lang="es">
+            <span>🇨🇱</span> Español
+          </button>
+          <button class="lang-option" data-lang="en">
+            <span>🇺🇸</span> English
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="labs-hero">
+      <div class="labs-hero-badge">
+        <span class="working-dev-icon"><i class="fas fa-laptop-code"></i></span>
+        <span data-i18n="labs.hero.badge">Laboratorio Vivo de Software & Hardware</span>
+      </div>
+
+      <h1 data-i18n="labs.hero.title">Donde el Código Cobra Vida en Productos Tangibles</h1>
+
+      <p data-i18n="labs.hero.subtitle">
+        Ecosistema independiente de aplicaciones, asistentes de audio por hardware y laboratorios de incidentes en producción. Construidos bajo arquitectura Local-First, privacidad absoluta y cero telemetría de terceros.
+      </p>
+
+      <!-- Architecture Pillars -->
+      <div class="labs-tag-pills">
+        <span class="labs-tag-pill"><i class="fas fa-shield-halved"></i> <span data-i18n="labs.pill.privacy">100% Local-First</span></span>
+        <span class="labs-tag-pill"><i class="fas fa-database"></i> <span data-i18n="labs.pill.db">IndexedDB Browser Native</span></span>
+        <span class="labs-tag-pill"><i class="fas fa-bolt"></i> <span data-i18n="labs.pill.perf">60 FPS Ambient Rendering</span></span>
+        <span class="labs-tag-pill"><i class="fas fa-ban"></i> <span data-i18n="labs.pill.telemetry">Cero Rastreo / No Cookies</span></span>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="labs-filter-bar">
+        <button class="filter-tab active" data-filter="all">
+          <i class="fas fa-cubes"></i>
+          <span data-i18n="labs.tab.all">Todos los Drops</span>
+        </button>
+        <button class="filter-tab" data-filter="apps">
+          <i class="fas fa-layer-group"></i>
+          <span data-i18n="labs.tab.apps">Software & Apps</span>
+        </button>
+        <button class="filter-tab" data-filter="voice">
+          <i class="fas fa-microphone-lines"></i>
+          <span data-i18n="labs.tab.voice">Voz & AI Hardware</span>
+        </button>
+        <button class="filter-tab" data-filter="academy">
+          <i class="fas fa-graduation-cap"></i>
+          <span data-i18n="labs.tab.academy">Academia & Incident Labs</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Main Drops Grid -->
+    <main class="drops-grid">
+
+      <!-- ================= DROP 01: HEARTBEATS MEMORIES ================= -->
+      <article class="drop-card" data-category="apps">
+        <div>
+          <div class="drop-badge-row">
+            <span class="drop-num">DROP 01</span>
+            <span class="drop-category-badge" data-i18n="labs.d1.badge">App · Multiplataforma</span>
+          </div>
+          <h3 data-i18n="labs.d1.title">Heartbeats Memories</h3>
+          <div class="drop-subtitle" data-i18n="labs.d1.sub">Carrusel Ambiental de Recuerdos & Contador de Hitos</div>
+          <p class="drop-desc" data-i18n="labs.d1.desc">
+            Aplicación ambiental de alta resolución diseñada para celebrar aniversarios, metas y recuerdos atesorados. Funciona como Wallpaper dinámico en tu computador o pantalla de bloqueo de celular con almacenamiento en IndexedDB, sin telemetría ni servidores externos.
+          </p>
+        </div>
+
+        <div>
+          <div class="drop-specs">
+            <i class="fas fa-display"></i>
+            <span data-i18n="labs.d1.platforms">Web (PWA) · Desktop (Win/Mac/Linux) · Móvil (iOS/Android)</span>
+          </div>
+
+          <div class="drop-actions">
+            <!-- Trigger button for interactive device simulator modal -->
+            <button class="btn-demo-trigger btn-open-simulator">
+              <i class="fas fa-play-circle"></i>
+              <span data-i18n="labs.d1.btn_demo">Ver Demo Interactiva (Desktop & Móvil)</span>
+            </button>
+
+            <a class="drop-btn-secondary" href="https://github.com/mrclo-devops/heartbeats-memories" target="_blank">
+              <i class="fab fa-github"></i>
+              <span data-i18n="labs.d1.btn_repo">Ver Repositorio</span>
+            </a>
+
+            <a class="drop-btn-secondary" href="mailto:support@mrclo.dev">
+              <i class="fas fa-headset"></i>
+              <span data-i18n="labs.d1.support">Soporte: support@mrclo.dev</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= DROP 02: BILINGUAL SHADOWING ================= -->
+      <article class="drop-card" data-category="voice">
+        <div>
+          <div class="drop-badge-row">
+            <span class="drop-num">DROP 02</span>
+            <span class="drop-category-badge" data-i18n="labs.d2.badge">Voz & Hardware</span>
+          </div>
+          <h3 data-i18n="labs.d2.title">Bilingual Shadowing & Voice Engine</h3>
+          <div class="drop-subtitle" data-i18n="labs.d2.sub">Asistente de Audio con Atajos Globales para Fluidez en Inglés</div>
+          <p class="drop-desc" data-i18n="labs.d2.desc">
+            Tecnología de lectura espejo (Bilingual Shadowing) y carrusel de acentos nativos (US, UK, NZ, AU, Chile, Colombia) con traducción en caliente sin latencia para entrenar la audición activa y pronunciación técnica directamente desde tu estación de trabajo.
+          </p>
+        </div>
+
+        <div>
+          <div class="drop-specs">
+            <i class="fas fa-keyboard"></i>
+            <span data-i18n="labs.d2.platforms">Linux Sidecar · Atajos Globales (Alt + M / Alt + L) · Audio Streaming</span>
+          </div>
+
+          <div class="drop-actions">
+            <a class="btn-demo-trigger" style="background: linear-gradient(135deg, #0284c7, #0d9488);" href="mailto:support@mrclo.dev">
+              <i class="fas fa-circle-info"></i>
+              <span data-i18n="labs.d2.btn_inquire">Consultar Arquitectura / Colaborar</span>
+            </a>
+
+            <a class="drop-btn-secondary" href="mailto:hello@mrclo.dev">
+              <i class="fas fa-envelope"></i>
+              <span>hello@mrclo.dev</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= DROP 03: ACADEMY & INCIDENT LABS ================= -->
+      <article class="drop-card" data-category="academy">
+        <div>
+          <div class="drop-badge-row">
+            <span class="drop-num">DROP 03</span>
+            <span class="drop-category-badge" data-i18n="labs.d3.badge">Academia & Incident Labs</span>
+          </div>
+          <h3 data-i18n="labs.d3.title">Inglés Técnico & Gestión de Incidentes</h3>
+          <div class="drop-subtitle" data-i18n="labs.d3.sub">Laboratorios Prácticos de C0 a C2 para Ingenieros Globales</div>
+          <p class="drop-desc" data-i18n="labs.d3.desc">
+            Formación práctica orientada a standups, investigación de caídas en producción (P0/P1), code reviews y entrevistas técnicas para profesionales de software, nube y DevOps en entornos internacionales.
+          </p>
+        </div>
+
+        <div>
+          <div class="drop-specs">
+            <i class="fas fa-terminal"></i>
+            <span data-i18n="labs.d3.platforms">Hands-On Labs · Incident Response · Práctica Conversacional</span>
+          </div>
+
+          <div class="drop-actions">
+            <a class="btn-demo-trigger" style="background: linear-gradient(135deg, #7c3aed, #db2777);" href="mailto:hello@mrclo.dev">
+              <i class="fas fa-paper-plane"></i>
+              <span data-i18n="labs.d3.btn_contact">Contactar a Marcelo</span>
+            </a>
+
+            <a class="drop-btn-secondary" href="/#experience">
+              <i class="fas fa-user-check"></i>
+              <span data-i18n="labs.d3.btn_cv">Ver Experiencia del Instructor</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= DROP 04: PIPELINE PROBES ================= -->
+      <article class="drop-card" data-category="apps">
+        <div>
+          <div class="drop-badge-row">
+            <span class="drop-num" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">DROP 04</span>
+            <span class="drop-category-badge" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;" data-i18n="labs.d4.badge">En Desarrollo · Q4 2026</span>
+          </div>
+          <h3 data-i18n="labs.d4.title">Synthetic API Probes & Canary</h3>
+          <div class="drop-subtitle" data-i18n="labs.d4.sub">Sonda Distribuida Ligera de Latencia y Monitoreo de APIs</div>
+          <p class="drop-desc" data-i18n="labs.d4.desc">
+            Agente de telemetría de borde para evaluar contratos de API y tiempos de respuesta transaccionales con alertas directas por webhook y cero sobrecostos de nube.
+          </p>
+        </div>
+
+        <div>
+          <div class="drop-specs">
+            <i class="fas fa-clock"></i>
+            <span data-i18n="labs.d4.platforms">Edge Probe · Webhooks · Micro-agente Go/Rust</span>
+          </div>
+
+          <div class="drop-actions">
+            <button class="drop-btn-secondary" style="opacity: 0.65; cursor: default;">
+              <i class="fas fa-lock"></i>
+              <span data-i18n="labs.d4.status">Próximo Lanzamiento en Laboratorio</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Chilean Legal Compliance Footer -->
+    <footer style="margin-top: 60px;">
+      <div class="legal-framework">
+        <h4 id="legal-title">🇨🇱 Cumplimiento Legal y Privacidad (República de Chile)</h4>
+        <div id="legal-body"></div>
+      </div>
+
+      <p data-i18n="footer.rights">
+        © 2026 Marcelo Poblete | mrclo.devops
+      </p>
+
+      <p data-i18n="footer.version">
+        Labs&Drops Ecosystem · Local-First Architecture
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- ==========================================================================
+       INTERACTIVE DEVICE SIMULATOR MODAL (HEARTBEATS MEMORIES)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="simulator-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-window">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-title-area">
+          <h3 id="modal-title">Heartbeats Memories — Device Experience Simulator</h3>
+          <span class="modal-badge">v1.1.0 Interactive Mockup</span>
+        </div>
+        <button class="btn-close-modal" id="btn-close-modal" aria-label="Cerrar modal">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Device & Color Controls Bar -->
+      <div class="device-controls-bar">
+        <div class="device-switcher-buttons">
+          <button class="btn-device active" data-device="desktop">
+            <i class="fas fa-desktop"></i>
+            <span data-i18n="modal.btn.desktop">Modo Computador (Wallpaper Desktop)</span>
+          </button>
+          <button class="btn-device" data-device="mobile">
+            <i class="fas fa-mobile-screen"></i>
+            <span data-i18n="modal.btn.mobile">Modo Celular (Wallpaper PWA)</span>
+          </button>
+        </div>
+
+        <div class="palette-picker-bar">
+          <span data-i18n="modal.palette.label">Color del Widget:</span>
+          <div class="palette-dots">
+            <span class="palette-dot active" data-color="#38bdf8" style="background: #38bdf8;" title="Azul Cielo"></span>
+            <span class="palette-dot" data-color="#fb7185" style="background: #fb7185;" title="Rosa Pasión"></span>
+            <span class="palette-dot" data-color="#f59e0b" style="background: #f59e0b;" title="Dorado Cálido"></span>
+            <span class="palette-dot" data-color="#10b981" style="background: #10b981;" title="Esmeralda"></span>
+            <span class="palette-dot" data-color="#a855f7" style="background: #a855f7;" title="Púrpura Místico"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulator Stage -->
+      <div class="simulator-stage" id="simulator-stage">
+
+        <!-- DESKTOP MOCKUP -->
+        <div class="mockup-desktop">
+          <div class="desktop-titlebar">
+            <div class="traffic-dots">
+              <span class="traffic-dot red"></span>
+              <span class="traffic-dot yellow"></span>
+              <span class="traffic-dot green"></span>
+            </div>
+            <span class="desktop-title-text">Heartbeats Memories — Ambient Desktop Wallpaper (Local-First)</span>
+          </div>
+
+          <div class="simulator-screen">
+            <div class="sim-slideshow-layer" id="sim-slideshow"></div>
+            <div class="sim-vignette-overlay"></div>
+
+            <!-- Floating Glassmorphism Widget -->
+            <div class="sim-floating-card" id="sim-card">
+              <div class="sim-heart-row">
+                <i class="fas fa-heart sim-heart-icon"></i>
+                <h4 class="sim-event-title" data-i18n="modal.card.title">Aniversario Especial</h4>
+              </div>
+
+              <div class="sim-countdown-grid">
+                <div class="sim-time-box">
+                  <span class="sim-digit" id="sim-days">365</span>
+                  <span class="sim-unit" data-i18n="modal.card.days">Días</span>
+                </div>
+                <div class="sim-time-box">
+                  <span class="sim-digit" id="sim-hours">12</span>
+                  <span class="sim-unit" data-i18n="modal.card.hours">Horas</span>
+                </div>
+                <div class="sim-time-box">
+                  <span class="sim-digit" id="sim-mins">30</span>
+                  <span class="sim-unit" data-i18n="modal.card.mins">Min</span>
+                </div>
+                <div class="sim-time-box">
+                  <span class="sim-digit" id="sim-secs">45</span>
+                  <span class="sim-unit" data-i18n="modal.card.secs">Seg</span>
+                </div>
+              </div>
+
+              <div class="sim-heartbeats-count">
+                <i class="fas fa-heartbeat" style="color: #fb7185; margin-right: 4px;"></i>
+                <span id="sim-heartbeats">36,829,440</span> <span data-i18n="modal.card.beats">latidos compartidos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOBILE MOCKUP -->
+        <div class="mockup-mobile">
+          <div class="mobile-dynamic-island"></div>
+
+          <div class="simulator-screen">
+            <div class="sim-slideshow-layer" style="background-image: inherit;"></div>
+            <div class="sim-vignette-overlay"></div>
+
+            <!-- Mobile Centered Widget -->
+            <div class="sim-floating-card" style="padding: 16px; max-width: 270px;">
+              <div class="sim-heart-row">
+                <i class="fas fa-heart sim-heart-icon" style="font-size: 1.1rem;"></i>
+                <h4 class="sim-event-title" style="font-size: 1.05rem;" data-i18n="modal.card.title">Aniversario Especial</h4>
+              </div>
+
+              <div class="sim-countdown-grid" style="gap: 5px;">
+                <div class="sim-time-box">
+                  <span class="sim-digit" style="font-size: 1.25rem;">365</span>
+                  <span class="sim-unit" data-i18n="modal.card.days">Días</span>
+                </div>
+                <div class="sim-time-box">
+                  <span class="sim-digit" style="font-size: 1.25rem;">12</span>
+                  <span class="sim-unit" data-i18n="modal.card.hours">Horas</span>
+                </div>
+                <div class="sim-time-box">
+                  <span class="sim-digit" style="font-size: 1.25rem;">30</span>
+                  <span class="sim-unit" data-i18n="modal.card.mins">Min</span>
+                </div>
+                <div class="sim-time-box">
+                  <span class="sim-digit" style="font-size: 1.25rem;">45</span>
+                  <span class="sim-unit" data-i18n="modal.card.secs">Seg</span>
+                </div>
+              </div>
+
+              <div class="sim-heartbeats-count" style="font-size: 0.72rem;">
+                <i class="fas fa-heartbeat" style="color: #fb7185;"></i>
+                <span>36,829,440</span> <span data-i18n="modal.card.beats">latidos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer & Specs -->
+      <div class="modal-footer-specs">
+        <div class="modal-specs-list">
+          <span><i class="fas fa-shield-halved"></i> 100% Local-First</span>
+          <span><i class="fas fa-database"></i> IndexedDB</span>
+          <span><i class="fas fa-battery-half"></i> Cero Consumo de Batería</span>
+          <span><i class="fas fa-ban"></i> Cero Telemetría</span>
+        </div>
+
+        <div class="modal-action-buttons">
+          <a class="btn-demo-trigger" style="padding: 9px 18px; font-size: 0.88rem;" href="https://github.com/mrclo-devops/heartbeats-memories" target="_blank">
+            <i class="fab fa-github"></i>
+            <span data-i18n="modal.btn.repo">Ver Repositorio</span>
+          </a>
+          <a class="drop-btn-secondary" style="padding: 9px 18px; font-size: 0.88rem;" href="mailto:support@mrclo.dev">
+            <i class="fas fa-headset"></i>
+            <span>support@mrclo.dev</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/i18n.js"></script>
+  <script src="/assets/js/labs.js"></script>
+
+</body>
+</html>
