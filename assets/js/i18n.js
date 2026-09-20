@@ -11,7 +11,12 @@ const translations = {
     "nav.experience": "Experiencia",
     "nav.skills": "Habilidades",
     "nav.labs_drops": "Labs&Drops",
-    "nav.contact": "Contacto",
+    "nav.contact": "Ubicación & Contacto",
+    "contact.unified.title": "Ubicación, Movilidad & Contacto",
+    "contact.unified.desc": "Disponible para oportunidades remotas internacionales, equipos distribuidos globales y opciones de reubicación.",
+    "contact.loc.title": "Radicado en Chile 🇨🇱",
+    "contact.loc.badge": "Zona Horaria CLT (UTC-3 / UTC-4)",
+    "contact.reach.title": "Canales Directos",
 
     // Header
     "header.role": "Ingeniero Senior de Integraciones | DevOps | Confiabilidad de APIs",
@@ -159,7 +164,7 @@ const translations = {
 
     // Footer & Chilean Legal Notice
     "footer.rights": "© 2026 Marcelo Poblete | mrclo.devops",
-    "footer.version": "Portfolio v1.3.0 · Labs&Drops & Privacy-First Architecture",
+    "footer.version": "Portfolio v1.6.0 · Labs&Drops & Unified Architecture",
     "legal.title": "🇨🇱 Cumplimiento Legal y Privacidad (República de Chile)",
     "legal.content": `
       <div class="legal-card single">
@@ -176,7 +181,12 @@ const translations = {
     "nav.experience": "Experience",
     "nav.skills": "Skills",
     "nav.labs_drops": "Labs&Drops",
-    "nav.contact": "Contact",
+    "nav.contact": "Location & Contact",
+    "contact.unified.title": "Location, Mobility & Contact",
+    "contact.unified.desc": "Available for remote international opportunities, global distributed teams, and relocation options.",
+    "contact.loc.title": "Based in Chile 🇨🇱",
+    "contact.loc.badge": "Timezone CLT (UTC-3 / UTC-4)",
+    "contact.reach.title": "Direct Channels",
 
     // Header
     "header.role": "Senior Integration Engineer | DevOps | API Reliability",
@@ -324,7 +334,7 @@ const translations = {
 
     // Footer & Chilean Dual-Language Legal Notice
     "footer.rights": "© 2026 Marcelo Poblete | mrclo.devops",
-    "footer.version": "Portfolio v1.3.0 · Labs&Drops & Privacy-First Architecture",
+    "footer.version": "Portfolio v1.6.0 · Labs&Drops & Unified Architecture",
     "legal.title": "🇨🇱 Chilean Legal Framework & Privacy Compliance (Dual-Language Standard)",
     "legal.content": `
       <div class="legal-card dual">
