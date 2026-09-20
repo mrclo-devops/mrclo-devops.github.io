@@ -81,7 +81,20 @@ const translations = {
     "exp.pf.b4": "Optimización de estrategias de reintentos y aislamiento de fallas para pagos resilientes.",
     "exp.pf.b5": "Colaboración con equipos de Ingeniería y Operaciones durante despliegues a producción.",
 
-    // Labs&Drops
+    // Labs&Drops Universe & Modal
+    "labs.nav.live": "ECOSISTEMA R&D",
+    "labs.hero.badge": "Laboratorio Vivo de Software & Hardware",
+    "labs.hero.title": "Donde el Código Cobra Vida en Productos Tangibles",
+    "labs.hero.subtitle": "Ecosistema independiente de aplicaciones, asistentes de audio por hardware y laboratorios de incidentes en producción. Construidos bajo arquitectura Local-First, privacidad absoluta y cero telemetría de terceros.",
+    "labs.pill.privacy": "100% Local-First",
+    "labs.pill.db": "IndexedDB Nativo",
+    "labs.pill.perf": "60 FPS Render Ambient",
+    "labs.pill.telemetry": "Cero Rastreo / No Cookies",
+    "labs.tab.all": "Todos los Drops",
+    "labs.tab.apps": "Software & Apps",
+    "labs.tab.voice": "Voz & AI Hardware",
+    "labs.tab.academy": "Academia & Incident Labs",
+
     "labs.title": "Labs&Drops",
     "labs.intro": "Aplicaciones de software, ingeniería de voz y programas de aprendizaje práctico desarrollados con arquitectura Local-First y foco en privacidad.",
     "labs.d1.badge": "App · Multiplataforma",
@@ -90,6 +103,7 @@ const translations = {
     "labs.d1.desc": "Aplicación ambiental de alta resolución diseñada para celebrar aniversarios, metas y recuerdos atesorados. Construida bajo arquitectura Local-First con almacenamiento en IndexedDB, sin telemetría ni servidores externos.",
     "labs.d1.platforms": "Web (PWA) · Desktop (Win/Mac/Linux) · Móvil (iOS/Android)",
     "labs.d1.support": "Soporte: support@mrclo.dev",
+    "labs.d1.btn_demo": "Ver Demo Interactiva (Desktop & Móvil)",
     "labs.d1.btn_web": "Lanzar Web App",
     "labs.d1.btn_repo": "Ver Repositorio",
 
@@ -98,12 +112,40 @@ const translations = {
     "labs.d2.sub": "Asistente de Audio con Atajos Globales para Fluidez en Inglés",
     "labs.d2.desc": "Tecnología de lectura espejo (Bilingual Shadowing) y carrusel de acentos nativos (US, UK, NZ, AU, Chile, Colombia) con traducción en caliente sin latencia para entrenar la audición activa.",
     "labs.d2.platforms": "Linux Sidecar · Atajos Globales (Alt + M / Alt + L) · Audio Streaming",
+    "labs.d2.btn_inquire": "Consultar Arquitectura / Colaborar",
 
     "labs.d3.badge": "Academia & Incident Labs",
     "labs.d3.title": "Inglés Técnico & Gestión de Incidentes",
     "labs.d3.sub": "Laboratorios Prácticos de C0 a C2 para Ingenieros Globales",
     "labs.d3.desc": "Formación práctica orientada a standups, investigación de caídas en producción (P0/P1), code reviews y entrevistas técnicas para profesionales de software y DevOps.",
     "labs.d3.platforms": "Laboratorios Hands-On · Incident Response · Práctica Conversacional",
+    "labs.d3.btn_contact": "Contactar a Marcelo",
+    "labs.d3.btn_cv": "Ver Experiencia del Instructor",
+
+    "labs.d4.badge": "En Desarrollo · Q4 2026",
+    "labs.d4.title": "Synthetic API Probes & Canary",
+    "labs.d4.sub": "Sonda Distribuida Ligera de Latencia y Monitoreo de APIs",
+    "labs.d4.desc": "Agente de telemetría de borde para evaluar contratos de API y tiempos de respuesta transaccionales con alertas directas por webhook y cero sobrecostos de nube.",
+    "labs.d4.platforms": "Edge Probe · Webhooks · Micro-agente Go/Rust",
+    "labs.d4.status": "Próximo Lanzamiento en Laboratorio",
+
+    // Device Simulator Modal
+    "modal.btn.desktop": "Modo Computador (Wallpaper Desktop)",
+    "modal.btn.mobile": "Modo Celular (Wallpaper PWA)",
+    "modal.palette.label": "Color del Widget:",
+    "modal.card.title": "Aniversario Especial",
+    "modal.card.days": "Días",
+    "modal.card.hours": "Horas",
+    "modal.card.mins": "Min",
+    "modal.card.secs": "Seg",
+    "modal.card.beats": "latidos compartidos",
+    "modal.btn.repo": "Ver Repositorio",
+
+    // Portal Teaser on Landing Page
+    "labs.teaser.badge": "Ecosistema de Software & R&D",
+    "labs.teaser.title": "Explora Labs&Drops",
+    "labs.teaser.desc": "Ingresa a un nuevo universo de aplicaciones Local-First, sidecars de voz para Linux y laboratorios interactivos de ingeniería.",
+    "labs.teaser.btn": "Ingresar al Universo Labs&Drops 🚀",
 
     // Contact
     "contact.title": "Contacto",
@@ -199,7 +241,20 @@ const translations = {
     "exp.pf.b4": "Refined retry strategies and fault-isolation practices to support reliable payment processing.",
     "exp.pf.b5": "Collaborated with Engineering and Operations teams during production releases.",
 
-    // Labs&Drops
+    // Labs&Drops Universe & Modal
+    "labs.nav.live": "R&D ECOSYSTEM",
+    "labs.hero.badge": "Living Software & Hardware Laboratory",
+    "labs.hero.title": "Where Code Evolves Into Living Products",
+    "labs.hero.subtitle": "An independent ecosystem of client-side applications, hardware voice sidecars, and production incident response labs. Engineered with Local-First architecture, absolute privacy, and zero third-party telemetry.",
+    "labs.pill.privacy": "100% Local-First",
+    "labs.pill.db": "Browser-Native IndexedDB",
+    "labs.pill.perf": "60 FPS Ambient Rendering",
+    "labs.pill.telemetry": "Zero Tracking / No Cookies",
+    "labs.tab.all": "All Drops",
+    "labs.tab.apps": "Software & Apps",
+    "labs.tab.voice": "Voice & AI Hardware",
+    "labs.tab.academy": "Academy & Incident Labs",
+
     "labs.title": "Labs&Drops",
     "labs.intro": "Software applications, interactive voice engineering, and hands-on learning tracks built with privacy-first and client-side architecture.",
     "labs.d1.badge": "App · Multiplatform",
@@ -208,6 +263,7 @@ const translations = {
     "labs.d1.desc": "A high-resolution ambient application designed to celebrate anniversaries, milestones, and personal moments. Engineered with a Local-First, Privacy-by-Design architecture utilizing browser-native IndexedDB without external cloud tracking.",
     "labs.d1.platforms": "Web (PWA) · Desktop (Win/Mac/Linux) · Mobile (iOS/Android)",
     "labs.d1.support": "Support: support@mrclo.dev",
+    "labs.d1.btn_demo": "View Interactive Demo (Desktop & Mobile)",
     "labs.d1.btn_web": "Launch Web App",
     "labs.d1.btn_repo": "View Repository",
 
@@ -216,12 +272,40 @@ const translations = {
     "labs.d2.sub": "Global Hotkey Audio Assistant for English Fluency",
     "labs.d2.desc": "Real-time bilingual mirror reader and multi-accent carousel (US, UK, NZ, AU, Chile, Colombia) featuring zero-latency hot translation to train active listening and pronunciation directly from your workstation.",
     "labs.d2.platforms": "Linux Sidecar · Global Hotkeys (Alt + M / Alt + L) · Streaming Audio",
+    "labs.d2.btn_inquire": "Inquire Architecture / Collaborate",
 
     "labs.d3.badge": "Academy & Incident Labs",
     "labs.d3.title": "Technical English & Incident Response Mastery",
     "labs.d3.sub": "Practical Labs from C0 to C2 for Global Remote Engineers",
     "labs.d3.desc": "Hands-on training focused on live incident response (P0/P1), distributed systems debugging, standup communications, and high-stakes technical interviews.",
     "labs.d3.platforms": "Hands-On Labs · Incident Response · Conversational Immersion",
+    "labs.d3.btn_contact": "Contact Marcelo",
+    "labs.d3.btn_cv": "View Instructor Experience",
+
+    "labs.d4.badge": "In Development · Q4 2026",
+    "labs.d4.title": "Synthetic API Probes & Canary",
+    "labs.d4.sub": "Lightweight Distributed Latency Probe & API Monitoring",
+    "labs.d4.desc": "Edge telemetry agent evaluating API contracts and transactional response latencies with direct webhook alerting and zero cloud bloat.",
+    "labs.d4.platforms": "Edge Probe · Webhooks · Go/Rust Micro-agent",
+    "labs.d4.status": "Upcoming Lab Release",
+
+    // Device Simulator Modal
+    "modal.btn.desktop": "Desktop Mode (Wallpaper Desktop)",
+    "modal.btn.mobile": "Mobile Mode (Wallpaper PWA)",
+    "modal.palette.label": "Widget Color:",
+    "modal.card.title": "Special Anniversary",
+    "modal.card.days": "Days",
+    "modal.card.hours": "Hours",
+    "modal.card.mins": "Mins",
+    "modal.card.secs": "Secs",
+    "modal.card.beats": "shared heartbeats",
+    "modal.btn.repo": "View Repository",
+
+    // Portal Teaser on Landing Page
+    "labs.teaser.badge": "Software & R&D Ecosystem",
+    "labs.teaser.title": "Explore Labs&Drops",
+    "labs.teaser.desc": "Step into a new universe of Local-First applications, Linux voice sidecars, and interactive engineering labs.",
+    "labs.teaser.btn": "Enter Labs&Drops Universe 🚀",
 
     // Contact
     "contact.title": "Contact",
