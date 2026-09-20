@@ -44,48 +44,30 @@
     content="Senior Integration Engineer focused on API ecosystems, SaaS platforms, DevOps, cloud environments and production reliability.">
 
 
-    <meta property="og:url"
-    content="https://mrclo-devops.github.io/">
-    <meta property="og:url"
-content="https://mrclo.dev/">
+    <link rel="canonical" href="https://mrclo.dev/">
 
+    <meta property="og:url" content="https://mrclo.dev/">
 
-
-    <meta property="og:image"
-    content="https://mrclo-devops.github.io/assets/img/profile.jpg">
-
-
+    <meta property="og:image" content="https://mrclo.dev/assets/img/profile.jpg">
 
 
     <!-- Twitter Card -->
 
-    <meta name="twitter:card"
-    content="summary">
+    <meta name="twitter:card" content="summary">
 
+    <meta name="twitter:title" content="Marcelo Poblete | Senior Integration Engineer">
 
-    <meta name="twitter:title"
-    content="Marcelo Poblete | Senior Integration Engineer">
+    <meta name="twitter:description" content="API Reliability, DevOps and SaaS Integration Engineer.">
 
-
-    <meta name="twitter:description"
-    content="API Reliability, DevOps and SaaS Integration Engineer.">
-
-
-    <meta name="twitter:image"
-    content="https://mrclo-devops.github.io/assets/img/profile.jpg">
-
-
+    <meta name="twitter:image" content="https://mrclo.dev/assets/img/profile.jpg">
 
 
     <!-- Favicon -->
 
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
-
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
-
-    <link rel="apple-touch-icon" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
 
 
 
@@ -142,23 +124,22 @@ content="https://mrclo.dev/">
 <nav class="navbar">
 
 <button class="menu-toggle" aria-label="Open menu">
-
-<i class="fas fa-bars"></i>
-
+    <i class="fas fa-bars"></i>
 </button>
 
+<a href="/" class="nav-brand-desktop">mrclo.dev</a>
+
+<a href="labs-drops/" class="nav-labs-center-btn" aria-label="Explora Labs & Drops">
+    <span class="working-dev-icon"><i class="fas fa-laptop-code"></i></span>
+    <span data-i18n="nav.labs_drops">Labs&Drops</span>
+</a>
+
 <div class="nav-links">
-
-<a href="#about" data-i18n="nav.about">About</a>
-
-<a href="#experience" data-i18n="nav.experience">Experience</a>
-
-<a href="#skills" data-i18n="nav.skills">Skills</a>
-
-<a href="labs-drops/" style="color: #38bdf8; font-weight: 600;"><span class="working-dev-icon"><i class="fas fa-laptop-code"></i></span><span data-i18n="nav.labs_drops">Labs&Drops</span></a>
-
-<a href="#contact" data-i18n="nav.contact">Contact</a>
-
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#experience" data-i18n="nav.experience">Experience</a>
+    <a href="#skills" data-i18n="nav.skills">Skills</a>
+    <a href="labs-drops/" style="color: #38bdf8; font-weight: 600;"><span class="working-dev-icon"><i class="fas fa-laptop-code"></i></span><span data-i18n="nav.labs_drops">Labs&Drops</span></a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
 </div>
 
 <div class="lang-switcher">
@@ -377,20 +358,49 @@ AWS & Infrastructure Practices
 
 </section>
 
-<section id="mobility">
+<section id="contact" class="mobility-contact-section">
 
-<h2 data-i18n="mobility.title">
-Location & Mobility
+<h2 data-i18n="contact.unified.title">
+Location, Mobility & Contact
 </h2>
 
-<p data-i18n="mobility.p1">
-Based in Chile 🇨🇱
-</p>
+<div class="mobility-contact-card">
+    <div class="mobility-contact-header">
+        <div class="loc-pill-container">
+            <span class="loc-badge">
+                <i class="fas fa-location-dot"></i>
+                <span data-i18n="contact.loc.title">Radicado en Chile 🇨🇱</span>
+            </span>
+            <span class="timezone-badge">
+                <i class="fas fa-clock"></i>
+                <span data-i18n="contact.loc.badge">Zona Horaria CLT (UTC-3 / UTC-4)</span>
+            </span>
+        </div>
+    </div>
 
-<p data-i18n="mobility.p2">
-Available for remote international opportunities,
-global distributed teams and relocation opportunities.
-</p>
+    <p class="mobility-desc" data-i18n="contact.unified.desc">
+        Disponible para oportunidades internacionales remotas, equipos distribuidos globales y opciones de reubicación.
+    </p>
+
+    <div class="contact-pill-list">
+        <a href="mailto:hello@mrclo.dev" class="contact-pill" title="Email">
+            <i class="fas fa-envelope"></i>
+            <span>hello@mrclo.dev</span>
+        </a>
+        <a href="https://linkedin.com/in/mrclo-devops" target="_blank" rel="noopener noreferrer" class="contact-pill" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/mrclo-devops" target="_blank" rel="noopener noreferrer" class="contact-pill" title="GitHub">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+        </a>
+        <a href="https://wa.me/56999999999" target="_blank" rel="noopener noreferrer" class="contact-pill" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span data-i18n="header.btn.whatsapp">WhatsApp</span>
+        </a>
+    </div>
+</div>
 
 </section>
 
@@ -761,25 +771,6 @@ Reliability Engineering
     </a>
 </section>
 
-<section id="contact">
-
-<h2 data-i18n="contact.title">
-Contact
-</h2>
-
-<p data-i18n="contact.open">
-Open to remote international opportunities.
-</p>
-
-<p>
-<span data-i18n="contact.email_label">Email:</span>
-<a href="mailto:hello@mrclo.dev">
-hello@mrclo.dev
-</a>
-</p>
-
-</section>
-
 <footer>
 
     <div class="legal-framework">
@@ -792,7 +783,7 @@ hello@mrclo.dev
     </p>
 
     <p data-i18n="footer.version">
-    Portfolio v1.3.0 · Labs&Drops & Privacy-First Architecture
+    Portfolio v1.6.0 · Labs&Drops & Unified Architecture
     </p>
 
 </footer>
