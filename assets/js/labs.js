@@ -121,6 +121,112 @@ function initSimulatorModal() {
       });
     });
   });
+
+  // Position Docking Picker (↖ Top-Left, ⊙ Center, ↘ Bottom-Right)
+  const posButtons = document.querySelectorAll(".btn-pos");
+
+  posButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      posButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const pos = btn.getAttribute("data-pos");
+      floatingCards.forEach((card) => {
+        card.style.left = "";
+        card.style.top = "";
+        card.style.right = "";
+        card.style.bottom = "";
+        card.style.transform = "";
+        card.classList.remove("pos-center", "pos-top-left", "pos-bottom-right");
+        card.classList.add(`pos-${pos}`);
+      });
+    });
+  });
+
+  // Drag to Reposition within Simulator Screen
+  floatingCards.forEach((card) => {
+    let isDragging = false;
+    let startX = 0, startY = 0;
+    let initialLeft = 0, initialTop = 0;
+
+    function startDrag(e) {
+      if (e.target.closest("button") || e.target.closest(".photo-dot")) return;
+
+      const screen = card.closest(".simulator-screen");
+      if (!screen) return;
+
+      isDragging = true;
+      card.classList.add("is-dragging");
+
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      const cardRect = card.getBoundingClientRect();
+      const screenRect = screen.getBoundingClientRect();
+
+      card.classList.remove("pos-center", "pos-top-left", "pos-bottom-right");
+      posButtons.forEach((b) => b.classList.remove("active"));
+
+      initialLeft = cardRect.left - screenRect.left;
+      initialTop = cardRect.top - screenRect.top;
+      startX = clientX;
+      startY = clientY;
+
+      card.style.left = `${initialLeft}px`;
+      card.style.top = `${initialTop}px`;
+      card.style.right = "auto";
+      card.style.bottom = "auto";
+      card.style.transform = "none";
+
+      window.addEventListener("mousemove", moveDrag);
+      window.addEventListener("mouseup", endDrag);
+      window.addEventListener("touchmove", moveDrag, { passive: false });
+      window.addEventListener("touchend", endDrag);
+    }
+
+    function moveDrag(e) {
+      if (!isDragging) return;
+      if (e.cancelable) e.preventDefault();
+
+      const screen = card.closest(".simulator-screen");
+      if (!screen) return;
+
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+
+      const screenRect = screen.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+
+      let newLeft = initialLeft + dx;
+      let newTop = initialTop + dy;
+
+      const maxLeft = screenRect.width - cardRect.width;
+      const maxTop = screenRect.height - cardRect.height;
+
+      newLeft = Math.max(6, Math.min(newLeft, maxLeft - 6));
+      newTop = Math.max(6, Math.min(newTop, maxTop - 6));
+
+      card.style.left = `${newLeft}px`;
+      card.style.top = `${newTop}px`;
+    }
+
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      card.classList.remove("is-dragging");
+
+      window.removeEventListener("mousemove", moveDrag);
+      window.removeEventListener("mouseup", endDrag);
+      window.removeEventListener("touchmove", moveDrag);
+      window.removeEventListener("touchend", endDrag);
+    }
+
+    card.addEventListener("mousedown", startDrag);
+    card.addEventListener("touchstart", startDrag, { passive: true });
+  });
 }
 
 /* ==========================================================================
@@ -136,6 +242,7 @@ function initMultiEventSimulator() {
       id: "anniversary",
       titleEs: "Aniversario Especial",
       titleEn: "Special Anniversary",
+      iconHtml: '<span class="sim-icon-container heart-container"><i class="fas fa-heart sim-event-icon icon-heart"></i></span>',
       baseSeconds: 31536000 + 43200 + 1800, // ~365 days
       baseBeats: 36829440,
       photos: [
@@ -148,6 +255,7 @@ function initMultiEventSimulator() {
       id: "travel",
       titleEs: "Viaje Soñado a la Patagonia",
       titleEn: "Dream Trip to Patagonia",
+      iconHtml: '<span class="sim-icon-container plane-container"><i class="fas fa-plane sim-event-icon icon-plane"></i><span class="jet-contrail"><span class="contrail-puff p1"></span><span class="contrail-puff p2"></span><span class="contrail-puff p3"></span></span></span>',
       baseSeconds: 7344000 + 21600, // ~85 days
       baseBeats: 8812800,
       photos: [
@@ -160,6 +268,7 @@ function initMultiEventSimulator() {
       id: "milestone",
       titleEs: "Graduación & Hito de Vida",
       titleEn: "Graduation & Life Milestone",
+      iconHtml: '<span class="sim-icon-container flag-container"><i class="fas fa-flag sim-event-icon icon-flag"></i></span>',
       baseSeconds: 18144000 + 7200, // ~210 days
       baseBeats: 21772800,
       photos: [
@@ -176,6 +285,7 @@ function initMultiEventSimulator() {
 
   // DOM elements for titles, countdowns, and indicators
   const eventTitles = document.querySelectorAll(".sim-event-title");
+  const dynamicIconSlots = document.querySelectorAll(".sim-dynamic-icon-slot");
   const eventTabs = document.querySelectorAll(".sim-event-tab");
   const photoDots = document.querySelectorAll(".photo-dot");
   const photoCounters = document.querySelectorAll(".photo-counter-text");
@@ -242,6 +352,11 @@ function initMultiEventSimulator() {
     const lang = document.documentElement.lang || "es";
     eventTitles.forEach((el) => {
       el.textContent = lang === "en" ? currentEvent.titleEn : currentEvent.titleEs;
+    });
+
+    // Update dynamic icon slots with active event icon animation
+    dynamicIconSlots.forEach((slot) => {
+      slot.innerHTML = currentEvent.iconHtml;
     });
 
     renderActivePhoto();

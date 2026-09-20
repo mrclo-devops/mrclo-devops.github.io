@@ -600,6 +600,45 @@ body.labs-universe {
   font-weight: 600;
 }
 
+/* Position Docking Controls */
+.pos-picker-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--labs-text-muted);
+}
+
+.pos-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.btn-pos {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--labs-text-muted);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-pos:hover {
+  color: #ffffff;
+  border-color: var(--labs-cyan);
+}
+
+.btn-pos.active {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: var(--labs-cyan);
+  color: var(--labs-cyan);
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
 /* Color Accent Palette Picker */
 .palette-picker-bar {
   display: flex;
@@ -685,11 +724,11 @@ body.labs-universe {
 /* --- MOBILE MOCKUP --- */
 .mockup-mobile {
   display: none;
-  width: 320px;
-  height: 560px;
+  width: 290px;
+  height: 530px;
   background: #0f172a;
-  border: 8px solid #334155;
-  border-radius: 40px;
+  border: 7px solid #334155;
+  border-radius: 36px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
   overflow: hidden;
   position: relative;
@@ -698,13 +737,13 @@ body.labs-universe {
 
 .mobile-dynamic-island {
   position: absolute;
-  top: 10px;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90px;
-  height: 22px;
+  width: 80px;
+  height: 18px;
   background: #000000;
-  border-radius: 14px;
+  border-radius: 12px;
   z-index: 100;
 }
 
@@ -835,22 +874,140 @@ body.labs-universe {
 
 /* Glassmorphism Floating Widget */
 .sim-floating-card {
-  position: relative;
+  position: absolute;
   z-index: 10;
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 16px;
-  padding: 22px;
-  width: 92%;
-  max-width: 440px;
+  padding: 16px 20px;
+  width: 90%;
+  max-width: 370px;
   text-align: center;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-  transition: border-color 0.3s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65), 0 0 20px rgba(56, 189, 248, 0.15);
+  transition: top 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              left 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              right 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              bottom 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+  user-select: none;
+  cursor: grab;
 }
 
-.sim-heart-row {
+.sim-floating-card.is-dragging {
+  transition: none !important;
+  cursor: grabbing !important;
+}
+
+/* Positioning Presets (Desktop) */
+.sim-floating-card.pos-center {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+}
+
+.sim-floating-card.pos-top-left {
+  top: 20px;
+  left: 20px;
+  right: auto;
+  bottom: auto;
+  transform: translate(0, 0);
+}
+
+.sim-floating-card.pos-bottom-right {
+  bottom: 20px;
+  right: 20px;
+  top: auto;
+  left: auto;
+  transform: translate(0, 0);
+}
+
+/* Positioning in Mobile Mockup */
+.mockup-mobile .sim-floating-card {
+  width: 86%;
+  max-width: 242px;
+  padding: 11px 9px;
+  border-radius: 14px;
+}
+
+.mockup-mobile .sim-floating-card.pos-center {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+}
+
+.mockup-mobile .sim-floating-card.pos-top-left {
+  top: 38px;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translateX(-50%);
+}
+
+.mockup-mobile .sim-floating-card.pos-bottom-right {
+  bottom: 20px;
+  left: 50%;
+  top: auto;
+  right: auto;
+  transform: translateX(-50%);
+}
+
+/* Mobile widget compact elements */
+.mockup-mobile .sim-events-nav {
+  gap: 3px;
+  margin-bottom: 6px;
+}
+
+.mockup-mobile .sim-event-tab {
+  padding: 3px 8px;
+  font-size: 0.68rem;
+}
+
+.mockup-mobile .sim-title-row {
+  margin-bottom: 4px;
+  gap: 6px;
+}
+
+.mockup-mobile .sim-event-title {
+  font-size: 0.88rem;
+}
+
+.mockup-mobile .sim-countdown-grid {
+  gap: 3px;
+  margin: 8px 0 6px;
+}
+
+.mockup-mobile .sim-time-box {
+  padding: 4px 2px;
+  border-radius: 6px;
+}
+
+.mockup-mobile .sim-digit {
+  font-size: 1.05rem;
+}
+
+.mockup-mobile .sim-unit {
+  font-size: 0.6rem;
+}
+
+.mockup-mobile .sim-heartbeats-count {
+  font-size: 0.68rem;
+  margin-top: 4px;
+}
+
+.mockup-mobile .sim-photo-indicator {
+  margin-top: 6px;
+}
+
+/* Dynamic Event Title Row */
+.sim-title-row {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -858,29 +1015,142 @@ body.labs-universe {
   margin-bottom: 6px;
 }
 
-.sim-heart-icon {
-  color: #fb7185;
-  font-size: 1.3rem;
-  animation: heartPulse 1.2s ease-in-out infinite;
+.sim-dynamic-icon-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
 }
 
-@keyframes heartPulse {
+/* Heart Icon Animation */
+.sim-icon-container.heart-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-heart {
+  color: #fb7185;
+  font-size: 1.25rem;
+  animation: heartBeatPulse 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(251, 113, 133, 0.65));
+}
+
+@keyframes heartBeatPulse {
   0%, 100% {
     transform: scale(1);
   }
-  20% {
-    transform: scale(1.25);
+  14% {
+    transform: scale(1.28);
   }
-  40% {
+  28% {
     transform: scale(1);
   }
-  60% {
-    transform: scale(1.18);
+  42% {
+    transform: scale(1.2);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+/* Plane Icon & Exhaust Jet Smoke Animation */
+.sim-icon-container.plane-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 24px;
+}
+
+.icon-plane {
+  color: #38bdf8;
+  font-size: 1.15rem;
+  display: inline-block;
+  animation: planeFly 2.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.65));
+}
+
+@keyframes planeFly {
+  0%, 100% {
+    transform: translateY(0) rotate(-14deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(-8deg);
+  }
+}
+
+.jet-contrail {
+  position: absolute;
+  bottom: 2px;
+  left: -8px;
+  display: flex;
+  gap: 2px;
+  pointer-events: none;
+}
+
+.contrail-puff {
+  width: 4px;
+  height: 4px;
+  background: rgba(224, 242, 254, 0.9);
+  border-radius: 50%;
+  opacity: 0;
+  animation: jetSmoke 1.4s ease-out infinite;
+}
+
+.contrail-puff.p1 { animation-delay: 0s; }
+.contrail-puff.p2 { animation-delay: 0.35s; width: 5px; height: 5px; }
+.contrail-puff.p3 { animation-delay: 0.7s; width: 6px; height: 6px; }
+
+@keyframes jetSmoke {
+  0% {
+    transform: scale(0.6) translateX(0);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2) translateX(-14px);
+    opacity: 0;
+  }
+}
+
+/* Flag Icon & Fluttering Wind Animation */
+.sim-icon-container.flag-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.icon-flag {
+  color: #facc15;
+  font-size: 1.2rem;
+  display: inline-block;
+  transform-origin: 3px center;
+  animation: flagFlutter 1.3s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.65));
+}
+
+@keyframes flagFlutter {
+  0%, 100% {
+    transform: rotate(0deg) skewY(0deg) scaleX(1);
+  }
+  25% {
+    transform: rotate(-10deg) skewY(6deg) scaleX(0.92);
+  }
+  50% {
+    transform: rotate(7deg) skewY(-5deg) scaleX(1.06);
+  }
+  75% {
+    transform: rotate(-6deg) skewY(3deg) scaleX(0.95);
   }
 }
 
 .sim-event-title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #ffffff;
   margin: 0;
@@ -889,8 +1159,8 @@ body.labs-universe {
 .sim-countdown-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin: 18px 0 12px;
+  gap: 6px;
+  margin: 14px 0 10px;
 }
 
 .sim-time-box {
@@ -900,7 +1170,7 @@ body.labs-universe {
 }
 
 .sim-digit {
-  font-size: 1.6rem;
+  font-size: 1.35rem;
   font-weight: 800;
   font-family: monospace;
   color: var(--accent-theme, #38bdf8);
@@ -916,7 +1186,7 @@ body.labs-universe {
 }
 
 .sim-heartbeats-count {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #cbd5e1;
   margin-top: 6px;
 }
@@ -1026,14 +1296,83 @@ body.labs-universe {
   .drops-grid {
     grid-template-columns: 1fr;
   }
+  .modal-backdrop {
+    padding: 10px 8px;
+  }
   .modal-window {
     max-height: 96vh;
+    border-radius: 14px;
+  }
+  .device-controls-bar {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+  .pos-buttons .btn-pos {
+    padding: 4px 8px;
+    font-size: 0.72rem;
+  }
+  .simulator-stage {
+    padding: 18px 8px;
+    min-height: 380px;
+  }
+  .mockup-desktop .simulator-screen {
+    height: 300px;
+  }
+  .mockup-desktop .sim-floating-card {
+    max-width: 310px;
+    padding: 12px 14px;
+  }
+  .mockup-desktop .sim-digit {
+    font-size: 1.18rem;
+  }
+  .mockup-mobile {
+    width: 265px;
+    height: 480px;
+    border-width: 6px;
+    border-radius: 30px;
+  }
+  .mockup-mobile .sim-floating-card {
+    width: 86%;
+    max-width: 228px;
+    padding: 9px 8px;
+  }
+  .mockup-mobile .sim-digit {
+    font-size: 0.98rem;
   }
   .modal-footer-specs {
     flex-direction: column;
     align-items: flex-start;
+    padding: 14px 16px;
   }
-  .simulator-screen {
-    height: 340px;
+  .modal-action-buttons {
+    width: 100%;
+    flex-direction: column;
+  }
+  .modal-action-buttons a {
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .simulator-stage {
+    padding: 10px 4px;
+  }
+  .mockup-desktop .simulator-screen {
+    height: 250px;
+  }
+  .mockup-desktop .sim-floating-card {
+    max-width: 270px;
+    padding: 10px 8px;
+  }
+  .mockup-mobile {
+    width: 245px;
+    height: 440px;
+    border-width: 5px;
+    border-radius: 26px;
+  }
+  .mockup-mobile .sim-floating-card {
+    max-width: 210px;
   }
 }

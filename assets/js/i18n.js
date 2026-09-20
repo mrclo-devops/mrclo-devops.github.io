@@ -134,9 +134,12 @@ const translations = {
     "labs.d4.platforms": "Edge Probe · Webhooks · Micro-agente Go/Rust",
     "labs.d4.status": "Próximo Lanzamiento en Laboratorio",
 
-    // Device Simulator Modal & Multi-Event
     "modal.btn.desktop": "Modo Computador (Wallpaper Desktop)",
     "modal.btn.mobile": "Modo Celular (Wallpaper PWA)",
+    "modal.pos.label": "Posición Widget:",
+    "modal.pos.top_left": "↖ Sup-Izq",
+    "modal.pos.center": "⊙ Centro",
+    "modal.pos.bottom_right": "↘ Inf-Der",
     "modal.palette.label": "Color del Widget:",
     "modal.card.days": "Días",
     "modal.card.hours": "Horas",
@@ -164,7 +167,7 @@ const translations = {
 
     // Footer & Chilean Legal Notice
     "footer.rights": "© 2026 Marcelo Poblete | mrclo.devops",
-    "footer.version": "Portfolio v1.6.0 · Labs&Drops & Unified Architecture",
+    "footer.version": "Portfolio v1.7.0 · Labs&Drops & Cyber-Aurora Ecosystem",
     "legal.title": "🇨🇱 Cumplimiento Legal y Privacidad (República de Chile)",
     "legal.content": `
       <div class="legal-card single">
@@ -307,6 +310,10 @@ const translations = {
     // Device Simulator Modal & Multi-Event
     "modal.btn.desktop": "Desktop Mode (Wallpaper Desktop)",
     "modal.btn.mobile": "Mobile Mode (Wallpaper PWA)",
+    "modal.pos.label": "Widget Position:",
+    "modal.pos.top_left": "↖ Top-Left",
+    "modal.pos.center": "⊙ Center",
+    "modal.pos.bottom_right": "↘ Bottom-Right",
     "modal.palette.label": "Widget Color:",
     "modal.card.days": "Days",
     "modal.card.hours": "Hours",
@@ -334,7 +341,7 @@ const translations = {
 
     // Footer & Chilean Dual-Language Legal Notice
     "footer.rights": "© 2026 Marcelo Poblete | mrclo.devops",
-    "footer.version": "Portfolio v1.6.0 · Labs&Drops & Unified Architecture",
+    "footer.version": "Portfolio v1.7.0 · Labs&Drops & Cyber-Aurora Ecosystem",
     "legal.title": "🇨🇱 Chilean Legal Framework & Privacy Compliance (Dual-Language Standard)",
     "legal.content": `
       <div class="legal-card dual">
