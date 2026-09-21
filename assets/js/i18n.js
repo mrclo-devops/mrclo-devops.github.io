@@ -65,6 +65,7 @@ const translations = {
     "exp.view_details": "Ver detalles",
 
     // Rootly
+    "exp.rootly.badge": "Gestión de Incidentes & SRE",
     "exp.rootly.role": "Ingeniero Senior de Soporte e Integraciones",
     "exp.rootly.meta": "Sep 2024 — Feb 2026<br>Canadá · Remoto",
     "exp.rootly.desc": "Soporte a clientes corporativos de SaaS depurando integraciones de API, incidentes en producción e infraestructura en la nube, colaborando estrechamente con equipos de Ingeniería y Producto.",
@@ -74,6 +75,7 @@ const translations = {
     "exp.rootly.b4": "Colaboración con equipos de Ingeniería en desafíos técnicos.",
 
     // PagerDuty
+    "exp.pd.badge": "Respuesta a Incidentes en Nube",
     "exp.pd.role": "Ingeniero de Soporte Técnico",
     "exp.pd.meta": "2022 — 2024<br>Estados Unidos · Remoto",
     "exp.pd.desc": "Soporte a clientes globales en soluciones de gestión de incidentes en la nube, depurando incidencias técnicas, integraciones y entornos de producción.",
@@ -82,7 +84,8 @@ const translations = {
     "exp.pd.b3": "Soporte en integraciones de API e investigaciones técnicas.",
     "exp.pd.b4": "Colaboración con equipos de Ingeniería en entornos globales.",
 
-    // Pago Fácil
+    // Pago Fácil / EVO Payments
+    "exp.pf.badge": "Pasarela de Pagos & FinTech",
     "exp.pf.role": "Ingeniero de Soporte e Integraciones",
     "exp.pf.meta": "Ene 2020 — Ene 2023<br>Chile · Remoto",
     "exp.pf.desc": "Soporte a integraciones de pasarelas de pago de alto volumen en entornos de producción, garantizando el procesamiento confiable de transacciones y resolviendo incidentes complejos.",
@@ -91,6 +94,17 @@ const translations = {
     "exp.pf.b3": "Investigación de discrepancias en contratos de API, fallos de entrega de webhooks y errores de validación de payloads.",
     "exp.pf.b4": "Optimización de estrategias de reintentos y aislamiento de fallas para pagos resilientes.",
     "exp.pf.b5": "Colaboración con equipos de Ingeniería y Operaciones durante despliegues a producción.",
+
+    // Instituto Chileno Británico de Cultura (ICBC)
+    "exp.icbc.badge": "Liderazgo Docente & Coaching",
+    "exp.icbc.company": "Instituto Chileno Británico de Cultura",
+    "exp.icbc.role": "Profesor de Inglés & Coach de Comunicación Técnica",
+    "exp.icbc.meta": "15+ Años de Trayectoria Docente<br>Chile · Presencial & Online",
+    "exp.icbc.desc": "Más de 15 años dedicados a la docencia del idioma inglés abarcando todas las etapas formativas: infancia, adolescencia, adultos y profesionales de la ingeniería. Especialista en fluidez profesional C2, fonética y comunicación asertiva para equipos globales de ingeniería.",
+    "exp.icbc.b1": "Docencia y formación integral del idioma inglés abarcando todas las etapas formativas: niños, adolescentes, universitarios y profesionales de alto rendimiento.",
+    "exp.icbc.b2": "Coaching de oratoria técnica, entrevistas laborales internacionales y orquestación de standups globales y post-mortems en inglés sin barreras idiomáticas.",
+    "exp.icbc.b3": "Preparación intensiva de exámenes y certificaciones internacionales (Cambridge, IELTS, TOEFL) con enfoque en maestría operativa C2.",
+    "exp.icbc.b4": "Fundamento pedagógico directo de mi soltura para colaborar y comunicarme fluidamente en entornos multiculturales con equipos en EE. UU., Canadá y Reino Unido.",
 
     // Labs&Drops Universe & Modal
     "labs.nav.live": "ECOSISTEMA R&D",
@@ -254,6 +268,7 @@ const translations = {
     "exp.view_details": "View details",
 
     // Rootly
+    "exp.rootly.badge": "Incident Management & SRE",
     "exp.rootly.role": "Senior Support & Integration Engineer",
     "exp.rootly.meta": "Sep 2024 — Feb 2026<br>Canada · Remote",
     "exp.rootly.desc": "Supported enterprise SaaS customers by troubleshooting API integrations, production incidents and cloud infrastructure while collaborating with Engineering and Product teams.",
@@ -263,6 +278,7 @@ const translations = {
     "exp.rootly.b4": "Collaborated with Engineering teams on technical issues.",
 
     // PagerDuty
+    "exp.pd.badge": "Cloud Incident Response",
     "exp.pd.role": "Technical Support Engineer",
     "exp.pd.meta": "2022 — 2024<br>United States · Remote",
     "exp.pd.desc": "Supported global customers using cloud-based incident management solutions, troubleshooting technical issues, integrations and production environments.",
@@ -271,7 +287,8 @@ const translations = {
     "exp.pd.b3": "Supported API integrations and technical investigations.",
     "exp.pd.b4": "Collaborated with Engineering teams across global environments.",
 
-    // Pago Fácil
+    // Pago Fácil / EVO Payments
+    "exp.pf.badge": "Payment Gateway & FinTech",
     "exp.pf.role": "Integration Support Engineer",
     "exp.pf.meta": "Jan 2020 — Jan 2023<br>Chile · Remote",
     "exp.pf.desc": "Supported high-volume payment gateway integrations in production environments, ensuring reliable transaction processing and troubleshooting complex integration issues.",
@@ -280,6 +297,17 @@ const translations = {
     "exp.pf.b3": "Investigated API contract mismatches, webhook delivery issues and payload validation errors.",
     "exp.pf.b4": "Refined retry strategies and fault-isolation practices to support reliable payment processing.",
     "exp.pf.b5": "Collaborated with Engineering and Operations teams during production releases.",
+
+    // Instituto Chileno Británico de Cultura (ICBC)
+    "exp.icbc.badge": "Teaching Leadership & Technical Coaching",
+    "exp.icbc.company": "Instituto Chileno Británico de Cultura",
+    "exp.icbc.role": "English Language Professor & Technical Communication Coach",
+    "exp.icbc.meta": "15+ Years Teaching Legacy<br>Chile · On-site & Online",
+    "exp.icbc.desc": "Over 15 years dedicated to teaching English across diverse age groups: children, teens, university students, and senior tech professionals. Specialized in C2 operational fluency, phonetic nuance, and cross-cultural communication for distributed engineering teams.",
+    "exp.icbc.b1": "Comprehensive English language pedagogy across all learning stages: young learners, adolescents, academic students, and high-performance engineers.",
+    "exp.icbc.b2": "Technical communication coaching, international interview preparation, and facilitating global standups and blameless post-mortems without language barriers.",
+    "exp.icbc.b3": "Preparation for standardized international certifications (Cambridge, IELTS, TOEFL) with focus on C2 operational mastery.",
+    "exp.icbc.b4": "Foundational pedagogical background enabling natural fluency, cross-cultural nuance, and frictionless technical alignment with North American and European teams.",
 
     // Labs&Drops Universe & Modal
     "labs.nav.live": "R&D ECOSYSTEM",
