@@ -9,7 +9,7 @@ html {
 
 
 body {
-    background: #070a13;
+    background: #030712;
     color: #f0f6fc;
     position: relative;
     overflow-x: hidden;
@@ -24,6 +24,59 @@ body {
     margin: auto;
     padding: 25px;
     line-height: 1.6;
+}
+
+/* ==========================================================================
+   PORTAL UNIVERSE (Landing Page /) — Cosmic Obsidian & Sky-Cyan Horizon
+   ========================================================================== */
+body.portal-universe {
+    background-color: #030712;
+    background-image:
+        radial-gradient(ellipse 100% 60% at 50% -12%, rgba(14, 165, 233, 0.24) 0%, transparent 70%),
+        radial-gradient(circle at 15% 25%, rgba(99, 102, 241, 0.16) 0%, transparent 45%);
+    background-size: 100% 100%, 100% 100%;
+    color: #f0f6fc;
+}
+
+body.portal-universe .ambient-glow-mesh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+body.portal-universe .glow-orb.orb-1 {
+    background: radial-gradient(circle, #0284c7, #38bdf8 65%, transparent 80%) !important;
+    opacity: 0.48 !important;
+    filter: blur(80px) !important;
+    top: -6% !important;
+    right: -5% !important;
+    width: 550px !important;
+    height: 550px !important;
+}
+
+body.portal-universe .glow-orb.orb-2 {
+    background: radial-gradient(circle, #4f46e5, #312e81 70%) !important;
+    opacity: 0.45 !important;
+    filter: blur(85px) !important;
+    bottom: -15% !important;
+    left: -10% !important;
+    width: 600px !important;
+    height: 600px !important;
+}
+
+body.portal-universe .glow-orb.orb-3 {
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.38), transparent 70%) !important;
+    opacity: 0.35 !important;
+    filter: blur(75px) !important;
+    top: 35% !important;
+    left: 25% !important;
+    width: 450px !important;
+    height: 450px !important;
 }
 
 

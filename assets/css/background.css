@@ -39,11 +39,11 @@
 }
 
 body.background-universe {
-  background-color: var(--bg-carbon-base);
+  background-color: #08101e;
   background-image:
-    radial-gradient(circle at 50% 0%, rgba(30, 58, 138, 0.18) 0%, transparent 65%),
-    radial-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-  background-size: 100% 100%, 26px 26px;
+    radial-gradient(ellipse 100% 50% at 50% -10%, rgba(37, 99, 235, 0.35) 0%, transparent 75%),
+    radial-gradient(rgba(148, 163, 184, 0.18) 2px, transparent 2px);
+  background-size: 100% 100%, 28px 28px;
   color: var(--bg-steel-text);
   position: relative;
   overflow-x: hidden;
@@ -68,9 +68,16 @@ body.background-universe .ambient-glow-mesh {
   overflow: hidden;
 }
 
+body.background-universe .glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(75px);
+  opacity: 0.48;
+  animation: orbFloat 18s ease-in-out infinite alternate;
+}
+
 body.background-universe .glow-orb.orb-1 {
-  background: radial-gradient(circle, #1d4ed8, #0f172a 70%);
-  opacity: 0.28;
+  background: radial-gradient(circle, #1d4ed8, #1e40af 65%, transparent 80%) !important;
   top: -5%;
   right: -5%;
   width: 550px;
@@ -78,21 +85,23 @@ body.background-universe .glow-orb.orb-1 {
 }
 
 body.background-universe .glow-orb.orb-2 {
-  background: radial-gradient(circle, #1e293b, #0f172a 70%);
-  opacity: 0.35;
+  background: radial-gradient(circle, #64748b, #334155 70%) !important;
   bottom: -10%;
   left: -10%;
   width: 600px;
   height: 600px;
+  animation-duration: 22s;
+  animation-delay: -5s;
 }
 
 body.background-universe .glow-orb.orb-3 {
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.22), transparent 70%);
-  opacity: 0.22;
+  background: radial-gradient(circle, rgba(30, 58, 138, 0.4), transparent 70%) !important;
   top: 35%;
   left: 25%;
   width: 450px;
   height: 450px;
+  animation-duration: 15s;
+  animation-delay: -2s;
 }
 
 /* ==========================================================================
@@ -425,23 +434,23 @@ body.background-universe .glow-orb.orb-3 {
 
 /* 1. ROOTLY (rootly.com) */
 .experience-card[data-company="rootly"] {
-  background: linear-gradient(180deg, rgba(119, 72, 246, 0.08) 0%, rgba(19, 15, 36, 0.92) 100%);
-  border-color: rgba(119, 72, 246, 0.32);
+  background: linear-gradient(180deg, rgba(119, 72, 246, 0.16) 0%, rgba(22, 14, 44, 0.95) 100%);
+  border-color: rgba(119, 72, 246, 0.42);
 }
 .experience-card[data-company="rootly"]::before {
   background: linear-gradient(90deg, #7748f6, #c084fc);
 }
 .experience-card[data-company="rootly"]:hover {
-  border-color: rgba(119, 72, 246, 0.65);
-  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(119, 72, 246, 0.24);
+  border-color: rgba(119, 72, 246, 0.75);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(119, 72, 246, 0.3);
 }
 .experience-card[data-company="rootly"] .company-name {
   color: #c084fc;
 }
 .experience-card[data-company="rootly"] .company-badge {
-  background: rgba(119, 72, 246, 0.15);
+  background: rgba(119, 72, 246, 0.22);
   color: #d8b4fe;
-  border: 1px solid rgba(119, 72, 246, 0.35);
+  border: 1px solid rgba(119, 72, 246, 0.45);
 }
 .experience-card[data-company="rootly"] summary {
   color: #c084fc;
@@ -450,30 +459,30 @@ body.background-universe .glow-orb.orb-3 {
   color: #e9d5ff;
 }
 .experience-card[data-company="rootly"] .experience-footer span {
-  background: rgba(119, 72, 246, 0.14);
+  background: rgba(119, 72, 246, 0.18);
   color: #e9e2ff;
-  border: 1px solid rgba(119, 72, 246, 0.28);
+  border: 1px solid rgba(119, 72, 246, 0.35);
 }
 
 /* 2. PAGERDUTY (pagerduty.com) */
 .experience-card[data-company="pagerduty"] {
-  background: linear-gradient(180deg, rgba(6, 172, 56, 0.08) 0%, rgba(5, 26, 19, 0.92) 100%);
-  border-color: rgba(6, 172, 56, 0.32);
+  background: linear-gradient(180deg, rgba(6, 172, 56, 0.16) 0%, rgba(5, 30, 20, 0.95) 100%);
+  border-color: rgba(6, 172, 56, 0.42);
 }
 .experience-card[data-company="pagerduty"]::before {
   background: linear-gradient(90deg, #06ac38, #00d084);
 }
 .experience-card[data-company="pagerduty"]:hover {
-  border-color: rgba(6, 172, 56, 0.65);
-  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(6, 172, 56, 0.24);
+  border-color: rgba(6, 172, 56, 0.75);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(6, 172, 56, 0.3);
 }
 .experience-card[data-company="pagerduty"] .company-name {
   color: #34d399;
 }
 .experience-card[data-company="pagerduty"] .company-badge {
-  background: rgba(6, 172, 56, 0.15);
+  background: rgba(6, 172, 56, 0.22);
   color: #6ee7b7;
-  border: 1px solid rgba(6, 172, 56, 0.35);
+  border: 1px solid rgba(6, 172, 56, 0.45);
 }
 .experience-card[data-company="pagerduty"] summary {
   color: #34d399;
@@ -482,30 +491,30 @@ body.background-universe .glow-orb.orb-3 {
   color: #a7f3d0;
 }
 .experience-card[data-company="pagerduty"] .experience-footer span {
-  background: rgba(6, 172, 56, 0.14);
+  background: rgba(6, 172, 56, 0.18);
   color: #a7f3d0;
-  border: 1px solid rgba(6, 172, 56, 0.28);
+  border: 1px solid rgba(6, 172, 56, 0.35);
 }
 
 /* 3. EVO PAYMENTS (evopayments.com) */
 .experience-card[data-company="evopayments"] {
-  background: linear-gradient(180deg, rgba(1, 64, 190, 0.08) 0%, rgba(7, 21, 43, 0.92) 100%);
-  border-color: rgba(0, 174, 239, 0.32);
+  background: linear-gradient(180deg, rgba(1, 64, 190, 0.18) 0%, rgba(7, 26, 56, 0.95) 100%);
+  border-color: rgba(0, 174, 239, 0.42);
 }
 .experience-card[data-company="evopayments"]::before {
   background: linear-gradient(90deg, #0140be, #00aeef);
 }
 .experience-card[data-company="evopayments"]:hover {
-  border-color: rgba(0, 174, 239, 0.65);
-  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 174, 239, 0.24);
+  border-color: rgba(0, 174, 239, 0.75);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 174, 239, 0.3);
 }
 .experience-card[data-company="evopayments"] .company-name {
   color: #38bdf8;
 }
 .experience-card[data-company="evopayments"] .company-badge {
-  background: rgba(1, 64, 190, 0.2);
+  background: rgba(1, 64, 190, 0.25);
   color: #7dd3fc;
-  border: 1px solid rgba(0, 174, 239, 0.35);
+  border: 1px solid rgba(0, 174, 239, 0.45);
 }
 .experience-card[data-company="evopayments"] summary {
   color: #38bdf8;
@@ -514,15 +523,15 @@ body.background-universe .glow-orb.orb-3 {
   color: #bae6fd;
 }
 .experience-card[data-company="evopayments"] .experience-footer span {
-  background: rgba(1, 64, 190, 0.16);
+  background: rgba(1, 64, 190, 0.2);
   color: #bae6fd;
-  border: 1px solid rgba(0, 174, 239, 0.28);
+  border: 1px solid rgba(0, 174, 239, 0.35);
 }
 
 /* 4. INSTITUTO CHILENO BRITANICO DE CULTURA (ICBC) */
 .experience-card[data-company="icbc"] {
-  background: linear-gradient(180deg, rgba(0, 36, 125, 0.12) 0%, rgba(10, 18, 38, 0.92) 100%);
-  border-color: rgba(207, 20, 43, 0.38);
+  background: linear-gradient(180deg, rgba(207, 20, 43, 0.18) 0%, rgba(8, 18, 42, 0.95) 100%);
+  border-color: rgba(207, 20, 43, 0.45);
 }
 .experience-card[data-company="icbc"]::before {
   background: linear-gradient(90deg, #00247d 0%, #cf142b 65%, #ffffff 100%);
