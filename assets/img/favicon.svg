@@ -13,7 +13,7 @@
       <stop offset="100%" stop-color="#ec4899"/>
     </linearGradient>
 
-    <!-- Monogram Cyber Aurora Gradient -->
+    <!-- Aurora Gradient for MP Monogram -->
     <linearGradient id="auroraGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="50%" stop-color="#818cf8"/>
@@ -22,7 +22,7 @@
 
     <!-- Neon Glow Filter -->
     <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
       <feMerge>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -33,10 +33,14 @@
   <!-- Squircle Base -->
   <rect x="26" y="26" width="460" height="460" rx="108" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="10"/>
 
-  <!-- Cyber M Monogram with Aurora Glow -->
-  <path d="M 96 396 L 96 126 L 168 126 L 256 266 L 344 126 L 416 126 L 416 396 L 348 396 L 348 226 L 256 352 L 164 226 L 164 396 Z"
+  <!-- Geometric 'M' -->
+  <path d="M 65 390 L 65 120 L 112 120 L 162 245 L 212 120 L 260 120 L 260 390 L 222 390 L 222 198 L 162 310 L 102 198 L 102 390 Z"
         fill="url(#auroraGrad)" filter="url(#neonGlow)"/>
 
-  <!-- Pulse Node Apex Diamond -->
-  <polygon points="256,388 274,406 256,424 238,406" fill="#38bdf8" filter="url(#neonGlow)"/>
+  <!-- Geometric 'P' -->
+  <path d="M 285 390 L 285 120 L 375 120 C 422 120 448 145 448 195 C 448 245 422 270 375 270 L 325 270 L 325 390 Z M 325 232 L 370 232 C 395 232 408 220 408 195 C 408 170 395 158 370 158 L 325 158 Z"
+        fill="url(#auroraGrad)" filter="url(#neonGlow)"/>
+
+  <!-- Pulse Node Diamond between M and P -->
+  <polygon points="272,378 284,390 272,402 260,390" fill="#38bdf8" filter="url(#neonGlow)"/>
 </svg>

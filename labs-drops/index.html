@@ -19,11 +19,11 @@
   <link rel="canonical" href="https://mrclo.dev/labs-drops/">
 
   <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
-  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg?v=1.8.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png?v=1.8.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png?v=1.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png?v=1.8.0">
+  <link rel="shortcut icon" href="/assets/img/favicon.ico?v=1.8.0">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -43,14 +43,16 @@
 
     <!-- Navigation Header -->
     <header class="labs-navbar">
-      <a href="/" class="labs-brand-link">
+      <a href="/" class="labs-back-btn" aria-label="Volver al inicio / Back to home" title="Volver a mrclo.dev">
         <i class="fas fa-arrow-left"></i>
-        <span>mrclo.dev</span>
+      </a>
+
+      <div class="labs-nav-center">
         <span class="labs-status-pill">
           <span class="badge-live-pulse"></span>
           <span data-i18n="labs.nav.live">R&D ECOSYSTEM</span>
         </span>
-      </a>
+      </div>
 
       <!-- Language Switcher -->
       <div class="lang-switcher" style="position: relative; top: auto; right: auto;">
@@ -106,8 +108,8 @@
           <span data-i18n="labs.tab.voice">Voz & AI Hardware</span>
         </button>
         <button class="filter-tab" data-filter="academy">
-          <i class="fas fa-graduation-cap"></i>
-          <span data-i18n="labs.tab.academy">Academia & Incident Labs</span>
+          <i class="fas fa-triangle-exclamation"></i>
+          <span data-i18n="labs.tab.academy">Incident Labs</span>
         </button>
       </div>
     </section>
@@ -120,32 +122,57 @@
         <div>
           <div class="drop-badge-row">
             <span class="drop-num">DROP 01</span>
-            <span class="drop-category-badge" data-i18n="labs.d1.badge">App · Multiplataforma</span>
+            <span class="drop-category-badge" data-i18n="labs.d1.badge">App Multiplataforma</span>
           </div>
           <h3 data-i18n="labs.d1.title">Heartbeats Memories</h3>
-          <div class="drop-subtitle" data-i18n="labs.d1.sub">Carrusel Ambiental de Recuerdos & Contador de Hitos</div>
+          <div class="drop-subtitle" data-i18n="labs.d1.sub">Live Countdown & Shared Emotional Milestones</div>
           <p class="drop-desc" data-i18n="labs.d1.desc">
-            Aplicación ambiental de alta resolución diseñada para celebrar aniversarios, metas y recuerdos atesorados. Funciona como Wallpaper dinámico en tu computador o pantalla de bloqueo de celular con almacenamiento en IndexedDB, sin telemetría ni servidores externos.
+            Visualizador ambiental de cuenta regresiva en vivo sincronizado con latidos compartidos y carrusel de fotografías. Funciona como wallpaper vivo en escritorio (Linux/macOS/Windows) o PWA en celular, preservando tu privacidad sin rastreadores.
           </p>
         </div>
 
         <div>
           <div class="drop-specs">
-            <i class="fas fa-display"></i>
-            <span data-i18n="labs.d1.platforms">Web (PWA) · Desktop (Win/Mac/Linux) · Móvil (iOS/Android)</span>
+            <i class="fas fa-desktop"></i>
+            <span data-i18n="labs.d1.platforms">Desktop Wallpaper · Web PWA · Mobile Lockscreen</span>
           </div>
 
           <div class="drop-actions">
+            <!-- Mobile Pay Button: Shown only on mobile screens -->
+            <div class="pay-mobile-box">
+              <a class="btn-buy-webpay" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-credit-card"></i>
+                <span data-i18n="labs.d1.btn_buy">Adquirir con Webpay Plus</span>
+              </a>
+            </div>
+
+            <!-- Desktop QR Pay Card: Shown only on desktop screens -->
+            <div class="pay-desktop-qr-card">
+              <div class="qr-visual-frame">
+                <img src="/assets/img/qr-webpay.png" alt="QR Webpay Plus Transbank" class="qr-image" width="105" height="105">
+                <span class="qr-badge-tag"><i class="fas fa-qrcode"></i> Webpay</span>
+              </div>
+              <div class="qr-meta-side">
+                <div class="qr-heading" data-i18n="labs.d1.qr_heading">Pago Inmediato con QR</div>
+                <p class="qr-subtext" data-i18n="labs.d1.qr_subtext">Apunta con la cámara de tu celular para pagar desde tu app bancaria.</p>
+                <a class="btn-link-webpay-alt" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
+                  <i class="fas fa-arrow-up-right-from-square"></i>
+                  <span data-i18n="labs.d1.link_alt">O pagar en este navegador</span>
+                </a>
+              </div>
+            </div>
+
             <!-- Trigger button for interactive device simulator modal -->
             <button class="btn-demo-trigger btn-open-simulator">
-              <i class="fas fa-play-circle"></i>
-              <span data-i18n="labs.d1.btn_demo">Ver Demo Interactiva (Desktop & Móvil)</span>
+              <span class="working-dev-icon"><i class="fas fa-laptop-code"></i></span>
+              <span data-i18n="labs.d1.btn_demo">Probar Demo Interactiva</span>
             </button>
 
-            <a class="drop-btn-secondary" href="mailto:support@mrclo.dev">
-              <i class="fas fa-headset"></i>
-              <span data-i18n="labs.d1.support">Soporte: support@mrclo.dev</span>
-            </a>
+            <!-- Trust Note -->
+            <div class="drop-trust-note">
+              <i class="fas fa-shield-halved"></i>
+              <span data-i18n="labs.d1.trust_note">Pago cifrado Transbank · Asistencia: support@mrclo.dev</span>
+            </div>
           </div>
         </div>
       </article>
@@ -154,8 +181,8 @@
       <article class="drop-card" data-category="voice">
         <div>
           <div class="drop-badge-row">
-            <span class="drop-num">DROP 02</span>
-            <span class="drop-category-badge" data-i18n="labs.d2.badge">Voz & Hardware</span>
+            <span class="drop-num" style="background: rgba(124, 58, 237, 0.15); color: #c084fc;">DROP 02</span>
+            <span class="drop-category-badge" style="background: rgba(124, 58, 237, 0.1); color: #c084fc; border: 1px solid rgba(124, 58, 237, 0.25);" data-i18n="labs.d2.badge">Voz & AI Hardware</span>
           </div>
           <h3 data-i18n="labs.d2.title">Bilingual Shadowing & Voice Engine</h3>
           <div class="drop-subtitle" data-i18n="labs.d2.sub">Asistente de Audio con Atajos Globales para Fluidez en Inglés</div>
@@ -171,43 +198,43 @@
           </div>
 
           <div class="drop-actions">
-            <a class="drop-btn-secondary" href="mailto:hello@mrclo.dev">
-              <i class="fas fa-envelope"></i>
-              <span>hello@mrclo.dev</span>
+            <a class="btn-demo-trigger" style="background: linear-gradient(135deg, #0284c7, #2563eb);" href="mailto:hello@mrclo.dev?subject=Labs%26Drops:%20Early%20Access%20Bilingual%20Shadowing">
+              <i class="fas fa-microphone-lines"></i>
+              <span data-i18n="labs.d2.btn_demo">Solicitar Acceso Anticipado</span>
             </a>
           </div>
         </div>
       </article>
 
-      <!-- ================= DROP 03: ACADEMY & INCIDENT LABS ================= -->
+      <!-- ================= DROP 03: INCIDENT LABS ================= -->
       <article class="drop-card" data-category="academy">
         <div>
           <div class="drop-badge-row">
-            <span class="drop-num">DROP 03</span>
-            <span class="drop-category-badge" data-i18n="labs.d3.badge">Academia & Incident Labs</span>
+            <span class="drop-num" style="background: rgba(236, 72, 153, 0.15); color: #f472b6;">DROP 03</span>
+            <span class="drop-category-badge" style="background: rgba(236, 72, 153, 0.1); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.25);" data-i18n="labs.d3.badge">Incident Labs</span>
           </div>
-          <h3 data-i18n="labs.d3.title">Inglés Técnico & Gestión de Incidentes</h3>
-          <div class="drop-subtitle" data-i18n="labs.d3.sub">Laboratorios Prácticos de C0 a C2 para Ingenieros Globales</div>
+          <h3 data-i18n="labs.d3.title">Gestión de Incidentes & Inglés Técnico</h3>
+          <div class="drop-subtitle" data-i18n="labs.d3.sub">Simulaciones P0/P1 y Práctica de Standups Globales</div>
           <p class="drop-desc" data-i18n="labs.d3.desc">
-            Formación práctica orientada a standups, investigación de caídas en producción (P0/P1), code reviews y entrevistas técnicas para profesionales de software, nube y DevOps en entornos internacionales.
+            Formación práctica para responder a caídas de producción, liderar post-mortems y dominar standups y entrevistas técnicas en inglés profesional.
           </p>
         </div>
 
         <div>
           <div class="drop-specs">
             <i class="fas fa-terminal"></i>
-            <span data-i18n="labs.d3.platforms">Hands-On Labs · Incident Response · Práctica Conversacional</span>
+            <span data-i18n="labs.d3.platforms">Simulaciones P0/P1 · Post-Mortems · Standups Globales</span>
           </div>
 
           <div class="drop-actions">
-            <a class="btn-demo-trigger" style="background: linear-gradient(135deg, #7c3aed, #db2777);" href="mailto:hello@mrclo.dev">
+            <a class="btn-demo-trigger" style="background: linear-gradient(135deg, #7c3aed, #db2777);" href="mailto:hello@mrclo.dev?subject=Labs%26Drops:%20Incident%20Response%20Labs">
               <i class="fas fa-paper-plane"></i>
-              <span data-i18n="labs.d3.btn_contact">Contactar a Marcelo</span>
+              <span data-i18n="labs.d3.btn_contact">Contactar al Instructor</span>
             </a>
 
             <a class="drop-btn-secondary" href="/#experience">
               <i class="fas fa-user-check"></i>
-              <span data-i18n="labs.d3.btn_cv">Ver Experiencia del Instructor</span>
+              <span data-i18n="labs.d3.btn_cv">Ver Trayectoria</span>
             </a>
           </div>
         </div>
@@ -480,13 +507,13 @@
         </div>
 
         <div class="modal-action-buttons">
-          <a class="btn-demo-trigger" style="padding: 9px 18px; font-size: 0.88rem;" href="mailto:support@mrclo.dev">
-            <i class="fas fa-headset"></i>
-            <span data-i18n="modal.btn.support">Solicitar Demo / Soporte</span>
+          <a class="btn-buy-webpay" style="padding: 9px 18px; font-size: 0.88rem; width: auto;" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-credit-card"></i>
+            <span data-i18n="modal.btn.buy">Adquirir con Webpay</span>
           </a>
-          <a class="drop-btn-secondary" style="padding: 9px 18px; font-size: 0.88rem;" href="mailto:hello@mrclo.dev">
-            <i class="fas fa-envelope"></i>
-            <span>hello@mrclo.dev</span>
+          <a class="drop-btn-secondary" style="padding: 9px 18px; font-size: 0.88rem;" href="mailto:support@mrclo.dev">
+            <i class="fas fa-headset"></i>
+            <span data-i18n="modal.btn.support">Soporte: support@mrclo.dev</span>
           </a>
         </div>
       </div>
