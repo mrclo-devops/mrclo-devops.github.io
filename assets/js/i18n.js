@@ -113,6 +113,8 @@ const translations = {
     "labs.d1.qr_subtext": "Apunta con la cámara de tu celular para pagar desde tu app bancaria.",
     "labs.d1.link_alt": "O pagar en este navegador",
     "labs.d1.trust_note": "Pago cifrado Transbank · Asistencia: support@mrclo.dev",
+    "labs.d1.terms_link": "Términos de Licencia",
+    "labs.d1.mobile_terms_note": "Al pagar aceptas los",
     "labs.d1.btn_demo": "Probar Demo Interactiva",
     "labs.d1.btn_web": "Lanzar Web App",
     "labs.d1.btn_repo": "Ver Repositorio",
@@ -175,6 +177,7 @@ const translations = {
     // Footer & Chilean Legal Notice
     "footer.rights": "© 2026 Marcelo Poblete | mrclo.devops",
     "footer.version": "Portfolio v1.8.0 · Labs&Drops & Cyber-Aurora Ecosystem",
+    "legal.terms_link": "Ver Términos de Servicio & Política de Licencias Digitales (SERNAC / Ley 19.496)",
     "legal.title": "🇨🇱 Cumplimiento Legal y Privacidad (República de Chile)",
     "legal.content": `
       <div class="legal-card single">
@@ -293,6 +296,8 @@ const translations = {
     "labs.d1.qr_subtext": "Scan with your mobile camera to pay using your banking app.",
     "labs.d1.link_alt": "Or pay directly in this browser",
     "labs.d1.trust_note": "Encrypted Transbank Checkout · Support: support@mrclo.dev",
+    "labs.d1.terms_link": "License Terms",
+    "labs.d1.mobile_terms_note": "By paying you accept the",
     "labs.d1.btn_demo": "Try Interactive Demo",
     "labs.d1.btn_web": "Launch Web App",
     "labs.d1.btn_repo": "View Repository",
@@ -356,6 +361,7 @@ const translations = {
     // Footer & Chilean Dual-Language Legal Notice
     "footer.rights": "© 2026 Marcelo Poblete | mrclo.devops",
     "footer.version": "Portfolio v1.8.0 · Labs&Drops & Cyber-Aurora Ecosystem",
+    "legal.terms_link": "View Terms of Service & Digital License Agreement (SERNAC / Law 19,496)",
     "legal.title": "🇨🇱 Chilean Legal Framework & Privacy Compliance (Dual-Language Standard)",
     "legal.content": `
       <div class="legal-card dual">
