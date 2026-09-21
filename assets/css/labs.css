@@ -19,16 +19,21 @@
 }
 
 body.labs-universe {
-  background: var(--labs-bg-base);
+  background-color: #020308;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.09) 1px, transparent 1px),
+    radial-gradient(ellipse 100% 70% at 50% 0%, rgba(168, 85, 247, 0.22) 0%, transparent 75%);
+  background-size: 38px 38px, 38px 38px, 100% 100%;
   color: var(--labs-text-main);
   position: relative;
   overflow-x: hidden;
 }
 
 /* ==========================================================================
-   AMBIENT MESH GLOW (BACKGROUND ORBS)
+   AMBIENT MESH GLOW (LABS UNIVERSE — NEON MAGENTA & CYBER EMERALD)
    ========================================================================== */
-.ambient-glow-mesh {
+body.labs-universe .ambient-glow-mesh {
   position: fixed;
   top: 0;
   left: 0;
@@ -39,38 +44,38 @@ body.labs-universe {
   overflow: hidden;
 }
 
-.glow-orb {
+body.labs-universe .glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.35;
+  filter: blur(80px);
+  opacity: 0.48;
   animation: orbFloat 18s ease-in-out infinite alternate;
 }
 
-.glow-orb.orb-1 {
-  top: -10%;
+body.labs-universe .glow-orb.orb-1 {
+  top: -8%;
   right: -5%;
   width: 550px;
   height: 550px;
-  background: radial-gradient(circle, #7928ca, #4facfe 70%);
+  background: radial-gradient(circle, #ec4899, #db2777 65%, transparent 80%) !important;
 }
 
-.glow-orb.orb-2 {
+body.labs-universe .glow-orb.orb-2 {
   bottom: -15%;
   left: -10%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, #00f2fe, #10b981 70%);
+  background: radial-gradient(circle, #10b981, #059669 65%, transparent 80%) !important;
   animation-duration: 22s;
   animation-delay: -5s;
 }
 
-.glow-orb.orb-3 {
-  top: 40%;
-  left: 30%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.4), transparent 70%);
+body.labs-universe .glow-orb.orb-3 {
+  top: 35%;
+  left: 25%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.5), transparent 70%) !important;
   animation-duration: 15s;
   animation-delay: -2s;
 }
