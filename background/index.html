@@ -51,7 +51,6 @@
     </a>
 
     <div class="nav-links">
-        <a href="/#about" data-i18n="nav.about">About</a>
         <a href="/labs-drops/" style="color: #38bdf8; font-weight: 600;"><span class="working-dev-icon"><i class="fas fa-laptop-code"></i></span><span data-i18n="nav.labs_drops">Labs&Drops</span></a>
         <a href="/background/" style="color: #38bdf8;" data-i18n="nav.background">Professional Background</a>
         <a href="/#contact" data-i18n="nav.contact">Location & Contact</a>
@@ -75,12 +74,29 @@
   </nav>
 
   <header style="text-align: center; margin-bottom: 30px;">
-    <h1 data-i18n="background.title">
-      Professional Background
+    <img class="profile"
+         src="/assets/img/profile.jpg"
+         alt="Marcelo Poblete"
+         style="margin-bottom: 20px;">
+
+    <h1>
+      Marcelo Poblete
     </h1>
 
-    <p style="color: #8b949e; font-size: 1.05rem; max-width: 680px; margin: 10px auto 25px auto;" data-i18n="background.subtitle">
-      Software integration engineering, distributed systems, production reliability, and technical stack.
+    <h2 data-i18n="header.role" style="font-size: 1.25rem; font-weight: 600; color: #38bdf8; margin-bottom: 16px;">
+      Senior Integration Engineer | DevOps | API Reliability
+    </h2>
+
+    <p style="color: #e2e8f0; font-size: 1.05rem; max-width: 760px; margin: 0 auto 12px auto; line-height: 1.6;" data-i18n="header.bio1">
+      Chile-based engineer with experience supporting API-driven SaaS platforms, distributed systems, cloud environments and production reliability.
+    </p>
+
+    <p style="color: #94a3b8; font-size: 0.98rem; max-width: 760px; margin: 0 auto 12px auto; line-height: 1.6;" data-i18n="header.bio2">
+      Focused on reliable integrations, incident response and scalable technology solutions.
+    </p>
+
+    <p style="color: #94a3b8; font-size: 0.98rem; max-width: 760px; margin: 0 auto 25px auto; line-height: 1.6;" data-i18n="header.bio3">
+      Tech content creator, specialized course instructor, and indie application builder crafting Local-First software and hands-on engineering labs.
     </p>
 
     <div class="mobility-contact-card" style="text-align: left; margin: 0 auto 30px auto;">
@@ -125,95 +141,6 @@
         </div>
     </div>
   </header>
-
-  <section id="highlights">
-    <h2 data-i18n="highlights.title">
-      Professional Highlights
-    </h2>
-
-    <div class="cards">
-      <div class="card">
-        <h3 data-i18n="highlights.card1.title">
-          5+ Years
-        </h3>
-        <p data-i18n="highlights.card1.desc">
-          SaaS Platforms & API Integrations
-        </p>
-      </div>
-
-      <div class="card">
-        <h3 data-i18n="highlights.card2.title">
-          Global Teams
-        </h3>
-        <p data-i18n="highlights.card2.desc">
-          Remote Collaboration Experience
-        </p>
-      </div>
-
-      <div class="card">
-        <h3 data-i18n="highlights.card3.title">
-          P0/P1
-        </h3>
-        <p data-i18n="highlights.card3.desc">
-          Incident Response & Reliability
-        </p>
-      </div>
-
-      <div class="card">
-        <h3 data-i18n="highlights.card4.title">
-          Cloud
-        </h3>
-        <p data-i18n="highlights.card4.desc">
-          AWS & Infrastructure Practices
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <h2 data-i18n="skills.title">
-      Skills
-    </h2>
-
-    <h3 data-i18n="skills.api">
-      API & Integration
-    </h3>
-
-    <div class="skills">
-      <span class="skill">REST APIs</span>
-      <span class="skill">Webhooks</span>
-      <span class="skill">OAuth 2.0</span>
-      <span class="skill">JSON</span>
-      <span class="skill">HTTP/HTTPS</span>
-      <span class="skill">API Debugging</span>
-    </div>
-
-    <h3 data-i18n="skills.cloud">
-      Cloud & DevOps
-    </h3>
-
-    <div class="skills">
-      <span class="skill">AWS</span>
-      <span class="skill">Terraform</span>
-      <span class="skill">Docker</span>
-      <span class="skill">Linux</span>
-      <span class="skill">CI/CD</span>
-      <span class="skill">Git</span>
-    </div>
-
-    <h3 data-i18n="skills.reliability">
-      Reliability Engineering
-    </h3>
-
-    <div class="skills">
-      <span class="skill">Incident Response</span>
-      <span class="skill">MTTR Improvement</span>
-      <span class="skill">Distributed Systems</span>
-      <span class="skill">Monitoring</span>
-      <span class="skill">SaaS Operations</span>
-      <span class="skill">Root Cause Analysis</span>
-    </div>
-  </section>
 
   <section id="experience">
     <h2 data-i18n="exp.title">
@@ -391,6 +318,95 @@
           <span>Payments</span>
         </footer>
       </article>
+    </div>
+  </section>
+
+  <section id="highlights">
+    <h2 data-i18n="highlights.title">
+      Professional Highlights
+    </h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3 data-i18n="highlights.card1.title">
+          5+ Years
+        </h3>
+        <p data-i18n="highlights.card1.desc">
+          SaaS Platforms & API Integrations
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="highlights.card2.title">
+          Global Teams
+        </h3>
+        <p data-i18n="highlights.card2.desc">
+          Remote Collaboration Experience
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="highlights.card3.title">
+          P0/P1
+        </h3>
+        <p data-i18n="highlights.card3.desc">
+          Incident Response & Reliability
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="highlights.card4.title">
+          Cloud
+        </h3>
+        <p data-i18n="highlights.card4.desc">
+          AWS & Infrastructure Practices
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 data-i18n="skills.title">
+      Skills
+    </h2>
+
+    <h3 data-i18n="skills.api">
+      API & Integration
+    </h3>
+
+    <div class="skills">
+      <span class="skill">REST APIs</span>
+      <span class="skill">Webhooks</span>
+      <span class="skill">OAuth 2.0</span>
+      <span class="skill">JSON</span>
+      <span class="skill">HTTP/HTTPS</span>
+      <span class="skill">API Debugging</span>
+    </div>
+
+    <h3 data-i18n="skills.cloud">
+      Cloud & DevOps
+    </h3>
+
+    <div class="skills">
+      <span class="skill">AWS</span>
+      <span class="skill">Terraform</span>
+      <span class="skill">Docker</span>
+      <span class="skill">Linux</span>
+      <span class="skill">CI/CD</span>
+      <span class="skill">Git</span>
+    </div>
+
+    <h3 data-i18n="skills.reliability">
+      Reliability Engineering
+    </h3>
+
+    <div class="skills">
+      <span class="skill">Incident Response</span>
+      <span class="skill">MTTR Improvement</span>
+      <span class="skill">Distributed Systems</span>
+      <span class="skill">Monitoring</span>
+      <span class="skill">SaaS Operations</span>
+      <span class="skill">Root Cause Analysis</span>
     </div>
   </section>
 
