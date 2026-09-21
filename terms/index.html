@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Términos de Servicio & Licencia Digital — mrclo.dev</title>
+
+  <meta name="description"
+    content="Términos de Servicio, política de devoluciones y condiciones de licencia de software digital bajo la legislación de la República de Chile (SERNAC / Ley 19.496).">
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="Términos de Servicio & Licencia Digital — mrclo.dev">
+  <meta property="og:description" content="Condiciones legales de compra, derecho a retracto, devoluciones y arquitectura Local-First en Chile.">
+  <meta property="og:url" content="https://mrclo.dev/terms/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://mrclo.dev/assets/img/profile.jpg">
+
+  <link rel="canonical" href="https://mrclo.dev/terms/">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg?v=1.8.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png?v=1.8.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png?v=1.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png?v=1.8.0">
+  <link rel="shortcut icon" href="/assets/img/favicon.ico?v=1.8.0">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/labs.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    .legal-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 30px 20px 80px;
+    }
+
+    .legal-header {
+      text-align: center;
+      margin-bottom: 45px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--labs-card-border);
+    }
+
+    .legal-header h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 12px 0 8px;
+    }
+
+    .legal-header p {
+      color: #94a3b8;
+      font-size: 1.05rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .legal-meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--labs-cyan);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    /* Dual-Language Notice Banner */
+    .dual-lang-notice {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(124, 58, 237, 0.35);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 35px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .dual-lang-notice i {
+      color: #c084fc;
+      font-size: 1.3rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .dual-lang-notice-text {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    /* Clauses Grid / Dual Column Section */
+    .clause-card {
+      background: rgba(13, 17, 23, 0.7);
+      border: 1px solid var(--labs-card-border);
+      border-radius: 16px;
+      margin-bottom: 30px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+      transition: border-color 0.25s ease;
+    }
+
+    .clause-card:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .clause-title-bar {
+      background: rgba(22, 27, 34, 0.8);
+      padding: 14px 22px;
+      border-bottom: 1px solid var(--labs-card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .clause-title-bar h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .clause-badge {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #94a3b8;
+      font-size: 0.72rem;
+      font-family: monospace;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .clause-dual-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .clause-col {
+      padding: 22px 24px;
+      line-height: 1.65;
+      font-size: 0.92rem;
+    }
+
+    .clause-col.col-es {
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .clause-col.col-en {
+      color: #cbd5e1;
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    .lang-col-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .tag-es {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .tag-en {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .clause-col p {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .clause-col p:last-child {
+      margin-bottom: 0;
+    }
+
+    .clause-col strong {
+      color: #ffffff;
+    }
+
+    .clause-col ul {
+      margin: 8px 0 12px;
+      padding-left: 20px;
+    }
+
+    .clause-col li {
+      margin-bottom: 6px;
+    }
+
+    .highlight-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 3px solid #ef4444;
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      margin: 12px 0;
+      font-size: 0.88rem;
+    }
+
+    .highlight-box.emerald {
+      background: rgba(16, 185, 129, 0.1);
+      border-left-color: #10b981;
+    }
+
+    .legal-footer-contact {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--labs-card-border);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .legal-footer-contact h3 {
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .legal-footer-contact p {
+      color: #94a3b8;
+      font-size: 0.92rem;
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+
+    .legal-contact-badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .contact-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #e2e8f0;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .contact-chip:hover {
+      border-color: var(--labs-cyan);
+      color: var(--labs-cyan);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .clause-dual-body {
+        grid-template-columns: 1fr;
+      }
+      .clause-col.col-es {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .legal-header h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body class="labs-universe">
+
+  <!-- Ambient Glow -->
+  <div class="ambient-glow-mesh" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <div class="legal-container">
+
+    <!-- Navigation Header -->
+    <header class="labs-navbar">
+      <a href="/labs-drops/" class="labs-back-btn" aria-label="Volver a Labs&Drops / Return to Labs&Drops" title="Volver a Labs&Drops">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+
+      <div class="labs-nav-center">
+        <span class="labs-status-pill">
+          <span class="badge-live-pulse"></span>
+          <span>LEGAL COMPLIANCE</span>
+        </span>
+      </div>
+
+      <div class="lang-switcher" style="position: relative; top: auto; right: auto;">
+        <button id="lang-switcher-btn" class="lang-btn" aria-label="Cambiar idioma / Switch language">
+          <span id="current-lang-flag">🇨🇱</span>
+          <span id="current-lang-text">ES</span>
+          <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Header -->
+    <div class="legal-header">
+      <div class="legal-meta-badge">
+        <i class="fas fa-scale-balanced"></i>
+        <span>Marco Regulatorio de la República de Chile · Dual-Language Legal Standard</span>
+      </div>
+      <h1>Términos de Servicio & Licencia Digital</h1>
+      <p>
+        Condiciones generales de compra, política de no retracto para bienes intangibles de activación inmediata, garantías y normas de entrega de software en <strong>mrclo.dev</strong>.
+      </p>
+    </div>
+
+    <!-- Dual-Language Banner Notice -->
+    <div class="dual-lang-notice">
+      <i class="fas fa-shield-halved"></i>
+      <div class="dual-lang-notice-text">
+        <strong>Dual-Language Legal Standard (Estándar Legal Bilingüe):</strong> De conformidad con el ordenamiento jurídico de la República de Chile, el texto redactado en castellano constituye la versión oficial, auténtica y legalmente vinculante. La traducción al idioma inglés se provee de buena fe como referencia de conveniencia para usuarios y clientes internacionales.<br>
+        <em>(In accordance with the Chilean legal framework, the Spanish text constitutes the official and legally binding agreement. The English translation is provided as a convenience reference for global users).</em>
+      </div>
+    </div>
+
+    <!-- CLAUSE 1: IDENTIFICACIÓN -->
+    <article class="clause-card" id="c1-identificacion">
+      <div class="clause-title-bar">
+        <h2><i class="fas fa-id-card"></i> 1. Identificación del Proveedor y Titularidad</h2>
+        <span class="clause-badge">CLAUSE-01</span>
+      </div>
+      <div class="clause-dual-body">
+        <div class="clause-col col-es">
+          <span class="lang-col-tag tag-es">🇨🇱 Texto Oficial (Castellano)</span>
+          <p>
+            El presente sitio web, el ecosistema <strong>Labs&Drops</strong> y las aplicaciones de software comercializadas (incluyendo <em>Heartbeats Memories</em>) son desarrollados, operados y distribuidos de manera independiente por <strong>Marcelo Poblete</strong> (en adelante, el "Proveedor"), radicado en Santiago de Chile, bajo el dominio oficial <strong>mrclo.dev</strong>.
+          </p>
+          <p>
+            Para efectos de notificaciones formales y de atención al usuario, se establecen los siguientes canales institucionales:
+          </p>
+          <ul>
+            <li><strong>Asistencia técnica y post-venta:</strong> <code>support@mrclo.dev</code></li>
+            <li><strong>Contratos y convenios:</strong> <code>contracts@mrclo.dev</code></li>
+            <li><strong>Asuntos normativos y legales:</strong> <code>legal@mrclo.dev</code></li>
+            <li><strong>Privacidad de datos (Ley 19.628):</strong> <code>privacy@mrclo.dev</code></li>
+          </ul>
+        </div>
+        <div class="clause-col col-en">
+          <span class="lang-col-tag tag-en">🌐 Convenience Translation (English)</span>
+          <p>
+            This website, the <strong>Labs&Drops</strong> ecosystem, and the distributed software applications (including <em>Heartbeats Memories</em>) are independently engineered, operated, and provided by <strong>Marcelo Poblete</strong> (hereinafter, the "Provider"), based in Santiago, Chile, under the primary domain <strong>mrclo.dev</strong>.
+          </p>
+          <p>
+            For official inquiries, customer service, and regulatory notifications, the following addresses are established:
+          </p>
+          <ul>
+            <li><strong>Technical Assistance & Support:</strong> <code>support@mrclo.dev</code></li>
+            <li><strong>Contracts & Commercial Agreements:</strong> <code>contracts@mrclo.dev</code></li>
+            <li><strong>Legal & Compliance Matters:</strong> <code>legal@mrclo.dev</code></li>
+            <li><strong>Data Privacy (Law 19,628):</strong> <code>privacy@mrclo.dev</code></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- CLAUSE 2: NATURALEZA Y LICENCIA -->
+    <article class="clause-card" id="c2-licencia">
+      <div class="clause-title-bar">
+        <h2><i class="fas fa-file-code"></i> 2. Naturaleza del Software y Licencia Monousuario</h2>
+        <span class="clause-badge">CLAUSE-02</span>
+      </div>
+      <div class="clause-dual-body">
+        <div class="clause-col col-es">
+          <span class="lang-col-tag tag-es">🇨🇱 Texto Oficial (Castellano)</span>
+          <p>
+            Todos los productos disponibles corresponden a <strong>bienes intangibles de software digital</strong> (aplicaciones de escritorio descargables y aplicaciones web progresivas PWA).
+          </p>
+          <p>
+            La adquisición de una licencia otorga al comprador un derecho de uso <strong>personal, no exclusivo, perpetuo e intransferible</strong> para instalar y ejecutar el software en sus dispositivos personales.
+          </p>
+          <div class="highlight-box">
+            <strong>Restricciones de Propiedad Intelectual:</strong> Queda estrictamente prohibida la reventa, sublicenciamiento, redistribución masiva, ingeniería inversa, descompilación o explotación comercial no autorizada del software o de sus archivos binarios.
+          </div>
+        </div>
+        <div class="clause-col col-en">
+          <span class="lang-col-tag tag-en">🌐 Convenience Translation (English)</span>
+          <p>
+            All distributed products represent <strong>intangible digital software assets</strong> (downloadable desktop applications and Progressive Web Apps - PWAs).
+          </p>
+          <p>
+            Purchasing a product grants the licensee a <strong>personal, non-exclusive, perpetual, and non-transferable</strong> right to install and run the software on their own personal hardware.
+          </p>
+          <div class="highlight-box">
+            <strong>Intellectual Property Restrictions:</strong> Commercial resale, sublicensing, mass public distribution, reverse engineering, decompilation, or unauthorized commercial exploitation of the binaries or codebase is strictly prohibited.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CLAUSE 3: EXCLUSIÓN DE RETRACTO -->
+    <article class="clause-card" id="c3-retracto">
+      <div class="clause-title-bar">
+        <h2><i class="fas fa-ban"></i> 3. Exclusión Expresa del Derecho a Retracto (Ley N° 19.496)</h2>
+        <span class="clause-badge">CLAUSE-03 · SERNAC COMPLIANCE</span>
+      </div>
+      <div class="clause-dual-body">
+        <div class="clause-col col-es">
+          <span class="lang-col-tag tag-es">🇨🇱 Texto Oficial (Castellano)</span>
+          <p>
+            En conformidad con lo dispuesto en el <strong>Artículo 3° bis letra b) de la Ley N° 19.496 sobre Protección de los Derechos de los Consumidores</strong> de la República de Chile, el Proveedor informa de manera expresa, previa e inequívoca al comprador que:
+          </p>
+          <div class="highlight-box">
+            <strong>Renuncia y Exclusión del Retracto Legal:</strong> Tratándose de bienes digitales que por su naturaleza son descargados, ejecutados y activados de forma inmediata tras el pago, <strong>NO PROCEDE EL DERECHO LEGAL DE RETRACTO DE 10 DÍAS</strong> una vez que el enlace de descarga o la clave de licencia hayan sido despachados al correo electrónico del comprador.
+          </div>
+          <p>
+            Al presionar el botón de pago y concretar la transacción en Webpay Plus, el usuario manifiesta su conocimiento y consentimiento libre e informado respecto a esta condición.
+          </p>
+        </div>
+        <div class="clause-col col-en">
+          <span class="lang-col-tag tag-en">🌐 Convenience Translation (English)</span>
+          <p>
+            Pursuant to <strong>Article 3 bis, letter b) of Law No. 19,496 on the Protection of Consumer Rights</strong> of the Republic of Chile, the Provider explicitly, conspicuously, and prior to checkout informs the buyer that:
+          </p>
+          <div class="highlight-box">
+            <strong>Waiver and Exclusion of Statutory Right of Withdrawal:</strong> Given that digital software products are inherently delivered, downloaded, and activated immediately upon purchase, <strong>THE STATUTORY 10-DAY RIGHT OF WITHDRAWAL DOES NOT APPLY</strong> once the download link or activation license has been dispatched to the buyer's designated email address.
+          </div>
+          <p>
+            By clicking the checkout button and confirming the transaction via Webpay Plus, the customer acknowledges and explicitly accepts this condition.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CLAUSE 4: DEVOLUCIONES Y PREVENCIÓN DE FRAUDE -->
+    <article class="clause-card" id="c4-devoluciones">
+      <div class="clause-title-bar">
+        <h2><i class="fas fa-money-bill-transfer"></i> 4. Garantía Técnica, Política de Devoluciones & Prevención de Fraude</h2>
+        <span class="clause-badge">CLAUSE-04 · ANTI-FRAUD STANDARD</span>
+      </div>
+      <div class="clause-dual-body">
+        <div class="clause-col col-es">
+          <span class="lang-col-tag tag-es">🇨🇱 Texto Oficial (Castellano)</span>
+          <p>
+            <strong>Garantía Técnica por Incompatibilidad:</strong> Si la aplicación presentara un fallo técnico grave y demostrable que impida su normal funcionamiento bajo los requerimientos mínimos de hardware, y dicho fallo no pueda ser solucionado por nuestro equipo de soporte técnico dentro de un plazo de 5 días hábiles, el cliente tendrá derecho al reembolso íntegro de su compra.
+          </p>
+          <p><strong>Mecanismos Operativos de Reembolso según Medio de Pago:</strong></p>
+          <ul>
+            <li>
+              <strong>Compras con Tarjeta de Crédito:</strong> La anulación se gestionará directamente a través de la red de Transbank Webpay Plus, reversando el saldo al cupo de la tarjeta de crédito emisora.
+            </li>
+            <li>
+              <strong>Compras con Tarjeta de Débito (Redcompra / Cuenta RUT):</strong> Dado que el sistema bancario chileno no permite extraer fondos desde la cuenta del cliente una vez liquidada la transacción por Transbank, toda devolución aprobada se ejecutará <strong>exclusivamente mediante transferencia electrónica bancaria</strong>.
+            </li>
+          </ul>
+          <div class="highlight-box emerald">
+            <strong>🛡️ Política Estricta de Prevención de Triangulación y Lavado de Activos:</strong><br>
+            La transferencia electrónica de reembolso se realizará <strong>ÚNICA Y EXCLUSIVAMENTE a una cuenta bancaria cuyo RUT y titular coincidan de forma exacta e inequívoca con el RUT registrado por el comprador en el comprobante emitido por Transbank</strong>. Bajo ninguna circunstancia se efectuarán transferencias a cuentas de terceros ni a cuentas con diferente titularidad.
+          </div>
+        </div>
+        <div class="clause-col col-en">
+          <span class="lang-col-tag tag-en">🌐 Convenience Translation (English)</span>
+          <p>
+            <strong>Technical Incompatibility Warranty:</strong> If the application exhibits a verifiable technical failure that prevents normal execution on compliant hardware, and such issue cannot be resolved by our engineering support team within 5 business days, the buyer will be entitled to a full refund.
+          </p>
+          <p><strong>Operational Refund Procedures by Payment Method:</strong></p>
+          <ul>
+            <li>
+              <strong>Credit Card Transactions:</strong> Voiding and refunds are processed directly through the Transbank Webpay Plus network, crediting the funds back to the issuing credit line.
+            </li>
+            <li>
+              <strong>Debit Card Transactions (Redcompra / Cuenta RUT):</strong> Since the Chilean interbank settlement system does not permit post-settlement direct debits, approved refunds are disbursed <strong>strictly via electronic bank transfer</strong>.
+            </li>
+          </ul>
+          <div class="highlight-box emerald">
+            <strong>🛡️ Strict Anti-Fraud & Triangular Scheme Prevention:</strong><br>
+            Any debit refund bank transfer will be executed <strong>STRICTLY AND EXCLUSIVELY to a Chilean bank account whose National Tax Identification (RUT) matches the exact payer RUT recorded on the official Transbank transaction voucher</strong>. Under no circumstances will refunds be wired to third parties or mismatching bank accounts.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CLAUSE 5: PRIVACIDAD LOCAL-FIRST -->
+    <article class="clause-card" id="c5-privacidad">
+      <div class="clause-title-bar">
+        <h2><i class="fas fa-lock"></i> 5. Privacidad, Protección de Datos (Ley N° 19.628) y Arquitectura Local-First</h2>
+        <span class="clause-badge">CLAUSE-05 · PRIVACY BY DESIGN</span>
+      </div>
+      <div class="clause-dual-body">
+        <div class="clause-col col-es">
+          <span class="lang-col-tag tag-es">🇨🇱 Texto Oficial (Castellano)</span>
+          <p>
+            En cumplimiento de la <strong>Ley N° 19.628 sobre Protección de la Vida Privada</strong> de la República de Chile:
+          </p>
+          <p>
+            <strong>Arquitectura 100% Local-First:</strong> Las aplicaciones diseñadas bajo este estándar (incluyendo <em>Heartbeats Memories</em>) almacenan toda la información, fotografías, contadores y recuerdos en el almacenamiento nativo del navegador del usuario (<code>IndexedDB</code>).
+          </p>
+          <div class="highlight-box emerald">
+            <strong>Cero Telemetría y Cero Acceso a Contenido:</strong> El Proveedor <strong>no recopila, no transmite, no analiza ni tiene acceso en ningún momento a las fotografías personales, recuerdos o archivos</strong> cargados por el usuario. La custodia, confidencialidad y respaldo de sus datos recae de manera exclusiva en el titular del dispositivo.
+          </div>
+          <p>
+            Los datos transaccionales de compra (Nombre, RUT y Correo) provistos a Transbank se conservan únicamente con fines de verificación de licencias, emisión de boletas legales ante el SII y prevención de fraude.
+          </p>
+        </div>
+        <div class="clause-col col-en">
+          <span class="lang-col-tag tag-en">🌐 Convenience Translation (English)</span>
+          <p>
+            In full compliance with <strong>Law No. 19,628 on the Protection of Private Life</strong> of the Republic of Chile:
+          </p>
+          <p>
+            <strong>100% Local-First Architecture:</strong> Applications engineered under this paradigm (including <em>Heartbeats Memories</em>) store all data, images, countdown timers, and milestones strictly inside the client's local browser database (<code>IndexedDB</code>).
+          </p>
+          <div class="highlight-box emerald">
+            <strong>Zero Telemetry & Zero Content Access:</strong> The Provider <strong>never collects, transmits, monitors, or accesses personal photographs, milestones, or user-uploaded media</strong>. Absolute custody, confidentiality, and data backups remain solely with the user on their local device.
+          </div>
+          <p>
+            Transactional customer data provided during checkout (Name, RUT, and Email) is processed solely for license verification, tax compliance before the Chilean IRS (SII), and fraud prevention.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CLAUSE 6: REQUERIMIENTOS Y EXPIRACIÓN -->
+    <article class="clause-card" id="c6-requerimientos">
+      <div class="clause-title-bar">
+        <h2><i class="fas fa-desktop"></i> 6. Requerimientos Técnicos y Caducidad de Enlaces</h2>
+        <span class="clause-badge">CLAUSE-06</span>
+      </div>
+      <div class="clause-dual-body">
+        <div class="clause-col col-es">
+          <span class="lang-col-tag tag-es">🇨🇱 Texto Oficial (Castellano)</span>
+          <p>
+            <strong>Requerimientos de Sistema:</strong> El comprador es responsable de contar con un entorno informático compatible antes de la compra:
+          </p>
+          <ul>
+            <li>Navegadores modernos con soporte de IndexedDB y JavaScript ES6+ (Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge).</li>
+            <li>En aplicaciones de escritorio: Windows 10 o superior, macOS Monterey (12) o superior, o distribuciones Linux de 64 bits modernas.</li>
+          </ul>
+          <p>
+            <strong>Seguridad en la Entrega:</strong> Los enlaces de descarga provistos por correo cuentan con una vigencia de <strong>48 horas</strong> por motivos de seguridad. En caso de requerir re-descarga posterior, el usuario podrá solicitar la reactivación a <code>support@mrclo.dev</code> adjuntando su comprobante.
+          </p>
+        </div>
+        <div class="clause-col col-en">
+          <span class="lang-col-tag tag-en">🌐 Convenience Translation (English)</span>
+          <p>
+            <strong>System Requirements:</strong> The customer is responsible for ensuring environment compatibility prior to acquisition:
+          </p>
+          <ul>
+            <li>Modern web browsers supporting IndexedDB and ES6+ standards (Chrome, Firefox, Safari, Edge).</li>
+            <li>Desktop applications require Windows 10+, macOS Monterey (12)+, or modern 64-bit Linux distributions.</li>
+          </ul>
+          <p>
+            <strong>Secure Link Expiration:</strong> Digital download links delivered via email carry a security expiration window of <strong>48 hours</strong>. Should a customer need to re-download the software thereafter, link regeneration may be requested through <code>support@mrclo.dev</code> by presenting the original purchase receipt.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CLAUSE 7: JURISDICCIÓN -->
+    <article class="clause-card" id="c7-jurisdiccion">
+      <div class="clause-title-bar">
+        <h2><i class="fas fa-gavel"></i> 7. Legislación Aplicable, Mediación y Jurisdicción</h2>
+        <span class="clause-badge">CLAUSE-07 · JURISDICTION</span>
+      </div>
+      <div class="clause-dual-body">
+        <div class="clause-col col-es">
+          <span class="lang-col-tag tag-es">🇨🇱 Texto Oficial (Castellano)</span>
+          <p>
+            El presente acuerdo, la validez de sus estipulaciones y cualquier conflicto derivado de su interpretación o ejecución se regirán de forma exclusiva por las leyes de la <strong>República de Chile</strong>.
+          </p>
+          <p>
+            Las partes acuerdan someter cualquier controversia en primera instancia a los mecanismos de mediación extrajudicial del <strong>Servicio Nacional del Consumidor (SERNAC)</strong> y, en su defecto, a la jurisdicción de los <strong>Tribunales Ordinarios de Justicia de la comuna y ciudad de Santiago de Chile</strong>, renunciando a cualquier otro fuero que pudiera corresponderles.
+          </p>
+        </div>
+        <div class="clause-col col-en">
+          <span class="lang-col-tag tag-en">🌐 Convenience Translation (English)</span>
+          <p>
+            This agreement, its construction, validity, and any dispute arising from its performance shall be governed exclusively by the substantive laws of the <strong>Republic of Chile</strong>.
+          </p>
+          <p>
+            The parties agree to submit disputes primarily to the consumer conciliation mechanisms of the <strong>National Consumer Service (SERNAC)</strong>, and failing that, to the jurisdiction of the <strong>Ordinary Civil Courts of the City of Santiago, Chile</strong>, waiving any other jurisdiction.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CONTACT FOOTER -->
+    <div class="legal-footer-contact">
+      <h3>¿Tienes dudas sobre los términos o requieres asistencia?</h3>
+      <p>
+        Nuestro equipo está a tu disposición para garantizar una experiencia transparente, segura y conforme al estándar chileno e internacional.
+      </p>
+      <div class="legal-contact-badges">
+        <a class="contact-chip" href="mailto:support@mrclo.dev">
+          <i class="fas fa-headset"></i>
+          <span>Asistencia: support@mrclo.dev</span>
+        </a>
+        <a class="contact-chip" href="mailto:legal@mrclo.dev">
+          <i class="fas fa-scale-balanced"></i>
+          <span>Legal: legal@mrclo.dev</span>
+        </a>
+        <a class="contact-chip" href="mailto:privacy@mrclo.dev">
+          <i class="fas fa-shield-halved"></i>
+          <span>Privacidad: privacy@mrclo.dev</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/i18n.js"></script>
+  <script>
+    // Simple smooth scroll or anchor handling if needed
+    document.addEventListener('DOMContentLoaded', () => {
+      // Sync lang switcher if present
+      const langBtn = document.getElementById('lang-switcher-btn');
+      if (langBtn && typeof toggleLanguage === 'function') {
+        langBtn.addEventListener('click', toggleLanguage);
+      }
+    });
+  </script>
+</body>
+</html>
