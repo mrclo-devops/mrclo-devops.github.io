@@ -8,6 +8,7 @@ const translations = {
   es: {
     // Navigation
     "nav.about": "Sobre mí",
+    "nav.background": "Trayectoria Profesional",
     "nav.experience": "Experiencia",
     "nav.skills": "Habilidades",
     "nav.labs_drops": "Labs&Drops",
@@ -22,9 +23,14 @@ const translations = {
     "header.role": "Ingeniero Senior de Integraciones | DevOps | Confiabilidad de APIs",
     "header.bio1": "Ingeniero radicado en Chile con experiencia en soporte a plataformas SaaS basadas en APIs, sistemas distribuidos, entornos en la nube y confiabilidad en producción.",
     "header.bio2": "Enfocado en integraciones confiables, respuesta a incidentes y soluciones tecnológicas escalables.",
+    "header.bio3": "Creador de contenido tecnológico, instructor de cursos técnicos especializados y desarrollador de aplicaciones indie orientadas a software Local-First y laboratorios de ingeniería.",
     "header.btn.resume": "Descargar CV",
     "header.btn.contact": "Contáctame",
     "header.btn.whatsapp": "WhatsApp",
+
+    // Background Page
+    "background.title": "Trayectoria Profesional",
+    "background.subtitle": "Ingeniería de integraciones, sistemas distribuidos, confiabilidad en producción y stack técnico.",
 
     // About
     "about.title": "Sobre mí",
@@ -191,6 +197,7 @@ const translations = {
   en: {
     // Navigation
     "nav.about": "About",
+    "nav.background": "Professional Background",
     "nav.experience": "Experience",
     "nav.skills": "Skills",
     "nav.labs_drops": "Labs&Drops",
@@ -205,9 +212,14 @@ const translations = {
     "header.role": "Senior Integration Engineer | DevOps | API Reliability",
     "header.bio1": "Chile-based engineer with experience supporting API-driven SaaS platforms, distributed systems, cloud environments and production reliability.",
     "header.bio2": "Focused on reliable integrations, incident response and scalable technology solutions.",
+    "header.bio3": "Tech content creator, specialized course instructor, and indie application builder crafting Local-First software and hands-on engineering labs.",
     "header.btn.resume": "Download Resume",
     "header.btn.contact": "Contact Me",
     "header.btn.whatsapp": "WhatsApp",
+
+    // Background Page
+    "background.title": "Professional Background",
+    "background.subtitle": "Software integration engineering, distributed systems, production reliability, and technical stack.",
 
     // About
     "about.title": "About",
