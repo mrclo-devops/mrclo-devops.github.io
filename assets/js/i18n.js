@@ -100,10 +100,10 @@ const translations = {
     "exp.icbc.company": "Instituto Chileno Británico de Cultura",
     "exp.icbc.role": "Profesor de Inglés & Coach de Comunicación Técnica",
     "exp.icbc.meta": "15+ Años de Trayectoria Docente<br>Chile · Presencial & Online",
-    "exp.icbc.desc": "Más de 15 años dedicados a la docencia del idioma inglés abarcando todas las etapas formativas: infancia, adolescencia, adultos y profesionales de la ingeniería. Especialista en fluidez profesional C2, fonética y comunicación asertiva para equipos globales de ingeniería.",
+    "exp.icbc.desc": "Más de 15 años dedicados a la docencia del idioma inglés abarcando todas las etapas formativas: infancia, adolescencia, adultos y profesionales de la ingeniería. Especialista en fluidez profesional C1, fonética y comunicación asertiva para equipos globales de ingeniería.",
     "exp.icbc.b1": "Docencia y formación integral del idioma inglés abarcando todas las etapas formativas: niños, adolescentes, universitarios y profesionales de alto rendimiento.",
     "exp.icbc.b2": "Coaching de oratoria técnica, entrevistas laborales internacionales y orquestación de standups globales y post-mortems en inglés sin barreras idiomáticas.",
-    "exp.icbc.b3": "Preparación intensiva de exámenes y certificaciones internacionales (Cambridge, IELTS, TOEFL) con enfoque en maestría operativa C2.",
+    "exp.icbc.b3": "Preparación intensiva de exámenes y certificaciones internacionales (Cambridge, IELTS, TOEFL) con enfoque en dominio profesional avanzado (C1).",
     "exp.icbc.b4": "Fundamento pedagógico directo de mi soltura para colaborar y comunicarme fluidamente en entornos multiculturales con equipos en EE. UU., Canadá y Reino Unido.",
 
     // Labs&Drops Universe & Modal
@@ -303,10 +303,10 @@ const translations = {
     "exp.icbc.company": "Instituto Chileno Británico de Cultura",
     "exp.icbc.role": "English Language Professor & Technical Communication Coach",
     "exp.icbc.meta": "15+ Years Teaching Legacy<br>Chile · On-site & Online",
-    "exp.icbc.desc": "Over 15 years dedicated to teaching English across diverse age groups: children, teens, university students, and senior tech professionals. Specialized in C2 operational fluency, phonetic nuance, and cross-cultural communication for distributed engineering teams.",
+    "exp.icbc.desc": "Over 15 years dedicated to teaching English across diverse age groups: children, teens, university students, and senior tech professionals. Specialized in C1 operational fluency, phonetic nuance, and cross-cultural communication for distributed engineering teams.",
     "exp.icbc.b1": "Comprehensive English language pedagogy across all learning stages: young learners, adolescents, academic students, and high-performance engineers.",
     "exp.icbc.b2": "Technical communication coaching, international interview preparation, and facilitating global standups and blameless post-mortems without language barriers.",
-    "exp.icbc.b3": "Preparation for standardized international certifications (Cambridge, IELTS, TOEFL) with focus on C2 operational mastery.",
+    "exp.icbc.b3": "Preparation for standardized international certifications (Cambridge, IELTS, TOEFL) with focus on advanced professional fluency (C1).",
     "exp.icbc.b4": "Foundational pedagogical background enabling natural fluency, cross-cultural nuance, and frictionless technical alignment with North American and European teams.",
 
     // Labs&Drops Universe & Modal
