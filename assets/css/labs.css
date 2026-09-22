@@ -19,80 +19,17 @@
 }
 
 body.labs-universe {
-  background-color: #090312;
-  background-image:
-    linear-gradient(rgba(168, 85, 247, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(168, 85, 247, 0.12) 1px, transparent 1px),
-    radial-gradient(ellipse 100% 70% at 50% 0%, rgba(147, 51, 234, 0.35) 0%, transparent 75%);
-  background-size: 38px 38px, 38px 38px, 100% 100%;
+  background-color: #0e1628;
+  background-image: linear-gradient(155deg, #1c264a 0%, #141d39 50%, #0d1428 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--labs-text-main);
   position: relative;
   overflow-x: hidden;
 }
 
-/* ==========================================================================
-   AMBIENT MESH GLOW (AMATISTA MINERAL & MAGENTA CRISTALINO ORBS)
-   ========================================================================== */
 body.labs-universe .ambient-glow-mesh {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: -1;
-  overflow: hidden;
-}
-
-body.labs-universe .glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.52;
-  animation: orbFloat 18s ease-in-out infinite alternate;
-}
-
-body.labs-universe .glow-orb.orb-1 {
-  top: -8%;
-  right: -5%;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, #9333ea, #7c3aed 65%, transparent 80%) !important;
-  opacity: 0.58 !important;
-}
-
-body.labs-universe .glow-orb.orb-2 {
-  bottom: -15%;
-  left: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, #c026d3, #6b21a8 65%, transparent 80%) !important;
-  opacity: 0.52 !important;
-  animation-duration: 22s;
-  animation-delay: -5s;
-}
-
-body.labs-universe .glow-orb.orb-3 {
-  top: 35%;
-  left: 25%;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(217, 70, 239, 0.45), transparent 70%) !important;
-  opacity: 0.46 !important;
-  animation-duration: 15s;
-  animation-delay: -2s;
-}
-
-@keyframes orbFloat {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-30px, 40px) scale(1.08);
-  }
-  100% {
-    transform: translate(25px, -35px) scale(0.95);
-  }
+  display: none !important;
 }
 
 /* ==========================================================================
@@ -404,9 +341,9 @@ body.labs-universe .glow-orb.orb-3 {
 
 /* 1. DROP 01 (Apps / Heartbeats Memories) — Amatista Rosa & Orquídea Cristalina */
 .drop-card[data-category="apps"] {
-  background: linear-gradient(165deg, #320c4a 0%, #1a0528 55%, #0e0216 100%);
-  border: 1.5px solid rgba(217, 70, 239, 0.68);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.9), 0 0 38px rgba(217, 70, 239, 0.35);
+  background: linear-gradient(165deg, #3d145c 0%, #240b37 55%, #140520 100%);
+  border: 1.5px solid rgba(217, 70, 239, 0.78);
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(217, 70, 239, 0.35);
 }
 .drop-card[data-category="apps"]::before {
   background: linear-gradient(90deg, #d946ef, #a855f7, #f472b6);
@@ -415,7 +352,7 @@ body.labs-universe .glow-orb.orb-3 {
 }
 .drop-card[data-category="apps"]:hover {
   border-color: rgba(244, 114, 182, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.92), 0 0 50px rgba(217, 70, 239, 0.55);
+  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(217, 70, 239, 0.55);
 }
 .drop-card[data-category="apps"] .drop-category-badge {
   background: rgba(217, 70, 239, 0.25);
@@ -430,9 +367,9 @@ body.labs-universe .glow-orb.orb-3 {
 
 /* 2. DROP 02 (Voice / Linux AI Voice Companion) — Zafiro Estelar & Azul Eléctrico */
 .drop-card[data-category="voice"] {
-  background: linear-gradient(165deg, #072657 0%, #041635 55%, #020c1e 100%);
-  border: 1.5px solid rgba(56, 189, 248, 0.68);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.9), 0 0 38px rgba(56, 189, 248, 0.35);
+  background: linear-gradient(165deg, #0a3575 0%, #062350 55%, #031430 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.78);
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(56, 189, 248, 0.35);
 }
 .drop-card[data-category="voice"]::before {
   background: linear-gradient(90deg, #0284c7, #38bdf8, #60a5fa);
@@ -441,7 +378,7 @@ body.labs-universe .glow-orb.orb-3 {
 }
 .drop-card[data-category="voice"]:hover {
   border-color: rgba(125, 211, 252, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.92), 0 0 50px rgba(56, 189, 248, 0.55);
+  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(56, 189, 248, 0.55);
 }
 .drop-card[data-category="voice"] .drop-category-badge {
   background: rgba(56, 189, 248, 0.25);
@@ -456,9 +393,9 @@ body.labs-universe .glow-orb.orb-3 {
 
 /* 3. DROP 03 (Academy / Incident Commander Labs) — Ágata de Fuego & Cornalina Ámbar */
 .drop-card[data-category="academy"] {
-  background: linear-gradient(165deg, #441704 0%, #240b02 55%, #120501 100%);
-  border: 1.5px solid rgba(245, 158, 11, 0.72);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.9), 0 0 38px rgba(245, 158, 11, 0.38);
+  background: linear-gradient(165deg, #592209 0%, #351405 55%, #1d0902 100%);
+  border: 1.5px solid rgba(245, 158, 11, 0.85);
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(245, 158, 11, 0.4);
 }
 .drop-card[data-category="academy"]::before {
   background: linear-gradient(90deg, #ea580c, #f59e0b, #fbbf24);
@@ -467,7 +404,7 @@ body.labs-universe .glow-orb.orb-3 {
 }
 .drop-card[data-category="academy"]:hover {
   border-color: rgba(251, 191, 36, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.92), 0 0 50px rgba(245, 158, 11, 0.55);
+  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(245, 158, 11, 0.55);
 }
 .drop-card[data-category="academy"] .drop-category-badge {
   background: rgba(245, 158, 11, 0.25);
@@ -482,9 +419,9 @@ body.labs-universe .glow-orb.orb-3 {
 
 /* 4. DROP 04 (Probes / Distributed Webhook Engine) — Lapislázuli Ultramar & Pirita Dorada */
 .drop-card[data-category="probes"] {
-  background: linear-gradient(165deg, #091e52 0%, #040e2b 55%, #020719 100%);
-  border: 1.5px solid rgba(234, 179, 8, 0.68);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.9), 0 0 38px rgba(234, 179, 8, 0.32);
+  background: linear-gradient(165deg, #0e3082 0%, #092058 55%, #041233 100%);
+  border: 1.5px solid rgba(234, 179, 8, 0.8);
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(234, 179, 8, 0.35);
 }
 .drop-card[data-category="probes"]::before {
   background: linear-gradient(90deg, #1d4ed8, #eab308, #60a5fa);
@@ -493,12 +430,12 @@ body.labs-universe .glow-orb.orb-3 {
 }
 .drop-card[data-category="probes"]:hover {
   border-color: rgba(250, 204, 21, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.92), 0 0 50px rgba(234, 179, 8, 0.5);
+  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(234, 179, 8, 0.5);
 }
 .drop-card[data-category="probes"] .drop-category-badge {
-  background: rgba(234, 179, 8, 0.25);
-  color: #fef9c3;
-  border: 1px solid rgba(234, 179, 8, 0.55);
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.45);
 }
 .drop-card[data-category="probes"] .drop-num {
   background: rgba(234, 179, 8, 0.22);
@@ -786,7 +723,7 @@ body.labs-universe .glow-orb.orb-3 {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle at 50% 50%, rgba(32, 11, 56, 0.88) 0%, rgba(6, 2, 12, 0.95) 100%);
+  background: rgba(14, 22, 41, 0.88);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   z-index: 2000;
@@ -1541,25 +1478,25 @@ body.labs-universe .glow-orb.orb-3 {
    PORTAL TEASER ON MAIN LANDING PAGE
    ========================================================================== */
 .labs-portal-teaser {
-  background: linear-gradient(165deg, #071f45 0%, #170938 55%, #030a1c 100%);
-  border: 1.5px solid rgba(56, 189, 248, 0.6);
+  background: linear-gradient(165deg, rgba(28, 43, 77, 0.8) 0%, rgba(16, 26, 50, 0.9) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.7);
   border-radius: 16px;
   padding: 36px 30px;
   margin: 50px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.88), 0 0 38px rgba(56, 189, 248, 0.32);
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(56, 189, 248, 0.25);
 }
 
 .labs-portal-teaser::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.08), transparent 60%);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #34d399);
   pointer-events: none;
 }
 

@@ -9,7 +9,10 @@ html {
 
 
 body {
-    background: #030712;
+    background-color: #0e172a;
+    background-image: linear-gradient(155deg, #18284d 0%, #121e3b 50%, #0d1529 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: #f0f6fc;
     position: relative;
     overflow-x: hidden;
@@ -27,131 +30,42 @@ body {
 }
 
 /* ==========================================================================
-   PORTAL UNIVERSE (Landing Page /) — Zafiro Mineral Cósmico (Sapphire)
+   PORTAL UNIVERSE (Landing Page /) — Zafiro Mineral Cósmico & Titanio
    ========================================================================== */
 body.portal-universe {
-    background-color: #020714;
-    background-image:
-        radial-gradient(ellipse 100% 65% at 50% -12%, rgba(2, 132, 199, 0.38) 0%, transparent 75%),
-        radial-gradient(circle at 18% 25%, rgba(37, 99, 235, 0.25) 0%, transparent 50%),
-        radial-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 32px 32px;
+    background-color: #0e172a;
+    background-image: linear-gradient(155deg, #18284d 0%, #121e3b 50%, #0d1529 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: #f0f6fc;
 }
 
+.ambient-glow-mesh,
 body.portal-universe .ambient-glow-mesh {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
-}
-
-body.portal-universe .glow-orb.orb-1 {
-    background: radial-gradient(circle, #0284c7, #1e40af 65%, transparent 80%) !important;
-    opacity: 0.55 !important;
-    filter: blur(80px) !important;
-    top: -6% !important;
-    right: -5% !important;
-    width: 550px !important;
-    height: 550px !important;
-}
-
-body.portal-universe .glow-orb.orb-2 {
-    background: radial-gradient(circle, #1d4ed8, #0f172a 70%) !important;
-    opacity: 0.5 !important;
-    filter: blur(85px) !important;
-    bottom: -15% !important;
-    left: -10% !important;
-    width: 600px !important;
-    height: 600px !important;
-}
-
-body.portal-universe .glow-orb.orb-3 {
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.45), transparent 70%) !important;
-    opacity: 0.4 !important;
-    filter: blur(75px) !important;
-    top: 35% !important;
-    left: 25% !important;
-    width: 450px !important;
-    height: 450px !important;
+    display: none !important;
 }
 
 /* ==========================================================================
-   LEGAL UNIVERSE (Términos & Marco Legal /terms/) — Ágata Bandeada Cálida (Agate)
+   LEGAL UNIVERSE (Términos & Marco Legal /terms/) — Ágata Bandeada Cálida
    ========================================================================== */
 body.legal-universe {
-    background-color: #0d0603;
-    background-image:
-        radial-gradient(ellipse 100% 65% at 50% -12%, rgba(217, 119, 6, 0.35) 0%, transparent 75%),
-        radial-gradient(circle at 18% 25%, rgba(180, 83, 9, 0.25) 0%, transparent 50%),
-        radial-gradient(rgba(245, 158, 11, 0.08) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 32px 32px;
+    background-color: #17141a;
+    background-image: linear-gradient(155deg, #2a1f26 0%, #1e1620 50%, #130f16 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: #fef3c7;
     position: relative;
     overflow-x: hidden;
 }
 
 body.legal-universe .ambient-glow-mesh {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
-}
-
-body.legal-universe .glow-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
-    animation: orbFloat 18s ease-in-out infinite alternate;
-}
-
-body.legal-universe .glow-orb.orb-1 {
-    background: radial-gradient(circle, #ea580c, #b45309 65%, transparent 80%) !important;
-    opacity: 0.55 !important;
-    filter: blur(80px) !important;
-    top: -6% !important;
-    right: -5% !important;
-    width: 550px !important;
-    height: 550px !important;
-}
-
-body.legal-universe .glow-orb.orb-2 {
-    background: radial-gradient(circle, #d97706, #78350f 70%) !important;
-    opacity: 0.5 !important;
-    filter: blur(85px) !important;
-    bottom: -15% !important;
-    left: -10% !important;
-    width: 600px !important;
-    height: 600px !important;
-    animation-duration: 22s;
-    animation-delay: -5s;
-}
-
-body.legal-universe .glow-orb.orb-3 {
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.45), transparent 70%) !important;
-    opacity: 0.42 !important;
-    filter: blur(75px) !important;
-    top: 35% !important;
-    left: 25% !important;
-    width: 450px !important;
-    height: 450px !important;
-    animation-duration: 15s;
-    animation-delay: -2s;
+    display: none !important;
 }
 
 body.legal-universe .clause-card {
-    background: linear-gradient(165deg, #261107 0%, #140803 100%) !important;
-    border: 1.5px solid rgba(245, 158, 11, 0.45) !important;
-    box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.85), 0 0 32px rgba(217, 119, 6, 0.28) !important;
+    background: linear-gradient(165deg, rgba(48, 28, 20, 0.8) 0%, rgba(26, 15, 11, 0.9) 100%) !important;
+    border: 1.5px solid rgba(245, 158, 11, 0.55) !important;
+    box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(217, 119, 6, 0.2) !important;
 }
 
 body.legal-universe .clause-card:hover {
@@ -584,21 +498,21 @@ h3 {
 }
 
 .card {
-    background: rgba(16, 23, 38, 0.72);
+    background: linear-gradient(165deg, rgba(28, 43, 77, 0.7) 0%, rgba(16, 26, 50, 0.8) 100%);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 20px;
+    border: 1.5px solid rgba(56, 189, 248, 0.32);
+    border-radius: 14px;
+    padding: 22px 20px;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 16px rgba(56, 189, 248, 0.1);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover {
     transform: translateY(-4px);
-    border-color: rgba(56, 189, 248, 0.35);
-    box-shadow: 0 14px 35px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.85);
+    box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7), 0 0 28px rgba(56, 189, 248, 0.35);
 }
 
 .card h3 {
@@ -885,22 +799,22 @@ footer {
 
 
 .experience-card {
-    background: rgba(16, 23, 38, 0.72);
+    background: linear-gradient(165deg, rgba(28, 43, 77, 0.65) 0%, rgba(16, 26, 50, 0.75) 100%);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(148, 163, 184, 0.24);
     border-radius: 14px;
     padding: 24px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .experience-card:hover {
-    border-color: rgba(56, 189, 248, 0.35);
+    border-color: rgba(56, 189, 248, 0.7);
     transform: translateY(-4px);
-    box-shadow: 0 14px 35px -10px rgba(0, 0, 0, 0.7), 0 0 22px rgba(56, 189, 248, 0.15);
+    box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.25);
 }
 
 
@@ -1143,19 +1057,23 @@ footer {
 }
 
 .lab-card {
-    background: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 10px;
+    background: linear-gradient(165deg, rgba(28, 43, 77, 0.65) 0%, rgba(16, 26, 50, 0.75) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(56, 189, 248, 0.28);
+    border-radius: 12px;
     padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
 .lab-card:hover {
-    border-color: #58a6ff;
+    border-color: rgba(56, 189, 248, 0.8);
     transform: translateY(-3px);
+    box-shadow: 0 14px 35px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.3);
 }
 
 .lab-card-header {
@@ -1349,11 +1267,11 @@ footer {
 }
 
 .mobility-contact-card {
-    background: linear-gradient(145deg, rgba(22, 27, 34, 0.85), rgba(13, 17, 23, 0.95));
-    border: 1px solid rgba(56, 189, 248, 0.25);
+    background: linear-gradient(165deg, rgba(28, 43, 77, 0.75) 0%, rgba(16, 26, 50, 0.85) 100%);
+    border: 1.5px solid rgba(56, 189, 248, 0.35);
     border-radius: 16px;
     padding: 28px 32px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(12px);
