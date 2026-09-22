@@ -9,8 +9,8 @@ html {
 
 
 body {
-    background-color: #2a0b15;
-    background-image: linear-gradient(135deg, #74341c 0%, #541d2e 50%, #280b15 100%);
+    background-color: #06182c;
+    background-image: linear-gradient(135deg, #1a568c 0%, #0e345b 50%, #06182c 100%);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -31,11 +31,11 @@ body {
 }
 
 /* ==========================================================================
-   PORTAL UNIVERSE (Landing Page /) — Ámbar & Rubí Luminoso
+   PORTAL UNIVERSE (Landing Page /) — Zafiro & Océano Bilingual Shadowing
    ========================================================================== */
 body.portal-universe {
-    background-color: #2a0b15;
-    background-image: linear-gradient(135deg, #74341c 0%, #541d2e 50%, #280b15 100%);
+    background-color: #06182c;
+    background-image: linear-gradient(135deg, #1a568c 0%, #0e345b 50%, #06182c 100%);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -51,8 +51,8 @@ body.portal-universe .ambient-glow-mesh {
    LEGAL UNIVERSE (Términos & Marco Legal /terms/) — Ágata Bandeada Cálida
    ========================================================================== */
 body.legal-universe {
-    background-color: #280a14;
-    background-image: linear-gradient(135deg, #74341c 0%, #541d2e 50%, #280b15 100%);
+    background-color: #06182c;
+    background-image: linear-gradient(135deg, #1a568c 0%, #0e345b 50%, #06182c 100%);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100% 100%;
