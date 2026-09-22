@@ -39,11 +39,12 @@
 }
 
 body.background-universe {
-  background-color: #08101e;
+  background-color: #040a1d;
   background-image:
-    radial-gradient(ellipse 100% 50% at 50% -10%, rgba(37, 99, 235, 0.35) 0%, transparent 75%),
-    radial-gradient(rgba(148, 163, 184, 0.18) 2px, transparent 2px);
-  background-size: 100% 100%, 28px 28px;
+    radial-gradient(ellipse 100% 55% at 50% -8%, rgba(29, 63, 166, 0.42) 0%, transparent 75%),
+    radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.14) 0%, transparent 40%),
+    radial-gradient(rgba(96, 165, 250, 0.16) 2px, transparent 2px);
+  background-size: 100% 100%, 100% 100%, 28px 28px;
   color: var(--bg-steel-text);
   position: relative;
   overflow-x: hidden;
@@ -55,7 +56,7 @@ body.background-universe {
 }
 
 /* ==========================================================================
-   AMBIENT GLOW MESH (TITANIUM & STEEL SAPPHIRE ORBS)
+   AMBIENT GLOW MESH (LAPISLÁZULI ULTRAMAR & PIRITA DORADA ORBS)
    ========================================================================== */
 body.background-universe .ambient-glow-mesh {
   position: fixed;
@@ -72,34 +73,37 @@ body.background-universe .glow-orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(75px);
-  opacity: 0.48;
+  opacity: 0.52;
   animation: orbFloat 18s ease-in-out infinite alternate;
 }
 
 body.background-universe .glow-orb.orb-1 {
-  background: radial-gradient(circle, #1d4ed8, #1e40af 65%, transparent 80%) !important;
+  background: radial-gradient(circle, #1e3a8a, #172554 65%, transparent 80%) !important;
   top: -5%;
   right: -5%;
   width: 550px;
   height: 550px;
+  opacity: 0.58 !important;
 }
 
 body.background-universe .glow-orb.orb-2 {
-  background: radial-gradient(circle, #64748b, #334155 70%) !important;
+  background: radial-gradient(circle, #d97706, #78350f 70%) !important;
   bottom: -10%;
   left: -10%;
   width: 600px;
   height: 600px;
+  opacity: 0.42 !important;
   animation-duration: 22s;
   animation-delay: -5s;
 }
 
 body.background-universe .glow-orb.orb-3 {
-  background: radial-gradient(circle, rgba(30, 58, 138, 0.4), transparent 70%) !important;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.45), transparent 70%) !important;
   top: 35%;
   left: 25%;
   width: 450px;
   height: 450px;
+  opacity: 0.48 !important;
   animation-duration: 15s;
   animation-delay: -2s;
 }
@@ -429,135 +433,181 @@ body.background-universe .glow-orb.orb-3 {
 }
 
 /* ==========================================================================
-   COMPANY SPECIFIC THEMES (OFFICIAL BRAND COLORS)
+   COMPANY SPECIFIC THEMES (OFFICIAL BRAND COLORS — DEEP SOLID MINERAL DENSITY)
    ========================================================================== */
 
-/* 1. ROOTLY (rootly.com) */
+/* 1. ROOTLY (rootly.com) — Obsidian Violet & Radiant Amethyst Aura */
 .experience-card[data-company="rootly"] {
-  background: linear-gradient(180deg, rgba(119, 72, 246, 0.16) 0%, rgba(22, 14, 44, 0.95) 100%);
-  border-color: rgba(119, 72, 246, 0.42);
+  background: linear-gradient(165deg, #280e59 0%, #170733 55%, #0e0320 100%);
+  border: 1.5px solid rgba(168, 85, 247, 0.72);
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.9), 0 0 38px rgba(168, 85, 247, 0.38);
 }
 .experience-card[data-company="rootly"]::before {
-  background: linear-gradient(90deg, #7748f6, #c084fc);
+  background: linear-gradient(90deg, #9333ea, #c084fc, #f472b6);
+  height: 4px;
 }
 .experience-card[data-company="rootly"]:hover {
-  border-color: rgba(119, 72, 246, 0.75);
-  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(119, 72, 246, 0.3);
+  border-color: rgba(216, 180, 254, 0.95);
+  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.92), 0 0 50px rgba(168, 85, 247, 0.55);
 }
 .experience-card[data-company="rootly"] .company-name {
-  color: #c084fc;
+  color: #d8b4fe;
 }
 .experience-card[data-company="rootly"] .company-badge {
-  background: rgba(119, 72, 246, 0.22);
-  color: #d8b4fe;
-  border: 1px solid rgba(119, 72, 246, 0.45);
+  background: rgba(168, 85, 247, 0.28);
+  color: #f3e8ff;
+  border: 1px solid rgba(192, 132, 252, 0.55);
 }
 .experience-card[data-company="rootly"] summary {
   color: #c084fc;
 }
 .experience-card[data-company="rootly"] summary:hover {
-  color: #e9d5ff;
+  color: #f3e8ff;
 }
 .experience-card[data-company="rootly"] .experience-footer span {
-  background: rgba(119, 72, 246, 0.18);
-  color: #e9e2ff;
-  border: 1px solid rgba(119, 72, 246, 0.35);
+  background: rgba(168, 85, 247, 0.24);
+  color: #f5d0fe;
+  border: 1px solid rgba(192, 132, 252, 0.45);
 }
 
-/* 2. PAGERDUTY (pagerduty.com) */
+/* 2. PAGERDUTY (pagerduty.com) — Deep Forest Jade & Electric Emerald Aura */
 .experience-card[data-company="pagerduty"] {
-  background: linear-gradient(180deg, rgba(6, 172, 56, 0.16) 0%, rgba(5, 30, 20, 0.95) 100%);
-  border-color: rgba(6, 172, 56, 0.42);
+  background: linear-gradient(165deg, #07401d 0%, #032410 55%, #011408 100%);
+  border: 1.5px solid rgba(16, 185, 129, 0.72);
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.9), 0 0 38px rgba(16, 185, 129, 0.38);
 }
 .experience-card[data-company="pagerduty"]::before {
-  background: linear-gradient(90deg, #06ac38, #00d084);
+  background: linear-gradient(90deg, #059669, #10b981, #34d399);
+  height: 4px;
 }
 .experience-card[data-company="pagerduty"]:hover {
-  border-color: rgba(6, 172, 56, 0.75);
-  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(6, 172, 56, 0.3);
+  border-color: rgba(110, 231, 183, 0.95);
+  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.92), 0 0 50px rgba(16, 185, 129, 0.55);
 }
 .experience-card[data-company="pagerduty"] .company-name {
-  color: #34d399;
+  color: #6ee7b7;
 }
 .experience-card[data-company="pagerduty"] .company-badge {
-  background: rgba(6, 172, 56, 0.22);
-  color: #6ee7b7;
-  border: 1px solid rgba(6, 172, 56, 0.45);
+  background: rgba(16, 185, 129, 0.28);
+  color: #d1fae5;
+  border: 1px solid rgba(52, 211, 153, 0.55);
 }
 .experience-card[data-company="pagerduty"] summary {
   color: #34d399;
 }
 .experience-card[data-company="pagerduty"] summary:hover {
-  color: #a7f3d0;
+  color: #d1fae5;
 }
 .experience-card[data-company="pagerduty"] .experience-footer span {
-  background: rgba(6, 172, 56, 0.18);
+  background: rgba(16, 185, 129, 0.24);
   color: #a7f3d0;
-  border: 1px solid rgba(6, 172, 56, 0.35);
+  border: 1px solid rgba(52, 211, 153, 0.45);
 }
 
-/* 3. EVO PAYMENTS (evopayments.com) */
+/* 3. EVO PAYMENTS (evopayments.com) — High-Velocity Cobalt & Ocean Cyan Aura */
 .experience-card[data-company="evopayments"] {
-  background: linear-gradient(180deg, rgba(1, 64, 190, 0.18) 0%, rgba(7, 26, 56, 0.95) 100%);
-  border-color: rgba(0, 174, 239, 0.42);
+  background: linear-gradient(165deg, #072e73 0%, #041b45 55%, #020e24 100%);
+  border: 1.5px solid rgba(14, 165, 233, 0.72);
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.9), 0 0 38px rgba(14, 165, 233, 0.38);
 }
 .experience-card[data-company="evopayments"]::before {
-  background: linear-gradient(90deg, #0140be, #00aeef);
+  background: linear-gradient(90deg, #0284c7, #38bdf8, #7dd3fc);
+  height: 4px;
 }
 .experience-card[data-company="evopayments"]:hover {
-  border-color: rgba(0, 174, 239, 0.75);
-  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 174, 239, 0.3);
+  border-color: rgba(125, 211, 252, 0.95);
+  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.92), 0 0 50px rgba(14, 165, 233, 0.55);
 }
 .experience-card[data-company="evopayments"] .company-name {
-  color: #38bdf8;
+  color: #7dd3fc;
 }
 .experience-card[data-company="evopayments"] .company-badge {
-  background: rgba(1, 64, 190, 0.25);
-  color: #7dd3fc;
-  border: 1px solid rgba(0, 174, 239, 0.45);
+  background: rgba(14, 165, 233, 0.28);
+  color: #e0f2fe;
+  border: 1px solid rgba(56, 189, 248, 0.55);
 }
 .experience-card[data-company="evopayments"] summary {
   color: #38bdf8;
 }
 .experience-card[data-company="evopayments"] summary:hover {
-  color: #bae6fd;
+  color: #e0f2fe;
 }
 .experience-card[data-company="evopayments"] .experience-footer span {
-  background: rgba(1, 64, 190, 0.2);
+  background: rgba(14, 165, 233, 0.24);
   color: #bae6fd;
-  border: 1px solid rgba(0, 174, 239, 0.35);
+  border: 1px solid rgba(56, 189, 248, 0.45);
 }
 
-/* 4. INSTITUTO CHILENO BRITANICO DE CULTURA (ICBC) */
+/* 4. INSTITUTO CHILENO BRITANICO DE CULTURA (ICBC) — Imperial Navy & Bold Carmine Aura */
 .experience-card[data-company="icbc"] {
-  background: linear-gradient(180deg, rgba(207, 20, 43, 0.18) 0%, rgba(8, 18, 42, 0.95) 100%);
-  border-color: rgba(207, 20, 43, 0.45);
+  background: linear-gradient(165deg, #420a14 0%, #1d0726 55%, #060f2b 100%);
+  border: 1.5px solid rgba(239, 68, 68, 0.72);
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.9), 0 0 38px rgba(225, 29, 72, 0.38);
 }
 .experience-card[data-company="icbc"]::before {
-  background: linear-gradient(90deg, #00247d 0%, #cf142b 65%, #ffffff 100%);
+  background: linear-gradient(90deg, #00247d 0%, #cf142b 60%, #ffffff 100%);
+  height: 4px;
 }
 .experience-card[data-company="icbc"]:hover {
-  border-color: rgba(207, 20, 43, 0.75);
-  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(207, 20, 43, 0.26);
+  border-color: rgba(252, 165, 165, 0.95);
+  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.92), 0 0 50px rgba(225, 29, 72, 0.55);
 }
 .experience-card[data-company="icbc"] .company-name {
-  color: #f8fafc;
+  color: #ffffff;
 }
 .experience-card[data-company="icbc"] .company-badge {
-  background: rgba(207, 20, 43, 0.15);
-  color: #fca5a5;
-  border: 1px solid rgba(207, 20, 43, 0.38);
+  background: rgba(207, 20, 43, 0.28);
+  color: #fee2e2;
+  border: 1px solid rgba(248, 113, 113, 0.55);
 }
 .experience-card[data-company="icbc"] summary {
   color: #f87171;
 }
 .experience-card[data-company="icbc"] summary:hover {
-  color: #fecaca;
+  color: #fee2e2;
 }
 .experience-card[data-company="icbc"] .experience-footer span {
-  background: rgba(0, 36, 125, 0.22);
+  background: rgba(0, 36, 125, 0.32);
   color: #fecaca;
-  border: 1px solid rgba(207, 20, 43, 0.32);
+  border: 1px solid rgba(248, 113, 113, 0.45);
+}
+
+/* ==========================================================================
+   LAPISLÁZULI & PYRITE GOLD FOR HIGHLIGHTS, SKILLS & MOBILITY CARD
+   ========================================================================== */
+body.background-universe #highlights .card {
+  background: linear-gradient(165deg, #091a45 0%, #040d24 100%);
+  border: 1.5px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 14px 35px -8px rgba(0, 0, 0, 0.85), 0 0 28px rgba(245, 158, 11, 0.22);
+}
+
+body.background-universe #highlights .card:hover {
+  border-color: rgba(251, 191, 36, 0.85);
+  box-shadow: 0 18px 45px -8px rgba(0, 0, 0, 0.9), 0 0 38px rgba(245, 158, 11, 0.4);
+}
+
+body.background-universe #highlights .card h3 {
+  color: #fbbf24;
+}
+
+body.background-universe .mobility-contact-card {
+  background: linear-gradient(165deg, #091a44 0%, #040d24 100%) !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.55) !important;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.85), 0 0 32px rgba(37, 99, 235, 0.3) !important;
+}
+
+body.background-universe .skill {
+  background: linear-gradient(165deg, #091738 0%, #050d21 100%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #f1f5f9;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+body.background-universe .skill:hover {
+  border-color: rgba(245, 158, 11, 0.65);
+  background: linear-gradient(165deg, #0e2252 0%, #071433 100%);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
 }
 
 /* ==========================================================================
