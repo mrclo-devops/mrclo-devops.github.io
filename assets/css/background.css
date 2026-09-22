@@ -40,7 +40,7 @@
 
 body.background-universe {
   background-color: #06182c;
-  background-image: linear-gradient(135deg, #1a568c 0%, #0e345b 50%, #06182c 100%);
+  background-image: linear-gradient(135deg, #06182c 0%, #0d345a 50%, #154977 100%);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -388,25 +388,25 @@ body.background-universe .ambient-glow-mesh {
 
 /* 1. ROOTLY (rootly.com) — Obsidian Violet & Radiant Amethyst Aura */
 .experience-card[data-company="rootly"] {
-  background: linear-gradient(165deg, #381577 0%, #230d4e 55%, #160733 100%);
-  border: 1.5px solid rgba(168, 85, 247, 0.8);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(168, 85, 247, 0.4);
+  background: linear-gradient(165deg, rgba(56, 21, 119, 0.65) 0%, rgba(28, 10, 62, 0.75) 100%);
+  border: 1.5px solid rgba(168, 85, 247, 0.45);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.42), 0 0 16px rgba(168, 85, 247, 0.18);
 }
 .experience-card[data-company="rootly"]::before {
   background: linear-gradient(90deg, #9333ea, #c084fc, #f472b6);
-  height: 4px;
+  height: 3px;
 }
 .experience-card[data-company="rootly"]:hover {
-  border-color: rgba(216, 180, 254, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(168, 85, 247, 0.55);
+  border-color: rgba(216, 180, 254, 0.85);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55), 0 0 28px rgba(168, 85, 247, 0.35);
 }
 .experience-card[data-company="rootly"] .company-name {
   color: #d8b4fe;
 }
 .experience-card[data-company="rootly"] .company-badge {
-  background: rgba(168, 85, 247, 0.28);
+  background: rgba(168, 85, 247, 0.22);
   color: #f3e8ff;
-  border: 1px solid rgba(192, 132, 252, 0.55);
+  border: 1px solid rgba(192, 132, 252, 0.45);
 }
 .experience-card[data-company="rootly"] summary {
   color: #c084fc;
@@ -415,32 +415,32 @@ body.background-universe .ambient-glow-mesh {
   color: #f3e8ff;
 }
 .experience-card[data-company="rootly"] .experience-footer span {
-  background: rgba(168, 85, 247, 0.24);
+  background: rgba(168, 85, 247, 0.20);
   color: #f5d0fe;
-  border: 1px solid rgba(192, 132, 252, 0.45);
+  border: 1px solid rgba(192, 132, 252, 0.38);
 }
 
 /* 2. PAGERDUTY (pagerduty.com) — Deep Forest Jade & Electric Emerald Aura */
 .experience-card[data-company="pagerduty"] {
-  background: linear-gradient(165deg, #0a4f25 0%, #063418 55%, #03200f 100%);
-  border: 1.5px solid rgba(16, 185, 129, 0.8);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(16, 185, 129, 0.4);
+  background: linear-gradient(165deg, rgba(10, 79, 37, 0.65) 0%, rgba(5, 42, 20, 0.75) 100%);
+  border: 1.5px solid rgba(16, 185, 129, 0.45);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.42), 0 0 16px rgba(16, 185, 129, 0.18);
 }
 .experience-card[data-company="pagerduty"]::before {
   background: linear-gradient(90deg, #059669, #10b981, #34d399);
-  height: 4px;
+  height: 3px;
 }
 .experience-card[data-company="pagerduty"]:hover {
-  border-color: rgba(110, 231, 183, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(16, 185, 129, 0.55);
+  border-color: rgba(110, 231, 183, 0.85);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55), 0 0 28px rgba(16, 185, 129, 0.35);
 }
 .experience-card[data-company="pagerduty"] .company-name {
   color: #6ee7b7;
 }
 .experience-card[data-company="pagerduty"] .company-badge {
-  background: rgba(16, 185, 129, 0.28);
+  background: rgba(16, 185, 129, 0.22);
   color: #d1fae5;
-  border: 1px solid rgba(52, 211, 153, 0.55);
+  border: 1px solid rgba(52, 211, 153, 0.45);
 }
 .experience-card[data-company="pagerduty"] summary {
   color: #34d399;
@@ -449,32 +449,32 @@ body.background-universe .ambient-glow-mesh {
   color: #d1fae5;
 }
 .experience-card[data-company="pagerduty"] .experience-footer span {
-  background: rgba(16, 185, 129, 0.24);
+  background: rgba(16, 185, 129, 0.20);
   color: #a7f3d0;
-  border: 1px solid rgba(52, 211, 153, 0.45);
+  border: 1px solid rgba(52, 211, 153, 0.38);
 }
 
 /* 3. EVO PAYMENTS (evopayments.com) — High-Velocity Cobalt & Ocean Cyan Aura */
 .experience-card[data-company="evopayments"] {
-  background: linear-gradient(165deg, #0b398a 0%, #07255f 55%, #04173d 100%);
-  border: 1.5px solid rgba(14, 165, 233, 0.8);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(14, 165, 233, 0.4);
+  background: linear-gradient(165deg, rgba(11, 57, 138, 0.65) 0%, rgba(6, 30, 75, 0.75) 100%);
+  border: 1.5px solid rgba(14, 165, 233, 0.45);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.42), 0 0 16px rgba(14, 165, 233, 0.18);
 }
 .experience-card[data-company="evopayments"]::before {
   background: linear-gradient(90deg, #0284c7, #38bdf8, #7dd3fc);
-  height: 4px;
+  height: 3px;
 }
 .experience-card[data-company="evopayments"]:hover {
-  border-color: rgba(125, 211, 252, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(14, 165, 233, 0.55);
+  border-color: rgba(125, 211, 252, 0.85);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55), 0 0 28px rgba(14, 165, 233, 0.35);
 }
 .experience-card[data-company="evopayments"] .company-name {
   color: #7dd3fc;
 }
 .experience-card[data-company="evopayments"] .company-badge {
-  background: rgba(14, 165, 233, 0.28);
+  background: rgba(14, 165, 233, 0.22);
   color: #e0f2fe;
-  border: 1px solid rgba(56, 189, 248, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.45);
 }
 .experience-card[data-company="evopayments"] summary {
   color: #38bdf8;
@@ -483,32 +483,32 @@ body.background-universe .ambient-glow-mesh {
   color: #e0f2fe;
 }
 .experience-card[data-company="evopayments"] .experience-footer span {
-  background: rgba(14, 165, 233, 0.24);
+  background: rgba(14, 165, 233, 0.20);
   color: #bae6fd;
-  border: 1px solid rgba(56, 189, 248, 0.45);
+  border: 1px solid rgba(56, 189, 248, 0.38);
 }
 
 /* 4. INSTITUTO CHILENO BRITANICO DE CULTURA (ICBC) — Imperial Navy & Bold Carmine Aura */
 .experience-card[data-company="icbc"] {
-  background: linear-gradient(165deg, #520f1b 0%, #350b1d 55%, #1a0624 100%);
-  border: 1.5px solid rgba(239, 68, 68, 0.8);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(225, 29, 72, 0.4);
+  background: linear-gradient(165deg, rgba(82, 15, 27, 0.65) 0%, rgba(42, 8, 14, 0.75) 100%);
+  border: 1.5px solid rgba(239, 68, 68, 0.45);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.42), 0 0 16px rgba(225, 29, 72, 0.18);
 }
 .experience-card[data-company="icbc"]::before {
   background: linear-gradient(90deg, #00247d 0%, #cf142b 60%, #ffffff 100%);
-  height: 4px;
+  height: 3px;
 }
 .experience-card[data-company="icbc"]:hover {
-  border-color: rgba(252, 165, 165, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(225, 29, 72, 0.55);
+  border-color: rgba(252, 165, 165, 0.85);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55), 0 0 28px rgba(225, 29, 72, 0.35);
 }
 .experience-card[data-company="icbc"] .company-name {
   color: #ffffff;
 }
 .experience-card[data-company="icbc"] .company-badge {
-  background: rgba(207, 20, 43, 0.28);
+  background: rgba(207, 20, 43, 0.22);
   color: #fee2e2;
-  border: 1px solid rgba(248, 113, 113, 0.55);
+  border: 1px solid rgba(248, 113, 113, 0.45);
 }
 .experience-card[data-company="icbc"] summary {
   color: #f87171;
@@ -517,9 +517,9 @@ body.background-universe .ambient-glow-mesh {
   color: #fee2e2;
 }
 .experience-card[data-company="icbc"] .experience-footer span {
-  background: rgba(0, 36, 125, 0.32);
+  background: rgba(0, 36, 125, 0.25);
   color: #fecaca;
-  border: 1px solid rgba(248, 113, 113, 0.45);
+  border: 1px solid rgba(248, 113, 113, 0.38);
 }
 
 /* ==========================================================================
@@ -541,9 +541,9 @@ body.background-universe #highlights .card h3 {
 }
 
 body.background-universe .mobility-contact-card {
-  background: linear-gradient(165deg, rgba(28, 43, 77, 0.75) 0%, rgba(16, 26, 50, 0.85) 100%) !important;
-  border: 1.5px solid rgba(56, 189, 248, 0.6) !important;
-  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.75), 0 0 28px rgba(37, 99, 235, 0.25) !important;
+  background: linear-gradient(165deg, rgba(14, 45, 85, 0.65) 0%, rgba(8, 26, 52, 0.75) 100%) !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.4) !important;
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.42), 0 0 16px rgba(37, 99, 235, 0.16) !important;
 }
 
 body.background-universe .skill {

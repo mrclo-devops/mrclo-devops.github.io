@@ -20,7 +20,7 @@
 
 body.labs-universe {
   background-color: #06182c;
-  background-image: linear-gradient(135deg, #1a568c 0%, #0e345b 50%, #06182c 100%);
+  background-image: linear-gradient(135deg, #06182c 0%, #0d345a 50%, #154977 100%);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -342,106 +342,106 @@ body.labs-universe .ambient-glow-mesh {
 
 /* 1. DROP 01 (Apps / Heartbeats Memories) — Amatista Rosa & Orquídea Cristalina */
 .drop-card[data-category="apps"] {
-  background: linear-gradient(165deg, #3d145c 0%, #240b37 55%, #140520 100%);
-  border: 1.5px solid rgba(217, 70, 239, 0.78);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(217, 70, 239, 0.35);
+  background: linear-gradient(165deg, rgba(58, 20, 92, 0.65) 0%, rgba(30, 10, 50, 0.75) 100%);
+  border: 1.5px solid rgba(217, 70, 239, 0.45);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.42), 0 0 16px rgba(217, 70, 239, 0.18);
 }
 .drop-card[data-category="apps"]::before {
   background: linear-gradient(90deg, #d946ef, #a855f7, #f472b6);
-  height: 4px;
-  opacity: 1;
+  height: 3px;
+  opacity: 0.85;
 }
 .drop-card[data-category="apps"]:hover {
-  border-color: rgba(244, 114, 182, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(217, 70, 239, 0.55);
+  border-color: rgba(244, 114, 182, 0.85);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55), 0 0 28px rgba(217, 70, 239, 0.35);
 }
 .drop-card[data-category="apps"] .drop-category-badge {
-  background: rgba(217, 70, 239, 0.25);
+  background: rgba(217, 70, 239, 0.20);
   color: #f5d0fe;
-  border: 1px solid rgba(217, 70, 239, 0.55);
+  border: 1px solid rgba(217, 70, 239, 0.45);
 }
 .drop-card[data-category="apps"] .drop-num {
-  background: rgba(217, 70, 239, 0.22);
+  background: rgba(217, 70, 239, 0.18);
   color: #fdf4ff;
-  border: 1px solid rgba(217, 70, 239, 0.45);
+  border: 1px solid rgba(217, 70, 239, 0.38);
 }
 
 /* 2. DROP 02 (Voice / Linux AI Voice Companion) — Zafiro Estelar & Azul Eléctrico */
 .drop-card[data-category="voice"] {
-  background: linear-gradient(165deg, #0a3575 0%, #062350 55%, #031430 100%);
-  border: 1.5px solid rgba(56, 189, 248, 0.78);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(56, 189, 248, 0.35);
+  background: linear-gradient(165deg, rgba(14, 52, 105, 0.65) 0%, rgba(8, 30, 62, 0.75) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.42), 0 0 16px rgba(56, 189, 248, 0.18);
 }
 .drop-card[data-category="voice"]::before {
   background: linear-gradient(90deg, #0284c7, #38bdf8, #60a5fa);
-  height: 4px;
-  opacity: 1;
+  height: 3px;
+  opacity: 0.85;
 }
 .drop-card[data-category="voice"]:hover {
-  border-color: rgba(125, 211, 252, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(56, 189, 248, 0.55);
+  border-color: rgba(125, 211, 252, 0.85);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55), 0 0 28px rgba(56, 189, 248, 0.35);
 }
 .drop-card[data-category="voice"] .drop-category-badge {
-  background: rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.20);
   color: #bae6fd;
-  border: 1px solid rgba(56, 189, 248, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.45);
 }
 .drop-card[data-category="voice"] .drop-num {
-  background: rgba(56, 189, 248, 0.22);
+  background: rgba(56, 189, 248, 0.18);
   color: #f0f9ff;
-  border: 1px solid rgba(56, 189, 248, 0.45);
+  border: 1px solid rgba(56, 189, 248, 0.38);
 }
 
 /* 3. DROP 03 (Academy / Incident Commander Labs) — Ágata de Fuego & Cornalina Ámbar */
 .drop-card[data-category="academy"] {
-  background: linear-gradient(165deg, #592209 0%, #351405 55%, #1d0902 100%);
-  border: 1.5px solid rgba(245, 158, 11, 0.85);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(245, 158, 11, 0.4);
+  background: linear-gradient(165deg, rgba(78, 32, 12, 0.65) 0%, rgba(42, 16, 6, 0.75) 100%);
+  border: 1.5px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.42), 0 0 16px rgba(245, 158, 11, 0.18);
 }
 .drop-card[data-category="academy"]::before {
   background: linear-gradient(90deg, #ea580c, #f59e0b, #fbbf24);
-  height: 4px;
-  opacity: 1;
+  height: 3px;
+  opacity: 0.85;
 }
 .drop-card[data-category="academy"]:hover {
-  border-color: rgba(251, 191, 36, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(245, 158, 11, 0.55);
+  border-color: rgba(251, 191, 36, 0.85);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55), 0 0 28px rgba(245, 158, 11, 0.35);
 }
 .drop-card[data-category="academy"] .drop-category-badge {
-  background: rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.20);
   color: #fef08a;
-  border: 1px solid rgba(245, 158, 11, 0.55);
+  border: 1px solid rgba(245, 158, 11, 0.45);
 }
 .drop-card[data-category="academy"] .drop-num {
-  background: rgba(245, 158, 11, 0.22);
+  background: rgba(245, 158, 11, 0.18);
   color: #fffbeb;
-  border: 1px solid rgba(245, 158, 11, 0.45);
+  border: 1px solid rgba(245, 158, 11, 0.38);
 }
 
 /* 4. DROP 04 (Probes / Distributed Webhook Engine) — Lapislázuli Ultramar & Pirita Dorada */
 .drop-card[data-category="probes"] {
-  background: linear-gradient(165deg, #0e3082 0%, #092058 55%, #041233 100%);
-  border: 1.5px solid rgba(234, 179, 8, 0.8);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 38px rgba(234, 179, 8, 0.35);
+  background: linear-gradient(165deg, rgba(14, 46, 115, 0.65) 0%, rgba(8, 26, 68, 0.75) 100%);
+  border: 1.5px solid rgba(234, 179, 8, 0.45);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.42), 0 0 16px rgba(234, 179, 8, 0.18);
 }
 .drop-card[data-category="probes"]::before {
   background: linear-gradient(90deg, #1d4ed8, #eab308, #60a5fa);
-  height: 4px;
-  opacity: 1;
+  height: 3px;
+  opacity: 0.85;
 }
 .drop-card[data-category="probes"]:hover {
-  border-color: rgba(250, 204, 21, 0.95);
-  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(234, 179, 8, 0.5);
+  border-color: rgba(250, 204, 21, 0.85);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55), 0 0 28px rgba(234, 179, 8, 0.35);
 }
 .drop-card[data-category="probes"] .drop-category-badge {
   background: rgba(16, 185, 129, 0.15);
   color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.45);
+  border: 1px solid rgba(16, 185, 129, 0.38);
 }
 .drop-card[data-category="probes"] .drop-num {
-  background: rgba(234, 179, 8, 0.22);
+  background: rgba(234, 179, 8, 0.18);
   color: #fefce8;
-  border: 1px solid rgba(234, 179, 8, 0.45);
+  border: 1px solid rgba(234, 179, 8, 0.38);
 }
 
 /* Card Header */
