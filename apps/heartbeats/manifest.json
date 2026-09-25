@@ -1,0 +1,20 @@
+{
+  "name": "Nuestros Momentos Especiales",
+  "short_name": "Momentos",
+  "version": "1.4.1",
+  "description": "Cuenta regresiva multi-evento y carrusel de recuerdos para aniversarios, mascotas y fechas especiales.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#0b0f19",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

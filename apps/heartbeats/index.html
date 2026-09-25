@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0b0f19" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <title>Nuestros Momentos Especiales v1.1.0</title>
+</head>
+<body>
+
+  <!-- Capas de Fondo y Efecto -->
+  <div class="bg-slideshow" id="bg-slide"></div>
+  <div class="overlay"></div>
+
+  <!-- Botón Superior Flotante Único (Minimizar / Expandir Ajustes) -->
+  <div class="top-actions">
+    <button class="icon-btn" id="floating-toggle-btn" title="Ampliar / Abrir Ajustes">
+      <!-- Icono + para expandir -->
+      <svg class="icon-expand" id="icon-expand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+      <!-- Icono ✕ para cerrar / minimizar -->
+      <svg class="icon-collapse" id="icon-collapse" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Tarjeta Principal Glassmorphism Desplazable -->
+  <main class="main-card" id="main-card">
+    <!-- Barra para arrastrar la tarjeta -->
+    <div class="drag-handle" id="drag-handle" title="Arrastra desde aquí a cualquier rincón">
+      <div class="drag-pill"></div>
+    </div>
+
+    <!-- Barra de Pestañas Multi-Evento (Hasta 10 recordatorios) -->
+    <nav class="events-bar">
+      <!-- Engranaje en la esquina izquierda para Ajustes -->
+      <button class="btn-settings-gear" id="btn-settings-gear" title="Personalizar este recordatorio (Ajustes)">⚙️</button>
+      <div class="events-tabs" id="events-tabs"></div>
+      <button class="btn-add-event" id="btn-add-event" title="Crear nuevo recordatorio (máximo 10)">+</button>
+    </nav>
+
+    <!-- Título editable del evento activo -->
+    <input type="text" class="event-title-input" id="event-title" value="Aniversario con Nelly" placeholder="Nombre de este recordatorio..." />
+
+    <!-- Bloques de Cuenta Regresiva (Tocar aquí también cambia al siguiente evento) -->
+    <section class="countdown-grid" id="countdown-trigger" title="Haz clic para saltar al siguiente recordatorio">
+      <div class="time-box">
+        <span class="digit" id="days">00</span>
+        <span class="time-label">Días</span>
+      </div>
+      <div class="time-box">
+        <span class="digit" id="hours">00</span>
+        <span class="time-label">Horas</span>
+      </div>
+      <div class="time-box">
+        <span class="digit" id="minutes">00</span>
+        <span class="time-label">Min</span>
+      </div>
+      <div class="time-box">
+        <span class="digit" id="seconds">00</span>
+        <span class="time-label">Seg</span>
+      </div>
+    </section>
+
+    <!-- Botón para Colapsar / Expandir Ajustes -->
+    <div class="toggle-settings-row">
+      <button class="btn-toggle-settings" id="btn-toggle-settings" title="Mostrar u ocultar opciones de personalización">
+        <span class="toggle-icon">⚙️</span>
+        <span class="toggle-label">Personalizar Recordatorio</span>
+        <span class="toggle-chevron">▾</span>
+      </button>
+    </div>
+
+    <!-- Panel de Configuración del Evento Activo -->
+    <section class="controls-section" id="controls-section">
+      <div class="controls-header">
+        <h3>Ajustes del Recordatorio</h3>
+        <span class="event-counter-badge" id="event-badge">1/10</span>
+      </div>
+
+      <!-- Selector de Color y Paleta -->
+      <div class="form-group">
+        <label>Color temático de este evento:</label>
+        <div class="color-picker-row">
+          <input type="color" id="color-picker" value="#38bdf8" title="Elegir color personalizado" />
+          <div class="color-presets">
+            <span class="color-dot" data-color="#38bdf8" style="background:#38bdf8;" title="Azul Cielo"></span>
+            <span class="color-dot" data-color="#fb7185" style="background:#fb7185;" title="Rosa Pasión"></span>
+            <span class="color-dot" data-color="#f59e0b" style="background:#f59e0b;" title="Dorado Cálido"></span>
+            <span class="color-dot" data-color="#a855f7" style="background:#a855f7;" title="Púrpura Místico"></span>
+            <span class="color-dot" data-color="#10b981" style="background:#10b981;" title="Esmeralda"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selector de Fecha y Hora -->
+      <div class="form-group">
+        <label for="date-input">Fecha y hora objetivo:</label>
+        <input type="datetime-local" id="date-input" />
+      </div>
+
+      <!-- Subida de Fotos (Máx 10 por evento) -->
+      <div class="form-group">
+        <div class="photo-header-row">
+          <label for="file-input">Álbum de fotos de este evento:</label>
+          <span class="photo-counter" id="photo-counter">0/10 fotos</span>
+        </div>
+        <label for="file-input" class="btn-upload-photos" id="btn-upload-label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          Agregar Fotos (Máx 10)
+        </label>
+        <input type="file" id="file-input" accept="image/*" multiple style="display: none;" />
+      </div>
+
+      <!-- Control de Velocidad -->
+      <div class="form-group">
+        <label for="speed-range">Tiempo entre fotos: <span id="speed-val">4</span>s</label>
+        <input type="range" id="speed-range" min="1" max="15" value="4" />
+      </div>
+
+      <!-- Galería de Miniaturas del Evento Activo -->
+      <div class="thumbnails-scroll" id="thumb-container"></div>
+
+      <!-- Botón para Eliminar este Evento -->
+      <button class="btn-delete-event" id="btn-delete-event" title="Eliminar este recordatorio">
+        🗑️ Eliminar este recordatorio
+      </button>
+
+      <!-- Botón para Cerrar Ajustes y volver a la vista limpia -->
+      <button class="btn-done-settings" id="btn-done-settings" title="Cerrar ajustes y volver">
+        ✓ Listo (Cerrar Ajustes)
+      </button>
+    </section>
+
+    <!-- Pie de Versión -->
+    <div class="app-footer">
+      <span>Toca el contador para rotar de evento • v1.4.1</span>
+    </div>
+  </main>
+
+  <!-- One-Click PWA Install Banner -->
+  <div id="pwa-install-banner" class="pwa-install-banner" style="display: none;">
+    <span class="install-text">📲 ¡Instala Heartbeats Memories en tu inicio!</span>
+    <button id="pwa-install-btn" class="btn-install-pwa">Instalar App</button>
+    <button id="pwa-close-banner" class="btn-close-banner" title="Cerrar">✕</button>
+  </div>
+
+  <!-- Gatekeeper Overlay (Activación de Licencia Criptográfica) -->
+  <div id="gatekeeper-modal" class="gatekeeper-overlay" style="display: none;">
+    <div class="gatekeeper-card">
+      <div class="gatekeeper-icon">🔒</div>
+      <h2>Heartbeats Memories</h2>
+      <p class="gatekeeper-desc">
+        Esta aplicación es de software independiente y Local-First. Para activarla en este dispositivo, ingresa desde el botón <strong>"Abrir e Instalar"</strong> de tu correo de compra o ingresa tu código de autorización bancaria.
+      </p>
+      <div class="gatekeeper-form">
+        <input type="text" id="manual-license-input" class="gatekeeper-input" placeholder="Código de autorización Transbank..." />
+        <button id="btn-activate-manual" class="btn-activate">Activar Licencia ✨</button>
+      </div>
+      <div id="gatekeeper-error" class="gatekeeper-error" style="display: none;">Código inválido. Verifica tu comprobante.</div>
+      <div class="gatekeeper-footer">
+        <a href="/labs-drops/" class="gatekeeper-link">¿No tienes licencia? Adquiérela en Labs & Drops</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- GESTIÓN DE LICENCIA Y ONE-CLICK INSTALL ---
+    (function() {
+      const STORAGE_KEY = 'hb_activated_license';
+      const urlParams = new URLSearchParams(window.location.search);
+      const incomingKey = urlParams.get('key') || urlParams.get('activate') || urlParams.get('auth');
+      const gatekeeperModal = document.getElementById('gatekeeper-modal');
+      const manualInput = document.getElementById('manual-license-input');
+      const activateBtn = document.getElementById('btn-activate-manual');
+      const errorMsg = document.getElementById('gatekeeper-error');
+      const installBanner = document.getElementById('pwa-install-banner');
+      const installBtn = document.getElementById('pwa-install-btn');
+      const closeBanner = document.getElementById('pwa-close-banner');
+
+      function validateAndActivate(rawKey) {
+        if (!rawKey) return false;
+        const clean = rawKey.trim();
+        // Acepta códigos de autorización alfanuméricos válidos
+        if (clean.length >= 4 && /^[a-zA-Z0-9_-]+$/.test(clean)) {
+          localStorage.setItem(STORAGE_KEY, clean);
+          if (gatekeeperModal) gatekeeperModal.style.display = 'none';
+          // Limpiar la URL para no dejar el token expuesto en el navegador
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+          }
+          return true;
+        }
+        return false;
+      }
+
+      // 1. Si viene con clave en la URL (desde el correo)
+      if (incomingKey) {
+        validateAndActivate(incomingKey);
+      }
+
+      // 2. Si no está activado, mostrar el Gatekeeper
+      const savedLicense = localStorage.getItem(STORAGE_KEY);
+      if (!savedLicense) {
+        if (gatekeeperModal) gatekeeperModal.style.display = 'flex';
+      }
+
+      if (activateBtn) {
+        activateBtn.addEventListener('click', () => {
+          const val = manualInput.value;
+          if (validateAndActivate(val)) {
+            if (errorMsg) errorMsg.style.display = 'none';
+          } else {
+            if (errorMsg) errorMsg.style.display = 'block';
+          }
+        });
+      }
+
+      // 3. Manejo de instalación One-Click PWA
+      let deferredPrompt = null;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (installBanner) installBanner.style.display = 'flex';
+      });
+
+      if (installBtn) {
+        installBtn.addEventListener('click', async () => {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            deferredPrompt = null;
+            if (installBanner) installBanner.style.display = 'none';
+          }
+        });
+      }
+
+      if (closeBanner) {
+        closeBanner.addEventListener('click', () => {
+          if (installBanner) installBanner.style.display = 'none';
+        });
+      }
+    })();
+  </script>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
