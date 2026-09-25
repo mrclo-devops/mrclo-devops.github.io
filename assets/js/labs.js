@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFilterTabs();
   initSimulatorModal();
   initMultiEventSimulator();
+  initCatalogModal();
 });
 
 /* ==========================================================================
@@ -139,6 +140,62 @@ function initSimulatorModal() {
         card.style.transform = "";
         card.classList.remove("pos-center", "pos-top-left", "pos-bottom-right");
         card.classList.add(`pos-${pos}`);
+      });
+    });
+  });
+
+  // Selector de 10 Fuentes Emocionales
+  const fontSelect = document.getElementById("sim-font-select");
+  if (fontSelect) {
+    fontSelect.addEventListener("change", (e) => {
+      const font = e.target.value;
+      floatingCards.forEach((card) => {
+        card.style.fontFamily = `'${font}', sans-serif`;
+      });
+    });
+  }
+
+  // Regulador de Opacidad de Fondo
+  const opacitySlider = document.getElementById("sim-opacity-slider");
+  const opacityVal = document.getElementById("sim-opacity-val");
+  if (opacitySlider && opacityVal) {
+    opacitySlider.addEventListener("input", (e) => {
+      const val = parseInt(e.target.value, 10);
+      opacityVal.innerText = `${val}%`;
+      floatingCards.forEach((card) => {
+        card.style.backgroundColor = `rgba(15, 23, 42, ${val / 100})`;
+        card.style.backdropFilter = `blur(${Math.max(2, (val / 100) * 22)}px)`;
+      });
+    });
+  }
+
+  // Regulador de Tamaño / Escala de Tarjeta
+  const scaleSlider = document.getElementById("sim-scale-slider");
+  const scaleVal = document.getElementById("sim-scale-val");
+  if (scaleSlider && scaleVal) {
+    scaleSlider.addEventListener("input", (e) => {
+      const val = parseInt(e.target.value, 10);
+      scaleVal.innerText = `${val}%`;
+      floatingCards.forEach((card) => {
+        card.style.transform = `scale(${val / 100})`;
+      });
+    });
+  }
+
+  // Simulación de Reproductor de Audio Local
+  const audioButtons = document.querySelectorAll(".sim-audio-btn");
+  audioButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isPlaying = !btn.classList.contains("is-playing");
+      audioButtons.forEach((b) => {
+        if (isPlaying) {
+          b.classList.add("is-playing");
+          b.innerHTML = '<i class="fas fa-pause"></i> <span>Pausar</span>';
+        } else {
+          b.classList.remove("is-playing");
+          b.innerHTML = '<i class="fas fa-music"></i> <span>Música</span>';
+        }
       });
     });
   });
@@ -417,3 +474,60 @@ function initMultiEventSimulator() {
     heartbeatsElements.forEach((el) => (el.textContent = beatsStr));
   }, 1000);
 }
+
+/* ==========================================================================
+   4. CATALOG MODAL CONTROLLER (HEARTBEATS MEMORIES)
+   ========================================================================== */
+function initCatalogModal() {
+  const catalogModal = document.getElementById("catalog-modal");
+  const openCatalogBtn = document.getElementById("btn-open-catalog");
+  const closeCatalogBtn = document.getElementById("btn-close-catalog");
+  const openSimulatorFromCatalog = document.querySelector(".btn-open-simulator-from-catalog");
+  const simulatorModal = document.getElementById("simulator-modal");
+
+  if (!catalogModal) return;
+
+  function openCatalog() {
+    catalogModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeCatalog() {
+    catalogModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+
+  if (openCatalogBtn) {
+    openCatalogBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openCatalog();
+    });
+  }
+
+  if (closeCatalogBtn) {
+    closeCatalogBtn.addEventListener("click", closeCatalog);
+  }
+
+  catalogModal.addEventListener("click", (e) => {
+    if (e.target === catalogModal) {
+      closeCatalog();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && catalogModal.classList.contains("active")) {
+      closeCatalog();
+    }
+  });
+
+  if (openSimulatorFromCatalog) {
+    openSimulatorFromCatalog.addEventListener("click", () => {
+      closeCatalog();
+      if (simulatorModal) {
+        simulatorModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+    });
+  }
+}
+

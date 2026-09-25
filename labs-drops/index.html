@@ -25,7 +25,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png?v=1.9.0">
   <link rel="shortcut icon" href="/assets/img/favicon.ico?v=1.9.0">
 
-  <!-- Stylesheets -->
+  <!-- Fonts & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@600;700&family=Cinzel:wght@600;700&family=Dancing+Script:wght@600;700&family=Fredoka:wght@600;700&family=Great+Vibes&family=Montserrat:wght@500;700;800&family=Oswald:wght@600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/labs.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -140,12 +143,24 @@
             <span data-i18n="labs.d1.platforms">Desktop Wallpaper · Web PWA · Mobile Lockscreen</span>
           </div>
 
+          <!-- Price & Lifetime License Highlight Box -->
+          <div class="drop-price-box">
+            <div class="price-main-row">
+              <span class="price-amount">$5.000 CLP</span>
+              <span class="price-usd">(Aprox. 5 USD)</span>
+              <span class="price-pill-lifetime"><i class="fas fa-infinity"></i> Pago Único de por Vida</span>
+            </div>
+            <div class="price-hook-badge">
+              💡 <em>A diferencia de otras apps que cobran arriendo mensual, aquí pagas una sola vez y es tuya para siempre con todas las mejoras.</em>
+            </div>
+          </div>
+
           <div class="drop-actions">
             <!-- Mobile Pay Button: Shown only on mobile screens -->
             <div class="pay-mobile-box">
               <a class="btn-buy-webpay" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
                 <i class="fas fa-credit-card"></i>
-                <span data-i18n="labs.d1.btn_buy">Adquirir con Webpay Plus</span>
+                <span data-i18n="labs.d1.btn_buy">Adquirir con Webpay Plus ($5.000 CLP)</span>
               </a>
               <div style="font-size: 0.72rem; color: #94a3b8; text-align: center; margin-top: 4px;">
                 <span data-i18n="labs.d1.mobile_terms_note">Al pagar aceptas los</span> <a href="/terms/" target="_blank" style="color: var(--labs-cyan); text-decoration: underline;" data-i18n="labs.d1.terms_link">Términos de Licencia</a>
@@ -159,7 +174,7 @@
                 <span class="qr-badge-tag"><i class="fas fa-qrcode"></i> Webpay</span>
               </div>
               <div class="qr-meta-side">
-                <div class="qr-heading" data-i18n="labs.d1.qr_heading">Pago Inmediato con QR</div>
+                <div class="qr-heading" data-i18n="labs.d1.qr_heading">Pago Inmediato con QR ($5.000 CLP)</div>
                 <p class="qr-subtext" data-i18n="labs.d1.qr_subtext">Apunta con la cámara de tu celular para pagar desde tu app bancaria.</p>
                 <a class="btn-link-webpay-alt" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
                   <i class="fas fa-arrow-up-right-from-square"></i>
@@ -168,11 +183,22 @@
               </div>
             </div>
 
-            <!-- Trigger button for interactive device simulator modal -->
-            <button class="btn-demo-trigger btn-open-simulator">
-              <span class="working-dev-icon"><i class="fas fa-laptop-code"></i></span>
-              <span data-i18n="labs.d1.btn_demo">Probar Demo Interactiva</span>
-            </button>
+            <!-- Buttons: Catalog Modal + Interactive Simulator + Live App -->
+            <div class="drop-buttons-grid">
+              <button class="btn-demo-trigger btn-open-catalog" id="btn-open-catalog">
+                <i class="fas fa-sparkles" style="color: #38bdf8;"></i>
+                <span>Ver Catálogo de Funcionalidades</span>
+              </button>
+              <button class="btn-demo-trigger btn-open-simulator">
+                <span class="working-dev-icon"><i class="fas fa-laptop-code"></i></span>
+                <span data-i18n="labs.d1.btn_demo">Probar Simulador Interactivo</span>
+              </button>
+            </div>
+            <div class="live-app-quick-link-box">
+              <a class="btn-live-app-link" href="/apps/heartbeats/" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-arrow-up-right-from-square"></i> Probar Demo Real en Vivo (v1.5.0 Pantalla Completa)
+              </a>
+            </div>
 
             <!-- Trust Note & Terms Link -->
             <div class="drop-trust-note">
@@ -344,14 +370,49 @@
           </div>
         </div>
 
+        <!-- 10 Gem Colors Palette -->
         <div class="palette-picker-bar">
-          <span data-i18n="modal.palette.label">Color del Widget:</span>
+          <span><i class="fas fa-gem"></i> 10 Gemas:</span>
           <div class="palette-dots">
-            <span class="palette-dot active" data-color="#38bdf8" style="background: #38bdf8;" title="Azul Cielo"></span>
-            <span class="palette-dot" data-color="#fb7185" style="background: #fb7185;" title="Rosa Pasión"></span>
-            <span class="palette-dot" data-color="#f59e0b" style="background: #f59e0b;" title="Dorado Cálido"></span>
-            <span class="palette-dot" data-color="#10b981" style="background: #10b981;" title="Esmeralda"></span>
-            <span class="palette-dot" data-color="#a855f7" style="background: #a855f7;" title="Púrpura Místico"></span>
+            <span class="palette-dot" data-color="#ef4444" style="background: #ef4444;" title="Rubí Fuego"></span>
+            <span class="palette-dot" data-color="#ea580c" style="background: #ea580c;" title="Cornalina Ámbar"></span>
+            <span class="palette-dot" data-color="#eab308" style="background: #eab308;" title="Citrino Solar"></span>
+            <span class="palette-dot" data-color="#10b981" style="background: #10b981;" title="Jade Imperial"></span>
+            <span class="palette-dot" data-color="#14b8a6" style="background: #14b8a6;" title="Turquesa Océano"></span>
+            <span class="palette-dot active" data-color="#06b6d4" style="background: #06b6d4;" title="Aguamarina Celestial"></span>
+            <span class="palette-dot" data-color="#2563eb" style="background: #2563eb;" title="Zafiro Real"></span>
+            <span class="palette-dot" data-color="#8b5cf6" style="background: #8b5cf6;" title="Amatista Mística"></span>
+            <span class="palette-dot" data-color="#ec4899" style="background: #ec4899;" title="Cuarzo Rosa"></span>
+            <span class="palette-dot" data-color="#f43f5e" style="background: #f43f5e;" title="Granate Carmesí"></span>
+          </div>
+        </div>
+
+        <!-- 10 Emotional Fonts Selector -->
+        <div class="font-picker-bar">
+          <span><i class="fas fa-font"></i> Letra:</span>
+          <select id="sim-font-select" class="sim-select" title="Cambiar tipografía del recuerdo">
+            <option value="Montserrat" selected>Montserrat (Moderno)</option>
+            <option value="Great Vibes">Great Vibes (Romance)</option>
+            <option value="Dancing Script">Dancing Script (Amor)</option>
+            <option value="Caveat">Caveat (Manuscrita)</option>
+            <option value="Fredoka">Fredoka (Cumpleaños)</option>
+            <option value="Pacifico">Pacifico (Viajes)</option>
+            <option value="Bebas Neue">Bebas Neue (Metas)</option>
+            <option value="Oswald">Oswald (Fuerza)</option>
+            <option value="Playfair Display">Playfair Display (Oro)</option>
+            <option value="Cinzel">Cinzel (Solemne)</option>
+          </select>
+        </div>
+
+        <!-- Opacity & Scale Sliders -->
+        <div class="slider-controls-bar">
+          <div class="slider-unit" title="Regula la transparencia del fondo">
+            <label><i class="fas fa-eye"></i> Opacidad: <span id="sim-opacity-val">65%</span></label>
+            <input type="range" id="sim-opacity-slider" min="0" max="100" value="65" />
+          </div>
+          <div class="slider-unit" title="Ajusta el tamaño del recuadro">
+            <label><i class="fas fa-up-right-and-down-left-from-center"></i> Tamaño: <span id="sim-scale-val">100%</span></label>
+            <input type="range" id="sim-scale-slider" min="70" max="115" value="100" />
           </div>
         </div>
       </div>
@@ -434,6 +495,19 @@
                 </div>
                 <span class="photo-counter-text">Foto 1 de 3</span>
               </div>
+
+              <!-- Mini Audio Simulator & 3 Alarms Pill -->
+              <div class="sim-features-bar">
+                <button class="sim-audio-btn" id="sim-audio-desktop" title="Simular reproducción de sonido local">
+                  <i class="fas fa-music"></i> <span>Música Local</span>
+                </button>
+                <span class="sim-alarms-badge" title="3 Alarmas hacia atrás configuradas">
+                  <i class="fas fa-bell"></i> 3 Alarmas (7d, 1d, 1h)
+                </span>
+                <a class="sim-live-link" href="/apps/heartbeats/" target="_blank" rel="noopener noreferrer">
+                  <i class="fas fa-up-right-from-square"></i> App Real
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -506,6 +580,19 @@
                 </div>
                 <span class="photo-counter-text" style="font-size: 0.68rem;">Foto 1/3</span>
               </div>
+
+              <!-- Mini Audio Simulator & 3 Alarms Pill Mobile -->
+              <div class="sim-features-bar mobile-features-bar">
+                <button class="sim-audio-btn" id="sim-audio-mobile" title="Simular reproducción de sonido local">
+                  <i class="fas fa-music"></i> <span>Audio</span>
+                </button>
+                <span class="sim-alarms-badge" title="3 Alarmas hacia atrás configuradas">
+                  <i class="fas fa-bell"></i> 3 Alarmas
+                </span>
+                <a class="sim-live-link" href="/apps/heartbeats/" target="_blank" rel="noopener noreferrer">
+                  <i class="fas fa-up-right-from-square"></i> App Real
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -524,7 +611,7 @@
         <div class="modal-action-buttons">
           <a class="btn-buy-webpay" style="padding: 9px 18px; font-size: 0.88rem; width: auto;" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
             <i class="fas fa-credit-card"></i>
-            <span data-i18n="modal.btn.buy">Adquirir con Webpay</span>
+            <span data-i18n="modal.btn.buy">Adquirir con Webpay ($5.000 CLP)</span>
           </a>
           <a class="drop-btn-secondary" style="padding: 9px 18px; font-size: 0.88rem;" href="mailto:support@mrclo.dev">
             <i class="fas fa-headset"></i>
@@ -533,6 +620,137 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL DE CATÁLOGO COMPLETO DE FUNCIONALIDADES (HEARTBEATS MEMORIES)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="catalog-modal" role="dialog" aria-modal="true" aria-labelledby="catalog-title">
+    <div class="modal-window catalog-window">
+      <div class="modal-header">
+        <div class="modal-title-area">
+          <h3 id="catalog-title">✨ Catálogo de Funcionalidades — Heartbeats Memories</h3>
+          <span class="modal-badge">v1.5.0 • Licencia Vitalicia</span>
+        </div>
+        <button class="btn-close-modal" id="btn-close-catalog" aria-label="Cerrar catálogo">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="catalog-content">
+        <!-- Banner de Precio y Licencia -->
+        <div class="catalog-pricing-hero">
+          <div class="catalog-pricing-badge">
+            <span class="catalog-price">$5.000 CLP</span>
+            <span class="catalog-price-usd">(Aprox. 5 USD)</span>
+            <span class="catalog-lifetime-pill"><i class="fas fa-infinity"></i> Pago Único para Toda la Vida</span>
+          </div>
+          <p class="catalog-hook-text">
+            💡 <strong>¡Olvídate de pagar todos los meses!</strong> A diferencia de otras aplicaciones que te cobran un arriendo o suscripción mensual mes a mes, con Heartbeats Memories compras tu licencia una sola vez y es tuya para siempre, incluyendo acceso sin costo a todas las mejoras y actualizaciones que se publiquen a futuro.
+          </p>
+          <a class="btn-buy-webpay catalog-buy-btn" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-credit-card"></i> Adquirir Licencia Vitalicia con Webpay Plus ($5.000 CLP)
+          </a>
+        </div>
+
+        <!-- Checklist de Características en lenguaje cotidiano -->
+        <div class="features-checklist-grid">
+          
+          <div class="feature-item">
+            <div class="feature-icon">📏</div>
+            <div class="feature-text">
+              <h4>Agrandar o achicar el recuadro libremente</h4>
+              <p>Adapta el tamaño de la tarjeta para que sea sutil y discreta en una esquina de tu pantalla o grande e impactante en tu celular. En el computador puedes arrastrar la esquina inferior con el ratón y en tu teléfono pellizcar con dos dedos.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🎨</div>
+            <div class="feature-text">
+              <h4>Hasta 10 colores y gemas temáticas</h4>
+              <p>Personaliza el marco y el halo brillante con 10 tonos inspirados en gemas (rubí, cornalina, citrino, jade, turquesa, aguamarina, zafiro, amatista, cuarzo rosa y granate), o escoge cualquier color personalizado con el selector libre.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">⏰</div>
+            <div class="feature-text">
+              <h4>Hasta 3 alarmas hacia atrás (avisos previos)</h4>
+              <p>Configura hasta 3 alertas antes de que se cumpla tu fecha especial (por ejemplo: 1 mes antes, 1 semana antes o 1 hora antes) para que puedas preparar regalos, sorpresas o viajes con total anticipación.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🎵</div>
+            <div class="feature-text">
+              <h4>Música y sonido desde tu propio dispositivo</h4>
+              <p>Sube tu canción favorita o una nota de voz en formato MP3, WAV o M4A directamente desde tu teléfono (Android o iPhone) o desde tu computador (Windows, Mac o Linux). Cuenta con reproductor propio, control de volumen y botón rápido para reproducir aun con la tarjeta minimizada.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">📸</div>
+            <div class="feature-text">
+              <h4>Hasta 10 fotografías por recuerdo</h4>
+              <p>Crea un álbum vivo de hasta 10 fotos en alta resolución por cada evento. Las fotos rotan suavemente en el fondo de tu pantalla a la velocidad que tú elijas.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">📅</div>
+            <div class="feature-text">
+              <h4>Hasta 10 recuerdos y fechas independientes</h4>
+              <p>Guarda hasta 10 aniversarios, cumpleaños, viajes o metas a la vez. Cada recuerdo tiene sus propias fotos, sus propios colores, sus propias alarmas y su propia música en pestañas fáciles de alternar.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">✍️</div>
+            <div class="feature-text">
+              <h4>10 estilos de letra para cada emoción</h4>
+              <p>Cambia la tipografía con un solo clic: letras románticas, elegantes de oro, manuscritas íntimas, divertidas de fiesta, deportivas de adrenalina o modernas minimalistas.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🪟</div>
+            <div class="feature-text">
+              <h4>Opacidad del fondo regulable al 100%</h4>
+              <p>Controla la transparencia del recuadro. Al 0% el fondo es totalmente invisible y los números flotan mágicamente en el aire directamente sobre tus fotos familiares.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">📍</div>
+            <div class="feature-text">
+              <h4>Arrastra y ubica en cualquier rincón</h4>
+              <p>Mueve la tarjeta flotante a cualquier lugar de la pantalla para que nunca tape los rostros o detalles importantes de tus fotografías.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🔒</div>
+            <div class="feature-text">
+              <h4>100% privado y seguro (Local-First)</h4>
+              <p>Tus fotos, canciones y notas nunca se suben a internet ni a servidores de terceros. Todo queda guardado bajo llave en la base de datos interna de tu propio dispositivo.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="catalog-footer-actions">
+          <a class="btn-buy-webpay" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-credit-card"></i> Adquirir Licencia Vitalicia ($5.000 CLP / ~5 USD)
+          </a>
+          <button class="btn-demo-trigger btn-open-simulator-from-catalog">
+            <i class="fas fa-laptop-code"></i> Probar Simulador Interactivo
+          </button>
+          <a class="btn-link-webpay-alt" href="/apps/heartbeats/" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-arrow-up-right-from-square"></i> Probar App en Vivo
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 

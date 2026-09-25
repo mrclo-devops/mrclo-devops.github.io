@@ -1422,3 +1422,386 @@ input[type="range"] {
   cursor: pointer;
   padding: 2px 6px;
 }
+
+/* ==========================================================================
+   MULTI-EVENT ACTIONS & MINI AUDIO PLAYER BUTTON
+   ========================================================================== */
+.events-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-mini-audio {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  color: #f8fafc;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.btn-mini-audio:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+.btn-mini-audio.is-playing {
+  background: var(--accent);
+  color: #0b0f19;
+  border-color: var(--accent);
+  box-shadow: 0 0 14px var(--accent-glow);
+  animation: audioPulse 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes audioPulse {
+  0% { transform: scale(1.0); box-shadow: 0 0 6px var(--accent-glow); }
+  100% { transform: scale(1.12); box-shadow: 0 0 16px var(--accent); }
+}
+
+/* ==========================================================================
+   BANNER DE ALARMA ACTIVA (RECORDATORIO PREVIO)
+   ========================================================================== */
+.active-alarm-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.45);
+  color: #fecdd3;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  box-shadow: 0 0 16px rgba(244, 63, 94, 0.25);
+  animation: alarmBannerPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes alarmBannerPulse {
+  0% { transform: scale(0.98); border-color: rgba(244, 63, 94, 0.35); }
+  100% { transform: scale(1.02); border-color: rgba(244, 63, 94, 0.85); box-shadow: 0 0 20px rgba(244, 63, 94, 0.45); }
+}
+
+/* ==========================================================================
+   ALARMAS RETROSPECTIVAS (HASTA 3 AVISOS PREVIOS)
+   ========================================================================== */
+.alarms-group {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.alarms-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.alarms-badge {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.alarms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.alarm-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.alarm-card.is-enabled {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(15, 23, 42, 0.88);
+}
+
+.alarm-card.is-triggered {
+  border-color: #f43f5e;
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.3);
+}
+
+.alarm-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alarm-check-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.alarm-check-label input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.alarm-status-pill {
+  font-size: 0.68rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.alarm-status-pill.status-active {
+  background: rgba(244, 63, 94, 0.2);
+  color: #fda4af;
+  border: 1px solid rgba(244, 63, 94, 0.5);
+  animation: pulsePill 1.5s infinite alternate;
+}
+
+.alarm-status-pill.status-pending {
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.alarm-status-pill.status-past {
+  background: rgba(148, 163, 184, 0.15);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.alarm-status-pill.status-disabled {
+  background: rgba(255, 255, 255, 0.05);
+  color: #64748b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@keyframes pulsePill {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+.alarm-row-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alarm-val-input {
+  width: 65px;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 4px 8px;
+  color: #fff;
+  font-size: 0.82rem;
+  text-align: center;
+  outline: none;
+}
+
+.alarm-val-input:focus {
+  border-color: var(--accent);
+}
+
+.alarm-unit-select {
+  flex: 1;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 4px 8px;
+  color: #fff;
+  font-size: 0.82rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.alarm-unit-select:focus {
+  border-color: var(--accent);
+}
+
+/* ==========================================================================
+   BANDA SONORA LOCAL (AUDIO DEL RECUERDO)
+   ========================================================================== */
+.audio-group {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.audio-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.audio-badge {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.btn-upload-audio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1.5px dashed rgba(56, 189, 248, 0.4);
+  color: #e0f2fe;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-upload-audio:hover {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.audio-player-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.audio-track-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.audio-filename {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px;
+  text-align: left;
+}
+
+.btn-delete-audio {
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  color: #f87171;
+  border-radius: 8px;
+  padding: 3px 7px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn-delete-audio:hover {
+  background: rgba(244, 63, 94, 0.35);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.audio-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.btn-audio-play {
+  background: var(--accent);
+  color: #0b0f19;
+  border: none;
+  border-radius: 10px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--accent-glow);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn-audio-play:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+.btn-audio-play.is-playing {
+  background: #f43f5e;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(244, 63, 94, 0.4);
+}
+
+.audio-volume-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.volume-icon {
+  font-size: 0.85rem;
+}
+
+#audio-volume-slider {
+  flex: 1;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.audio-autoplay-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  text-align: left;
+}
+
+.audio-autoplay-toggle input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}

@@ -49,6 +49,8 @@ const audioVolumeSlider = document.getElementById('audio-volume-slider');
 const audioAutoplayCheck = document.getElementById('audio-autoplay-check');
 const audioBadge = document.getElementById('audio-badge');
 const btnMiniAudio = document.getElementById('btn-mini-audio');
+const activeAlarmBanner = document.getElementById('active-alarm-banner');
+const alarmBannerText = document.getElementById('alarm-banner-text');
 
 let carousel = null;
 let events = [];
@@ -380,23 +382,29 @@ function renderAlarmsUI() {
   }
 
   activeEvent.alarms.forEach((alarm, idx) => {
-    const item = document.createElement('div');
-    item.className = `alarm-item ${alarm.enabled ? 'is-active' : ''}`;
-    item.innerHTML = `
-      <div class="alarm-controls-left">
-        <input type="checkbox" class="alarm-toggle" data-idx="${idx}" ${alarm.enabled ? 'checked' : ''} title="Activar/Desactivar alarma ${idx + 1}" />
-        <span style="font-weight:700; font-size:0.8rem; color:var(--accent);">Alarma ${idx + 1}:</span>
-        <input type="number" class="alarm-number-input" data-idx="${idx}" min="1" max="999" value="${alarm.value || 1}" ${!alarm.enabled ? 'disabled' : ''} />
+    const card = document.createElement('div');
+    card.className = `alarm-card ${alarm.enabled ? 'is-enabled' : ''}`;
+    card.id = `alarm-card-${idx}`;
+    card.innerHTML = `
+      <div class="alarm-row-top">
+        <label class="alarm-check-label">
+          <input type="checkbox" class="alarm-toggle" data-idx="${idx}" ${alarm.enabled ? 'checked' : ''} />
+          <span>Aviso previo ${idx + 1}</span>
+        </label>
+        <span class="alarm-status-pill status-disabled" id="alarm-status-${idx}">Inactiva</span>
+      </div>
+      <div class="alarm-row-inputs">
+        <input type="number" class="alarm-val-input alarm-number-input" data-idx="${idx}" min="1" max="999" value="${alarm.value || 1}" ${!alarm.enabled ? 'disabled' : ''} />
         <select class="alarm-unit-select" data-idx="${idx}" ${!alarm.enabled ? 'disabled' : ''}>
-          <option value="days" ${alarm.unit === 'days' ? 'selected' : ''}>días antes</option>
-          <option value="hours" ${alarm.unit === 'hours' ? 'selected' : ''}>horas antes</option>
-          <option value="minutes" ${alarm.unit === 'minutes' ? 'selected' : ''}>minutos antes</option>
-          <option value="weeks" ${alarm.unit === 'weeks' ? 'selected' : ''}>semanas antes</option>
+          <option value="days" ${alarm.unit === 'days' ? 'selected' : ''}>Días antes</option>
+          <option value="hours" ${alarm.unit === 'hours' ? 'selected' : ''}>Horas antes</option>
+          <option value="minutes" ${alarm.unit === 'minutes' ? 'selected' : ''}>Minutos antes</option>
+          <option value="weeks" ${alarm.unit === 'weeks' ? 'selected' : ''}>Semanas antes</option>
+          <option value="months" ${alarm.unit === 'months' ? 'selected' : ''}>Meses antes</option>
         </select>
       </div>
-      <span class="alarm-status-pill" id="alarm-status-${idx}">En espera</span>
     `;
-    alarmsContainer.appendChild(item);
+    alarmsContainer.appendChild(card);
   });
 
   alarmsContainer.querySelectorAll('.alarm-toggle').forEach((toggle) => {
@@ -433,6 +441,8 @@ function renderAlarmsUI() {
 function getAlarmOffsetMs(alarm) {
   const val = Number(alarm.value) || 1;
   switch (alarm.unit) {
+    case 'months':
+      return val * 30 * 24 * 60 * 60 * 1000;
     case 'weeks':
       return val * 7 * 24 * 60 * 60 * 1000;
     case 'hours':
@@ -452,14 +462,17 @@ function updateAlarmsStatus() {
   const diff = target - now;
 
   let activeCount = 0;
+  let triggeredAlarm = null;
 
   activeEvent.alarms.forEach((alarm, idx) => {
     const pill = document.getElementById(`alarm-status-${idx}`);
+    const card = document.getElementById(`alarm-card-${idx}`);
     if (!pill) return;
 
     if (!alarm.enabled) {
       pill.innerText = 'Inactiva';
-      pill.className = 'alarm-status-pill';
+      pill.className = 'alarm-status-pill status-disabled';
+      if (card) card.classList.remove('is-triggered');
       return;
     }
 
@@ -468,18 +481,41 @@ function updateAlarmsStatus() {
 
     if (diff <= 0) {
       pill.innerText = 'Cumplida';
-      pill.className = 'alarm-status-pill';
+      pill.className = 'alarm-status-pill status-past';
+      if (card) card.classList.remove('is-triggered');
     } else if (diff <= offsetMs) {
-      pill.innerText = '🔔 ¡Alcanzada!';
-      pill.className = 'alarm-status-pill is-reached';
+      pill.innerText = '🔔 ¡Activa!';
+      pill.className = 'alarm-status-pill status-active';
+      if (card) card.classList.add('is-triggered');
+      if (!triggeredAlarm || offsetMs < getAlarmOffsetMs(triggeredAlarm)) {
+        triggeredAlarm = alarm;
+      }
     } else {
       pill.innerText = '⏳ En espera';
-      pill.className = 'alarm-status-pill';
+      pill.className = 'alarm-status-pill status-pending';
+      if (card) card.classList.remove('is-triggered');
     }
   });
 
   if (alarmsBadge) {
     alarmsBadge.innerText = `${activeCount}/3 activas`;
+  }
+
+  if (activeAlarmBanner && alarmBannerText) {
+    if (triggeredAlarm && diff > 0) {
+      activeAlarmBanner.style.display = 'flex';
+      const unitNames = {
+        days: 'días',
+        hours: 'horas',
+        minutes: 'minutos',
+        weeks: 'semanas',
+        months: 'meses'
+      };
+      const unitLabel = unitNames[triggeredAlarm.unit] || 'días';
+      alarmBannerText.innerText = `¡Alarma previa! Faltan menos de ${triggeredAlarm.value} ${unitLabel}`;
+    } else {
+      activeAlarmBanner.style.display = 'none';
+    }
   }
 }
 
