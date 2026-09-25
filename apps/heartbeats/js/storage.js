@@ -42,7 +42,22 @@ class MultiEventStorage {
       const store = tx.objectStore(STORE_EVENTS);
       const req = store.getAll();
 
-      req.onsuccess = () => resolve(req.result || []);
+      req.onsuccess = () => {
+        const items = req.result || [];
+        items.forEach((evt) => {
+          if (!evt.alarms || !Array.isArray(evt.alarms)) {
+            evt.alarms = [
+              { id: 1, enabled: true, value: 7, unit: 'days' },
+              { id: 2, enabled: true, value: 1, unit: 'days' },
+              { id: 3, enabled: false, value: 1, unit: 'hours' }
+            ];
+          }
+          if (evt.audio === undefined) {
+            evt.audio = null;
+          }
+        });
+        resolve(items);
+      };
       req.onerror = () => reject(req.error);
     });
   }
@@ -91,7 +106,13 @@ class MultiEventStorage {
       scale: 100,
       intervalSeconds: 4,
       position: null,
-      photos: [] // Máx 10 fotos { id, data }
+      photos: [], // Máx 10 fotos { id, data }
+      alarms: [
+        { id: 1, enabled: true, value: 7, unit: 'days' },
+        { id: 2, enabled: true, value: 1, unit: 'days' },
+        { id: 3, enabled: false, value: 1, unit: 'hours' }
+      ],
+      audio: null // { name, type, data, autoplay, volume }
     };
   }
 }

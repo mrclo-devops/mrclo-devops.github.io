@@ -49,7 +49,10 @@
       <!-- Engranaje en la esquina izquierda para Ajustes -->
       <button class="btn-settings-gear" id="btn-settings-gear" title="Personalizar este recordatorio (Ajustes)">⚙️</button>
       <div class="events-tabs" id="events-tabs"></div>
-      <button class="btn-add-event" id="btn-add-event" title="Crear nuevo recordatorio (máximo 10)">+</button>
+      <div class="events-bar-actions">
+        <button class="btn-mini-audio" id="btn-mini-audio" title="Reproducir o pausar banda sonora local" style="display: none;">🎵</button>
+        <button class="btn-add-event" id="btn-add-event" title="Crear nuevo recordatorio (máximo 10)">+</button>
+      </div>
     </nav>
 
     <!-- Título editable del evento activo -->
@@ -82,9 +85,9 @@
         <span class="event-counter-badge" id="event-badge">1/10</span>
       </div>
 
-      <!-- Selector de Color y Paleta Zodiacal (Dragón, Cabra, Virgo, Capricornio) -->
+      <!-- Selector de Color y Paleta Zodiacal (10 Colores Temáticos / Gemas) -->
       <div class="form-group">
-        <label>Gema y color temático de este recuerdo:</label>
+        <label>Gema y color temático de este recuerdo (10 gemas):</label>
         <div class="color-picker-row">
           <input type="color" id="color-picker" value="#38bdf8" title="Elegir color personalizado" />
           <div class="color-presets">
@@ -92,10 +95,12 @@
             <span class="color-dot" data-color="#ea580c" style="background:#ea580c;" title="Cornalina Ámbar (Capricornio)"></span>
             <span class="color-dot" data-color="#eab308" style="background:#eab308;" title="Citrino Solar (Virgo)"></span>
             <span class="color-dot" data-color="#10b981" style="background:#10b981;" title="Jade Imperial (Dragón)"></span>
+            <span class="color-dot" data-color="#14b8a6" style="background:#14b8a6;" title="Turquesa Océano (Piscis)"></span>
             <span class="color-dot" data-color="#06b6d4" style="background:#06b6d4;" title="Aguamarina Celestial (Cabra)"></span>
             <span class="color-dot" data-color="#2563eb" style="background:#2563eb;" title="Zafiro Real (Virgo)"></span>
             <span class="color-dot" data-color="#8b5cf6" style="background:#8b5cf6;" title="Amatista Mística (Capricornio)"></span>
             <span class="color-dot" data-color="#ec4899" style="background:#ec4899;" title="Cuarzo Rosa (Cabra)"></span>
+            <span class="color-dot" data-color="#f43f5e" style="background:#f43f5e;" title="Granate Rosa (Tauro)"></span>
           </div>
         </div>
       </div>
@@ -153,6 +158,55 @@
         <input type="datetime-local" id="date-input" />
       </div>
 
+      <!-- Alarmas y Avisos Previos (Hasta 3 alarmas hacia atrás) -->
+      <div class="form-group alarms-group">
+        <div class="alarms-header-row">
+          <label>Alarmas previas (hasta 3 alertas hacia atrás):</label>
+          <span class="alarms-badge" id="alarms-badge">3 activables</span>
+        </div>
+        <div class="alarms-list" id="alarms-container"></div>
+        <small class="form-hint">Te alertan con antelación antes de que se cumpla la fecha (ej. 7 días, 1 día o 1 hora antes).</small>
+      </div>
+
+      <!-- Música y Sonido Local del Recuerdo -->
+      <div class="form-group audio-group">
+        <div class="audio-header-row">
+          <label>Banda sonora local de este recuerdo:</label>
+          <span class="audio-badge" id="audio-badge">Sin audio</span>
+        </div>
+
+        <div class="audio-upload-box" id="audio-upload-box">
+          <label for="audio-file-input" class="btn-upload-audio" id="btn-upload-audio-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18V5l12-2v13"></path>
+              <circle cx="6" cy="18" r="3"></circle>
+              <circle cx="18" cy="16" r="3"></circle>
+            </svg>
+            Agregar Sonido / Canción Local
+          </label>
+          <input type="file" id="audio-file-input" accept="audio/*" style="display: none;" />
+        </div>
+
+        <div class="audio-player-card" id="audio-player-card" style="display: none;">
+          <div class="audio-track-info">
+            <span class="audio-icon">🎵</span>
+            <span class="audio-filename" id="audio-filename">Pista de audio</span>
+            <button type="button" class="btn-delete-audio" id="btn-delete-audio" title="Quitar audio">🗑️</button>
+          </div>
+          <div class="audio-controls-row">
+            <button type="button" class="btn-audio-play" id="btn-audio-play" title="Reproducir / Pausar">▶ Reproducir</button>
+            <div class="audio-volume-wrapper" title="Volumen de reproducción">
+              <span class="volume-icon">🔊</span>
+              <input type="range" id="audio-volume-slider" min="0" max="100" value="80" />
+            </div>
+          </div>
+          <label class="audio-autoplay-toggle">
+            <input type="checkbox" id="audio-autoplay-check" />
+            <span>Reproducir automáticamente al abrir este recuerdo</span>
+          </label>
+        </div>
+      </div>
+
       <!-- Subida de Fotos (Máx 10 por evento) -->
       <div class="form-group">
         <div class="photo-header-row">
@@ -192,7 +246,7 @@
 
     <!-- Pie de Versión -->
     <div class="app-footer">
-      <span>Toca el contador para rotar de evento • v1.4.1</span>
+      <span>Toca el contador para rotar de evento • v1.5.0</span>
     </div>
 
     <!-- Tirador de Esquina para Redimensionar con Mouse (Desktop / Laptop) -->

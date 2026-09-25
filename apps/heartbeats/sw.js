@@ -1,4 +1,4 @@
-const CACHE_NAME = 'anniversary-countdown-v1.4.1';
+const CACHE_NAME = 'anniversary-countdown-v1.5.0';
 const ASSETS_TO_CACHE = [
   './index.html',
   './manifest.json',

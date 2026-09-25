@@ -307,6 +307,50 @@ body {
   display: none !important;
 }
 
+/* Barra de Acciones de Eventos y Botón Mini de Audio */
+.events-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-mini-audio {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.82rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.btn-mini-audio:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.08);
+}
+
+.btn-mini-audio.is-playing {
+  background: var(--accent);
+  color: #0b0f19;
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+  animation: audioPulse 1.4s infinite alternate;
+}
+
+@keyframes audioPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 2px var(--accent)); }
+  100% { transform: scale(1.12); filter: drop-shadow(0 0 8px var(--accent)); }
+}
+
 /* Optimización táctil inmediata para móviles (Elimina retraso de 300ms) */
 button,
 .event-tab,
@@ -674,6 +718,226 @@ input[type="datetime-local"] {
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
   cursor: pointer;
+}
+
+/* --- ALARMAS Y AVISOS PREVIOS --- */
+.alarms-group {
+  margin-top: 14px;
+}
+
+.alarms-header-row,
+.audio-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.alarms-badge,
+.audio-badge {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.alarms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.alarm-item {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.alarm-item:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.alarm-item.is-active {
+  border-color: var(--accent);
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.alarm-controls-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.alarm-toggle {
+  accent-color: var(--accent);
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.alarm-number-input {
+  width: 48px;
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+.alarm-unit-select {
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.alarm-status-pill {
+  font-size: 0.72rem;
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.alarm-status-pill.is-reached {
+  background: rgba(234, 179, 8, 0.2);
+  color: #fde047;
+  border: 1px solid rgba(234, 179, 8, 0.4);
+}
+
+/* --- REPRODUCTOR DE BANDA SONORA LOCAL --- */
+.audio-group {
+  margin-top: 14px;
+}
+
+.btn-upload-audio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1.5px dashed var(--accent);
+  color: #f8fafc;
+  font-weight: 600;
+  font-size: 0.84rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-upload-audio:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+.audio-player-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid var(--accent);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  border-radius: 14px;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.audio-track-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.audio-filename {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.btn-delete-audio {
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 6px;
+  transition: transform 0.15s ease;
+}
+
+.btn-delete-audio:hover {
+  transform: scale(1.18);
+}
+
+.audio-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.btn-audio-play {
+  background: var(--accent);
+  color: #0b0f19;
+  border: none;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--accent-glow);
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.btn-audio-play:hover {
+  filter: brightness(1.12);
+  transform: scale(1.04);
+}
+
+.audio-volume-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.volume-icon {
+  font-size: 0.82rem;
+}
+
+.audio-autoplay-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.audio-autoplay-toggle input {
+  accent-color: var(--accent);
 }
 
 .btn-upload-photos {

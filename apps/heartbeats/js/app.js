@@ -37,11 +37,25 @@ const cardOpacitySlider = document.getElementById('card-opacity-slider');
 const cardOpacityVal = document.getElementById('card-opacity-val');
 const cardScaleSlider = document.getElementById('card-scale-slider');
 const cardScaleVal = document.getElementById('card-scale-val');
+const alarmsContainer = document.getElementById('alarms-container');
+const alarmsBadge = document.getElementById('alarms-badge');
+const audioFileInput = document.getElementById('audio-file-input');
+const audioUploadBox = document.getElementById('audio-upload-box');
+const audioPlayerCard = document.getElementById('audio-player-card');
+const audioFilename = document.getElementById('audio-filename');
+const btnDeleteAudio = document.getElementById('btn-delete-audio');
+const btnAudioPlay = document.getElementById('btn-audio-play');
+const audioVolumeSlider = document.getElementById('audio-volume-slider');
+const audioAutoplayCheck = document.getElementById('audio-autoplay-check');
+const audioBadge = document.getElementById('audio-badge');
+const btnMiniAudio = document.getElementById('btn-mini-audio');
 
 let carousel = null;
 let events = [];
 let activeEvent = null;
 let savedMinimizedPosition = null;
+const currentAudio = new Audio();
+currentAudio.loop = true;
 
 // Inicialización de la Aplicación
 async function initApp() {
@@ -220,6 +234,11 @@ function switchActiveEvent(eventId) {
   const found = events.find((e) => e.id === eventId);
   if (!found) return;
 
+  if (currentAudio) {
+    currentAudio.pause();
+    updatePlayButtonUI(false);
+  }
+
   activeEvent = found;
   storage.setActiveEventId(activeEvent.id);
 
@@ -261,6 +280,10 @@ function renderActiveEventUI() {
   const photos = activeEvent.photos || [];
   carousel.setPhotos(photos);
   renderThumbnails();
+
+  // Renderizar las 3 alarmas hacia atrás y audio local
+  renderAlarmsUI();
+  renderAudioUI();
 
   // Actualizar posición si tiene una guardada
   if (activeEvent.position) {
@@ -324,13 +347,222 @@ function updateCountdown() {
     hoursEl.innerText = '00';
     minutesEl.innerText = '00';
     secondsEl.innerText = '00';
-    return;
+  } else {
+    daysEl.innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+    hoursEl.innerText = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+    minutesEl.innerText = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+    secondsEl.innerText = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
   }
 
-  daysEl.innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-  hoursEl.innerText = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
-  minutesEl.innerText = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
-  secondsEl.innerText = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+  updateAlarmsStatus();
+}
+
+// --- GESTIÓN DE LAS 3 ALARMAS HACIA ATRÁS ---
+function renderAlarmsUI() {
+  if (!alarmsContainer || !activeEvent) return;
+  alarmsContainer.innerHTML = '';
+
+  if (!activeEvent.alarms || !Array.isArray(activeEvent.alarms)) {
+    activeEvent.alarms = [
+      { id: 1, enabled: true, value: 7, unit: 'days' },
+      { id: 2, enabled: true, value: 1, unit: 'days' },
+      { id: 3, enabled: false, value: 1, unit: 'hours' }
+    ];
+  }
+
+  while (activeEvent.alarms.length < 3) {
+    activeEvent.alarms.push({
+      id: activeEvent.alarms.length + 1,
+      enabled: false,
+      value: 1,
+      unit: 'days'
+    });
+  }
+
+  activeEvent.alarms.forEach((alarm, idx) => {
+    const item = document.createElement('div');
+    item.className = `alarm-item ${alarm.enabled ? 'is-active' : ''}`;
+    item.innerHTML = `
+      <div class="alarm-controls-left">
+        <input type="checkbox" class="alarm-toggle" data-idx="${idx}" ${alarm.enabled ? 'checked' : ''} title="Activar/Desactivar alarma ${idx + 1}" />
+        <span style="font-weight:700; font-size:0.8rem; color:var(--accent);">Alarma ${idx + 1}:</span>
+        <input type="number" class="alarm-number-input" data-idx="${idx}" min="1" max="999" value="${alarm.value || 1}" ${!alarm.enabled ? 'disabled' : ''} />
+        <select class="alarm-unit-select" data-idx="${idx}" ${!alarm.enabled ? 'disabled' : ''}>
+          <option value="days" ${alarm.unit === 'days' ? 'selected' : ''}>días antes</option>
+          <option value="hours" ${alarm.unit === 'hours' ? 'selected' : ''}>horas antes</option>
+          <option value="minutes" ${alarm.unit === 'minutes' ? 'selected' : ''}>minutos antes</option>
+          <option value="weeks" ${alarm.unit === 'weeks' ? 'selected' : ''}>semanas antes</option>
+        </select>
+      </div>
+      <span class="alarm-status-pill" id="alarm-status-${idx}">En espera</span>
+    `;
+    alarmsContainer.appendChild(item);
+  });
+
+  alarmsContainer.querySelectorAll('.alarm-toggle').forEach((toggle) => {
+    toggle.addEventListener('change', async (e) => {
+      const idx = Number(e.target.dataset.idx);
+      activeEvent.alarms[idx].enabled = e.target.checked;
+      await storage.saveEvent(activeEvent);
+      renderAlarmsUI();
+      updateCountdown();
+    });
+  });
+
+  alarmsContainer.querySelectorAll('.alarm-number-input').forEach((input) => {
+    input.addEventListener('change', async (e) => {
+      const idx = Number(e.target.dataset.idx);
+      activeEvent.alarms[idx].value = Math.max(1, parseInt(e.target.value, 10) || 1);
+      await storage.saveEvent(activeEvent);
+      updateCountdown();
+    });
+  });
+
+  alarmsContainer.querySelectorAll('.alarm-unit-select').forEach((select) => {
+    select.addEventListener('change', async (e) => {
+      const idx = Number(e.target.dataset.idx);
+      activeEvent.alarms[idx].unit = e.target.value;
+      await storage.saveEvent(activeEvent);
+      updateCountdown();
+    });
+  });
+
+  updateAlarmsStatus();
+}
+
+function getAlarmOffsetMs(alarm) {
+  const val = Number(alarm.value) || 1;
+  switch (alarm.unit) {
+    case 'weeks':
+      return val * 7 * 24 * 60 * 60 * 1000;
+    case 'hours':
+      return val * 60 * 60 * 1000;
+    case 'minutes':
+      return val * 60 * 1000;
+    case 'days':
+    default:
+      return val * 24 * 60 * 60 * 1000;
+  }
+}
+
+function updateAlarmsStatus() {
+  if (!activeEvent || !activeEvent.alarms || !activeEvent.targetDate) return;
+  const now = new Date().getTime();
+  const target = new Date(activeEvent.targetDate).getTime();
+  const diff = target - now;
+
+  let activeCount = 0;
+
+  activeEvent.alarms.forEach((alarm, idx) => {
+    const pill = document.getElementById(`alarm-status-${idx}`);
+    if (!pill) return;
+
+    if (!alarm.enabled) {
+      pill.innerText = 'Inactiva';
+      pill.className = 'alarm-status-pill';
+      return;
+    }
+
+    activeCount++;
+    const offsetMs = getAlarmOffsetMs(alarm);
+
+    if (diff <= 0) {
+      pill.innerText = 'Cumplida';
+      pill.className = 'alarm-status-pill';
+    } else if (diff <= offsetMs) {
+      pill.innerText = '🔔 ¡Alcanzada!';
+      pill.className = 'alarm-status-pill is-reached';
+    } else {
+      pill.innerText = '⏳ En espera';
+      pill.className = 'alarm-status-pill';
+    }
+  });
+
+  if (alarmsBadge) {
+    alarmsBadge.innerText = `${activeCount}/3 activas`;
+  }
+}
+
+// --- GESTIÓN DE AUDIO LOCAL ---
+function renderAudioUI() {
+  if (!activeEvent) return;
+
+  if (activeEvent.audio && activeEvent.audio.data) {
+    if (audioUploadBox) audioUploadBox.style.display = 'none';
+    if (audioPlayerCard) audioPlayerCard.style.display = 'block';
+    if (audioFilename) {
+      audioFilename.innerText = activeEvent.audio.name || 'Pista de audio';
+      audioFilename.title = activeEvent.audio.name || 'Pista de audio';
+    }
+    if (audioVolumeSlider) {
+      audioVolumeSlider.value = activeEvent.audio.volume !== undefined ? activeEvent.audio.volume : 80;
+    }
+    if (audioAutoplayCheck) {
+      audioAutoplayCheck.checked = Boolean(activeEvent.audio.autoplay);
+    }
+    if (audioBadge) {
+      audioBadge.innerText = 'Música lista';
+    }
+    if (btnMiniAudio) {
+      btnMiniAudio.style.display = 'flex';
+    }
+
+    // Sincronizar fuente si cambió
+    if (currentAudio.src !== activeEvent.audio.data) {
+      currentAudio.pause();
+      currentAudio.src = activeEvent.audio.data;
+      currentAudio.volume = (activeEvent.audio.volume !== undefined ? activeEvent.audio.volume : 80) / 100;
+      updatePlayButtonUI(false);
+
+      if (activeEvent.audio.autoplay) {
+        currentAudio.play().then(() => {
+          updatePlayButtonUI(true);
+        }).catch((err) => {
+          console.log('Autoplay bloqueado por políticas de navegador:', err);
+        });
+      }
+    }
+  } else {
+    if (audioUploadBox) audioUploadBox.style.display = 'block';
+    if (audioPlayerCard) audioPlayerCard.style.display = 'none';
+    if (audioBadge) audioBadge.innerText = 'Sin audio';
+    if (btnMiniAudio) btnMiniAudio.style.display = 'none';
+
+    if (!currentAudio.paused) {
+      currentAudio.pause();
+    }
+    currentAudio.src = '';
+    updatePlayButtonUI(false);
+  }
+}
+
+function updatePlayButtonUI(isPlaying) {
+  if (btnAudioPlay) {
+    btnAudioPlay.innerText = isPlaying ? '⏸ Pausar' : '▶ Reproducir';
+  }
+  if (btnMiniAudio) {
+    if (isPlaying) {
+      btnMiniAudio.classList.add('is-playing');
+      btnMiniAudio.title = 'Pausar música del recuerdo';
+    } else {
+      btnMiniAudio.classList.remove('is-playing');
+      btnMiniAudio.title = 'Reproducir música del recuerdo';
+    }
+  }
+}
+
+function toggleAudioPlayback() {
+  if (!currentAudio.src) return;
+  if (currentAudio.paused) {
+    currentAudio.play().then(() => {
+      updatePlayButtonUI(true);
+    }).catch(err => {
+      console.warn('Error al reproducir audio:', err);
+    });
+  } else {
+    currentAudio.pause();
+    updatePlayButtonUI(false);
+  }
 }
 
 // Aplicar y persistir tema de color
@@ -811,6 +1043,72 @@ function setupEventListeners() {
     }
     fileInput.value = '';
   });
+
+  // Event Listeners para Reproductor de Audio Local
+  if (audioFileInput) {
+    audioFileInput.addEventListener('change', async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        activeEvent.audio = {
+          name: file.name,
+          type: file.type,
+          data: event.target.result,
+          autoplay: false,
+          volume: 80
+        };
+        await storage.saveEvent(activeEvent);
+        renderAudioUI();
+      };
+      reader.readAsDataURL(file);
+      audioFileInput.value = '';
+    });
+  }
+
+  if (btnDeleteAudio) {
+    btnDeleteAudio.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      activeEvent.audio = null;
+      await storage.saveEvent(activeEvent);
+      renderAudioUI();
+    });
+  }
+
+  if (btnAudioPlay) {
+    btnAudioPlay.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleAudioPlayback();
+    });
+  }
+
+  if (btnMiniAudio) {
+    btnMiniAudio.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleAudioPlayback();
+    });
+  }
+
+  if (audioVolumeSlider) {
+    audioVolumeSlider.addEventListener('input', async (e) => {
+      const vol = parseInt(e.target.value, 10);
+      currentAudio.volume = vol / 100;
+      if (activeEvent && activeEvent.audio) {
+        activeEvent.audio.volume = vol;
+        await storage.saveEvent(activeEvent);
+      }
+    });
+  }
+
+  if (audioAutoplayCheck) {
+    audioAutoplayCheck.addEventListener('change', async (e) => {
+      if (activeEvent && activeEvent.audio) {
+        activeEvent.audio.autoplay = e.target.checked;
+        await storage.saveEvent(activeEvent);
+      }
+    });
+  }
 
   // Doble toque en el fondo para alternar modo Ambient
   let lastTap = 0;

@@ -1,7 +1,7 @@
 {
   "name": "Nuestros Momentos Especiales",
   "short_name": "Momentos",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Cuenta regresiva multi-evento y carrusel de recuerdos para aniversarios, mascotas y fechas especiales.",
   "start_url": "./index.html",
   "scope": "./",
