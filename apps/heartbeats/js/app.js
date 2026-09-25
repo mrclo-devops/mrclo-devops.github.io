@@ -66,9 +66,16 @@ async function initApp() {
   // Inicializar estado de minimizado / expandido
   initSettingsCollapse();
 
-  // Listeners y Arrastre
+  // Listeners, Arrastre y Redimensionamiento
   setupEventListeners();
   setupDraggableCard();
+  setupResizeHandle();
+
+  window.addEventListener('resize', () => {
+    if (activeEvent) {
+      applyCardScale(activeEvent.scale || 100, false);
+    }
+  });
 }
 
 function initSettingsCollapse() {
@@ -365,11 +372,34 @@ function applyCardOpacity(opacityVal, save = true) {
   }
 }
 
-// Aplicar y persistir tamaño / escala del recuadro (60% a 115%)
+// Calcula el límite máximo de escala permitido para que la tarjeta NUNCA supere el tamaño de la ventana visible
+function getMaxAllowedScale() {
+  const cardRect = mainCard.getBoundingClientRect();
+  const currentScale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-scale')) || 1.0;
+  const unscaledH = Math.max(220, (cardRect.height / currentScale) || 380);
+  const unscaledW = Math.max(280, (cardRect.width / currentScale) || 380);
+
+  // Permitir al menos 20px de margen vertical y horizontal respecto a la ventana
+  const maxFactorH = (window.innerHeight - 20) / unscaledH;
+  const maxFactorW = (window.innerWidth - 20) / unscaledW;
+  const safeFactor = Math.min(maxFactorH, maxFactorW);
+
+  // El tope absoluto es 115%, limitado estrictamente por lo que quepa en la pantalla actual
+  return Math.min(115, Math.max(60, Math.floor(safeFactor * 100)));
+}
+
+// Aplicar y persistir tamaño / escala del recuadro (60% al máximo seguro de la ventana)
 function applyCardScale(scaleVal, save = true) {
-  const num = Math.min(115, Math.max(60, parseInt(scaleVal, 10) || 100));
-  if (cardScaleSlider) cardScaleSlider.value = num;
-  if (cardScaleVal) cardScaleVal.innerText = `${num}%`;
+  const maxSafe = getMaxAllowedScale();
+  const num = Math.min(maxSafe, Math.max(60, parseInt(scaleVal, 10) || 100));
+
+  if (cardScaleSlider) {
+    cardScaleSlider.max = String(maxSafe);
+    cardScaleSlider.value = num;
+  }
+  if (cardScaleVal) {
+    cardScaleVal.innerText = `${num}%`;
+  }
 
   const scaleFactor = (num / 100).toFixed(2);
   document.documentElement.style.setProperty('--card-scale', scaleFactor);
@@ -487,7 +517,13 @@ function setupDraggableCard() {
   }
 
   function isDraggableArea(target) {
-    if (target.closest('input') || target.closest('button') || target.closest('.controls-section') || target.closest('.events-bar')) {
+    if (
+      target.closest('input') ||
+      target.closest('button') ||
+      target.closest('.controls-section') ||
+      target.closest('.events-bar') ||
+      target.closest('.card-resize-handle')
+    ) {
       return false;
     }
     return true;
@@ -549,6 +585,86 @@ function setupDraggableCard() {
 
   window.addEventListener('touchend', onPointerUp);
   window.addEventListener('touchcancel', onPointerUp);
+}
+
+// Control de Redimensionamiento con Mouse y Touch en la Esquina Inferior
+function setupResizeHandle() {
+  const resizeHandle = document.getElementById('card-resize-handle');
+  if (!resizeHandle) return;
+
+  let isResizing = false;
+  let startScale = 100;
+  let centerX = 0;
+  let centerY = 0;
+  let initialDist = 1;
+
+  function onResizeStart(clientX, clientY) {
+    isResizing = true;
+    resizeHandle.classList.add('is-resizing');
+    document.body.style.cursor = 'nwse-resize';
+    mainCard.style.transition = 'none';
+
+    const rect = mainCard.getBoundingClientRect();
+    centerX = rect.left + rect.width / 2;
+    centerY = rect.top + rect.height / 2;
+    initialDist = Math.hypot(clientX - centerX, clientY - centerY) || 1;
+    startScale = activeEvent && activeEvent.scale ? activeEvent.scale : 100;
+  }
+
+  function onResizeMove(clientX, clientY) {
+    if (!isResizing) return;
+    const currentDist = Math.hypot(clientX - centerX, clientY - centerY);
+    const ratio = currentDist / initialDist;
+    const maxSafe = getMaxAllowedScale();
+    const newScale = Math.min(maxSafe, Math.max(60, Math.round(startScale * ratio)));
+    applyCardScale(newScale, false);
+  }
+
+  function onResizeEnd() {
+    if (!isResizing) return;
+    isResizing = false;
+    resizeHandle.classList.remove('is-resizing');
+    document.body.style.cursor = '';
+    mainCard.style.transition = 'box-shadow 0.3s ease, border-color 0.3s ease, background 0.2s ease';
+    if (activeEvent) {
+      storage.saveEvent(activeEvent);
+    }
+  }
+
+  // Mouse en el tirador
+  resizeHandle.addEventListener('mousedown', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    onResizeStart(e.clientX, e.clientY);
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (isResizing) {
+      onResizeMove(e.clientX, e.clientY);
+    }
+  });
+
+  window.addEventListener('mouseup', onResizeEnd);
+
+  // Touch en el tirador (para redimensionar con 1 dedo en pantallas táctiles como Asus ZenBook Duo)
+  resizeHandle.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      e.stopPropagation();
+      const t = e.touches[0];
+      onResizeStart(t.clientX, t.clientY);
+    }
+  }, { passive: false });
+
+  window.addEventListener('touchmove', (e) => {
+    if (isResizing && e.touches.length === 1) {
+      e.preventDefault();
+      const t = e.touches[0];
+      onResizeMove(t.clientX, t.clientY);
+    }
+  }, { passive: false });
+
+  window.addEventListener('touchend', onResizeEnd);
+  window.addEventListener('touchcancel', onResizeEnd);
 }
 
 function setupEventListeners() {

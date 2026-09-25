@@ -16,6 +16,8 @@
   --labs-pink: #ec4899;
   --labs-emerald: #10b981;
   --labs-gold: #f59e0b;
+  --labs-citrino-solar: #eab308;
+  --labs-citrino-glow: rgba(234, 179, 8, 0.38);
 }
 
 body.labs-universe {

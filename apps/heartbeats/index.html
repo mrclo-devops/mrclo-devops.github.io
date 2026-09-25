@@ -7,6 +7,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="./assets/icon.svg" />
+  <link rel="apple-touch-icon" href="./assets/icon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@600;700&family=Cinzel:wght@600;700&family=Dancing+Script:wght@600;700&family=Fredoka:wght@600;700&family=Great+Vibes&family=Montserrat:wght@500;700;800&family=Oswald:wght@600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
@@ -191,6 +193,18 @@
     <!-- Pie de Versión -->
     <div class="app-footer">
       <span>Toca el contador para rotar de evento • v1.4.1</span>
+    </div>
+
+    <!-- Tirador de Esquina para Redimensionar con Mouse (Desktop / Laptop) -->
+    <div class="card-resize-handle" id="card-resize-handle" title="Arrastra esta esquina con el mouse para cambiar el tamaño">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+        <circle cx="10" cy="10" r="1.4" />
+        <circle cx="10" cy="6" r="1.4" />
+        <circle cx="6" cy="10" r="1.4" />
+        <circle cx="10" cy="2" r="1.4" />
+        <circle cx="6" cy="6" r="1.4" />
+        <circle cx="2" cy="10" r="1.4" />
+      </svg>
     </div>
   </main>
 
