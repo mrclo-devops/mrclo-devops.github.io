@@ -33,6 +33,9 @@ const photoCounter = document.getElementById('photo-counter');
 const btnUploadLabel = document.getElementById('btn-upload-label');
 const btnToggleSettings = document.getElementById('btn-toggle-settings');
 const btnSettingsGear = document.getElementById('btn-settings-gear');
+const fontFamilySelect = document.getElementById('font-family-select');
+const cardOpacitySlider = document.getElementById('card-opacity-slider');
+const cardOpacityVal = document.getElementById('card-opacity-val');
 
 let carousel = null;
 let events = [];
@@ -197,6 +200,12 @@ function renderActiveEventUI() {
   // Aplicar color temático
   applyColorTheme(activeEvent.accentColor || '#38bdf8', false);
 
+  // Aplicar tipografía emocional
+  applyFontFamily(activeEvent.fontFamily || 'Montserrat', false);
+
+  // Aplicar opacidad del recuadro
+  applyCardOpacity(activeEvent.bgOpacity !== undefined ? activeEvent.bgOpacity : 65, false);
+
   // Cargar fotos al carrusel
   const photos = activeEvent.photos || [];
   carousel.setPhotos(photos);
@@ -285,13 +294,41 @@ function applyColorTheme(hexColor, save = true) {
   }
 }
 
+// Aplicar y persistir tipografía emocional
+function applyFontFamily(fontName, save = true) {
+  if (fontFamilySelect) fontFamilySelect.value = fontName;
+  document.documentElement.style.setProperty('--memory-font', `'${fontName}', sans-serif`);
+
+  if (activeEvent) {
+    activeEvent.fontFamily = fontName;
+    if (save) storage.saveEvent(activeEvent);
+  }
+}
+
+// Aplicar y persistir opacidad del recuadro
+function applyCardOpacity(opacityVal, save = true) {
+  const num = parseInt(opacityVal, 10);
+  if (cardOpacitySlider) cardOpacitySlider.value = num;
+  if (cardOpacityVal) cardOpacityVal.innerText = `${num}%`;
+
+  const decimal = (num / 100).toFixed(2);
+  document.documentElement.style.setProperty('--card-opacity', decimal);
+
+  if (activeEvent) {
+    activeEvent.bgOpacity = num;
+    if (save) storage.saveEvent(activeEvent);
+  }
+}
+
 // Guardar cambios en el evento activo
 async function persistActiveEvent() {
   if (!activeEvent) return;
-  activeEvent.title = eventTitleInput.value || 'Mi Recordatorio';
+  activeEvent.title = eventTitleInput.value || 'Mi Primer Recuerdo';
   activeEvent.targetDate = dateInput.value;
   activeEvent.intervalSeconds = parseInt(speedRange.value);
   activeEvent.position = getCardPosition();
+  if (fontFamilySelect) activeEvent.fontFamily = fontFamilySelect.value;
+  if (cardOpacitySlider) activeEvent.bgOpacity = parseInt(cardOpacitySlider.value, 10);
 
   await storage.saveEvent(activeEvent);
   renderEventsTabs();
@@ -472,6 +509,20 @@ function setupEventListeners() {
       applyColorTheme(dot.dataset.color);
     });
   });
+
+  // Selector de tipografía
+  if (fontFamilySelect) {
+    fontFamilySelect.addEventListener('change', (e) => {
+      applyFontFamily(e.target.value, true);
+    });
+  }
+
+  // Regulador de opacidad de fondo
+  if (cardOpacitySlider) {
+    cardOpacitySlider.addEventListener('input', (e) => {
+      applyCardOpacity(e.target.value, true);
+    });
+  }
 
   // Botón superior flotante único (Alternar Minimizar / Expandir)
   if (floatingToggleBtn) {

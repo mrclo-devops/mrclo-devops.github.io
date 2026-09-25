@@ -79,13 +79,15 @@ class MultiEventStorage {
     localStorage.setItem('anniversary_active_event_id', id);
   }
 
-  createDefaultEvent(id = 'event_default', title = 'Aniversario con Nelly', color = '#38bdf8') {
+  createDefaultEvent(id = 'event_default', title = 'Mi Primer Recuerdo', color = '#38bdf8') {
     const defaultDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 16);
     return {
       id,
       title,
       targetDate: defaultDate,
       accentColor: color,
+      fontFamily: 'Montserrat',
+      bgOpacity: 65,
       intervalSeconds: 4,
       position: null,
       photos: [] // Máx 10 fotos { id, data }
