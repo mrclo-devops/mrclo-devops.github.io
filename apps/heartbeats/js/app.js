@@ -31,15 +31,17 @@ const btnDeleteEvent = document.getElementById('btn-delete-event');
 const eventBadge = document.getElementById('event-badge');
 const photoCounter = document.getElementById('photo-counter');
 const btnUploadLabel = document.getElementById('btn-upload-label');
-const btnToggleSettings = document.getElementById('btn-toggle-settings');
 const btnSettingsGear = document.getElementById('btn-settings-gear');
 const fontFamilySelect = document.getElementById('font-family-select');
 const cardOpacitySlider = document.getElementById('card-opacity-slider');
 const cardOpacityVal = document.getElementById('card-opacity-val');
+const cardScaleSlider = document.getElementById('card-scale-slider');
+const cardScaleVal = document.getElementById('card-scale-val');
 
 let carousel = null;
 let events = [];
 let activeEvent = null;
+let savedMinimizedPosition = null;
 
 // Inicialización de la Aplicación
 async function initApp() {
@@ -82,9 +84,21 @@ function initSettingsCollapse() {
 function expandSettings() {
   mainCard.classList.remove('is-collapsed');
   localStorage.setItem('settings_collapsed', 'false');
-  if (btnToggleSettings) {
-    btnToggleSettings.querySelector('.toggle-label').innerText = 'Ocultar Ajustes';
+
+  // Guardar posición personalizada previa para no perderla
+  if (mainCard.style.top && mainCard.style.top !== '50%') {
+    savedMinimizedPosition = {
+      top: mainCard.style.top,
+      left: mainCard.style.left,
+      transform: mainCard.style.transform
+    };
   }
+
+  // Auto-centrar en pantalla para garantizar que todos los controles sean visibles y no queden cortados
+  mainCard.style.top = '50%';
+  mainCard.style.left = '50%';
+  mainCard.style.transform = 'translate(-50%, -50%) scale(var(--card-scale, 1.0))';
+
   if (btnSettingsGear) {
     btnSettingsGear.classList.add('is-active');
   }
@@ -100,9 +114,16 @@ function expandSettings() {
 function collapseSettings() {
   mainCard.classList.add('is-collapsed');
   localStorage.setItem('settings_collapsed', 'true');
-  if (btnToggleSettings) {
-    btnToggleSettings.querySelector('.toggle-label').innerText = 'Personalizar Recordatorio';
+
+  // Restaurar la posición de la esquina elegida por el usuario
+  if (savedMinimizedPosition && savedMinimizedPosition.top && savedMinimizedPosition.left) {
+    mainCard.style.top = savedMinimizedPosition.top;
+    mainCard.style.left = savedMinimizedPosition.left;
+    mainCard.style.transform = savedMinimizedPosition.transform || 'scale(var(--card-scale, 1.0))';
+  } else if (activeEvent && activeEvent.position) {
+    applyCardPosition(activeEvent.position.x, activeEvent.position.y);
   }
+
   if (btnSettingsGear) {
     btnSettingsGear.classList.remove('is-active');
   }
@@ -226,6 +247,9 @@ function renderActiveEventUI() {
   // Aplicar opacidad del recuadro
   applyCardOpacity(activeEvent.bgOpacity !== undefined ? activeEvent.bgOpacity : 65, false);
 
+  // Aplicar tamaño / escala del recuadro
+  applyCardScale(activeEvent.scale !== undefined ? activeEvent.scale : 100, false);
+
   // Cargar fotos al carrusel
   const photos = activeEvent.photos || [];
   carousel.setPhotos(photos);
@@ -341,6 +365,21 @@ function applyCardOpacity(opacityVal, save = true) {
   }
 }
 
+// Aplicar y persistir tamaño / escala del recuadro (60% a 115%)
+function applyCardScale(scaleVal, save = true) {
+  const num = Math.min(115, Math.max(60, parseInt(scaleVal, 10) || 100));
+  if (cardScaleSlider) cardScaleSlider.value = num;
+  if (cardScaleVal) cardScaleVal.innerText = `${num}%`;
+
+  const scaleFactor = (num / 100).toFixed(2);
+  document.documentElement.style.setProperty('--card-scale', scaleFactor);
+
+  if (activeEvent) {
+    activeEvent.scale = num;
+    if (save) storage.saveEvent(activeEvent);
+  }
+}
+
 // Guardar cambios en el evento activo
 async function persistActiveEvent() {
   if (!activeEvent) return;
@@ -350,6 +389,7 @@ async function persistActiveEvent() {
   activeEvent.position = getCardPosition();
   if (fontFamilySelect) activeEvent.fontFamily = fontFamilySelect.value;
   if (cardOpacitySlider) activeEvent.bgOpacity = parseInt(cardOpacitySlider.value, 10);
+  if (cardScaleSlider) activeEvent.scale = parseInt(cardScaleSlider.value, 10);
 
   await storage.saveEvent(activeEvent);
   renderEventsTabs();
@@ -368,31 +408,37 @@ function applyCardPosition(x, y) {
 
   mainCard.style.top = `${boundedY}px`;
   mainCard.style.left = `${boundedX}px`;
-  mainCard.style.transform = 'none';
+  mainCard.style.transform = 'scale(var(--card-scale, 1.0))';
 }
 
 function resetCardPosition() {
   mainCard.style.top = '50%';
   mainCard.style.left = '50%';
-  mainCard.style.transform = 'translate(-50%, -50%)';
+  mainCard.style.transform = 'translate(-50%, -50%) scale(var(--card-scale, 1.0))';
   if (activeEvent) {
     activeEvent.position = null;
     storage.saveEvent(activeEvent);
   }
 }
 
-// Configuración de Arrastre Libre
+// Configuración de Arrastre Libre y Escalado Táctil (Pinch-to-scale)
 function setupDraggableCard() {
   let isDragging = false;
+  let isPinching = false;
+  let initialPinchDist = 0;
+  let initialScale = 100;
   let offsetX = 0;
   let offsetY = 0;
+  let rafId = null;
+  let currentTargetX = 0;
+  let currentTargetY = 0;
 
   function onPointerDown(clientX, clientY) {
     isDragging = true;
     const rect = mainCard.getBoundingClientRect();
-    mainCard.style.transform = 'none';
     mainCard.style.left = `${rect.left}px`;
     mainCard.style.top = `${rect.top}px`;
+    mainCard.style.transform = 'scale(var(--card-scale, 1.0))';
 
     offsetX = clientX - rect.left;
     offsetY = clientY - rect.top;
@@ -400,26 +446,44 @@ function setupDraggableCard() {
     mainCard.classList.add('is-dragging');
   }
 
-  function onPointerMove(clientX, clientY) {
+  function updateCardPositionRAF() {
     if (!isDragging) return;
-    const newX = clientX - offsetX;
-    const newY = clientY - offsetY;
-
     const maxW = window.innerWidth - mainCard.offsetWidth;
     const maxH = window.innerHeight - mainCard.offsetHeight;
-    const boundedX = Math.max(6, Math.min(newX, maxW - 6));
-    const boundedY = Math.max(6, Math.min(newY, maxH - 6));
+    const boundedX = Math.max(6, Math.min(currentTargetX, maxW - 6));
+    const boundedY = Math.max(6, Math.min(currentTargetY, maxH - 6));
 
     mainCard.style.left = `${boundedX}px`;
     mainCard.style.top = `${boundedY}px`;
+    rafId = null;
+  }
+
+  function onPointerMove(clientX, clientY) {
+    if (!isDragging) return;
+    currentTargetX = clientX - offsetX;
+    currentTargetY = clientY - offsetY;
+    if (!rafId) {
+      rafId = requestAnimationFrame(updateCardPositionRAF);
+    }
   }
 
   function onPointerUp() {
-    if (!isDragging) return;
-    isDragging = false;
-    mainCard.classList.remove('is-dragging');
-    mainCard.style.transition = 'box-shadow 0.3s ease, border-color 0.3s ease';
-    persistActiveEvent();
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+    if (isDragging) {
+      isDragging = false;
+      mainCard.classList.remove('is-dragging');
+      mainCard.style.transition = 'box-shadow 0.3s ease, border-color 0.3s ease';
+      persistActiveEvent();
+    }
+    if (isPinching) {
+      isPinching = false;
+      if (activeEvent) {
+        storage.saveEvent(activeEvent);
+      }
+    }
   }
 
   function isDraggableArea(target) {
@@ -443,16 +507,40 @@ function setupDraggableCard() {
 
   window.addEventListener('mouseup', onPointerUp);
 
-  // Táctil (Móviles)
+  // Táctil (Móviles con soporte de pellizco para redimensionar)
   mainCard.addEventListener('touchstart', (e) => {
-    if (isDraggableArea(e.target)) {
+    if (e.touches.length === 2) {
+      // Detección de pellizco con 2 dedos
+      isDragging = false;
+      isPinching = true;
+      const t1 = e.touches[0];
+      const t2 = e.touches[1];
+      initialPinchDist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+      initialScale = activeEvent && activeEvent.scale ? activeEvent.scale : 100;
+      return;
+    }
+
+    if (e.touches.length === 1 && isDraggableArea(e.target)) {
       const touch = e.touches[0];
       onPointerDown(touch.clientX, touch.clientY);
     }
   }, { passive: false });
 
   window.addEventListener('touchmove', (e) => {
-    if (isDragging) {
+    if (isPinching && e.touches.length === 2) {
+      e.preventDefault();
+      const t1 = e.touches[0];
+      const t2 = e.touches[1];
+      const currentDist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+      if (initialPinchDist > 0) {
+        const factor = currentDist / initialPinchDist;
+        const newScale = Math.round(initialScale * factor);
+        applyCardScale(newScale, false);
+      }
+      return;
+    }
+
+    if (isDragging && e.touches.length === 1) {
       e.preventDefault();
       const touch = e.touches[0];
       onPointerMove(touch.clientX, touch.clientY);
@@ -460,6 +548,7 @@ function setupDraggableCard() {
   }, { passive: false });
 
   window.addEventListener('touchend', onPointerUp);
+  window.addEventListener('touchcancel', onPointerUp);
 }
 
 function setupEventListeners() {
@@ -481,14 +570,6 @@ function setupEventListeners() {
       eventTitleInput.select();
     }, 150);
   });
-
-  // Botón para alternar ajustes (Minimizar / Expandir)
-  if (btnToggleSettings) {
-    btnToggleSettings.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleSettings();
-    });
-  }
 
   // Engranaje en la barra de recordatorios (Ajustes)
   if (btnSettingsGear) {
@@ -519,15 +600,18 @@ function setupEventListeners() {
     }
   });
 
-  // Selector de color personalizado
+  // Selector de color personalizado (desacoplado input/change para 60fps)
   colorPicker.addEventListener('input', (e) => {
-    applyColorTheme(e.target.value);
+    applyColorTheme(e.target.value, false);
+  });
+  colorPicker.addEventListener('change', (e) => {
+    applyColorTheme(e.target.value, true);
   });
 
-  // Paleta de colores predefinidos
+  // Paleta de colores predefinidos (Gemas zodiacales)
   colorDots.forEach((dot) => {
     dot.addEventListener('click', () => {
-      applyColorTheme(dot.dataset.color);
+      applyColorTheme(dot.dataset.color, true);
     });
   });
 
@@ -538,10 +622,23 @@ function setupEventListeners() {
     });
   }
 
-  // Regulador de opacidad de fondo
+  // Regulador de opacidad de fondo (60fps en input, persiste en change)
   if (cardOpacitySlider) {
     cardOpacitySlider.addEventListener('input', (e) => {
+      applyCardOpacity(e.target.value, false);
+    });
+    cardOpacitySlider.addEventListener('change', (e) => {
       applyCardOpacity(e.target.value, true);
+    });
+  }
+
+  // Regulador de tamaño / escala (60fps en input, persiste en change)
+  if (cardScaleSlider) {
+    cardScaleSlider.addEventListener('input', (e) => {
+      applyCardScale(e.target.value, false);
+    });
+    cardScaleSlider.addEventListener('change', (e) => {
+      applyCardScale(e.target.value, true);
     });
   }
 

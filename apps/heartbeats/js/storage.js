@@ -88,6 +88,7 @@ class MultiEventStorage {
       accentColor: color,
       fontFamily: 'Montserrat',
       bgOpacity: 65,
+      scale: 100,
       intervalSeconds: 4,
       position: null,
       photos: [] // Máx 10 fotos { id, data }

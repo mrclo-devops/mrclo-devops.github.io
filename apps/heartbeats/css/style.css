@@ -93,7 +93,8 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(var(--card-scale, 1.0));
+  transform-origin: center center;
   z-index: 10;
   background: var(--card-bg);
   backdrop-filter: blur(calc(var(--card-opacity, 0.65) * 22px));
@@ -285,10 +286,10 @@ body.ambient-mode .events-bar {
 }
 
 body.ambient-mode .main-card {
-  background: rgba(15, 23, 42, 0.45);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: var(--card-bg);
+  border-color: var(--accent);
   padding: 16px 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 38px var(--accent-glow), 0 0 14px var(--accent);
 }
 
 body.ambient-mode .event-title-input {
@@ -770,10 +771,11 @@ input[type="range"] {
     width: min(86vw, 300px);
     padding: 10px 12px;
     border-radius: 18px;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55), 0 0 18px var(--accent-glow);
+    background: var(--card-bg);
+    backdrop-filter: blur(calc(var(--card-opacity, 0.65) * 16px));
+    -webkit-backdrop-filter: blur(calc(var(--card-opacity, 0.65) * 16px));
+    border: 1.5px solid var(--accent);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6), 0 0 28px var(--accent-glow), 0 0 10px var(--accent);
   }
 
   .drag-handle {

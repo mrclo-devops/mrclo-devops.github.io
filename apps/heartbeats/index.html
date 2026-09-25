@@ -73,15 +73,6 @@
       </div>
     </section>
 
-    <!-- Botón para Colapsar / Expandir Ajustes -->
-    <div class="toggle-settings-row">
-      <button class="btn-toggle-settings" id="btn-toggle-settings" title="Mostrar u ocultar opciones de personalización">
-        <span class="toggle-icon">⚙️</span>
-        <span class="toggle-label">Personalizar Recordatorio</span>
-        <span class="toggle-chevron">▾</span>
-      </button>
-    </div>
-
     <!-- Panel de Configuración del Evento Activo -->
     <section class="controls-section" id="controls-section">
       <div class="controls-header">
@@ -89,20 +80,20 @@
         <span class="event-counter-badge" id="event-badge">1/10</span>
       </div>
 
-      <!-- Selector de Color y Paleta -->
+      <!-- Selector de Color y Paleta Zodiacal (Dragón, Cabra, Virgo, Capricornio) -->
       <div class="form-group">
-        <label>Color temático de este evento:</label>
+        <label>Gema y color temático de este recuerdo:</label>
         <div class="color-picker-row">
           <input type="color" id="color-picker" value="#38bdf8" title="Elegir color personalizado" />
           <div class="color-presets">
-            <span class="color-dot" data-color="#38bdf8" style="background:#38bdf8;" title="Azul Cielo Eléctrico"></span>
-            <span class="color-dot" data-color="#fb7185" style="background:#fb7185;" title="Rosa Romántico"></span>
-            <span class="color-dot" data-color="#ef4444" style="background:#ef4444;" title="Rojo Pasión"></span>
-            <span class="color-dot" data-color="#f97316" style="background:#f97316;" title="Naranja Atardecer"></span>
-            <span class="color-dot" data-color="#f59e0b" style="background:#f59e0b;" title="Dorado Radiante"></span>
-            <span class="color-dot" data-color="#10b981" style="background:#10b981;" title="Verde Esmeralda"></span>
-            <span class="color-dot" data-color="#06b6d4" style="background:#06b6d4;" title="Turquesa Glaciar"></span>
-            <span class="color-dot" data-color="#a855f7" style="background:#a855f7;" title="Púrpura Místico"></span>
+            <span class="color-dot" data-color="#ef4444" style="background:#ef4444;" title="Rubí Fuego (Dragón)"></span>
+            <span class="color-dot" data-color="#ea580c" style="background:#ea580c;" title="Cornalina Ámbar (Capricornio)"></span>
+            <span class="color-dot" data-color="#eab308" style="background:#eab308;" title="Citrino Solar (Virgo)"></span>
+            <span class="color-dot" data-color="#10b981" style="background:#10b981;" title="Jade Imperial (Dragón)"></span>
+            <span class="color-dot" data-color="#06b6d4" style="background:#06b6d4;" title="Aguamarina Celestial (Cabra)"></span>
+            <span class="color-dot" data-color="#2563eb" style="background:#2563eb;" title="Zafiro Real (Virgo)"></span>
+            <span class="color-dot" data-color="#8b5cf6" style="background:#8b5cf6;" title="Amatista Mística (Capricornio)"></span>
+            <span class="color-dot" data-color="#ec4899" style="background:#ec4899;" title="Cuarzo Rosa (Cabra)"></span>
           </div>
         </div>
       </div>
@@ -142,6 +133,16 @@
         </div>
         <input type="range" id="card-opacity-slider" min="0" max="100" value="65" />
         <small class="form-hint">Al 0%, el recuadro es invisible y los números flotan directamente sobre tu foto.</small>
+      </div>
+
+      <!-- Regulador de Tamaño / Escala del Recuerdo (60% a 115%) -->
+      <div class="form-group">
+        <div class="slider-header-row">
+          <label for="card-scale-slider">Tamaño del recuadro (Escala):</label>
+          <span class="slider-badge" id="card-scale-val">100%</span>
+        </div>
+        <input type="range" id="card-scale-slider" min="60" max="115" value="100" />
+        <small class="form-hint">Permite achicar la tarjeta para que sea menos invasiva. En móvil también puedes pellizcar con dos dedos.</small>
       </div>
 
       <!-- Selector de Fecha y Hora -->
