@@ -141,15 +141,35 @@ async function loadAllEvents() {
   renderActiveEventUI();
 }
 
-// Renderiza las pestañas superiores de selección de evento con números compactos
+// Renderiza las pestañas superiores de selección de evento con números compactos y mnemotecnia de color
 function renderEventsTabs() {
   eventsTabsContainer.innerHTML = '';
 
   events.forEach((evt, idx) => {
     const tab = document.createElement('button');
-    tab.className = `event-tab ${evt.id === activeEvent.id ? 'active' : ''}`;
+    const isActive = evt.id === activeEvent.id;
+    const evtColor = evt.accentColor || '#38bdf8';
+
+    tab.className = `event-tab ${isActive ? 'active' : ''}`;
     tab.innerText = String(idx + 1);
     tab.title = `${idx + 1}. ${evt.title || 'Recordatorio'}`;
+
+    if (isActive) {
+      tab.style.backgroundColor = evtColor;
+      tab.style.borderColor = evtColor;
+      tab.style.color = '#0b0f19';
+      tab.style.boxShadow = `0 0 14px ${evtColor}99`;
+      tab.style.transform = 'scale(1.12)';
+      tab.style.fontWeight = '800';
+    } else {
+      // Píldora inactiva: conserva su color individual con fondo translúcido y borde/número nítido
+      tab.style.backgroundColor = 'rgba(15, 23, 42, 0.82)';
+      tab.style.borderColor = `${evtColor}aa`;
+      tab.style.color = evtColor;
+      tab.style.boxShadow = `0 0 6px ${evtColor}44`;
+      tab.style.transform = 'scale(1.0)';
+      tab.style.fontWeight = '700';
+    }
 
     tab.addEventListener('click', () => {
       switchActiveEvent(evt.id);
@@ -292,6 +312,7 @@ function applyColorTheme(hexColor, save = true) {
     activeEvent.accentColor = hexColor;
     if (save) storage.saveEvent(activeEvent);
   }
+  renderEventsTabs();
 }
 
 // Aplicar y persistir tipografía emocional
