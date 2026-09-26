@@ -303,9 +303,9 @@
 
         <!-- Aviso si APPS_SCRIPT_WEBAPP_URL aún no está enlazada -->
         <div id="gatekeeper-config-banner" class="gatekeeper-config-warning" style="display: none;">
-          ⚠️ <strong>Aviso de Configuración:</strong> El endpoint de validación en Google Apps Script está pendiente de enlace. Configura la URL del Web App para habilitar la vinculación mono-equipo en Google Sheets.
+          ⚠️ <strong>Aviso de Configuración:</strong> El endpoint de validación está pendiente de enlace. Configura la URL del Web App para habilitar la vinculación mono-equipo en el servidor seguro.
           <div style="margin-top: 8px;">
-            <button id="btn-toggle-config-input" style="background: none; border: none; color: #38bdf8; text-decoration: underline; font-size: 0.74rem; cursor: pointer; padding: 0;">[Pegar URL de Google Apps Script para pruebas]</button>
+            <button id="btn-toggle-config-input" style="background: none; border: none; color: #38bdf8; text-decoration: underline; font-size: 0.74rem; cursor: pointer; padding: 0;">[Configurar URL del servidor para pruebas]</button>
           </div>
           <div id="config-input-row" style="display: none; margin-top: 8px; gap: 6px;">
             <input type="text" id="custom-endpoint-input" placeholder="https://script.google.com/macros/s/.../exec" style="background: rgba(15,23,42,0.9); border: 1px solid rgba(56,189,248,0.4); border-radius: 6px; padding: 6px 8px; font-size: 0.75rem; color: #fff; width: 75%;" />
@@ -323,13 +323,13 @@
         </div>
       </div>
 
-      <!-- Vista 2: Cargando / Verificando con Google Sheets -->
+      <!-- Vista 2: Cargando / Validando Licencia -->
       <div id="gatekeeper-view-loading" style="display: none;">
         <div class="gatekeeper-icon">🔄</div>
-        <h2>Verificando Licencia</h2>
-        <div class="gatekeeper-badge-loading">Conectando con Google Sheets...</div>
+        <h2>Validando Licencia</h2>
+        <div class="gatekeeper-badge-loading">Validando licencia...</div>
         <p class="gatekeeper-desc" id="gatekeeper-loading-text">
-          Validando código de autorización y vinculando este dispositivo con la base de datos de compras en tiempo real...
+          Conectando con el servidor seguro y vinculando este dispositivo con el registro oficial de compras...
         </p>
       </div>
 
@@ -360,8 +360,8 @@
             <span class="gatekeeper-detail-val" id="fb-success-amount">---</span>
           </div>
           <div class="gatekeeper-detail-row">
-            <span class="gatekeeper-detail-key">Base de Datos:</span>
-            <span class="gatekeeper-detail-val" style="color: #34d399;">● Registrado en Google Sheets</span>
+            <span class="gatekeeper-detail-key">Registro Oficial:</span>
+            <span class="gatekeeper-detail-val" style="color: #34d399;">● Verificado y Activo</span>
           </div>
         </div>
 
@@ -404,10 +404,10 @@
           Conforme a la Cláusula 2 de los Términos de Servicio de mrclo.dev, cada compra autoriza una licencia perpetua para un único dispositivo personal (teléfono móvil o computador). Si deseas utilizar la aplicación en este nuevo equipo, puedes adquirir una licencia adicional.
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
-          <a href="/labs-drops/" class="btn-activate" style="display: block; text-decoration: none; text-align: center;">Adquirir Nueva Licencia en Labs & Drops 🛍️</a>
-          <button id="btn-try-another-key" style="background: none; border: none; color: #94a3b8; font-size: 0.82rem; cursor: pointer; text-decoration: underline;">Probar otro código de autorización</button>
-          <a href="mailto:support@mrclo.dev" class="gatekeeper-link" style="font-size: 0.8rem;">¿Cambiaste de equipo? Contáctanos a support@mrclo.dev</a>
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 14px;">
+          <a href="/labs-drops/" class="btn-activate" style="display: flex; align-items: center; justify-content: center; text-decoration: none; text-align: center; min-height: 44px;">Adquirir Nueva Licencia en Labs & Drops 🛍️</a>
+          <button id="btn-try-another-key" style="background: none; border: none; color: #94a3b8; font-size: 0.8rem; cursor: pointer; text-decoration: underline; padding: 4px;">Probar otro código de autorización</button>
+          <a href="mailto:support@mrclo.dev" class="gatekeeper-link" style="font-size: 0.78rem;">¿Cambiaste de equipo? Contáctanos a support@mrclo.dev</a>
         </div>
       </div>
 
@@ -602,7 +602,7 @@
           showError(data.message || "No se pudo validar el código.");
           return false;
         } catch (errNet) {
-          console.warn("Fallo al validar con el servidor de Google Sheets:", errNet);
+          console.warn("Fallo al validar con el servidor de licencias:", errNet);
           switchView('input');
           showError("No se pudo conectar con el servidor de verificación. Revisa tu conexión a internet.");
           return false;
