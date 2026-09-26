@@ -94,25 +94,42 @@ class MultiEventStorage {
     localStorage.setItem('anniversary_active_event_id', id);
   }
 
-  createDefaultEvent(id = 'event_default', title = 'Mi Primer Recuerdo', color = '#38bdf8') {
+  createDefaultEvent(id = 'event_default', title = '❤️ Primer aniversario con Marcelo ❤️', color = '#ec4899') {
     const defaultDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 16);
     return {
       id,
       title,
       targetDate: defaultDate,
       accentColor: color,
-      fontFamily: 'Montserrat',
-      bgOpacity: 65,
+      fontFamily: 'Great Vibes',
+      bgOpacity: 55,
       scale: 100,
       intervalSeconds: 4,
       position: null,
-      photos: [], // Máx 10 fotos { id, data }
+      photos: [
+        { id: 'p1', data: './assets/photos/photo_1.webp' },
+        { id: 'p2', data: './assets/photos/photo_4.webp' },
+        { id: 'p3', data: './assets/photos/photo_6.webp' },
+        { id: 'p4', data: './assets/photos/photo_7.webp' },
+        { id: 'p5', data: './assets/photos/photo_8.webp' },
+        { id: 'p6', data: './assets/photos/photo_19.webp' },
+        { id: 'p7', data: './assets/photos/photo_9.webp' },
+        { id: 'p8', data: './assets/photos/photo_10.webp' },
+        { id: 'p9', data: './assets/photos/photo_11.webp' },
+        { id: 'p10', data: './assets/photos/photo_17.webp' }
+      ],
       alarms: [
         { id: 1, enabled: true, value: 7, unit: 'days' },
         { id: 2, enabled: true, value: 1, unit: 'days' },
         { id: 3, enabled: false, value: 1, unit: 'hours' }
       ],
-      audio: null // { name, type, data, autoplay, volume }
+      audio: {
+        name: 'Solamente Tú - Pablo Alborán',
+        type: 'audio/mp3',
+        data: './assets/audio/Solamente_tu.mp3',
+        autoplay: true,
+        volume: 80
+      }
     };
   }
 }

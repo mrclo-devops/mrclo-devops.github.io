@@ -171,7 +171,11 @@ function toggleSettings() {
 async function loadAllEvents() {
   events = await storage.getAllEvents();
 
-  if (events.length === 0) {
+  const urlParams = new URLSearchParams(window.location.search);
+  const forceNellyDemo = urlParams.get('demo') === 'nelly' || urlParams.get('demo') === 'aniversario';
+  const isGenericEmpty = events.length === 1 && events[0].title === 'Mi Primer Recuerdo' && (!events[0].photos || events[0].photos.length === 0);
+
+  if (events.length === 0 || forceNellyDemo || isGenericEmpty) {
     const defaultEvent = storage.createDefaultEvent();
     await storage.saveEvent(defaultEvent);
     events = [defaultEvent];
