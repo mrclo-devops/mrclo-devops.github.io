@@ -128,9 +128,16 @@ const translations = {
     "labs.d1.desc": "Visualizador ambiental de cuenta regresiva en vivo sincronizado con latidos compartidos y carrusel de fotografías. Funciona como wallpaper vivo en escritorio (Linux/macOS/Windows) o PWA en celular, preservando tu privacidad sin rastreadores.",
     "labs.d1.platforms": "Desktop Wallpaper · Web PWA · Mobile Lockscreen",
     "labs.d1.support": "Soporte: support@mrclo.dev",
-    "labs.d1.price_badge": "Actualizaciones para siempre",
+    "labs.d1.price_badge": "Licencia de por vida (1 dispositivo)",
+    "labs.d1.price_badge_promo": "50% OFF Inauguración (1 Dispositivo)",
     "labs.d1.price_hook": "💡 <em>A diferencia de otras apps, no hay arriendo mensual ni avisos publicitarios.</em>",
     "labs.d1.price_usd": "(Aprox. 5 USD)",
+    "labs.d1.coupon_toggle": "¿Tienes un cupón de descuento?",
+    "labs.d1.coupon_placeholder": "Ej: INAUGURACION",
+    "labs.d1.coupon_apply": "Aplicar",
+    "labs.d1.coupon_remove": "Quitar",
+    "labs.d1.coupon_applied": "🎉 ¡Cupón aplicado! 50% de descuento por inauguración (-$2.500 CLP)",
+    "labs.d1.coupon_invalid": "Cupón no válido o expirado.",
     "labs.d1.btn_buy": "Pagar con",
     "labs.d1.btn_buy_alt": "Pagar con",
     "labs.d1.btn_pay_with": "Pagar con",
@@ -197,16 +204,16 @@ const translations = {
 
     // Feature Catalog Modal (Spanish)
     "catalog.title": "✨ Catálogo de Funcionalidades — Heartbeats Memories",
-    "catalog.badge": "v1.5.0 • Licencia Vitalicia",
+    "catalog.badge": "v1.5.0 • Licencia Vitalicia (1 Dispositivo)",
     "catalog.price_usd": "(Aprox. 5 USD)",
-    "catalog.lifetime_pill": "Actualizaciones para siempre",
-    "catalog.hero_hook": "💡 <strong>A diferencia de otras apps, no hay arriendo mensual ni avisos publicitarios.</strong> Compras tu licencia una sola vez y es tuya para siempre con todas las mejoras y actualizaciones continuas.",
+    "catalog.lifetime_pill": "Licencia de por vida (1 dispositivo)",
+    "catalog.hero_hook": "💡 <strong>A diferencia de otras apps, no hay arriendo mensual ni avisos publicitarios.</strong> Compras tu licencia una sola vez para 1 equipo personal y es tuya para siempre con todas las mejoras y actualizaciones continuas.",
     "catalog.hero_btn_buy": "Pagar con",
     "catalog.f1.title": "Agrandar o achicar el recuadro libremente",
     "catalog.f1.desc": "Adapta el tamaño de la tarjeta para que sea sutil y discreta en una esquina de tu pantalla o grande e impactante en tu celular. En el computador puedes arrastrar la esquina inferior con el ratón y en tu teléfono pellizcar con dos dedos.",
     "catalog.f2.title": "Hasta 10 colores y gemas temáticas",
     "catalog.f2.desc": "Personaliza el marco y el halo brillante con 10 tonos inspirados en gemas (rubí, cornalina, citrino, jade, turquesa, aguamarina, zafiro, amatista, cuarzo rosa y granate), o escoge cualquier color personalizado con el selector libre.",
-    "catalog.f3.title": "Hasta 3 alarmas hacia atrás (avisos previos)",
+    "catalog.f3.title": "Configura hasta tres alarmas antes del evento!",
     "catalog.f3.desc": "Configura hasta 3 alertas antes de que se cumpla tu fecha especial (por ejemplo: 1 mes antes, 1 semana antes o 1 hora antes) para que puedas preparar regalos, sorpresas o viajes con total anticipación.",
     "catalog.f4.title": "Música y sonido desde tu propio dispositivo",
     "catalog.f4.desc": "Sube tu canción favorita o una nota de voz en formato MP3, WAV o M4A directamente desde tu teléfono (Android o iPhone) o desde tu computador (Windows, Mac o Linux). Cuenta con reproductor propio, control de volumen y botón rápido para reproducir aun con la tarjeta minimizada.",
@@ -374,9 +381,16 @@ const translations = {
     "labs.d1.desc": "An ambient high-resolution live countdown visualizer synchronized with shared heartbeats and photo carousel. Functions as a live desktop wallpaper (Linux/macOS/Windows) or mobile PWA lockscreen, protecting your privacy without external trackers.",
     "labs.d1.platforms": "Desktop Wallpaper · Web PWA · Mobile Lockscreen",
     "labs.d1.support": "Support: support@mrclo.dev",
-    "labs.d1.price_badge": "Lifetime Updates Included",
+    "labs.d1.price_badge": "Lifetime License (1 Device)",
+    "labs.d1.price_badge_promo": "50% OFF Launch Promo (1 Device)",
     "labs.d1.price_hook": "💡 <em>Unlike other apps, no monthly fees or ads.</em>",
     "labs.d1.price_usd": "(Approx. $5 USD)",
+    "labs.d1.coupon_toggle": "Have a discount coupon?",
+    "labs.d1.coupon_placeholder": "e.g. INAUGURACION",
+    "labs.d1.coupon_apply": "Apply",
+    "labs.d1.coupon_remove": "Remove",
+    "labs.d1.coupon_applied": "🎉 Coupon applied! 50% launch discount (-$2,500 CLP / ~$2.5 USD)",
+    "labs.d1.coupon_invalid": "Invalid or expired coupon.",
     "labs.d1.btn_buy": "Pay with",
     "labs.d1.btn_buy_alt": "Pay with",
     "labs.d1.btn_pay_with": "Pay with",
@@ -444,16 +458,16 @@ const translations = {
 
     // Feature Catalog Modal (English)
     "catalog.title": "✨ Feature Catalog — Heartbeats Memories",
-    "catalog.badge": "v1.5.0 • Lifetime License",
+    "catalog.badge": "v1.5.0 • Lifetime License (1 Device)",
     "catalog.price_usd": "(Approx. $5 USD)",
-    "catalog.lifetime_pill": "Lifetime Updates Included",
-    "catalog.hero_hook": "💡 <strong>Unlike other apps, no monthly fees or ads.</strong> You purchase your license once and it is yours forever, with continuous updates included.",
+    "catalog.lifetime_pill": "Lifetime License (1 Device)",
+    "catalog.hero_hook": "💡 <strong>Unlike other apps, no monthly fees or ads.</strong> You purchase your license once for 1 personal device and it is yours forever, with continuous updates included.",
     "catalog.hero_btn_buy": "Pay with",
     "catalog.f1.title": "Freely scale and resize the card",
     "catalog.f1.desc": "Adjust the card size to keep it subtle and discreet in a screen corner or bold and prominent on mobile. On desktop, drag the bottom corner with your mouse; on mobile, pinch with two fingers.",
     "catalog.f2.title": "Up to 10 zodiac gem colors",
     "catalog.f2.desc": "Customize borders and glow halos with 10 gem-inspired hues (Ruby, Carnelian, Citrine, Jade, Turquoise, Aquamarine, Sapphire, Amethyst, Rose Quartz, and Garnet), or pick any custom shade with the free color picker.",
-    "catalog.f3.title": "Up to 3 retrospective countdown alarms",
+    "catalog.f3.title": "Set up to three alarms before the event!",
     "catalog.f3.desc": "Set up to 3 alerts before your milestone arrives (for example: 1 month before, 1 week before, or 1 hour before) so you can plan surprises, gifts, or travel well ahead of time.",
     "catalog.f4.title": "Custom audio and music from your device",
     "catalog.f4.desc": "Upload your favorite song or voice memo in MP3, WAV, or M4A directly from your phone (Android or iPhone) or computer (Windows, Mac, or Linux). Features built-in playback, volume slider, and instant play even when minimized.",
@@ -544,6 +558,14 @@ function setLanguage(lang) {
     }
   });
 
+  // Update input placeholders
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (dict[key]) {
+      el.setAttribute("placeholder", dict[key]);
+    }
+  });
+
   // Update legal framework container
   const legalTitle = document.getElementById("legal-title");
   if (legalTitle && dict["legal.title"]) {
@@ -576,6 +598,9 @@ function setLanguage(lang) {
       opt.classList.remove("active");
     }
   });
+
+  // Dispatch custom event for dynamic components
+  window.dispatchEvent(new CustomEvent("languageChanged", { detail: { lang } }));
 }
 
 // Initialize on DOMContentLoaded

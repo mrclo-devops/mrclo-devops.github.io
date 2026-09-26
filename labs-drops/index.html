@@ -146,12 +146,30 @@
           <!-- Price & Lifetime License Highlight Box -->
           <div class="drop-price-box">
             <div class="price-main-row">
-              <span class="price-amount">$5.000 CLP</span>
-              <span class="price-usd" data-i18n="labs.d1.price_usd">(Aprox. 5 USD)</span>
-              <span class="price-pill-lifetime"><i class="fas fa-infinity"></i> <span data-i18n="labs.d1.price_badge">Actualizaciones para siempre</span></span>
+              <span class="price-amount" id="d1-price-amount">$5.000 CLP</span>
+              <span class="price-usd" id="d1-price-usd" data-i18n="labs.d1.price_usd">(Aprox. 5 USD)</span>
+              <span class="price-pill-lifetime" id="d1-price-pill"><i class="fas fa-infinity"></i> <span data-i18n="labs.d1.price_badge">Licencia de por vida (1 dispositivo)</span></span>
             </div>
             <div class="price-hook-badge" data-i18n="labs.d1.price_hook">
               💡 <em>A diferencia de otras apps, no hay arriendo mensual ni avisos publicitarios.</em>
+            </div>
+
+            <!-- Coupon Section -->
+            <div class="coupon-section" id="coupon-section">
+              <button type="button" class="coupon-toggle-btn" id="coupon-toggle-btn" aria-expanded="false">
+                <i class="fas fa-ticket"></i>
+                <span data-i18n="labs.d1.coupon_toggle">¿Tienes un cupón de descuento?</span>
+                <i class="fas fa-chevron-down coupon-toggle-icon" id="coupon-toggle-icon"></i>
+              </button>
+              <div class="coupon-box" id="coupon-box" style="display: none;">
+                <div class="coupon-input-group">
+                  <input type="text" id="coupon-input" class="coupon-input" placeholder="Ej: INAUGURACION" autocomplete="off" spellcheck="false" data-i18n-placeholder="labs.d1.coupon_placeholder" />
+                  <button type="button" id="coupon-apply-btn" class="coupon-apply-btn">
+                    <span data-i18n="labs.d1.coupon_apply">Aplicar</span>
+                  </button>
+                </div>
+                <div id="coupon-feedback" class="coupon-feedback" style="display: none;"></div>
+              </div>
             </div>
           </div>
 
@@ -170,7 +188,7 @@
             <!-- Desktop QR Pay Card: Shown only on desktop screens -->
             <div class="pay-desktop-qr-card">
               <div class="qr-visual-frame">
-                <img src="/assets/img/qr-webpay.png" alt="QR Webpay Plus Transbank" class="qr-image" width="105" height="105">
+                <img src="/assets/img/qr-webpay.png" alt="QR Webpay Plus Transbank" class="qr-image" id="d1-qr-image" width="105" height="105">
                 <span class="qr-badge-tag"><i class="fas fa-qrcode"></i> Webpay</span>
               </div>
               <div class="qr-meta-side">
@@ -634,7 +652,7 @@
       <div class="modal-header">
         <div class="modal-title-area">
           <h3 id="catalog-title" data-i18n="catalog.title">✨ Catálogo de Funcionalidades — Heartbeats Memories</h3>
-          <span class="modal-badge" data-i18n="catalog.badge">v1.5.0 • Licencia Vitalicia</span>
+          <span class="modal-badge" data-i18n="catalog.badge">v1.5.0 • Licencia Vitalicia (1 Dispositivo)</span>
         </div>
         <button class="btn-close-modal" id="btn-close-catalog" aria-label="Cerrar catálogo">
           <i class="fas fa-xmark"></i>
@@ -645,12 +663,12 @@
         <!-- Banner de Precio y Licencia -->
         <div class="catalog-pricing-hero">
           <div class="catalog-pricing-badge">
-            <span class="catalog-price">$5.000 CLP</span>
-            <span class="catalog-price-usd" data-i18n="catalog.price_usd">(Aprox. 5 USD)</span>
-            <span class="catalog-lifetime-pill"><i class="fas fa-infinity"></i> <span data-i18n="catalog.lifetime_pill">Actualizaciones para siempre</span></span>
+            <span class="catalog-price" id="catalog-price-amount">$5.000 CLP</span>
+            <span class="catalog-price-usd" id="catalog-price-usd" data-i18n="catalog.price_usd">(Aprox. 5 USD)</span>
+            <span class="catalog-lifetime-pill" id="catalog-price-pill"><i class="fas fa-infinity"></i> <span data-i18n="catalog.lifetime_pill">Licencia de por vida (1 dispositivo)</span></span>
           </div>
           <p class="catalog-hook-text" data-i18n="catalog.hero_hook">
-            💡 <strong>A diferencia de otras apps, no hay arriendo mensual ni avisos publicitarios.</strong> Compras tu licencia una sola vez y es tuya para siempre con todas las mejoras y actualizaciones continuas.
+            💡 <strong>A diferencia de otras apps, no hay arriendo mensual ni avisos publicitarios.</strong> Compras tu licencia una sola vez para 1 equipo personal y es tuya para siempre con todas las mejoras y actualizaciones continuas.
           </p>
           <a class="btn-buy-webpay catalog-buy-btn" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
             <span data-i18n="catalog.hero_btn_buy">Pagar con</span>
@@ -680,7 +698,7 @@
           <div class="feature-item">
             <div class="feature-icon">⏰</div>
             <div class="feature-text">
-              <h4 data-i18n="catalog.f3.title">Hasta 3 alarmas hacia atrás (avisos previos)</h4>
+              <h4 data-i18n="catalog.f3.title">Configura hasta tres alarmas antes del evento!</h4>
               <p data-i18n="catalog.f3.desc">Configura hasta 3 alertas antes de que se cumpla tu fecha especial (por ejemplo: 1 mes antes, 1 semana antes o 1 hora antes) para que puedas preparar regalos, sorpresas o viajes con total anticipación.</p>
             </div>
           </div>

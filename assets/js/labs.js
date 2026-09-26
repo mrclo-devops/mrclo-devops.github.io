@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSimulatorModal();
   initMultiEventSimulator();
   initCatalogModal();
+  initCouponSystem();
 });
 
 /* ==========================================================================
@@ -530,4 +531,234 @@ function initCatalogModal() {
     });
   }
 }
+
+/* ==========================================================================
+   5. COUPON & PROMOTION ENGINE (DROP 01)
+   ========================================================================== */
+const WEBPAY_URL_REGULAR = "https://www.webpay.cl/form-pay/422690";
+const WEBPAY_URL_PROMO_50 = "https://www.webpay.cl/form-pay/424652";
+const QR_SRC_REGULAR = "/assets/img/qr-webpay.png";
+const QR_SRC_PROMO = "/assets/img/qr-webpay-promo.png";
+
+const VALID_COUPONS = {
+  "INAUGURACION": { discountPercent: 50, promoClp: "$2.500 CLP", originalClp: "$5.000 CLP", promoUsdEs: "(Aprox. 2.5 USD)", promoUsdEn: "(Approx. $2.5 USD)" },
+  "LAUNCH50": { discountPercent: 50, promoClp: "$2.500 CLP", originalClp: "$5.000 CLP", promoUsdEs: "(Aprox. 2.5 USD)", promoUsdEn: "(Approx. $2.5 USD)" }
+};
+
+function initCouponSystem() {
+  const toggleBtn = document.getElementById("coupon-toggle-btn");
+  const couponBox = document.getElementById("coupon-box");
+  const couponInput = document.getElementById("coupon-input");
+  const applyBtn = document.getElementById("coupon-apply-btn");
+  const feedbackEl = document.getElementById("coupon-feedback");
+  const qrImage = document.getElementById("d1-qr-image");
+  
+  const d1PriceAmount = document.getElementById("d1-price-amount");
+  const d1PriceUsd = document.getElementById("d1-price-usd");
+  const d1PricePill = document.getElementById("d1-price-pill");
+
+  const catalogPriceAmount = document.getElementById("catalog-price-amount");
+  const catalogPriceUsd = document.getElementById("catalog-price-usd");
+  const catalogPricePill = document.getElementById("catalog-price-pill");
+
+  let activeCoupon = null;
+
+  function getCurrentLang() {
+    return localStorage.getItem("mrclo_user_lang") || document.documentElement.lang || "es";
+  }
+
+  function getI18nText(key, defaultText) {
+    const lang = getCurrentLang();
+    if (window.translations && window.translations[lang] && window.translations[lang][key]) {
+      return window.translations[lang][key];
+    }
+    return defaultText;
+  }
+
+  function applyDiscount(couponCode) {
+    const code = (couponCode || "").trim().toUpperCase();
+    const couponData = VALID_COUPONS[code];
+
+    if (!couponData) {
+      if (feedbackEl) {
+        feedbackEl.className = "coupon-feedback error";
+        feedbackEl.textContent = getI18nText("labs.d1.coupon_invalid", "Cupón no válido o expirado.");
+        feedbackEl.style.display = "block";
+      }
+      return false;
+    }
+
+    activeCoupon = code;
+    try {
+      sessionStorage.setItem("mrclo_coupon", code);
+    } catch (e) {}
+
+    const lang = getCurrentLang();
+    const usdText = lang === "es" ? couponData.promoUsdEs : couponData.promoUsdEn;
+    const badgeText = getI18nText("labs.d1.price_badge_promo", "50% OFF Inauguración (1 Dispositivo)");
+
+    // Update Drop 01 Card
+    if (d1PriceAmount) {
+      d1PriceAmount.innerHTML = `<span class="price-original-strikethrough">${couponData.originalClp}</span>${couponData.promoClp}`;
+    }
+    if (d1PriceUsd) {
+      d1PriceUsd.textContent = usdText;
+    }
+    if (d1PricePill) {
+      d1PricePill.classList.add("promo-badge");
+      d1PricePill.innerHTML = `<i class="fas fa-tag"></i> <span>${badgeText}</span>`;
+    }
+
+    // Update Catalog Modal
+    if (catalogPriceAmount) {
+      catalogPriceAmount.innerHTML = `<span class="price-original-strikethrough">${couponData.originalClp}</span>${couponData.promoClp}`;
+    }
+    if (catalogPriceUsd) {
+      catalogPriceUsd.textContent = usdText;
+    }
+    if (catalogPricePill) {
+      catalogPricePill.classList.add("promo-badge");
+      catalogPricePill.innerHTML = `<i class="fas fa-tag"></i> <span>${badgeText}</span>`;
+    }
+
+    // Update all Webpay Links to Promo URL
+    document.querySelectorAll(".btn-buy-webpay").forEach(btn => {
+      btn.setAttribute("href", WEBPAY_URL_PROMO_50);
+    });
+
+    // Update Desktop QR image to Promo QR
+    if (qrImage) {
+      qrImage.src = QR_SRC_PROMO;
+    }
+
+    // Show Feedback with Remove button
+    if (feedbackEl) {
+      feedbackEl.className = "coupon-feedback success";
+      const appliedMsg = getI18nText("labs.d1.coupon_applied", "🎉 ¡Cupón aplicado! 50% de descuento (-$2.500 CLP)");
+      const removeMsg = getI18nText("labs.d1.coupon_remove", "Quitar");
+      feedbackEl.innerHTML = `<span>${appliedMsg}</span> <button type="button" class="btn-remove-coupon" id="btn-remove-coupon">${removeMsg}</button>`;
+      feedbackEl.style.display = "flex";
+
+      const removeBtn = document.getElementById("btn-remove-coupon");
+      if (removeBtn) {
+        removeBtn.addEventListener("click", removeDiscount);
+      }
+    }
+
+    return true;
+  }
+
+  function removeDiscount() {
+    activeCoupon = null;
+    try {
+      sessionStorage.removeItem("mrclo_coupon");
+    } catch (e) {}
+
+    const lang = getCurrentLang();
+    const usdText = lang === "es" ? "(Aprox. 5 USD)" : "(Approx. $5 USD)";
+    const regularBadgeText = getI18nText("labs.d1.price_badge", "Licencia de por vida (1 dispositivo)");
+
+    // Restore Drop 01 Card
+    if (d1PriceAmount) {
+      d1PriceAmount.textContent = "$5.000 CLP";
+    }
+    if (d1PriceUsd) {
+      d1PriceUsd.textContent = usdText;
+    }
+    if (d1PricePill) {
+      d1PricePill.classList.remove("promo-badge");
+      d1PricePill.innerHTML = `<i class="fas fa-infinity"></i> <span data-i18n="labs.d1.price_badge">${regularBadgeText}</span>`;
+    }
+
+    // Restore Catalog Modal
+    if (catalogPriceAmount) {
+      catalogPriceAmount.textContent = "$5.000 CLP";
+    }
+    if (catalogPriceUsd) {
+      catalogPriceUsd.textContent = usdText;
+    }
+    if (catalogPricePill) {
+      catalogPricePill.classList.remove("promo-badge");
+      catalogPricePill.innerHTML = `<i class="fas fa-infinity"></i> <span data-i18n="catalog.lifetime_pill">${regularBadgeText}</span>`;
+    }
+
+    // Restore all Webpay Links to Regular URL
+    document.querySelectorAll(".btn-buy-webpay").forEach(btn => {
+      btn.setAttribute("href", WEBPAY_URL_REGULAR);
+    });
+
+    // Restore Desktop QR image
+    if (qrImage) {
+      qrImage.src = QR_SRC_REGULAR;
+    }
+
+    if (couponInput) {
+      couponInput.value = "";
+    }
+    if (feedbackEl) {
+      feedbackEl.style.display = "none";
+      feedbackEl.innerHTML = "";
+    }
+  }
+
+  // Toggle button logic
+  if (toggleBtn && couponBox) {
+    toggleBtn.addEventListener("click", () => {
+      const isOpen = couponBox.style.display !== "none";
+      couponBox.style.display = isOpen ? "none" : "block";
+      toggleBtn.classList.toggle("open", !isOpen);
+      toggleBtn.setAttribute("aria-expanded", String(!isOpen));
+      if (!isOpen && couponInput) {
+        setTimeout(() => couponInput.focus(), 50);
+      }
+    });
+  }
+
+  // Apply button click
+  if (applyBtn && couponInput) {
+    applyBtn.addEventListener("click", () => {
+      applyDiscount(couponInput.value);
+    });
+
+    couponInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        applyDiscount(couponInput.value);
+      }
+    });
+  }
+
+  // Re-render strings when language changes
+  window.addEventListener("languageChanged", () => {
+    if (activeCoupon) {
+      applyDiscount(activeCoupon);
+    }
+  });
+
+  // Check URL parameter: ?coupon=INAUGURACION
+  const urlParams = new URLSearchParams(window.location.search);
+  const couponParam = urlParams.get("coupon") || urlParams.get("cupon") || urlParams.get("promo");
+
+  // Check Session Storage
+  let storedCoupon = null;
+  try {
+    storedCoupon = sessionStorage.getItem("mrclo_coupon");
+  } catch (e) {}
+
+  const couponToApply = couponParam || storedCoupon;
+  if (couponToApply && VALID_COUPONS[couponToApply.trim().toUpperCase()]) {
+    if (couponInput) {
+      couponInput.value = couponToApply.trim().toUpperCase();
+    }
+    if (couponBox) {
+      couponBox.style.display = "block";
+      if (toggleBtn) {
+        toggleBtn.classList.add("open");
+        toggleBtn.setAttribute("aria-expanded", "true");
+      }
+    }
+    applyDiscount(couponToApply);
+  }
+}
+
 

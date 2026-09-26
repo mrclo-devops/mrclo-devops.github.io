@@ -281,7 +281,7 @@
       <div class="gatekeeper-icon">🔒</div>
       <h2>Heartbeats Memories</h2>
       <p class="gatekeeper-desc">
-        Esta aplicación es de software independiente y Local-First. Para activarla en este dispositivo, ingresa desde el botón <strong>"Abrir e Instalar"</strong> de tu correo de compra o ingresa tu código de autorización bancaria.
+        Esta aplicación es de software independiente y Local-First. Tu compra incluye una <strong>licencia para 1 único dispositivo personal</strong> (este teléfono o este computador). Al activarla aquí, quedará vinculada exclusivamente a este equipo.
       </p>
       <div class="gatekeeper-form">
         <input type="text" id="manual-license-input" class="gatekeeper-input" placeholder="Código de autorización Transbank..." />
@@ -295,9 +295,14 @@
   </div>
 
   <script>
-    // --- GESTIÓN DE LICENCIA Y ONE-CLICK INSTALL ---
+    // --- GESTIÓN DE LICENCIA MONO-EQUIPO Y ONE-CLICK INSTALL ---
     (function() {
       const STORAGE_KEY = 'hb_activated_license';
+      const DEVICE_KEY = 'hb_device_id';
+      // URL del Web App de Google Apps Script (implementado desde google_apps_script_automation.js)
+      // Si está configurada, valida y vincula en la base de datos Google Sheets en tiempo real
+      const APPS_SCRIPT_WEBAPP_URL = ""; 
+
       const urlParams = new URLSearchParams(window.location.search);
       const incomingKey = urlParams.get('key') || urlParams.get('activate') || urlParams.get('auth');
       const gatekeeperModal = document.getElementById('gatekeeper-modal');
@@ -308,40 +313,134 @@
       const installBtn = document.getElementById('pwa-install-btn');
       const closeBanner = document.getElementById('pwa-close-banner');
 
-      function validateAndActivate(rawKey) {
-        if (!rawKey) return false;
-        const clean = rawKey.trim();
-        // Acepta códigos de autorización alfanuméricos válidos
-        if (clean.length >= 4 && /^[a-zA-Z0-9_-]+$/.test(clean)) {
-          localStorage.setItem(STORAGE_KEY, clean);
-          if (gatekeeperModal) gatekeeperModal.style.display = 'none';
-          // Limpiar la URL para no dejar el token expuesto en el navegador
-          if (window.history && window.history.replaceState) {
-            window.history.replaceState({}, document.title, window.location.pathname);
-          }
-          return true;
+      function getOrCreateDeviceId() {
+        let devId = localStorage.getItem(DEVICE_KEY);
+        if (!devId) {
+          devId = (typeof crypto !== 'undefined' && crypto.randomUUID)
+            ? crypto.randomUUID()
+            : 'dev_' + Math.random().toString(36).substring(2, 10) + '_' + Date.now().toString(36);
+          localStorage.setItem(DEVICE_KEY, devId);
         }
-        return false;
+        return devId;
       }
 
-      // 1. Si viene con clave en la URL (desde el correo)
+      function showError(text) {
+        if (errorMsg) {
+          errorMsg.textContent = text;
+          errorMsg.style.display = 'block';
+        }
+      }
+
+      function hideError() {
+        if (errorMsg) {
+          errorMsg.style.display = 'none';
+        }
+      }
+
+      async function validateAndActivate(rawKey) {
+        if (!rawKey) {
+          showError("Por favor ingresa un código de autorización.");
+          return false;
+        }
+
+        const clean = rawKey.trim().toUpperCase();
+        if (clean.length < 4 || !/^[A-Z0-9_-]+$/.test(clean)) {
+          showError("Formato de código inválido. Verifica tu comprobante.");
+          return false;
+        }
+
+        const deviceId = getOrCreateDeviceId();
+
+        // Si hay endpoint de Apps Script configurado, validar y vincular mono-equipo en la nube
+        if (APPS_SCRIPT_WEBAPP_URL && APPS_SCRIPT_WEBAPP_URL.trim() !== "") {
+          if (activateBtn) {
+            activateBtn.disabled = true;
+            activateBtn.textContent = "Verificando equipo...";
+          }
+
+          try {
+            const endpoint = `${APPS_SCRIPT_WEBAPP_URL.trim()}?action=activate&key=${encodeURIComponent(clean)}&device=${encodeURIComponent(deviceId)}`;
+            const response = await fetch(endpoint, { method: 'GET', mode: 'cors' });
+            const data = await response.json();
+
+            if (data.status === 'DEVICE_LIMIT_REACHED') {
+              showError("Esta licencia ya fue vinculada a otro equipo. De acuerdo con los Términos de Servicio, cada compra autoriza un único dispositivo personal.");
+              if (activateBtn) {
+                activateBtn.disabled = false;
+                activateBtn.textContent = "Activar Licencia ✨";
+              }
+              return false;
+            }
+
+            if (data.status === 'INVALID_KEY') {
+              showError("Código de autorización no encontrado en la base de datos de compras.");
+              if (activateBtn) {
+                activateBtn.disabled = false;
+                activateBtn.textContent = "Activar Licencia ✨";
+              }
+              return false;
+            }
+
+            if (data.success || data.status === 'ACTIVATED' || data.status === 'VALID') {
+              localStorage.setItem(STORAGE_KEY, clean);
+              localStorage.setItem('hb_activation_date', new Date().toISOString());
+              if (gatekeeperModal) gatekeeperModal.style.display = 'none';
+              if (window.history && window.history.replaceState) {
+                window.history.replaceState({}, document.title, window.location.pathname);
+              }
+              return true;
+            }
+          } catch (errNet) {
+            console.warn("Fallo de conexión al validar con el servidor:", errNet);
+            // Fallback defensivo ante falla de red temporal: si el formato es válido, activa localmente
+            localStorage.setItem(STORAGE_KEY, clean);
+            if (gatekeeperModal) gatekeeperModal.style.display = 'none';
+            if (window.history && window.history.replaceState) {
+              window.history.replaceState({}, document.title, window.location.pathname);
+            }
+            return true;
+          } finally {
+            if (activateBtn) {
+              activateBtn.disabled = false;
+              activateBtn.textContent = "Activar Licencia ✨";
+            }
+          }
+        }
+
+        // Validación local defensiva (cuando aún no se ha desplegado el Web App o en modo offline)
+        localStorage.setItem(STORAGE_KEY, clean);
+        if (gatekeeperModal) gatekeeperModal.style.display = 'none';
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+        return true;
+      }
+
+      // 1. Si viene con clave en la URL (desde el correo al hacer clic en "Abrir e Instalar")
       if (incomingKey) {
         validateAndActivate(incomingKey);
       }
 
-      // 2. Si no está activado, mostrar el Gatekeeper
+      // 2. Si no está activado, mostrar el Gatekeeper modal
       const savedLicense = localStorage.getItem(STORAGE_KEY);
       if (!savedLicense) {
         if (gatekeeperModal) gatekeeperModal.style.display = 'flex';
       }
 
       if (activateBtn) {
-        activateBtn.addEventListener('click', () => {
+        activateBtn.addEventListener('click', async () => {
+          hideError();
           const val = manualInput.value;
-          if (validateAndActivate(val)) {
-            if (errorMsg) errorMsg.style.display = 'none';
-          } else {
-            if (errorMsg) errorMsg.style.display = 'block';
+          await validateAndActivate(val);
+        });
+      }
+
+      if (manualInput) {
+        manualInput.addEventListener('keydown', async (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            hideError();
+            await validateAndActivate(manualInput.value);
           }
         });
       }
