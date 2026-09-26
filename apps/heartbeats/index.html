@@ -55,8 +55,29 @@
       </div>
     </nav>
 
-    <!-- Título editable del evento activo -->
-    <input type="text" class="event-title-input" id="event-title" value="Mi Primer Recuerdo" placeholder="Escribe el título de tu recuerdo..." />
+    <!-- Título editable del evento activo con selector rápido de emojis -->
+    <div class="event-title-wrapper">
+      <input type="text" class="event-title-input" id="event-title" value="Mi Primer Recuerdo" placeholder="Escribe el título de tu recuerdo..." />
+      <button type="button" class="btn-emoji-toggle" id="btn-emoji-toggle" title="Insertar emoticones y emojis (avión, corazón, sonrisa, homenaje...)">😊</button>
+    </div>
+    <div class="emoji-picker-bar" id="emoji-picker-bar" style="display: none;">
+      <div class="emoji-picker-scroll">
+        <button type="button" class="emoji-chip" data-emoji="❤️" title="Amor / Corazón">❤️</button>
+        <button type="button" class="emoji-chip" data-emoji="✈️" title="Viajes / Avión">✈️</button>
+        <button type="button" class="emoji-chip" data-emoji="😊" title="Sonrisa / Alegría">😊</button>
+        <button type="button" class="emoji-chip" data-emoji="🕊️" title="Paz / En Memoria">🕊️</button>
+        <button type="button" class="emoji-chip" data-emoji="🕯️" title="Vela / Homenaje">🕯️</button>
+        <button type="button" class="emoji-chip" data-emoji="🖤" title="Luto / Duelo">🖤</button>
+        <button type="button" class="emoji-chip" data-emoji="💍" title="Aniversario / Boda">💍</button>
+        <button type="button" class="emoji-chip" data-emoji="🎂" title="Cumpleaños">🎂</button>
+        <button type="button" class="emoji-chip" data-emoji="🌴" title="Vacaciones">🌴</button>
+        <button type="button" class="emoji-chip" data-emoji="👶" title="Bebé / Familia">👶</button>
+        <button type="button" class="emoji-chip" data-emoji="🎓" title="Graduación / Logro">🎓</button>
+        <button type="button" class="emoji-chip" data-emoji="✨" title="Estrellas / Magia">✨</button>
+        <button type="button" class="emoji-chip" data-emoji="🌹" title="Rosa / Especial">🌹</button>
+        <button type="button" class="emoji-chip" data-emoji="🎉" title="Celebración">🎉</button>
+      </div>
+    </div>
 
     <!-- Notificación / Banner de Alarma Activa -->
     <div class="active-alarm-banner" id="active-alarm-banner" style="display: none;">

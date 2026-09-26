@@ -1044,6 +1044,55 @@ function setupEventListeners() {
 
   // Edición de título y fecha
   eventTitleInput.addEventListener('input', persistActiveEvent);
+
+  // Selector rápido de emoticones y emojis en el título (avión, corazón, sonrisa, luto, etc.)
+  const btnEmojiToggle = document.getElementById('btn-emoji-toggle');
+  const emojiPickerBar = document.getElementById('emoji-picker-bar');
+
+  function insertEmojiIntoTitle(emoji) {
+    if (!eventTitleInput) return;
+    const start = eventTitleInput.selectionStart ?? eventTitleInput.value.length;
+    const end = eventTitleInput.selectionEnd ?? eventTitleInput.value.length;
+    const currentVal = eventTitleInput.value;
+    
+    const before = currentVal.substring(0, start);
+    const after = currentVal.substring(end);
+    const spaceBefore = (before.length > 0 && !before.endsWith(' ')) ? ' ' : '';
+    const spaceAfter = (after.length > 0 && !after.startsWith(' ')) ? ' ' : '';
+
+    eventTitleInput.value = `${before}${spaceBefore}${emoji}${spaceAfter}${after}`;
+    const newPos = start + spaceBefore.length + emoji.length + spaceAfter.length;
+    eventTitleInput.focus();
+    try {
+      eventTitleInput.setSelectionRange(newPos, newPos);
+    } catch (e) {}
+
+    eventTitleInput.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+
+  if (btnEmojiToggle && emojiPickerBar) {
+    btnEmojiToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isVisible = emojiPickerBar.style.display !== 'none';
+      emojiPickerBar.style.display = isVisible ? 'none' : 'flex';
+      btnEmojiToggle.classList.toggle('active', !isVisible);
+    });
+
+    document.querySelectorAll('.emoji-chip').forEach(chip => {
+      chip.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const emoji = chip.getAttribute('data-emoji') || chip.textContent;
+        insertEmojiIntoTitle(emoji);
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!emojiPickerBar.contains(e.target) && e.target !== btnEmojiToggle) {
+        emojiPickerBar.style.display = 'none';
+        btnEmojiToggle.classList.remove('active');
+      }
+    });
+  }
   dateInput.addEventListener('change', () => {
     persistActiveEvent();
     updateCountdown();

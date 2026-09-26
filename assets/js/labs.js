@@ -533,17 +533,11 @@ function initCatalogModal() {
 }
 
 /* ==========================================================================
-   5. COUPON & PROMOTION ENGINE (DROP 01)
+   5. COUPON & PROMOTION ENGINE (DROP 01) - SECURE BACKEND VALIDATION
    ========================================================================== */
 const WEBPAY_URL_REGULAR = "https://www.webpay.cl/form-pay/422690";
-const WEBPAY_URL_PROMO_50 = "https://www.webpay.cl/form-pay/424652";
 const QR_SRC_REGULAR = "/assets/img/qr-webpay.png";
-const QR_SRC_PROMO = "/assets/img/qr-webpay-promo.png";
-
-const VALID_COUPONS = {
-  "INAUGURACION": { discountPercent: 50, promoClp: "$2.500 CLP", originalClp: "$5.000 CLP", promoUsdEs: "(Aprox. 2.5 USD)", promoUsdEn: "(Approx. $2.5 USD)" },
-  "LAUNCH50": { discountPercent: 50, promoClp: "$2.500 CLP", originalClp: "$5.000 CLP", promoUsdEs: "(Aprox. 2.5 USD)", promoUsdEn: "(Approx. $2.5 USD)" }
-};
+const APPS_SCRIPT_COUPON_API = "https://script.google.com/macros/s/AKfycbzhJ6Z69I0jHzSMs_tqIELb_OF7-bF0ignQS0T0bH0KpIqxmmvNblOCD2cLOmAqMxZ4VA/exec";
 
 function initCouponSystem() {
   const toggleBtn = document.getElementById("coupon-toggle-btn");
@@ -566,7 +560,7 @@ function initCouponSystem() {
   const catalogPricePillBottom = document.getElementById("catalog-price-pill-bottom");
   const catalogQrImage = document.getElementById("catalog-qr-image");
 
-  let activeCoupon = null;
+  let activeCouponData = null;
 
   function getCurrentLang() {
     return localStorage.getItem("mrclo_user_lang") || document.documentElement.lang || "es";
@@ -580,31 +574,71 @@ function initCouponSystem() {
     return defaultText;
   }
 
-  function applyDiscount(couponCode) {
+  async function applyDiscount(couponCode) {
     const code = (couponCode || "").trim().toUpperCase();
-    const couponData = VALID_COUPONS[code];
 
-    if (!couponData) {
+    if (!code) {
       if (feedbackEl) {
         feedbackEl.className = "coupon-feedback error";
-        feedbackEl.textContent = getI18nText("labs.d1.coupon_invalid", "Cupón no válido o expirado.");
+        feedbackEl.textContent = getI18nText("labs.d1.coupon_empty", "Por favor ingresa un código promocional.");
         feedbackEl.style.display = "block";
       }
       return false;
     }
 
-    activeCoupon = code;
-    try {
-      sessionStorage.setItem("mrclo_coupon", code);
-    } catch (e) {}
+    if (feedbackEl) {
+      feedbackEl.className = "coupon-feedback";
+      feedbackEl.textContent = getI18nText("labs.d1.coupon_validating", "Validando cupón con el servidor...");
+      feedbackEl.style.display = "block";
+    }
+    if (applyBtn) applyBtn.disabled = true;
 
+    try {
+      const response = await fetch(`${APPS_SCRIPT_COUPON_API}?action=validate_coupon&code=${encodeURIComponent(code)}`);
+      const data = await response.json();
+
+      if (!data.valid) {
+        removeDiscount(false);
+        if (feedbackEl) {
+          feedbackEl.className = "coupon-feedback error";
+          if (data.reason === "EXPIRED") {
+            feedbackEl.textContent = data.message || getI18nText("labs.d1.coupon_expired", "Este código promocional ha expirado.");
+          } else {
+            feedbackEl.textContent = data.message || getI18nText("labs.d1.coupon_invalid", "Cupón no válido o inexistente.");
+          }
+          feedbackEl.style.display = "block";
+        }
+        return false;
+      }
+
+      activeCouponData = data;
+      try {
+        sessionStorage.setItem("mrclo_coupon", code);
+      } catch (e) {}
+
+      renderDiscountUI(data);
+      return true;
+    } catch (errNet) {
+      console.warn("Fallo al validar cupón con el servidor:", errNet);
+      if (feedbackEl) {
+        feedbackEl.className = "coupon-feedback error";
+        feedbackEl.textContent = getI18nText("labs.d1.coupon_net_error", "No se pudo conectar con el servidor para validar el cupón.");
+        feedbackEl.style.display = "block";
+      }
+      return false;
+    } finally {
+      if (applyBtn) applyBtn.disabled = false;
+    }
+  }
+
+  function renderDiscountUI(data) {
     const lang = getCurrentLang();
-    const usdText = lang === "es" ? couponData.promoUsdEs : couponData.promoUsdEn;
-    const badgeText = getI18nText("labs.d1.price_badge_promo", "50% OFF Inauguración (1 Dispositivo)");
+    const usdText = lang === "es" ? data.promoUsdEs : data.promoUsdEn;
+    const badgeText = getI18nText("labs.d1.price_badge_promo", "50% OFF Promoción (1 Dispositivo)");
 
     // Update Drop 01 Card (if elements present)
     if (d1PriceAmount) {
-      d1PriceAmount.innerHTML = `<span class="price-original-strikethrough">${couponData.originalClp}</span>${couponData.promoClp}`;
+      d1PriceAmount.innerHTML = `<span class="price-original-strikethrough">${data.originalClp}</span>${data.promoClp}`;
     }
     if (d1PriceUsd) {
       d1PriceUsd.textContent = usdText;
@@ -616,7 +650,7 @@ function initCouponSystem() {
 
     // Update Catalog Modal (Top)
     if (catalogPriceAmount) {
-      catalogPriceAmount.innerHTML = `<span class="price-original-strikethrough">${couponData.originalClp}</span>${couponData.promoClp}`;
+      catalogPriceAmount.innerHTML = `<span class="price-original-strikethrough">${data.originalClp}</span>${data.promoClp}`;
     }
     if (catalogPriceUsd) {
       catalogPriceUsd.textContent = usdText;
@@ -628,7 +662,7 @@ function initCouponSystem() {
 
     // Update Catalog Modal (Bottom)
     if (catalogPriceAmountBottom) {
-      catalogPriceAmountBottom.innerHTML = `<span class="price-original-strikethrough">${couponData.originalClp}</span>${couponData.promoClp}`;
+      catalogPriceAmountBottom.innerHTML = `<span class="price-original-strikethrough">${data.originalClp}</span>${data.promoClp}`;
     }
     if (catalogPriceUsdBottom) {
       catalogPriceUsdBottom.textContent = usdText;
@@ -638,38 +672,36 @@ function initCouponSystem() {
       catalogPricePillBottom.innerHTML = `<i class="fas fa-tag"></i> <span>${badgeText}</span>`;
     }
 
-    // Update all Webpay Links to Promo URL
-    document.querySelectorAll(".btn-buy-webpay").forEach(btn => {
-      btn.setAttribute("href", WEBPAY_URL_PROMO_50);
-    });
-
-    // Update Desktop QR image to Promo QR (exterior and catalog modal)
-    if (qrImage) {
-      qrImage.src = QR_SRC_PROMO;
+    // Update all Webpay Links to dynamic server promo URL
+    if (data.webpayUrl) {
+      document.querySelectorAll(".btn-buy-webpay").forEach(btn => {
+        btn.setAttribute("href", data.webpayUrl);
+      });
     }
-    if (catalogQrImage) {
-      catalogQrImage.src = QR_SRC_PROMO;
+
+    // Update Desktop QR image to server promo QR
+    if (data.qrSrc) {
+      if (qrImage) qrImage.src = data.qrSrc;
+      if (catalogQrImage) catalogQrImage.src = data.qrSrc;
     }
 
     // Show Feedback with Remove button
     if (feedbackEl) {
       feedbackEl.className = "coupon-feedback success";
-      const appliedMsg = getI18nText("labs.d1.coupon_applied", "🎉 ¡Cupón aplicado! 50% de descuento (-$2.500 CLP)");
+      const appliedMsg = getI18nText("labs.d1.coupon_applied", `🎉 ¡Cupón aplicado! ${data.discountPercent}% de descuento (-$2.500 CLP)`);
       const removeMsg = getI18nText("labs.d1.coupon_remove", "Quitar");
       feedbackEl.innerHTML = `<span>${appliedMsg}</span> <button type="button" class="btn-remove-coupon" id="btn-remove-coupon">${removeMsg}</button>`;
       feedbackEl.style.display = "flex";
 
       const removeBtn = document.getElementById("btn-remove-coupon");
       if (removeBtn) {
-        removeBtn.addEventListener("click", removeDiscount);
+        removeBtn.addEventListener("click", () => removeDiscount(true));
       }
     }
-
-    return true;
   }
 
-  function removeDiscount() {
-    activeCoupon = null;
+  function removeDiscount(clearInput = true) {
+    activeCouponData = null;
     try {
       sessionStorage.removeItem("mrclo_coupon");
     } catch (e) {}
@@ -679,36 +711,24 @@ function initCouponSystem() {
     const regularBadgeText = getI18nText("labs.d1.price_badge", "Licencia de por vida (1 dispositivo)");
 
     // Restore Drop 01 Card
-    if (d1PriceAmount) {
-      d1PriceAmount.textContent = "$5.000 CLP";
-    }
-    if (d1PriceUsd) {
-      d1PriceUsd.textContent = usdText;
-    }
+    if (d1PriceAmount) d1PriceAmount.textContent = "$5.000 CLP";
+    if (d1PriceUsd) d1PriceUsd.textContent = usdText;
     if (d1PricePill) {
       d1PricePill.classList.remove("promo-badge");
       d1PricePill.innerHTML = `<i class="fas fa-infinity"></i> <span data-i18n="labs.d1.price_badge">${regularBadgeText}</span>`;
     }
 
     // Restore Catalog Modal (Top)
-    if (catalogPriceAmount) {
-      catalogPriceAmount.textContent = "$5.000 CLP";
-    }
-    if (catalogPriceUsd) {
-      catalogPriceUsd.textContent = usdText;
-    }
+    if (catalogPriceAmount) catalogPriceAmount.textContent = "$5.000 CLP";
+    if (catalogPriceUsd) catalogPriceUsd.textContent = usdText;
     if (catalogPricePill) {
       catalogPricePill.classList.remove("promo-badge");
       catalogPricePill.innerHTML = `<i class="fas fa-infinity"></i> <span data-i18n="catalog.lifetime_pill">${regularBadgeText}</span>`;
     }
 
     // Restore Catalog Modal (Bottom)
-    if (catalogPriceAmountBottom) {
-      catalogPriceAmountBottom.textContent = "$5.000 CLP";
-    }
-    if (catalogPriceUsdBottom) {
-      catalogPriceUsdBottom.textContent = usdText;
-    }
+    if (catalogPriceAmountBottom) catalogPriceAmountBottom.textContent = "$5.000 CLP";
+    if (catalogPriceUsdBottom) catalogPriceUsdBottom.textContent = usdText;
     if (catalogPricePillBottom) {
       catalogPricePillBottom.classList.remove("promo-badge");
       catalogPricePillBottom.innerHTML = `<i class="fas fa-infinity"></i> <span data-i18n="catalog.lifetime_pill">${regularBadgeText}</span>`;
@@ -719,15 +739,11 @@ function initCouponSystem() {
       btn.setAttribute("href", WEBPAY_URL_REGULAR);
     });
 
-    // Restore Desktop QR image (exterior and catalog modal)
-    if (qrImage) {
-      qrImage.src = QR_SRC_REGULAR;
-    }
-    if (catalogQrImage) {
-      catalogQrImage.src = QR_SRC_REGULAR;
-    }
+    // Restore Desktop QR image
+    if (qrImage) qrImage.src = QR_SRC_REGULAR;
+    if (catalogQrImage) catalogQrImage.src = QR_SRC_REGULAR;
 
-    if (couponInput) {
+    if (clearInput && couponInput) {
       couponInput.value = "";
     }
     if (feedbackEl) {
@@ -749,7 +765,13 @@ function initCouponSystem() {
     });
   }
 
-  // Apply button click
+  // Apply button click & force uppercase input
+  if (couponInput) {
+    couponInput.addEventListener("input", () => {
+      couponInput.value = couponInput.value.toUpperCase();
+    });
+  }
+
   if (applyBtn && couponInput) {
     applyBtn.addEventListener("click", () => {
       applyDiscount(couponInput.value);
@@ -765,23 +787,22 @@ function initCouponSystem() {
 
   // Re-render strings when language changes
   window.addEventListener("languageChanged", () => {
-    if (activeCoupon) {
-      applyDiscount(activeCoupon);
+    if (activeCouponData) {
+      renderDiscountUI(activeCouponData);
     }
   });
 
-  // Check URL parameter: ?coupon=INAUGURACION
+  // Check URL parameter & Session Storage
   const urlParams = new URLSearchParams(window.location.search);
   const couponParam = urlParams.get("coupon") || urlParams.get("cupon") || urlParams.get("promo");
 
-  // Check Session Storage
   let storedCoupon = null;
   try {
     storedCoupon = sessionStorage.getItem("mrclo_coupon");
   } catch (e) {}
 
   const couponToApply = couponParam || storedCoupon;
-  if (couponToApply && VALID_COUPONS[couponToApply.trim().toUpperCase()]) {
+  if (couponToApply) {
     if (couponInput) {
       couponInput.value = couponToApply.trim().toUpperCase();
     }
