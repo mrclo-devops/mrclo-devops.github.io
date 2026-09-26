@@ -656,6 +656,13 @@ body.labs-universe .ambient-glow-mesh {
   gap: 4px;
 }
 
+.qr-heading-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .qr-heading {
   font-size: 0.9rem;
   font-weight: 700;
