@@ -547,8 +547,8 @@ body.labs-universe .ambient-glow-mesh {
 }
 
 .btn-buy-webpay {
-  background: linear-gradient(135deg, #059669 0%, #0284c7 100%);
-  border: 1px solid rgba(52, 211, 153, 0.4);
+  background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+  border: 1px solid rgba(52, 211, 153, 0.45);
   color: #ffffff;
   padding: 12px 18px;
   border-radius: 8px;
@@ -559,7 +559,7 @@ body.labs-universe .ambient-glow-mesh {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  box-shadow: 0 4px 15px rgba(5, 150, 105, 0.35);
+  box-shadow: 0 4px 14px rgba(4, 120, 87, 0.28);
   transition: all 0.25s ease;
   text-decoration: none;
   letter-spacing: 0.01em;
@@ -568,10 +568,10 @@ body.labs-universe .ambient-glow-mesh {
 }
 
 .btn-buy-webpay:hover {
-  background: linear-gradient(135deg, #047857 0%, #0369a1 100%);
+  background: linear-gradient(135deg, #047857 0%, #059669 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(16, 185, 129, 0.5);
-  border-color: #34d399;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.38);
+  border-color: rgba(110, 231, 183, 0.65);
   color: #ffffff;
 }
 
@@ -1723,12 +1723,17 @@ body.labs-universe .ambient-glow-mesh {
    PRICE BOX & HOOK CALLOUT (DROP 01)
    ========================================================================== */
 .drop-price-box {
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid rgba(56, 189, 248, 0.28);
+  background: linear-gradient(165deg, rgba(6, 78, 59, 0.22) 0%, rgba(15, 23, 42, 0.65) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.24);
   border-radius: 12px;
   padding: 12px 14px;
   margin: 12px 0 16px 0;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.25s ease;
+}
+
+.drop-price-box:hover {
+  border-color: rgba(16, 185, 129, 0.40);
 }
 
 .price-main-row {
@@ -1742,7 +1747,7 @@ body.labs-universe .ambient-glow-mesh {
 .price-amount {
   font-size: 1.35rem;
   font-weight: 800;
-  color: #38bdf8;
+  color: #34d399;
   letter-spacing: -0.5px;
 }
 
@@ -1753,9 +1758,9 @@ body.labs-universe .ambient-glow-mesh {
 }
 
 .price-pill-lifetime {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.12);
+  color: #a7f3d0;
+  border: 1px solid rgba(16, 185, 129, 0.28);
   font-size: 0.74rem;
   font-weight: 700;
   padding: 2px 8px;
@@ -1770,14 +1775,14 @@ body.labs-universe .ambient-glow-mesh {
   font-size: 0.8rem;
   color: #cbd5e1;
   line-height: 1.4;
-  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  border-top: 1px dashed rgba(16, 185, 129, 0.20);
   padding-top: 6px;
   margin-top: 4px;
 }
 
 .price-hook-badge em {
   font-style: normal;
-  color: #f8fafc;
+  color: #f1f5f9;
 }
 
 .drop-buttons-grid {
@@ -1794,15 +1799,54 @@ body.labs-universe .ambient-glow-mesh {
 }
 
 .btn-open-catalog {
-  background: rgba(15, 23, 42, 0.75) !important;
-  border-color: rgba(56, 189, 248, 0.4) !important;
-  color: #f8fafc !important;
+  background: rgba(217, 70, 239, 0.12) !important;
+  border: 1px solid rgba(217, 70, 239, 0.35) !important;
+  color: #f5d0fe !important;
+  box-shadow: 0 4px 12px rgba(217, 70, 239, 0.10);
+  transition: all 0.25s ease;
+}
+
+.btn-open-catalog i {
+  color: #f0abfc;
+  transition: transform 0.2s ease;
 }
 
 .btn-open-catalog:hover {
-  background: rgba(56, 189, 248, 0.2) !important;
-  border-color: #38bdf8 !important;
-  color: #38bdf8 !important;
+  background: rgba(217, 70, 239, 0.22) !important;
+  border-color: rgba(240, 171, 252, 0.65) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(217, 70, 239, 0.22);
+}
+
+.btn-open-catalog:hover i {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.btn-open-simulator {
+  background: rgba(129, 140, 248, 0.12) !important;
+  border: 1px solid rgba(129, 140, 248, 0.32) !important;
+  color: #e0e7ff !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.10);
+  transition: all 0.25s ease;
+}
+
+.btn-open-simulator i,
+.btn-open-simulator .working-dev-icon i {
+  color: #a5b4fc;
+  transition: transform 0.2s ease;
+}
+
+.btn-open-simulator:hover {
+  background: rgba(129, 140, 248, 0.22) !important;
+  border-color: rgba(165, 180, 252, 0.60) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.22);
+}
+
+.btn-open-simulator:hover i {
+  transform: scale(1.1);
 }
 
 .live-app-quick-link-box {
@@ -1941,8 +1985,8 @@ body.labs-universe .ambient-glow-mesh {
 }
 
 .catalog-pricing-hero {
-  background: linear-gradient(135deg, rgba(14, 116, 144, 0.25) 0%, rgba(30, 58, 138, 0.35) 100%);
-  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  background: linear-gradient(165deg, rgba(6, 78, 59, 0.22) 0%, rgba(15, 23, 42, 0.70) 100%);
+  border: 1.5px solid rgba(16, 185, 129, 0.25);
   border-radius: 16px;
   padding: 18px 20px;
   margin-bottom: 22px;
@@ -1962,7 +2006,7 @@ body.labs-universe .ambient-glow-mesh {
 .catalog-price {
   font-size: 1.8rem;
   font-weight: 900;
-  color: #38bdf8;
+  color: #34d399;
   letter-spacing: -0.5px;
 }
 
@@ -1973,9 +2017,9 @@ body.labs-universe .ambient-glow-mesh {
 }
 
 .catalog-lifetime-pill {
-  background: rgba(16, 185, 129, 0.2);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.12);
+  color: #a7f3d0;
+  border: 1px solid rgba(16, 185, 129, 0.30);
   font-size: 0.8rem;
   font-weight: 800;
   padding: 4px 12px;
@@ -2015,40 +2059,57 @@ body.labs-universe .ambient-glow-mesh {
 }
 
 .feature-item {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
+  border-radius: 12px;
   padding: 14px 16px;
   display: flex;
-  gap: 12px;
+  gap: 14px;
   align-items: flex-start;
-  transition: all 0.2s ease;
+  transition: all 0.22s ease;
+  backdrop-filter: blur(8px);
+}
+
+/* Subtle alternation between cards (<10% difference), inspired by the Terms of Service anti-fraud emerald highlight */
+.feature-item:nth-child(odd) {
+  background: rgba(16, 185, 129, 0.065);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  border-left: 3.5px solid rgba(16, 185, 129, 0.70);
+}
+
+.feature-item:nth-child(even) {
+  background: rgba(5, 150, 105, 0.115);
+  border: 1px solid rgba(52, 211, 153, 0.22);
+  border-left: 3.5px solid rgba(52, 211, 153, 0.85);
 }
 
 .feature-item:hover {
-  border-color: rgba(56, 189, 248, 0.4);
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(52, 211, 153, 0.45);
+  border-left-color: #34d399;
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.14);
 }
 
 .feature-icon {
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   line-height: 1;
   flex-shrink: 0;
-  padding-top: 2px;
+  padding: 6px 8px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  border-radius: 10px;
 }
 
 .feature-text h4 {
   margin: 0 0 5px 0;
   font-size: 0.92rem;
   font-weight: 700;
-  color: #f8fafc;
+  color: #f1f5f9;
 }
 
 .feature-text p {
   margin: 0;
   font-size: 0.82rem;
-  color: #94a3b8;
+  color: #cbd5e1;
   line-height: 1.45;
 }
 
