@@ -130,85 +130,25 @@
             <span class="drop-category-badge" data-i18n="labs.d1.badge">App Multiplataforma</span>
             <span class="drop-num">DROP 01</span>
           </div>
-          <h3 data-i18n="labs.d1.title">Heartbeats Memories</h3>
-          <div class="drop-subtitle" data-i18n="labs.d1.sub">Live Countdown & Shared Emotional Milestones</div>
+          <h3 data-i18n="labs.d1.title">Heartbeats Memories — Recuerdos y Momentos Inolvidables</h3>
+          <div class="drop-subtitle" data-i18n="labs.d1.sub">Cuenta Regresiva Emocional y Momentos Compartidos</div>
           <p class="drop-desc" data-i18n="labs.d1.desc">
-            Visualizador ambiental de cuenta regresiva en vivo sincronizado con latidos compartidos y carrusel de fotografías. Funciona como wallpaper vivo en escritorio (Linux/macOS/Windows) o PWA en celular, preservando tu privacidad sin rastreadores.
+            Una hermosa aplicación para mantener vivos tus momentos más especiales: aniversarios, metas, viajes o recuerdos inolvidables con fotos familiares y tu música favorita. Diseñada para funcionar suavemente en cualquier computador y en cualquier teléfono inteligente (smartphone), cuidando al 100% tu privacidad sin requerir conexión a internet ni suscripciones mensuales.
           </p>
         </div>
 
         <div>
           <div class="drop-specs">
             <i class="fas fa-desktop"></i>
-            <span data-i18n="labs.d1.platforms">Desktop Wallpaper · Web PWA · Mobile Lockscreen</span>
-          </div>
-
-          <!-- Price & Lifetime License Highlight Box -->
-          <div class="drop-price-box">
-            <div class="price-main-row">
-              <span class="price-amount" id="d1-price-amount">$5.000 CLP</span>
-              <span class="price-usd" id="d1-price-usd" data-i18n="labs.d1.price_usd">(Aprox. 5 USD)</span>
-              <span class="price-pill-lifetime" id="d1-price-pill"><i class="fas fa-infinity"></i> <span data-i18n="labs.d1.price_badge">Licencia de por vida (1 dispositivo)</span></span>
-            </div>
-            <div class="price-hook-badge" data-i18n="labs.d1.price_hook">
-              💡 <em>A diferencia de otras apps, no hay arriendo mensual ni avisos publicitarios.</em>
-            </div>
-
-            <!-- Coupon Section -->
-            <div class="coupon-section" id="coupon-section">
-              <button type="button" class="coupon-toggle-btn" id="coupon-toggle-btn" aria-expanded="false">
-                <i class="fas fa-ticket"></i>
-                <span data-i18n="labs.d1.coupon_toggle">¿Tienes un cupón de descuento?</span>
-                <i class="fas fa-chevron-down coupon-toggle-icon" id="coupon-toggle-icon"></i>
-              </button>
-              <div class="coupon-box" id="coupon-box" style="display: none;">
-                <div class="coupon-input-group">
-                  <input type="text" id="coupon-input" class="coupon-input" placeholder="Ej: INAUGURACION" autocomplete="off" spellcheck="false" data-i18n-placeholder="labs.d1.coupon_placeholder" />
-                  <button type="button" id="coupon-apply-btn" class="coupon-apply-btn">
-                    <span data-i18n="labs.d1.coupon_apply">Aplicar</span>
-                  </button>
-                </div>
-                <div id="coupon-feedback" class="coupon-feedback" style="display: none;"></div>
-              </div>
-            </div>
+            <span data-i18n="labs.d1.platforms">Fondo de Pantalla · Computador y Teléfono Inteligente · 100% Privado</span>
           </div>
 
           <div class="drop-actions">
-            <!-- Mobile Pay Button: Shown only on mobile screens -->
-            <div class="pay-mobile-box">
-              <a class="btn-buy-webpay" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
-                <span data-i18n="labs.d1.btn_pay_with">Pagar con</span>
-                <img src="/assets/img/webpay-plus.svg" alt="Webpay.cl" class="webpay-icon-inline" width="82" height="22">
-              </a>
-              <div style="font-size: 0.72rem; color: #94a3b8; text-align: center; margin-top: 4px;">
-                <span data-i18n="labs.d1.mobile_terms_note">Al pagar aceptas los</span> <a href="/terms/" target="_blank" style="color: var(--labs-cyan); text-decoration: underline;" data-i18n="labs.d1.terms_link">Términos de Licencia</a>
-              </div>
-            </div>
-
-            <!-- Desktop QR Pay Card: Shown only on desktop screens -->
-            <div class="pay-desktop-qr-card">
-              <div class="qr-visual-frame">
-                <img src="/assets/img/qr-webpay.png" alt="QR Webpay Plus Transbank" class="qr-image" id="d1-qr-image" width="105" height="105">
-                <span class="qr-badge-tag"><i class="fas fa-qrcode"></i> Webpay</span>
-              </div>
-              <div class="qr-meta-side">
-                <div class="qr-heading-row">
-                  <span class="qr-heading" data-i18n="labs.d1.qr_heading">Paga con QR</span>
-                  <img src="/assets/img/webpay-plus.svg" alt="Webpay Plus" class="webpay-icon-inline" width="70" height="20">
-                </div>
-                <p class="qr-subtext" data-i18n="labs.d1.qr_subtext">Desde tu celular o app bancaria favorita o a través del siguiente botón de pago.</p>
-                <a class="btn-buy-webpay btn-webpay-inline-card" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
-                  <span data-i18n="labs.d1.btn_pay_with">Pagar con</span>
-                  <img src="/assets/img/webpay-plus.svg" alt="Webpay.cl" class="webpay-icon-inline" width="70" height="20">
-                </a>
-              </div>
-            </div>
-
             <!-- Buttons: Catalog Modal + Interactive Simulator + Live App -->
             <div class="drop-buttons-grid">
               <button class="btn-demo-trigger btn-open-catalog" id="btn-open-catalog">
                 <i class="fas fa-sparkles"></i>
-                <span data-i18n="labs.d1.btn_catalog">Ver Catálogo de Funcionalidades</span>
+                <span data-i18n="labs.d1.btn_catalog">Ver Catálogo de Funcionalidades y Precios</span>
               </button>
               <button class="btn-demo-trigger btn-open-simulator">
                 <span class="working-dev-icon"><i class="fas fa-laptop-code"></i></span>
@@ -668,12 +608,30 @@
             <span class="catalog-lifetime-pill" id="catalog-price-pill"><i class="fas fa-infinity"></i> <span data-i18n="catalog.lifetime_pill">Licencia de por vida (1 dispositivo)</span></span>
           </div>
           <p class="catalog-hook-text" data-i18n="catalog.hero_hook">
-            💡 <strong>A diferencia de otras apps, no hay arriendo mensual ni avisos publicitarios.</strong> Compras tu licencia una sola vez para 1 equipo personal y es tuya para siempre con todas las mejoras y actualizaciones continuas.
+            💡 <strong>A diferencia de otras apps, no hay arriendo mensual ni avisos publicitarios.</strong> Compras tu licencia una sola vez para 1 equipo personal y es tuya para siempre con todas las mejoras y actualizaciones continuas, ¡transferible a nuevo equipo!
           </p>
           <a class="btn-buy-webpay catalog-buy-btn" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
             <span data-i18n="catalog.hero_btn_buy">Pagar con</span>
             <img src="/assets/img/webpay-plus.svg" alt="Webpay.cl" class="webpay-icon-inline" width="82" height="22">
           </a>
+
+          <!-- Coupon Section inside Catalog Hero -->
+          <div class="coupon-section" id="coupon-section" style="margin-top: 14px; width: 100%; max-width: 440px; margin-left: auto; margin-right: auto;">
+            <button type="button" class="coupon-toggle-btn" id="coupon-toggle-btn" aria-expanded="false">
+              <i class="fas fa-ticket"></i>
+              <span data-i18n="labs.d1.coupon_toggle">¿Tienes un cupón de descuento?</span>
+              <i class="fas fa-chevron-down coupon-toggle-icon" id="coupon-toggle-icon"></i>
+            </button>
+            <div class="coupon-box" id="coupon-box" style="display: none;">
+              <div class="coupon-input-group">
+                <input type="text" id="coupon-input" class="coupon-input" placeholder="Ej: INAUGURACION" autocomplete="off" spellcheck="false" data-i18n-placeholder="labs.d1.coupon_placeholder" />
+                <button type="button" id="coupon-apply-btn" class="coupon-apply-btn">
+                  <span data-i18n="labs.d1.coupon_apply">Aplicar</span>
+                </button>
+              </div>
+              <div id="coupon-feedback" class="coupon-feedback" style="display: none;"></div>
+            </div>
+          </div>
         </div>
 
         <!-- Checklist de Características en lenguaje cotidiano -->
@@ -759,13 +717,59 @@
             </div>
           </div>
 
+          <div class="feature-item">
+            <div class="feature-icon">🔄</div>
+            <div class="feature-text">
+              <h4 data-i18n="catalog.f11.title">Continuidad de por vida y cambio de equipo</h4>
+              <p data-i18n="catalog.f11.desc">Tu compra es para siempre. Si adquieres un nuevo teléfono inteligente o computador, sufres pérdida de tu equipo o deseas cambiar de dispositivo, cuentas con autogestión para transferir tu licencia con 1 solo clic ingresando tu correo de compra.</p>
+            </div>
+          </div>
+
         </div>
 
-        <div class="catalog-footer-actions">
-          <a class="btn-buy-webpay" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
-            <span data-i18n="catalog.footer_btn_buy">Pagar con</span>
-            <img src="/assets/img/webpay-plus.svg" alt="Webpay.cl" class="webpay-icon-inline" width="70" height="20">
-          </a>
+        <!-- Bloque de Checkout Completo al Pie del Catálogo -->
+        <div class="catalog-bottom-checkout" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 20px; margin-top: 24px; text-align: center;">
+          <div class="catalog-pricing-badge" style="margin-bottom: 10px;">
+            <span class="catalog-price" id="catalog-price-amount-bottom">$5.000 CLP</span>
+            <span class="catalog-price-usd" id="catalog-price-usd-bottom" data-i18n="catalog.price_usd">(Aprox. 5 USD)</span>
+            <span class="catalog-lifetime-pill" id="catalog-price-pill-bottom"><i class="fas fa-infinity"></i> <span data-i18n="catalog.lifetime_pill">Licencia de por vida (1 dispositivo)</span></span>
+          </div>
+
+          <!-- Desktop QR Pay Card: Visible only on desktop screens -->
+          <div class="pay-desktop-qr-card" style="margin: 14px auto; max-width: 480px;">
+            <div class="qr-visual-frame">
+              <img src="/assets/img/qr-webpay.png" alt="QR Webpay Plus Transbank" class="qr-image" id="catalog-qr-image" width="105" height="105">
+              <span class="qr-badge-tag"><i class="fas fa-qrcode"></i> Webpay</span>
+            </div>
+            <div class="qr-meta-side">
+              <div class="qr-heading-row">
+                <span class="qr-heading" data-i18n="labs.d1.qr_heading">Paga con QR</span>
+                <img src="/assets/img/webpay-plus.svg" alt="Webpay Plus" class="webpay-icon-inline" width="70" height="20">
+              </div>
+              <p class="qr-subtext" data-i18n="labs.d1.qr_subtext">Desde tu celular o app bancaria favorita o a través del siguiente botón de pago.</p>
+              <a class="btn-buy-webpay btn-webpay-inline-card" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="labs.d1.btn_pay_with">Pagar con</span>
+                <img src="/assets/img/webpay-plus.svg" alt="Webpay.cl" class="webpay-icon-inline" width="70" height="20">
+              </a>
+            </div>
+          </div>
+
+          <!-- Mobile Pay Button: Visible only on mobile screens -->
+          <div class="pay-mobile-box" style="margin: 12px auto; max-width: 320px;">
+            <a class="btn-buy-webpay" href="https://www.webpay.cl/form-pay/422690" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="labs.d1.btn_pay_with">Pagar con</span>
+              <img src="/assets/img/webpay-plus.svg" alt="Webpay.cl" class="webpay-icon-inline" width="82" height="22">
+            </a>
+          </div>
+
+          <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 10px;">
+            <i class="fas fa-shield-halved"></i> <span data-i18n="labs.d1.trust_note">Pago cifrado Transbank · Asistencia: support@mrclo.dev</span>
+            <span style="opacity: 0.5;">·</span>
+            <a href="/terms/" target="_blank" style="color: var(--labs-cyan); text-decoration: underline;" data-i18n="labs.d1.terms_link">Términos de Licencia</a>
+          </div>
+        </div>
+
+        <div class="catalog-footer-actions" style="margin-top: 18px;">
           <button class="btn-demo-trigger btn-open-simulator-from-catalog">
             <i class="fas fa-laptop-code"></i> <span data-i18n="catalog.footer_btn_sim">Probar Simulador Interactivo</span>
           </button>

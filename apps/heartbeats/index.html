@@ -256,6 +256,9 @@
         <div style="color: #94a3b8; font-size: 0.74rem;">
           Equipo: <span id="settings-device-info">---</span>
         </div>
+        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 6px; text-align: right;">
+          <button id="btn-settings-transfer" style="background: none; border: none; color: #38bdf8; font-size: 0.74rem; cursor: pointer; text-decoration: underline;">🔄 ¿Te vas a cambiar de equipo? Transferir licencia</button>
+        </div>
       </div>
 
       <!-- Botón para Cerrar Ajustes y volver a la vista limpia -->
@@ -318,6 +321,9 @@
           <button id="btn-activate-manual" class="btn-activate">Activar Licencia ✨</button>
         </div>
         <div id="gatekeeper-error" class="gatekeeper-error" style="display: none;">Código inválido. Verifica tu comprobante.</div>
+        <div style="margin-top: 10px;">
+          <a href="#" id="btn-goto-transfer-from-input" class="gatekeeper-link" style="color: #38bdf8; font-size: 0.78rem; text-decoration: underline;">🔄 ¿Te vas a cambiar de equipo? Transfiere tu licencia aquí</a>
+        </div>
         <div class="gatekeeper-footer">
           <a href="/labs-drops/" class="gatekeeper-link">¿No tienes licencia? Adquiérela en Labs & Drops</a>
         </div>
@@ -401,13 +407,78 @@
         </div>
 
         <div class="gatekeeper-notice blocked">
-          Conforme a la Cláusula 2 de los Términos de Servicio de mrclo.dev, cada compra autoriza una licencia perpetua para un único dispositivo personal (teléfono móvil o computador). Si deseas utilizar la aplicación en este nuevo equipo, puedes adquirir una licencia adicional.
+          Conforme a la Cláusula 2 de los Términos de Servicio de mrclo.dev, cada compra autoriza una licencia perpetua para un único dispositivo personal (teléfono móvil o computador). Si este es tu nuevo equipo, puedes transferir tu licencia automáticamente usando el botón a continuación.
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 14px;">
+          <button type="button" id="btn-goto-transfer" class="btn-activate" style="display: flex; align-items: center; justify-content: center; min-height: 44px; background: #0284c7; border: 1px solid #38bdf8; color: #fff; cursor: pointer; font-weight: 700;">🔄 Me cambié de equipo (Transferir a este dispositivo)</button>
+          <a href="/labs-drops/" class="btn-activate" style="display: flex; align-items: center; justify-content: center; text-decoration: none; text-align: center; min-height: 44px;">Adquirir Nueva Licencia en Labs & Drops 🛍️</a>
+          <button id="btn-try-another-key" style="background: none; border: none; color: #94a3b8; font-size: 0.8rem; cursor: pointer; text-decoration: underline; padding: 4px;">Probar otro código de autorización</button>
+          <a href="mailto:support@mrclo.dev" class="gatekeeper-link" style="font-size: 0.78rem;">¿Dudas con tu licencia? Contáctanos a support@mrclo.dev</a>
+        </div>
+      </div>
+
+      <!-- Vista 5: Formulario de Transferencia de Licencia ("Me cambié de equipo") -->
+      <div id="gatekeeper-view-transfer" style="display: none;">
+        <div class="gatekeeper-icon">🔄</div>
+        <h2>Transferir Licencia</h2>
+        <div class="gatekeeper-badge-loading" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">● Continuidad de por Vida</div>
+        <p class="gatekeeper-desc">
+          Si compraste un nuevo equipo o deseas trasladar tu licencia a este dispositivo, ingresa tu clave y el <strong>correo electrónico que usaste al comprar en Webpay</strong>. El equipo anterior quedará automáticamente desvinculado.
+        </p>
+
+        <div class="gatekeeper-form" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px;">
+          <div>
+            <label for="transfer-key-input" style="display: block; font-size: 0.75rem; color: #94a3b8; text-align: left; margin-bottom: 4px;">Código de autorización:</label>
+            <input type="text" id="transfer-key-input" class="gatekeeper-input" placeholder="Ej. 165487" />
+          </div>
+          <div>
+            <label for="transfer-email-input" style="display: block; font-size: 0.75rem; color: #94a3b8; text-align: left; margin-bottom: 4px;">Correo del comprador (Webpay):</label>
+            <input type="email" id="transfer-email-input" class="gatekeeper-input" placeholder="tu-correo@ejemplo.com" />
+          </div>
+          <button id="btn-submit-transfer" class="btn-activate" style="margin-top: 6px; min-height: 44px;">Transferir y Activar en este Equipo ✨</button>
+        </div>
+        <div id="gatekeeper-transfer-error" class="gatekeeper-error" style="display: none;">Datos incorrectos. Verifica la clave y el correo de compra.</div>
+        <div class="gatekeeper-footer">
+          <button id="btn-back-from-transfer" style="background: none; border: none; color: #94a3b8; font-size: 0.8rem; cursor: pointer; text-decoration: underline; padding: 6px;">← Volver</button>
+        </div>
+      </div>
+
+      <!-- Vista 6: Licencia Caducada / Reasignada en Otro Equipo -->
+      <div id="gatekeeper-view-revoked" style="display: none;">
+        <div class="gatekeeper-icon">⚠️</div>
+        <h2 style="color: #f87171;">Licencia Desvinculada</h2>
+        <div class="gatekeeper-badge-blocked">● Reasignada a un Nuevo Dispositivo</div>
+        <p class="gatekeeper-desc">
+          El titular de esta licencia utilizó la función de autogestión <strong>"Me cambié de equipo"</strong> para transferir la licencia activa a otro dispositivo personal. Por seguridad y cumplimiento de la licencia mono-equipo, este dispositivo ha dejado de estar vinculado.
+        </p>
+
+        <div class="gatekeeper-details blocked">
+          <div class="gatekeeper-detail-row">
+            <span class="gatekeeper-detail-key">Clave de Licencia:</span>
+            <span class="gatekeeper-detail-val gatekeeper-code-val" id="fb-revoked-key">---</span>
+          </div>
+          <div class="gatekeeper-detail-row">
+            <span class="gatekeeper-detail-key">Nuevo Dispositivo:</span>
+            <span class="gatekeeper-detail-val" id="fb-revoked-new-device">---</span>
+          </div>
+          <div class="gatekeeper-detail-row">
+            <span class="gatekeeper-detail-key">Fecha de Reasignación:</span>
+            <span class="gatekeeper-detail-val" id="fb-revoked-date">---</span>
+          </div>
+          <div class="gatekeeper-detail-row">
+            <span class="gatekeeper-detail-key">Estado en este Equipo:</span>
+            <span class="gatekeeper-detail-val" style="color: #f87171;">Caducada / Reasignada</span>
+          </div>
+        </div>
+
+        <div class="gatekeeper-notice blocked">
+          Si deseas continuar usando Heartbeats Memories en este equipo, puedes adquirir una nueva licencia personal en Labs & Drops o volver a transferir la licencia a este dispositivo si eres el titular.
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 14px;">
           <a href="/labs-drops/" class="btn-activate" style="display: flex; align-items: center; justify-content: center; text-decoration: none; text-align: center; min-height: 44px;">Adquirir Nueva Licencia en Labs & Drops 🛍️</a>
-          <button id="btn-try-another-key" style="background: none; border: none; color: #94a3b8; font-size: 0.8rem; cursor: pointer; text-decoration: underline; padding: 4px;">Probar otro código de autorización</button>
-          <a href="mailto:support@mrclo.dev" class="gatekeeper-link" style="font-size: 0.78rem;">¿Cambiaste de equipo? Contáctanos a support@mrclo.dev</a>
+          <button id="btn-reclaim-transfer" style="background: none; border: none; color: #38bdf8; font-size: 0.8rem; cursor: pointer; text-decoration: underline; padding: 6px;">🔄 ¿Eres el titular? Transferir de regreso a este equipo</button>
         </div>
       </div>
 
@@ -449,6 +520,8 @@
       const viewLoading = document.getElementById('gatekeeper-view-loading');
       const viewSuccess = document.getElementById('gatekeeper-view-success');
       const viewBlocked = document.getElementById('gatekeeper-view-blocked');
+      const viewTransfer = document.getElementById('gatekeeper-view-transfer');
+      const viewRevoked = document.getElementById('gatekeeper-view-revoked');
       const configBanner = document.getElementById('gatekeeper-config-banner');
 
       const manualInput = document.getElementById('manual-license-input');
@@ -456,6 +529,16 @@
       const errorMsg = document.getElementById('gatekeeper-error');
       const enterAppBtn = document.getElementById('btn-enter-app');
       const tryAnotherBtn = document.getElementById('btn-try-another-key');
+
+      const transferKeyInput = document.getElementById('transfer-key-input');
+      const transferEmailInput = document.getElementById('transfer-email-input');
+      const btnSubmitTransfer = document.getElementById('btn-submit-transfer');
+      const transferErrorMsg = document.getElementById('gatekeeper-transfer-error');
+      const btnBackTransfer = document.getElementById('btn-back-from-transfer');
+      const btnGotoTransfer = document.getElementById('btn-goto-transfer');
+      const linkGotoTransfer = document.getElementById('btn-goto-transfer-from-input');
+      const btnSettingsTransfer = document.getElementById('btn-settings-transfer');
+      const btnReclaimTransfer = document.getElementById('btn-reclaim-transfer');
 
       const btnToggleConfig = document.getElementById('btn-toggle-config-input');
       const configInputRow = document.getElementById('config-input-row');
@@ -471,6 +554,8 @@
         if (viewLoading) viewLoading.style.display = (viewName === 'loading') ? 'block' : 'none';
         if (viewSuccess) viewSuccess.style.display = (viewName === 'success') ? 'block' : 'none';
         if (viewBlocked) viewBlocked.style.display = (viewName === 'blocked') ? 'block' : 'none';
+        if (viewTransfer) viewTransfer.style.display = (viewName === 'transfer') ? 'block' : 'none';
+        if (viewRevoked) viewRevoked.style.display = (viewName === 'revoked') ? 'block' : 'none';
       }
 
       function getOrCreateDeviceId() {
@@ -522,6 +607,23 @@
         return `${platform} (${os} · ${browser})`;
       }
 
+      async function getPublicIp() {
+        try {
+          const controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+          const timeoutId = controller ? setTimeout(() => controller.abort(), 2000) : null;
+          const opts = controller ? { signal: controller.signal } : {};
+          const resp = await fetch('https://api.ipify.org?format=json', opts);
+          if (timeoutId) clearTimeout(timeoutId);
+          if (resp.ok) {
+            const data = await resp.json();
+            return data.ip || '';
+          }
+        } catch (e) {
+          // Si está offline o falla la consulta, continuar de modo seguro
+        }
+        return '';
+      }
+
       function showError(text) {
         if (errorMsg) {
           errorMsg.textContent = text;
@@ -549,6 +651,8 @@
 
         const deviceId = getOrCreateDeviceId();
         const deviceSummary = getDeviceSummary();
+        const clientIp = await getPublicIp();
+        const fullInfo = clientIp ? `${deviceSummary} · IP: ${clientIp}` : deviceSummary;
 
         // Si no hay endpoint de Apps Script enlazado, mostrar advertencia amigable
         if (!APPS_SCRIPT_WEBAPP_URL || APPS_SCRIPT_WEBAPP_URL.trim() === "") {
@@ -562,7 +666,7 @@
         switchView('loading');
 
         try {
-          const endpoint = `${APPS_SCRIPT_WEBAPP_URL.trim()}?action=activate&key=${encodeURIComponent(clean)}&device=${encodeURIComponent(deviceId)}&info=${encodeURIComponent(deviceSummary)}`;
+          const endpoint = `${APPS_SCRIPT_WEBAPP_URL.trim()}?action=activate&key=${encodeURIComponent(clean)}&device=${encodeURIComponent(deviceId)}&info=${encodeURIComponent(fullInfo)}&ip=${encodeURIComponent(clientIp)}`;
           const response = await fetch(endpoint, { method: 'GET', redirect: 'follow' });
           const data = await response.json();
 
@@ -670,11 +774,199 @@
         });
       }
 
-      // 1. Si viene con clave en la URL (desde el correo al hacer clic en "Abrir e Instalar")
-      if (incomingKey) {
+      function showTransferError(text) {
+        if (transferErrorMsg) {
+          transferErrorMsg.textContent = text;
+          transferErrorMsg.style.display = 'block';
+        }
+      }
+
+      function hideTransferError() {
+        if (transferErrorMsg) {
+          transferErrorMsg.style.display = 'none';
+        }
+      }
+
+      function openTransferView(prefillKey) {
+        hideTransferError();
+        if (gatekeeperModal) gatekeeperModal.style.display = 'flex';
+        switchView('transfer');
+        if (transferKeyInput) {
+          if (prefillKey) {
+            transferKeyInput.value = prefillKey;
+          } else if (!transferKeyInput.value) {
+            const currentSaved = localStorage.getItem(STORAGE_KEY);
+            if (currentSaved) transferKeyInput.value = currentSaved;
+          }
+        }
+        if (transferEmailInput && !transferEmailInput.value) {
+          setTimeout(() => transferEmailInput.focus(), 80);
+        }
+      }
+
+      async function executeDeviceTransfer(rawKey, rawEmail) {
+        hideTransferError();
+        if (!rawKey || rawKey.trim() === '') {
+          showTransferError("Por favor ingresa tu código de autorización.");
+          return false;
+        }
+        if (!rawEmail || !rawEmail.includes('@')) {
+          showTransferError("Por favor ingresa un correo de compra válido.");
+          return false;
+        }
+
+        const cleanKey = rawKey.trim().toUpperCase();
+        const cleanEmail = rawEmail.trim().toLowerCase();
+        const deviceId = getOrCreateDeviceId();
+        const deviceSummary = getDeviceSummary();
+        const clientIp = await getPublicIp();
+        const fullInfo = clientIp ? `${deviceSummary} · IP: ${clientIp}` : deviceSummary;
+
+        if (!APPS_SCRIPT_WEBAPP_URL || APPS_SCRIPT_WEBAPP_URL.trim() === '') {
+          showTransferError("El servidor seguro de verificación está temporalmente inaccesible.");
+          return false;
+        }
+
+        const loadingText = document.getElementById('gatekeeper-loading-text');
+        if (loadingText) loadingText.textContent = "Verificando titularidad y reasignando licencia a este equipo...";
+        switchView('loading');
+
+        try {
+          const endpoint = `${APPS_SCRIPT_WEBAPP_URL.trim()}?action=transfer&key=${encodeURIComponent(cleanKey)}&email=${encodeURIComponent(cleanEmail)}&device=${encodeURIComponent(deviceId)}&info=${encodeURIComponent(fullInfo)}&ip=${encodeURIComponent(clientIp)}`;
+          const response = await fetch(endpoint, { method: 'GET', redirect: 'follow' });
+          const data = await response.json();
+
+          if (data.success || data.status === 'TRANSFERRED') {
+            localStorage.setItem(STORAGE_KEY, cleanKey);
+            localStorage.setItem('hb_device_summary', deviceSummary);
+            localStorage.setItem('hb_activation_date', data.activated_at || new Date().toISOString());
+
+            document.getElementById('fb-success-key').textContent = cleanKey;
+            document.getElementById('fb-success-device').textContent = data.device_info || deviceSummary;
+            document.getElementById('fb-success-date').textContent = data.activated_at || new Date().toLocaleString('es-CL');
+            document.getElementById('fb-success-amount').textContent = data.amount || "$2.500 CLP / $5.000 CLP";
+
+            switchView('success');
+            return true;
+          }
+
+          // Errores de transferencia
+          switchView('transfer');
+          if (data.status === 'EMAIL_MISMATCH') {
+            showTransferError("El correo electrónico no coincide con el registrado en la compra de esta licencia.");
+          } else if (data.status === 'INVALID_KEY') {
+            showTransferError("Código de autorización no encontrado en la base de datos.");
+          } else {
+            showTransferError(data.message || "No se pudo realizar la transferencia.");
+          }
+          return false;
+        } catch (errNet) {
+          console.warn("Fallo al conectar para transferir:", errNet);
+          switchView('transfer');
+          showTransferError("No se pudo conectar con el servidor. Revisa tu conexión a internet.");
+          return false;
+        }
+      }
+
+      async function verifyActiveLicense() {
+        const savedLicense = localStorage.getItem(STORAGE_KEY);
+        if (!savedLicense || !APPS_SCRIPT_WEBAPP_URL) return;
+        const deviceId = getOrCreateDeviceId();
+        try {
+          const endpoint = `${APPS_SCRIPT_WEBAPP_URL.trim()}?action=verify&key=${encodeURIComponent(savedLicense)}&device=${encodeURIComponent(deviceId)}`;
+          const resp = await fetch(endpoint, { method: 'GET', redirect: 'follow' });
+          const data = await resp.json();
+          if (data.status === 'LICENSE_REVOKED_TRANSFERRED') {
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem('hb_device_summary');
+            localStorage.removeItem('hb_activation_date');
+            const keyEl = document.getElementById('fb-revoked-key');
+            const devEl = document.getElementById('fb-revoked-new-device');
+            const dateEl = document.getElementById('fb-revoked-date');
+            if (keyEl) keyEl.textContent = savedLicense;
+            if (devEl) devEl.textContent = data.transferred_to || "Otro dispositivo personal";
+            if (dateEl) dateEl.textContent = data.transferred_at || new Date().toLocaleString('es-CL');
+            if (gatekeeperModal) gatekeeperModal.style.display = 'flex';
+            switchView('revoked');
+          }
+        } catch (e) {
+          // Si está sin conexión, continúa de modo Local-First
+        }
+      }
+
+      // Eventos para interactuar con la pantalla de transferencia
+      if (btnSettingsTransfer) {
+        btnSettingsTransfer.addEventListener('click', () => {
+          const currentKey = localStorage.getItem(STORAGE_KEY);
+          openTransferView(currentKey || '');
+        });
+      }
+
+      if (btnGotoTransfer) {
+        btnGotoTransfer.addEventListener('click', () => {
+          const blockedKey = document.getElementById('fb-blocked-key').textContent;
+          openTransferView(blockedKey !== '---' ? blockedKey : '');
+        });
+      }
+
+      if (linkGotoTransfer) {
+        linkGotoTransfer.addEventListener('click', (e) => {
+          e.preventDefault();
+          openTransferView();
+        });
+      }
+
+      if (btnReclaimTransfer) {
+        btnReclaimTransfer.addEventListener('click', () => {
+          const revokedKey = document.getElementById('fb-revoked-key').textContent;
+          openTransferView(revokedKey !== '---' ? revokedKey : '');
+        });
+      }
+
+      if (btnBackTransfer) {
+        btnBackTransfer.addEventListener('click', () => {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            if (gatekeeperModal) gatekeeperModal.style.display = 'none';
+          } else {
+            switchView('input');
+          }
+        });
+      }
+
+      if (btnSubmitTransfer) {
+        btnSubmitTransfer.addEventListener('click', async () => {
+          await executeDeviceTransfer(transferKeyInput.value, transferEmailInput.value);
+        });
+      }
+
+      if (transferEmailInput) {
+        transferEmailInput.addEventListener('keydown', async (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            await executeDeviceTransfer(transferKeyInput.value, transferEmailInput.value);
+          }
+        });
+      }
+
+      if (transferKeyInput) {
+        transferKeyInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            if (transferEmailInput) transferEmailInput.focus();
+          }
+        });
+      }
+
+      // 1. Si la URL solicita transferencia (?action=transfer o ?transfer=1)
+      if (urlParams.get('action') === 'transfer' || urlParams.get('transfer') === '1') {
+        const prefillKey = urlParams.get('key') || urlParams.get('activate') || '';
+        openTransferView(prefillKey);
+      } else if (incomingKey) {
+        // 2. Si viene con clave en la URL (desde el correo al hacer clic en "Abrir e Instalar")
         validateAndActivate(incomingKey);
       } else {
-        // 2. Si no viene clave en la URL y no está activado previamente, mostrar modal de entrada
+        // 3. Si no viene clave en la URL y no está activado previamente, mostrar modal de entrada
         const savedLicense = localStorage.getItem(STORAGE_KEY);
         if (!savedLicense) {
           if (gatekeeperModal) gatekeeperModal.style.display = 'flex';
@@ -684,6 +976,7 @@
           }
         } else {
           updateSettingsLicenseInfo();
+          verifyActiveLicense();
         }
       }
 

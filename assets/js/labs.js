@@ -561,6 +561,11 @@ function initCouponSystem() {
   const catalogPriceUsd = document.getElementById("catalog-price-usd");
   const catalogPricePill = document.getElementById("catalog-price-pill");
 
+  const catalogPriceAmountBottom = document.getElementById("catalog-price-amount-bottom");
+  const catalogPriceUsdBottom = document.getElementById("catalog-price-usd-bottom");
+  const catalogPricePillBottom = document.getElementById("catalog-price-pill-bottom");
+  const catalogQrImage = document.getElementById("catalog-qr-image");
+
   let activeCoupon = null;
 
   function getCurrentLang() {
@@ -597,7 +602,7 @@ function initCouponSystem() {
     const usdText = lang === "es" ? couponData.promoUsdEs : couponData.promoUsdEn;
     const badgeText = getI18nText("labs.d1.price_badge_promo", "50% OFF Inauguración (1 Dispositivo)");
 
-    // Update Drop 01 Card
+    // Update Drop 01 Card (if elements present)
     if (d1PriceAmount) {
       d1PriceAmount.innerHTML = `<span class="price-original-strikethrough">${couponData.originalClp}</span>${couponData.promoClp}`;
     }
@@ -609,7 +614,7 @@ function initCouponSystem() {
       d1PricePill.innerHTML = `<i class="fas fa-tag"></i> <span>${badgeText}</span>`;
     }
 
-    // Update Catalog Modal
+    // Update Catalog Modal (Top)
     if (catalogPriceAmount) {
       catalogPriceAmount.innerHTML = `<span class="price-original-strikethrough">${couponData.originalClp}</span>${couponData.promoClp}`;
     }
@@ -621,14 +626,29 @@ function initCouponSystem() {
       catalogPricePill.innerHTML = `<i class="fas fa-tag"></i> <span>${badgeText}</span>`;
     }
 
+    // Update Catalog Modal (Bottom)
+    if (catalogPriceAmountBottom) {
+      catalogPriceAmountBottom.innerHTML = `<span class="price-original-strikethrough">${couponData.originalClp}</span>${couponData.promoClp}`;
+    }
+    if (catalogPriceUsdBottom) {
+      catalogPriceUsdBottom.textContent = usdText;
+    }
+    if (catalogPricePillBottom) {
+      catalogPricePillBottom.classList.add("promo-badge");
+      catalogPricePillBottom.innerHTML = `<i class="fas fa-tag"></i> <span>${badgeText}</span>`;
+    }
+
     // Update all Webpay Links to Promo URL
     document.querySelectorAll(".btn-buy-webpay").forEach(btn => {
       btn.setAttribute("href", WEBPAY_URL_PROMO_50);
     });
 
-    // Update Desktop QR image to Promo QR
+    // Update Desktop QR image to Promo QR (exterior and catalog modal)
     if (qrImage) {
       qrImage.src = QR_SRC_PROMO;
+    }
+    if (catalogQrImage) {
+      catalogQrImage.src = QR_SRC_PROMO;
     }
 
     // Show Feedback with Remove button
@@ -670,7 +690,7 @@ function initCouponSystem() {
       d1PricePill.innerHTML = `<i class="fas fa-infinity"></i> <span data-i18n="labs.d1.price_badge">${regularBadgeText}</span>`;
     }
 
-    // Restore Catalog Modal
+    // Restore Catalog Modal (Top)
     if (catalogPriceAmount) {
       catalogPriceAmount.textContent = "$5.000 CLP";
     }
@@ -682,14 +702,29 @@ function initCouponSystem() {
       catalogPricePill.innerHTML = `<i class="fas fa-infinity"></i> <span data-i18n="catalog.lifetime_pill">${regularBadgeText}</span>`;
     }
 
+    // Restore Catalog Modal (Bottom)
+    if (catalogPriceAmountBottom) {
+      catalogPriceAmountBottom.textContent = "$5.000 CLP";
+    }
+    if (catalogPriceUsdBottom) {
+      catalogPriceUsdBottom.textContent = usdText;
+    }
+    if (catalogPricePillBottom) {
+      catalogPricePillBottom.classList.remove("promo-badge");
+      catalogPricePillBottom.innerHTML = `<i class="fas fa-infinity"></i> <span data-i18n="catalog.lifetime_pill">${regularBadgeText}</span>`;
+    }
+
     // Restore all Webpay Links to Regular URL
     document.querySelectorAll(".btn-buy-webpay").forEach(btn => {
       btn.setAttribute("href", WEBPAY_URL_REGULAR);
     });
 
-    // Restore Desktop QR image
+    // Restore Desktop QR image (exterior and catalog modal)
     if (qrImage) {
       qrImage.src = QR_SRC_REGULAR;
+    }
+    if (catalogQrImage) {
+      catalogQrImage.src = QR_SRC_REGULAR;
     }
 
     if (couponInput) {
