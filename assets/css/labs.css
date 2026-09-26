@@ -575,6 +575,29 @@ body.labs-universe .ambient-glow-mesh {
   color: #ffffff;
 }
 
+.webpay-icon-inline {
+  height: 22px;
+  width: auto;
+  max-width: 82px;
+  vertical-align: middle;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.btn-buy-webpay:hover .webpay-icon-inline {
+  transform: scale(1.05);
+}
+
+.btn-webpay-inline-card {
+  padding: 7px 14px;
+  font-size: 0.82rem;
+  margin-top: 6px;
+  width: fit-content;
+  border-radius: 6px;
+}
+
 .pay-desktop-qr-card {
   display: flex;
   align-items: center;
