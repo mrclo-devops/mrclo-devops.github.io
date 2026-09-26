@@ -392,28 +392,23 @@
             }
           } catch (errNet) {
             console.warn("Fallo de conexión al validar con el servidor:", errNet);
-            // Fallback defensivo ante falla de red temporal: si el formato es válido, activa localmente
-            localStorage.setItem(STORAGE_KEY, clean);
-            if (gatekeeperModal) gatekeeperModal.style.display = 'none';
-            if (window.history && window.history.replaceState) {
-              window.history.replaceState({}, document.title, window.location.pathname);
-            }
-            return true;
+            showError("No se pudo conectar con el servidor de licencias. Por favor verifica tu conexión a internet para activar tu equipo.");
+            return false;
           } finally {
             if (activateBtn) {
               activateBtn.disabled = false;
               activateBtn.textContent = "Activar Licencia ✨";
             }
           }
+        } else {
+          // Modo de transición previo a vincular la URL del Web App de Google Apps Script
+          localStorage.setItem(STORAGE_KEY, clean);
+          if (gatekeeperModal) gatekeeperModal.style.display = 'none';
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+          }
+          return true;
         }
-
-        // Validación local defensiva (cuando aún no se ha desplegado el Web App o en modo offline)
-        localStorage.setItem(STORAGE_KEY, clean);
-        if (gatekeeperModal) gatekeeperModal.style.display = 'none';
-        if (window.history && window.history.replaceState) {
-          window.history.replaceState({}, document.title, window.location.pathname);
-        }
-        return true;
       }
 
       // 1. Si viene con clave en la URL (desde el correo al hacer clic en "Abrir e Instalar")
