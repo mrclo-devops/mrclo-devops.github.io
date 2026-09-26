@@ -1371,6 +1371,126 @@ input[type="range"] {
   text-decoration: underline;
 }
 
+/* Feedback de Activación y Bloqueo Mono-Equipo */
+.gatekeeper-badge-success {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  color: #34d399;
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.gatekeeper-badge-blocked {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  color: #f87171;
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.gatekeeper-badge-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.gatekeeper-details {
+  background: rgba(10, 25, 47, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 16px 0;
+  text-align: left;
+}
+
+.gatekeeper-details.blocked {
+  border-color: rgba(239, 68, 68, 0.35);
+  background: rgba(30, 15, 20, 0.7);
+}
+
+.gatekeeper-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.84rem;
+}
+
+.gatekeeper-detail-row:last-child {
+  border-bottom: none;
+}
+
+.gatekeeper-detail-key {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.gatekeeper-detail-val {
+  color: #f1f5f9;
+  font-weight: 600;
+  text-align: right;
+}
+
+.gatekeeper-code-val {
+  font-family: monospace;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  padding: 2px 7px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.gatekeeper-notice {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #94a3b8;
+  background: rgba(7, 25, 23, 0.6);
+  border-left: 3px solid #10b981;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 12px;
+  margin: 14px 0;
+  text-align: left;
+}
+
+.gatekeeper-notice.blocked {
+  background: rgba(35, 12, 16, 0.6);
+  border-left-color: #ef4444;
+  color: #cbd5e1;
+}
+
+.gatekeeper-config-warning {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font-size: 0.78rem;
+  color: #fde68a;
+  text-align: left;
+  line-height: 1.45;
+}
+
 /* One-Click PWA Banner */
 .pwa-install-banner {
   position: fixed;
